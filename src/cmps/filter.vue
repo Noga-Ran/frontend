@@ -1,10 +1,10 @@
 <template>
     <div class="header-filter-layout">
         <div class="header-filter-container">
-            <div class="header-txt-container">Anywhere</div>
+            <div class="header-txt-container" @click.prevent="openFilter">Anywhere</div>
             <div class="header-txt-container">Any week</div>
             <div class="header-txt-container">Add guests</div>
-            <div class="header-demo-search">
+            <div class="header-demo-search" @click.prevent="openFilter">
                 <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
                     focusable="false"
                     style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;">
@@ -19,17 +19,17 @@
     </div>
 </template>
 <script>
-props: {
-    propName: propType
-}
+
 export default {
     data() {
         return {
-
+            where: '',
         }
     },
     methods: {
-
+        openFilter(){
+            console.log('click');
+        }
     },
     computed: {
 
