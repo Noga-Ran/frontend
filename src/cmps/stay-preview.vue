@@ -2,7 +2,7 @@
     <section class="demo-cont">
         <div class="demo-img">
         </div>
-        <section class="demo-lines">
+        <section v-if='false' class="demo-lines">
             <div class="line-a">
                 <div class="sub-a1"></div>
                 <div class="sub-a2"></div>
