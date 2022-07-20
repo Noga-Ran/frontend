@@ -14,7 +14,8 @@ export const stayService = {
 }
 
 async function query() {
+    storageService._save(KEY,stays)
     // return await httpService.get(ENDPOINT, filterBy)
     // // return axios.get(BASE_URL, { params: { filterBy } }).then((res) => res.data)
-   return stays || storageService.query(KEY)
+   return await storageService.query(KEY)
 }
