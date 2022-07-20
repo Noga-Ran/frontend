@@ -1,17 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import homePage from '../views/home-page.cmp.vue'
+
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory(),
+  linkActiveClass: 'active',
   routes: [
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: homePage
     },
-    {
-      path: '/about',
-      name: 'about',
-      component: () => import('../views/AboutView.vue')
-    }
   ]
 })
 
