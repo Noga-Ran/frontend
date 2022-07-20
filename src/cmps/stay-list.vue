@@ -13,7 +13,7 @@ import stayPreview from './stay-preview.vue'
 export default {
     data() {
         return {
-            stays: [],
+            
         }
     },
     components: {
@@ -25,9 +25,9 @@ export default {
             this.$emit('filter',{label})
         }
     },
-created(){
-    this.stays = this.$store.getters.stays
-}
+    computed:{
+        stays(){return this.$store.getters.stays}
+    }
 
 }
 </script>

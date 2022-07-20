@@ -22,8 +22,10 @@ async function query(filterBy = {}) {
 }
 
 function filtering(filteredStays, filterBy){
+    console.log(filterBy,'all');
     var stayToFilter = filteredStays
     if(filterBy.where) {
+        console.log(filterBy.where);
         stayToFilter = stayToFilter.filter(function(stay)
         {
             var stayAdressValues = (JSON.stringify(Object.values(stay.address))).toLowerCase()
@@ -32,6 +34,7 @@ function filtering(filteredStays, filterBy){
         })
     }
     if(filterBy.label) {
+        console.log(filterBy.label);
         stayToFilter = stayToFilter.filter((stay)=> stay.label === filterBy.label)
     }
     

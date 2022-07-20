@@ -24,7 +24,7 @@ export default {
             }else{
                 filterBy.label = filter.label
             }
-            
+            console.log(filterBy);
             this.$store.dispatch({ type: "setFilter", filterBy:filter })
         }
     },
