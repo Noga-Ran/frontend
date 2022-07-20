@@ -1,5 +1,6 @@
 <template>
   <section class="stay-details-layout">
+    <app-header />
     <section class="stay-details-container">
       <h1 class="stay-name">{{ stay.name }}</h1>
       <div class="about-stay-reviews">
@@ -38,8 +39,12 @@
 </template>
 
 <script>
+import appHeader from '../cmps/app-header.vue'
 export default {
   name: 'stay-details',
+  components: {
+    appHeader,
+  },
   data() {
     return {
       stay: null,
@@ -56,6 +61,6 @@ export default {
     },
   },
   computed: {},
-  unmounted() { },
+  unmounted() {},
 }
 </script>
