@@ -91,7 +91,6 @@
 			"countryCode": "US",
 			"city": "Maui"
 		},
-		"id": "12223067",
 		"bathrooms": 2,
 		"price": 595,
 		"securityDeposit": 500,
@@ -205,7 +204,8 @@
 			"153.jpeg",
 			"093.jpeg",
 			"094.jpeg"
-		]
+		],
+		"label": "Campings"
 	},
 	{
 		"name": "Belle chambre à côté Metro Papineau",
@@ -257,7 +257,6 @@
 			"countryCode": "CA",
 			"city": "Montreal"
 		},
-		"id": "13732894",
 		"bathrooms": 1,
 		"price": 30,
 		"securityDeposit": 150,
@@ -321,7 +320,8 @@
 			"060.jpeg",
 			"110.jpeg",
 			"086.jpeg"
-		]
+		],
+		"label": "Campings"
 	},
 	{
 		"name": "M&M Space MM2  Apartamento no centro da cidade",
@@ -616,9 +616,11 @@
 			"140.jpeg",
 			"042.jpeg",
 			"055.jpeg"
-		]
+		],
+		"label": "Campings"
 	},
 	{
+		"label": "Campings",
 		"name": "Fresh and modern 1BR in Bed-Stuy",
 		"summary": "A spacious, art-filled one-bedroom apartment near the express train (28 minutes to Times Square) and a Citibike station. Sample Bed-Stuy life at a nearby French restaurant,  a sunny Haitian cafe, a boutique grocery and more. We do NOT discriminate based on race, religion or sexual orientation.",
 		"interaction": ".  Guests stay in a separate,  private apartment and we make every effort to not disturb you unless absolutely necessary. We live above the apartment and will be happy to accommodate any reasonable requests",
@@ -900,6 +902,7 @@
 		]
 	},
 	{
+		"label": "Campings",
 		"name": "Habitación centro de Barcelona",
 		"summary": "Mi piso está en el centro de Barcelona. Cerca del metro, las ramblas, los museos, el Portal del Ángel, Plaza Cataluña. Mi alojamiento es bueno para turistas, aventureros, y viajeros de negocios....y tiene ascensor.",
 		"interaction": "Estaré disponible para cualquier duda o problema que se os presente. Conozco muy bien la ciudad y os puedo recomendar sitios.",
@@ -992,6 +995,7 @@
 		]
 	},
 	{
+		"label": "Campings",
 		"name": "DOUBLE ROOM IN THE HEART OF BCN",
 		"summary": "Lit room with balcony. The apartment is in the center, just meters from the Palau de la Musica Catalana. Well connected, a few minutes from Las Ramblas and the Born. Very close to the beach and Ciutadella Park",
 		"interaction": "Te proporcionaré sábanas y toallas, para que no te preocupes de traerlas tú.",
@@ -1271,6 +1275,7 @@
 		]
 	},
 	{
+		"label": "Campings",
 		"name": "Home, Sweet, Harlem. Welcome!",
 		"summary": "Welcome! Upgrades Added as of January 2018 This listing is located in the Spanish Harlem Section of Manhattan. I offer a cozy apartment that has great transportation in and out the city! The area has a lot of ethnic restaurants and a lot of local, active residents. This residence is great for a quick, inexpensive stay in New York whether its for business, travel, or personal purposes. I am glad to welcome all guests!",
 		"interaction": "I am great with communicating with my guest and making sure everyone is comfortable as possible. The apartment is yours to use but I am only a phone call away!",
@@ -1332,7 +1337,6 @@
 			"countryCode": "US",
 			"city": "New York"
 		},
-		"id": "11097962",
 		"bathrooms": 1,
 		"price": 110,
 		"securityDeposit": 0,
@@ -1559,6 +1563,7 @@
 		]
 	},
 	{
+		"label": "Campings",
 		"name": "Heroísmo IV",
 		"summary": "If the dates you wish are not available, we have other options in the same location. You can find them on my profile. My goal is for you to have your days with the most comfort i can propose. I want you to taste all the feelings in Porto, as our food, as our best places, our best pointviews. I just love to help you enjoying this beautiful city :)",
 		"interaction": "I'm always available to help as much as I can for my guests to spend a wonderful time in Porto.",
@@ -1624,7 +1629,6 @@
 			"countryCode": "PT",
 			"city": "Porto"
 		},
-		"id": "10487917",
 		"bathrooms": 1,
 		"price": 29,
 		"securityDeposit": 0,
@@ -1851,6 +1855,7 @@
 		]
 	},
 	{
+		"label": "Islands",
 		"name": "Monte dos Burgos - Cosy Room",
 		"summary": "The neighbourhood is a quiet, family residential area, 20 minutes by bus from the historic center of Porto and 20 minutes from the beach (Matosinhos - where you may eat very GOOD fish!). You will love to stay in a very spacious, familiar and bright room, where you can enjoy a large and flowery garden, comfortable kitchen and laundry with washer and dryer machine. My space is good for couples, solo adventures, and business travelers!",
 		"interaction": "Respect and confidance is the key to our hosts!!!",
@@ -1981,6 +1986,7 @@
 		]
 	},
 	{
+		"label": "Islands",
 		"name": "Nice Cosy Room In Taksim",
 		"summary": "Welcome if you want to stay at a cozy flat with local experience.:) It is in the center of Istanbul.The neighborhood is safe and close to attractions.Transportation is easy. I will help you always.",
 		"interaction": "After the booking you can reach me from (Hidden by Airbnb) or whatsaap",
@@ -2253,6 +2259,7 @@
 		]
 	},
 	{
+		"label": "Islands",
 		"name": "Penthouse Sands of Kahana Sandy Swimmable Beach",
 		"summary": "Price includes nightly rate & 14.42% tax.  Our fully remodeled 9th floor Penthouse unit offers the most amazing views.  The entire front of the condo is windows offering you a fantastic view of beautiful Pacific Ocean, Molokai & Lana'i.  Perfect location for watching beautiful sunsets, see our resident sea turtles & an excellent place for spotting whales during the whale migration season. This spacious two level 3 bedroom and 3 full bath Penthouse unit has over 2,050 sq ft of living space w/ AC.",
 		"interaction": "As your host I will be available via phone for any questions or concerns.  I am always happy to answer any questions or give assistance prior to your arrival.",
@@ -2543,6 +2550,7 @@
 		]
 	},
 	{
+		"label": "Islands",
 		"name": "+Spacious Studio&Kitchenette near Blue Mosque+",
 		"summary": "A spacious, private studio with high speed Wi-Fi wireless internet. It is located in historical district of Sultanahmet oldcity center. It's Only 10 minutes (by walking) away from Sultanahmet  Blue Mosque, Hagia Sophia, Topkapı Palace, Underground Cistern and Hippodrome. This area is called Kadirga and it's famous with it's local restaurants. There are more gorcery stores and supermarkets in this are since it's not %100 touristic area. There is children playground right in front of the building.",
 		"interaction": "I was born in Istanbul and worked as receptionist and as a concierge for more than 20 years. I am doing my best to make my guests' visit easier. *After the reservation is complete, my guests will receive an e-mail consisting of the exact adress, contact number ( (Hidden by Airbnb) available), description about how to reach from the airports and most importantly the Wi-Fi password for communication at arrival. You can simply connect to Wi-Fi when you arrive at the front door and call us fron (Hidden by Airbnb) or Viber. Airport shuttle service is also available on reasonable prices.",
@@ -2822,6 +2830,7 @@
 		]
 	},
 	{
+		"label": "Islands",
 		"name": "Grand apartment Sagrada Familia",
 		"summary": "4 rooms apartment in the heart of the right “Eixample” broadening. Perfect location in the notorious area of Sagrada Familia that will ensure and unforgettable stay in Barcelona. HUTB-003275",
 		"interaction": "24h",
