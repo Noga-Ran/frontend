@@ -25,7 +25,7 @@ export default {
                 filterBy.label = filter.label
             }
             console.log(filterBy);
-            this.$store.dispatch({ type: "setFilter", filterBy:filter })
+            this.$store.dispatch({ type: "setFilter", filterBy })
         }
     },
     created(){
