@@ -4,20 +4,22 @@ export default {
   state: {
     stays: [],
     filterBy: {
-      where:'',
-      label:''
-    }
+      where: '',
+      label: '',
+    },
   },
   getters: {
     stays({ stays }) {
       return stays
     },
-    filterBy({filterBy}){
+    stayById: (state) => (stayId) => {
+      return state.stays.find((stay) => stay._id === stayId)
+    },
+    filterBy({ filterBy }) {
       return filterBy
     },
-    stayById: stayId => state => state.stays.find(stay => stay._id === stayId)
   },
-  // this.$store.getters.stayById(stayId)
+
   mutations: {
     setStays(state, { stays }) {
       state.stays = stays
