@@ -16,5 +16,7 @@ export default {
     },
     data(){
     },
+    created(){
+    }
 }
 </script>

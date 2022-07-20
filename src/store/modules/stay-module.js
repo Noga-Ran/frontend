@@ -3,6 +3,10 @@ import { stayService } from '../../services/stay-service.js'
 export default {
   state: {
     stays: [],
+    filterBy: {
+      where:'',
+      label:''
+    }
   },
   getters: {
     stays({ stays }) {
@@ -15,12 +19,19 @@ export default {
     setStays(state, { stays }) {
       state.stays = stays
     },
+    setFilter(state, { filterBy }) {
+      state.filterBy = filterBy
+    },
   },
   actions: {
     loadStays({ commit, state }) {
-      stayService.query().then((stays) => {
+      stayService.query(state.filterBy).then((stays) => {
         commit({ type: 'setStays', stays })
       })
+    },
+    setFilter({ dispatch, commit }, { filterBy }) {
+      commit({ type: 'setFilter', filterBy })
+      dispatch({ type: 'loadStays' })
     },
   },
 }
