@@ -7,12 +7,14 @@
 </template>
 
 <script>
-import appHeader from '../components/app-header.vue'
-import stayList from '../components/stay-list.vue'
+import appHeader from '../cmps/app-header.vue'
+import stayList from '../cmps/stay-list.vue'
 export default {
     components: {
         appHeader,
         stayList,
+    },
+    data(){
     },
 }
 </script>

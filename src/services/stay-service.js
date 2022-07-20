@@ -1,5 +1,7 @@
-import { storageService } from './async-storage-service'
+// const fs = require('fs')
+// const stays = require('../jsons/stay.json')
 
+import { storageService } from './async-storage-service'
 const KEY = 'stays'
 
 export const stayService = {
@@ -12,19 +14,8 @@ export const stayService = {
 }
 
 async function query() {
+    // console.log(stays);
     // return await httpService.get(ENDPOINT, filterBy)
     // // return axios.get(BASE_URL, { params: { filterBy } }).then((res) => res.data)
-    return storageService.query(KEY)
+   return storageService.query(KEY)
 }
-
-// <!-- function loadCSV(filePath){
-//     return new Promise((resolve, reject) => {
-//         var results = []
-//         fs.createReadStream(filePath)
-//         .pipe(csv())
-//         .on('data', (data) => results.push(data))
-//         .on('end', () => {
-//             return resolve(results)
-//         })
-//     })
-// } -->

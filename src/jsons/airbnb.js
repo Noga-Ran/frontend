@@ -1,5 +1,8 @@
 
 // State: stay (crudl) , trip => order.
+export const stayService = {
+  db,
+}
 
 const db = {
   "stay": [
