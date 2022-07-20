@@ -12,12 +12,16 @@ export default {
     stays({ stays }) {
       return stays
     },
+    filterBy({filterBy}){
+      return filterBy
+    },
     stayById: stayId => state => state.stays.find(stay => stay._id === stayId)
   },
   // this.$store.getters.stayById(stayId)
   mutations: {
     setStays(state, { stays }) {
       state.stays = stays
+      console.log(state.stays.length);
     },
     setFilter(state, { filterBy }) {
       state.filterBy = filterBy

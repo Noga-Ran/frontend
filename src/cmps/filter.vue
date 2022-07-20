@@ -1,10 +1,14 @@
 <template>
     <div class="header-filter-layout">
         <div class="header-filter-container">
-            <div class="header-txt-container" @click.prevent="openFilter">Anywhere</div>
-            <div class="header-txt-container">Any week</div>
-            <div class="header-txt-container">Add guests</div>
-            <div class="header-demo-search" @click.prevent="openFilter">
+            <div v-if="!isSearch" class="header-txt-container" @click.prevent="isSearch=true">Anywhere</div>
+            <div v-if="!isSearch" class="header-txt-container">Any week</div>
+            <div  v-if="!isSearch" class="header-txt-container">Add guests</div>
+            <div v-else>
+                <input v-model="where" type="text">
+            </div>
+            <div class="header-demo-search" @click.prevent="setFilter">
+
                 <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
                     focusable="false"
                     style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;">
@@ -24,11 +28,18 @@ export default {
     data() {
         return {
             where: '',
+            isSearch: false
         }
     },
     methods: {
-        openFilter(){
-            console.log('click');
+        setFilter(){
+            if(this.where) {
+                let filterWhere = this.where
+                this.isSearch = false
+                this.where = ''
+
+                this.$emit('filter',filterWhere)
+            }
         }
     },
     computed: {

@@ -1,7 +1,7 @@
 
 <template>
     <section class="homepage-layout">
-        <app-header />
+        <app-header @filter="setFilter" />
         <stay-list/>
     </section>
 </template>
@@ -15,6 +15,13 @@ export default {
         stayList,
     },
     data(){
+    },
+    methods: {
+        setFilter(where){
+            let filter = Object.assign({}, this.$store.getters.filterBy)
+            filter.where = where
+            this.$store.dispatch({ type: "setFilter", filterBy:filter });
+        }
     },
     created(){
     }

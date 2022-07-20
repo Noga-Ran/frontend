@@ -50,8 +50,8 @@
         return {}
     },
     methods: {
-        setFilter(filter){
-            console.log(filter);
+        setFilter(where){
+            this.$emit('filter',where)
         }
     },
     components: {
