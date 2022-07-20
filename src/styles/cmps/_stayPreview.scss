@@ -1,17 +1,15 @@
-
 .demo-cont {
     height: fit-content;
 }
 
 .demo-img {
-    height: 250px;
-    width: 250px;
+    width: 100%;
+    aspect-ratio: 20/19;
     background-color: #DDDDDD;
     border-radius: 20px;
 }
 
 .demo-lines {
-    width: 248px;
     height: 120px;
     direction: rtl;
 }
@@ -24,26 +22,30 @@
 }
 
 .line-a {
+    width: 100%;
     background-color: transparent;
     margin-top: 10px;
-   display: grid;
+    display: grid;
     margin-bottom: 4px;
-.sub-a1{
-    border-radius: 4px;
-    width: 120px;
-    height: 100%;
-    background-color: #DDDDDD;
+
+    .sub-a1 {
+        border-radius: 4px;
+        width: 120px;
+        height: 100%;
+        background-color: #DDDDDD;
+    }
+
+    .sub-a2 {
+        grid-column: 3;
+        display: flex;
+        justify-self: end;
+        border-radius: 4px;
+        width: 47px;
+        height: 100%;
+        background-color: #DDDDDD;
+    }
 }
-.sub-a2{
-    grid-column: 3;
-    display: flex;
-    justify-self: end;
-    border-radius: 4px;
-    width: 47px;
-    height: 100%;
-    background-color: #DDDDDD;
-}
-}
+
 .line-b {
     width: 85px;
     margin-bottom: 4px;
