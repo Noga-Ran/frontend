@@ -3,7 +3,7 @@
     <category-filter />
     <section class="demo-list-cont">
         <section class="demo-list">
-            <stay-preview :key="dfg" v-for="x in 32"></stay-preview>
+            <stay-preview :key="idx" v-for="(currStay,idx) in stays" :currStay="currStay"></stay-preview>
         </section>
     </section>
 </template>
@@ -11,9 +11,18 @@
 import categoryFilter from './category-filter.vue'
 import stayPreview from './stay-preview.vue'
 export default {
+    data() {
+        return {
+            stays: [],
+        }
+    },
     components: {
         categoryFilter,
         stayPreview,
     },
+created(){
+    this.stays = this.$store.getters.stays
+}
+
 }
 </script>
