@@ -1,4 +1,3 @@
-
 <template>
     <section class="category-filters-layout">
         <section class="category-filters-container">
