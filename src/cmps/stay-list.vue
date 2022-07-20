@@ -1,6 +1,6 @@
 
 <template>
-    <category-filter />
+    <category-filter @filter="emitFilter"/>
     <section class="demo-list-cont">
         <section class="demo-list">
             <stay-preview :key="dfg" v-for="x in 32"></stay-preview>
@@ -14,6 +14,11 @@ export default {
     components: {
         categoryFilter,
         stayPreview,
+    },
+    methods: {
+        emitFilter(label){
+            this.$emit('filter',{label})
+        }
     },
 }
 </script>

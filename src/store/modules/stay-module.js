@@ -21,7 +21,6 @@ export default {
   mutations: {
     setStays(state, { stays }) {
       state.stays = stays
-      console.log(state.stays.length);
     },
     setFilter(state, { filterBy }) {
       state.filterBy = filterBy
