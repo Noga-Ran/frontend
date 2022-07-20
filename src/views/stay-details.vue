@@ -10,17 +10,9 @@
         {{ stay.address.country }}
       </div>
       <section class="stay-images">
-        <img
-          class="stay-img-1"
-          v-for="(img, idx) in stay.imgUrls"
-          :src="getImgUrl(idx)"
-          alt=""
-        />
-        <img
-          class="stay-img-1"
-          src="../assets/img/stays/{{ stay.imgUrls }}"
-          alt=""
-        />
+        <div class="stay-img-container" v-for="(img, idx) in stay.imgUrls">
+          <img :src="getImgUrl(idx)" alt="" />
+        </div>
       </section>
       <h2 class="stay-type-and-host">
         {{ stay.roomType }} hosted by {{ stay.host.fullname }}
@@ -64,6 +56,6 @@ export default {
     },
   },
   computed: {},
-  unmounted() {},
+  unmounted() { },
 }
 </script>
