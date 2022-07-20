@@ -18,15 +18,5 @@ export default {
 }
 </script>
 <style>
-.demo-list-cont {
-    padding: 0 80px;
-}
 
-.demo-list {
-    margin-top: 20px;
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 16px;
-    width: 100%;
-}
 </style>

@@ -119,53 +119,5 @@ export default {
 }
 </script>
 <style>
-@font-face {
-    font-family: circular;
-    src: url("../assets/fonts/circular/Gilroy-Regular.ttf");
-}
-.category-filters-layout {
-    background-color: white;
-    /* width: 100vw; scroll */
-    margin-top: 20px;
-    position: sticky;
-    top: 80px;
-}
 
-.category-filters-container {
-    margin: 0 80px;
-    display: grid;
-    grid-auto-flow: column;
-    gap: 16px;
-}
-
-.filter-img-layout {
-    display: flex;
-    align-items: center;
-    height: 78px;
-}
-
-.filter-img-container {
-    width: fit-content;
-    display: grid;
-    grid-auto-flow: row;
-    justify-content: center;
-    height: 48px;
-}
-
-.filter-img-container:hover {
-    cursor: pointer;
-    border-bottom: 2px solid #DDDDDD;
-    margin-bottom: -2px;
-}
-
-.category-filters-container img {
-    height: 24px;
-    justify-self: center;
-}
-
-.filter-img-txt {
-    font-size: 12px;
-    font-family: circular;
-    font-weight: 600;
-}
 </style>
