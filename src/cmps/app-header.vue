@@ -51,7 +51,7 @@
     },
     methods: {
         setFilter(where){
-            this.$emit('filter',where)
+            this.$emit('filter',{where})
         }
     },
     components: {

@@ -2,7 +2,7 @@
 <template>
     <section class="homepage-layout">
         <app-header @filter="setFilter" />
-        <stay-list/>
+        <stay-list @filter="setFilter"/>
     </section>
 </template>
 
@@ -17,10 +17,15 @@ export default {
     data(){
     },
     methods: {
-        setFilter(where){
-            let filter = Object.assign({}, this.$store.getters.filterBy)
-            filter.where = where
-            this.$store.dispatch({ type: "setFilter", filterBy:filter });
+        setFilter(filter){
+            var filterBy = Object.assign({}, this.$store.getters.filterBy)
+            if(filter.where){
+                filterBy.where = filter.where
+            }else{
+                filterBy.label = filter.label
+            }
+            console.log(filterBy);
+            this.$store.dispatch({ type: "setFilter", filterBy })
         }
     },
     created(){

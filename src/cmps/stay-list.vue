@@ -1,6 +1,6 @@
 
 <template>
-    <category-filter />
+    <category-filter @filter="emitFilter"/>
     <section class="demo-list-cont">
         <section class="demo-list">
             <stay-preview :key="idx" v-for="(currStay,idx) in stays" :currStay="currStay"></stay-preview>
@@ -13,16 +13,21 @@ import stayPreview from './stay-preview.vue'
 export default {
     data() {
         return {
-            stays: [],
+            
         }
     },
     components: {
         categoryFilter,
         stayPreview,
     },
-created(){
-    this.stays = this.$store.getters.stays
-}
+    methods: {
+        emitFilter(label){
+            this.$emit('filter',{label})
+        }
+    },
+    computed:{
+        stays(){return this.$store.getters.stays}
+    }
 
 }
 </script>
