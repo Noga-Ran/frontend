@@ -44,6 +44,61 @@
   }
 }
 
+.stay-sub-title {
+  display: flex;
+}
+
+.share-save-actions {
+  margin-left: auto;
+}
+
+.heart-svg {
+  margin-left: 10px;
+}
+
+.save-svg {
+  margin-right: 5px;
+}
+
 // .stay-img-1 {
 //   height: 200px;
 // }
+.stay-sub-title {
+  text-decoration: underline;
+  font-weight: 600;
+  font-size: 14px;
+  // border-bottom: 1px solid black;
+  // padding: 0 0 4px;
+}
+
+.stay-name {
+  font-size: 26px;
+}
+
+.stay-type-and-host {
+  font-size: 22px;
+}
+
+.stay-contains {
+  font-size: 1em;
+}
+
+.aminities-title {
+  font-size: 22px;
+}
+.amenities-list {
+  font-size: 1em;
+}
+
+.about-stay-reviews {
+  font-size: 22px;
+}
+
+.separating-dote {
+  text-decoration: unset;
+}
+
+.rating-average {
+  margin-left: 6px;
+  text-decoration: none;
+}
