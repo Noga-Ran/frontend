@@ -1,4 +1,5 @@
 <template>
+  <div :class="{ shadow: isActive }"></div>
   <section class="category-filters-layout">
     <section class="category-filters-container">
       <div class="filter-img-layout">
@@ -113,6 +114,7 @@
 export default {
   data() {
     return {
+      isActive: true,
       label: '',
     }
   },
@@ -123,5 +125,7 @@ export default {
       this.$emit('filter', this.label)
     },
   },
+  created() {
+  }
 }
 </script>

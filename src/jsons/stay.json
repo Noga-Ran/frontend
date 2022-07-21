@@ -10518,7 +10518,15 @@
 		"securityDeposit": 250,
 		"cleaningFee": 150,
 		"extraPeople": 0,
-		"reviewScores": {},
+		"reviewScores": {
+			"accuracy": 10,
+			"cleanliness": 10,
+			"checkin": 9,
+			"communication": 9,
+			"location": 10,
+			"value": 10,
+			"rating": 92
+		},
 		"reviews": [
 			{
 				"at": "2016-02-21T05:00:00.000Z",
@@ -14153,7 +14161,15 @@
 		"securityDeposit": 150,
 		"cleaningFee": 50,
 		"extraPeople": 0,
-		"reviewScores": {},
+		"reviewScores": {
+			"accuracy": 10,
+			"cleanliness": 10,
+			"checkin": 9,
+			"communication": 9,
+			"location": 10,
+			"value": 10,
+			"rating": 92
+		},
 		"reviews": [
 			{
 				"at": "2017-10-10T04:00:00.000Z",
@@ -20206,7 +20222,15 @@
 		"securityDeposit": 120,
 		"cleaningFee": 7,
 		"extraPeople": 10,
-		"reviewScores": {},
+		"reviewScores": {
+			"accuracy": 10,
+			"cleanliness": 10,
+			"checkin": 9,
+			"communication": 9,
+			"location": 10,
+			"value": 10,
+			"rating": 92
+		},
 		"reviews": [
 			{
 				"at": "2016-10-07T04:00:00.000Z",
@@ -51334,7 +51358,15 @@
 		"securityDeposit": null,
 		"cleaningFee": 50,
 		"extraPeople": 0,
-		"reviewScores": {},
+		"reviewScores": {
+			"accuracy": 10,
+			"cleanliness": 10,
+			"checkin": 9,
+			"communication": 9,
+			"location": 10,
+			"value": 10,
+			"rating": 92
+		},
 		"reviews": [
 			{
 				"at": "2016-06-23T04:00:00.000Z",
@@ -55628,7 +55660,15 @@
 		"securityDeposit": null,
 		"cleaningFee": null,
 		"extraPeople": 0,
-		"reviewScores": {},
+		"reviewScores": {
+			"accuracy": 10,
+			"cleanliness": 10,
+			"checkin": 9,
+			"communication": 9,
+			"location": 10,
+			"value": 10,
+			"rating": 92
+		},
 		"reviews": [
 			{
 				"at": "2016-10-02T04:00:00.000Z",
@@ -63145,7 +63185,15 @@
 		"securityDeposit": null,
 		"cleaningFee": null,
 		"extraPeople": 0,
-		"reviewScores": {},
+		"reviewScores": {
+			"accuracy": 10,
+			"cleanliness": 10,
+			"checkin": 9,
+			"communication": 9,
+			"location": 10,
+			"value": 10,
+			"rating": 92
+		},
 		"reviews": [
 			{
 				"at": "2018-10-21T04:00:00.000Z",
@@ -68581,7 +68629,15 @@
 		"securityDeposit": null,
 		"cleaningFee": 30,
 		"extraPeople": 60,
-		"reviewScores": {},
+		"reviewScores": {
+			"accuracy": 10,
+			"cleanliness": 10,
+			"checkin": 9,
+			"communication": 9,
+			"location": 10,
+			"value": 10,
+			"rating": 92
+		},
 		"reviews": [
 			{
 				"at": "2018-08-16T04:00:00.000Z",

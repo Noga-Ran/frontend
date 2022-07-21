@@ -1,11 +1,10 @@
 <template>
     <div class="header-filter-layout" v-if="!isSearch">
-        <div class="header-filter-container"  @click.prevent="searching">
+        <div class="header-filter-container" @click.prevent="searching">
             <div class="header-txt-container">Anywhere</div>
             <div class="header-txt-container">Any week</div>
             <div class="header-txt-container">Add guests</div>
             <div class="header-demo-search" @click.prevent="emitFilter">
-
                 <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
                     focusable="false"
                     style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;">
@@ -18,13 +17,13 @@
             </div>
         </div>
     </div>
-    <div v-else :class="{'filter-modal-container':isSearch}">
-        <filter-modal @filter="setFilter" @emit="emitFilter"/>
+    <div v-else :class="{ 'filter-modal-container': isSearch }">
+        <filter-modal @filter="setFilter" @emit="emitFilter" />
     </div>
 </template>
 
 <script>
-    import filterModal from './filter-modal.vue'
+import filterModal from './filter-modal.vue'
 
 export default {
 
@@ -36,18 +35,18 @@ export default {
         }
     },
     methods: {
-        searching(){
+        searching() {
             this.$emit('search')
             this.isSearch = true
         },
-        emitFilter(){
+        emitFilter() {
             let filterWhere = this.where
             this.isSearch = false
             this.where = ''
 
-            this.$emit('filter',filterWhere)
+            this.$emit('filter', filterWhere)
         },
-        setFilter(filter){
+        setFilter(filter) {
             this.where = filter
         },
         // handleScroll (event) {
@@ -59,7 +58,7 @@ export default {
     computed: {
 
     },
-    components:{
+    components: {
         filterModal
     },
     // created () {
