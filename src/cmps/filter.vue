@@ -1,7 +1,7 @@
 <template>
     <div class="header-filter-layout" v-if="!isSearch">
-        <div class="header-filter-container">
-            <div class="header-txt-container" @click.prevent="searching">Anywhere</div>
+        <div class="header-filter-container"  @click.prevent="searching">
+            <div class="header-txt-container">Anywhere</div>
             <div class="header-txt-container">Any week</div>
             <div class="header-txt-container">Add guests</div>
             <div class="header-demo-search" @click.prevent="emitFilter">
@@ -18,7 +18,7 @@
             </div>
         </div>
     </div>
-    <div v-else class="filter-modal-container">
+    <div v-else :class="{'filter-modal-container':isSearch}">
         <filter-modal @filter="setFilter" @emit="emitFilter"/>
     </div>
 </template>
@@ -50,11 +50,11 @@ export default {
         setFilter(filter){
             this.where = filter
         },
-        handleScroll (event) {
-            event.preventDefault()
-            console.log(window.scrollTo());
-            this.isSearch=false
-        }
+        // handleScroll (event) {
+        //     event.preventDefault()
+        //     console.log(window.scrollTo());
+        //     this.isSearch=false
+        // }
     },
     computed: {
 
@@ -62,12 +62,12 @@ export default {
     components:{
         filterModal
     },
-    created () {
-        window.addEventListener('scroll', this.handleScroll);
-    },
-    destroyed () {
-        window.removeEventListener('scroll', this.handleScroll);
-    },
+    // created () {
+    //     window.addEventListener('scroll', this.handleScroll);
+    // },
+    // destroyed () {
+    //     window.removeEventListener('scroll', this.handleScroll);
+    // },
 
 }
 </script>

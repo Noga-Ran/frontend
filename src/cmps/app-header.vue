@@ -2,7 +2,7 @@
 <template>
     <section class="header-layout">
         <section :class="{'header-container-alt':isSearch, 'header-container':!isSearch}">
-            <div class="logo-container" :class="{'grid-area-logo':isSearch}">
+            <div class="logo-container" :class="{'grid-area-logo':isSearch}" @click.prevent="goHome">
                 <img src="../../public/favicon.png" alt="">
                 airbnb
             </div>
@@ -55,6 +55,9 @@
         setFilter(where){
             this.isSearch = false
             this.$emit('filter',{where})
+        },
+        goHome(){
+            window.open(`/#/`);
         }
     },
     components: {
