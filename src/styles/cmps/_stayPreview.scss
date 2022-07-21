@@ -6,17 +6,24 @@
 
 .demo-img,
 .preview-img-container {
+    position: relative;
     overflow: hidden;
     margin-bottom: 12px;
     width: 100%;
     aspect-ratio: 20/19;
     background-color: #DDDDDD;
-    border-radius: 20px;
+    border-radius: 12px;
 
     img {
         width: 100%;
         height: 100%;
         object-fit: cover;
+    }
+
+    svg {
+        position: absolute;
+        top: 15px;
+        right: 15px;
     }
 }
 
@@ -37,6 +44,10 @@
     div span {
         font-weight: 700;
     }
+}
+
+.preview-price {
+    line-height: 30px;
 }
 
 .preview-rating {
