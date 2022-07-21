@@ -1,4 +1,4 @@
-.stay-details-layout{
+.stay-details-layout {
   max-width: 100vw;
   // line-height: 2em;
 }
@@ -107,4 +107,9 @@
 .rating-average {
   margin-left: 6px;
   text-decoration: none;
+}
+
+.info-right{
+    display: flex;
+  justify-content: end;
 }

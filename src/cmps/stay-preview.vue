@@ -1,6 +1,6 @@
 
 <template>
-    <section class="demo-cont">
+    <section @click="showDetails" class="preview-container">
         <Transition name="fade">
             <div v-if="this.isLoad" class="preview-img-container">
                 <img :src='getImgUrl' alt=''>
@@ -85,6 +85,13 @@ export default {
             const numberFormatter = Intl.NumberFormat('en-US');
             const formatted = numberFormatter.format(num);
             return formatted;
+        },
+        showDetails() {
+            window.open(`/#/stay/${this.currStay._id}`, '_blank');
+
+            // let routeData = this.$router.resolve({ name: 'stay-details', query: { id: this.currStay._id } });
+            // window.open(routeData.href, '_blank');
+            // this.$router.push(`/stay/${this.currStay._id}`)
         }
     },
     created() {

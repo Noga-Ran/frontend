@@ -114,7 +114,8 @@ export default {
     }
   },
   created() {
-    this.stay = this.$store.getters.stayById('622f337a75c7d36e498aaaf8')
+    const id = this.$route.params.id
+    this.stay = this.$store.getters.stayById(id)
   },
   methods: {
     getImgUrl(idx) {
@@ -148,7 +149,7 @@ export default {
   z-index: 1;
   top: 80px;
   position: relative;
-  width: 83.33333333333333%;
+  width: 67%;
   margin-left: 8.333333333333332%;
   margin-right: 0%;
   padding-bottom: 48px;
