@@ -1,12 +1,9 @@
 <template>
-    <div class="header-filter-layout">
+    <div class="header-filter-layout" v-if="!isSearch">
         <div class="header-filter-container">
-            <div v-if="!isSearch" class="header-txt-container" @click.prevent="isSearch=true">Anywhere</div>
-            <div v-if="!isSearch" class="header-txt-container">Any week</div>
-            <div  v-if="!isSearch" class="header-txt-container">Add guests</div>
-            <div v-else>
-                <filter-modal @filter="setFilter"/>
-            </div>
+            <div class="header-txt-container" @click.prevent="isSearch=true">Anywhere</div>
+            <div class="header-txt-container">Any week</div>
+            <div class="header-txt-container">Add guests</div>
             <div class="header-demo-search" @click.prevent="emitFilter">
 
                 <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
@@ -20,6 +17,9 @@
                 </svg>
             </div>
         </div>
+    </div>
+    <div v-else>
+        <filter-modal @filter="setFilter" @emit="emitFilter"/>
     </div>
 </template>
 
