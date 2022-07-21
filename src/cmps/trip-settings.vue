@@ -73,7 +73,6 @@ export default {
   font-family: circular;
   font-family: circular;
   border: 1px solid rgb(221, 221, 221);
-  width: calc(34.5% - 48px);
   height: 411px;
   border-radius: 12px;
   padding: 24px;
@@ -110,8 +109,6 @@ export default {
 .night {
   font-size: 16px;
 }
-
-.trip-form {}
 
 .trip-details {
   overflow: hidden;
