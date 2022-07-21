@@ -1,50 +1,50 @@
-
 @font-face {
-    font-family: circular;
-    src: url("../assets/fonts/circular/Gilroy-Regular.ttf");
+  font-family: circular;
+  src: url('../assets/fonts/circular/Gilroy-Regular.ttf');
 }
 .category-filters-layout {
-    background-color: white;
-    margin-top: 20px;
-    position: sticky;
-    top: 80px;
+  background-color: white;
+  margin-top: 20px;
+  position: sticky;
+  top: 80px;
+  width: 1380px;
 }
 
 .category-filters-container {
-    margin: 0 80px;
-    display: grid;
-    grid-auto-flow: column;
-    gap: 16px;
+  margin: 0 80px;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 16px;
 }
 
 .filter-img-layout {
-    display: flex;
-    justify-self: center;
-    align-items: center;
-    height: 78px;
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  height: 78px;
 }
 
 .filter-img-container {
-    width: fit-content;
-    display: grid;
-    grid-auto-flow: row;
-    justify-content: center;
-    height: 48px;
-    
-    &:hover {
-        cursor: pointer;
-        border-bottom: 2px solid #DDDDDD;
-        margin-bottom: -2px;
-    }
+  width: fit-content;
+  display: grid;
+  grid-auto-flow: row;
+  justify-content: center;
+  height: 48px;
+
+  &:hover {
+    cursor: pointer;
+    border-bottom: 2px solid #dddddd;
+    margin-bottom: -2px;
+  }
 }
 
 .category-filters-container img {
-    height: 24px;
-    justify-self: center;
+  height: 24px;
+  justify-self: center;
 }
 
 .filter-img-txt {
-    font-size: 12px;
-    font-family: circular;
-    font-weight: 600;
+  font-size: 12px;
+  font-family: circular;
+  font-weight: 600;
 }
