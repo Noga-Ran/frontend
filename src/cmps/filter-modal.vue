@@ -1,65 +1,55 @@
 <template>
-    <form>
-        <div>
+    <form class="form-modal-container">
+        <div class="search-opts">
             <button>
-                <div>
-                    <span>Stays</span>
-                </div>
+                <p>Stays</p>
             </button>
             <button>
-                <div>
-                    <span>Experiences</span>
-                </div>
+                <p>Experiences</p>
             </button>
             <button>
-                <div>
-                    <span>Online Experiences</span>
-                </div>
+                <p>Online Experiences</p>
             </button>
         </div>
         <div class="modal-filter-choices-layout">
-            <div class="modal-filter-choices-container">
-                <div class="filter-modal-label-container">
-                    <label class="filter-label">
-                        <div>
-                            <div>Where</div>
-                            <input v-model="where" @input="emit" type="text" name="query" placeholder="Search destinations" aria-describedby="bigsearch-query-location-description" aria-autocomplete="none" autocomplete="off" autocorrect="off">
-                        </div>
-                    </label>
-                </div>
+            <div class="filter-modal-where-container">
+                <p>Where</p>
+                <input v-model="where" @input="emit" type="text" name="query" placeholder="Search destinations"
+                    aria-describedby="bigsearch-query-location-description" aria-autocomplete="none" autocomplete="off"
+                    autocorrect="off">
             </div>
-            <div class="filter-seperator">|</div>
+            <div class="filter-seperator"></div>
             <div class="check-in-out-container">
                 <div class="check-in-container" role="button">
-                    <div>Check in</div>
-                    <div>Add dates</div>
+                    <p>Check in</p>
+                    <span>Add dates</span>
                 </div>
-                <div class="check-out-container" role="button"></div>                                 <div class="check-in-container"></div>                                                                                <div class="check-in-container">
-                    <div>Check out</div>
-                    <div>Add dates</div>
+                <div class="filter-seperator"></div>
+                <div class="check-out-container">
+                    <p>Check out</p>
+                    <span>Add dates</span>
                 </div>
             </div>
-            <div class="filter-seperator">|</div>
-            <div class="who-search-container">
-                <div class="filter-who-container">
-                    <div>Who</div>
-                    <div>Add guests</div>
-                </div>
-                <div class="search-symboll-container">
-                    <button @click.prevent="setFilter">
-                        <span>
-                            <span></span>
-                        </span>
-                        <span>
-                            <div>
-                                <div>
-                                    <svg></svg>
-                                </div>
-                            </div>
-                            <div>Search</div>
-                        </span>
-                    </button>
-                </div>
+            <div class="filter-seperator"></div>
+            <div class="filter-who-container">
+                <p>Who</p>
+                <button>Add guests</button>
+            </div>
+            <div class="search-container">
+                <button @click.prevent="setFilter">
+                    <div class="modal-search">
+                        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                            role="presentation" focusable="false"
+                            style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;">
+                            <g fill="none">
+                                <path
+                                    d="m13 24c6.0751322 0 11-4.9248678 11-11 0-6.07513225-4.9248678-11-11-11-6.07513225 0-11 4.92486775-11 11 0 6.0751322 4.92486775 11 11 11zm8-3 9 9">
+                                </path>
+                            </g>
+                        </svg>
+                    </div>
+                    <p>Search</p>
+                </button>
             </div>
         </div>
     </form>
@@ -74,18 +64,18 @@
 export default {
     data() {
         return {
-            where:''
+            where: ''
         }
     },
     methods: {
-        emit(){
-            this.$emit('filter',this.where)
+        emit() {
+            this.$emit('filter', this.where)
         },
-        setFilter(){
+        setFilter() {
             this.$emit('emit')
         }
     },
     computed: {},
-    created(){},
+    created() { },
 }
 </script>
