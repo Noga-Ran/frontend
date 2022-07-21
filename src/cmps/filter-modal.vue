@@ -33,7 +33,7 @@
             <div class="filter-seperator"></div>
             <div class="filter-who-container">
                 <p>Who</p>
-                <button>Add guests</button>
+                <span>Add guests</span>
             </div>
             <div class="search-container">
                 <button @click.prevent="setFilter">
