@@ -18,7 +18,7 @@
             </div>
         </div>
     </div>
-    <div v-else>
+    <div v-else class="filter-modal-container">
         <filter-modal @filter="setFilter" @emit="emitFilter"/>
     </div>
 </template>
