@@ -1,6 +1,6 @@
 [
 	{
-		"name": "Westin Kaanapali KORVN 2BR",
+		"name": "Thalassa Residence",
 		"summary": "Westin Kaanapali Ocean Resort Villas North timeshare - Pay resort: $14-20/day, stays under 7 night $38/res - Inquire about availability, I review then offer/approve if available :) - READ \"The Space\" for cleaning/etc AND brief explanation about timeshare reservations - Want guaranteed view for additional cost? Must be weekly rental, other restrictions - Wheelchair accessible / ADA, call resort directly to ensure U receive. If U need ADA U MUST inform us BEFORE booking.",
 		"interaction": "There are activities programs and concierge activities booking services at this resort.",
 		"houseRules": "No smoking; No Pets; This resort's rules apply. Please call the resort directly to verify details.",
@@ -8,9 +8,9 @@
 		"roomType": "Entire home/apt",
 		"bedType": "Real Bed",
 		"cancellationPolicy": "strict_14_with_grace_period",
-		"capacity": 8,
-		"bedrooms": 2,
-		"beds": 4,
+		"capacity": 14,
+		"bedrooms": 5,
+		"beds": 10,
 		"numOfReviews": 9,
 		"amenities": [
 			"TV",
@@ -82,20 +82,21 @@
 			"id": "36133410"
 		},
 		"address": {
-			"street": "Lahaina, HI, United States",
-			"country": "United States",
+			"street": "Panoromos,Greece",
+			"country": "Greece",
 			"location": {
-				"lat": -156.6917,
-				"lan": 20.93792
+				"lat": 35.4181826,
+				"lan": 24.6908006
 			},
-			"countryCode": "US",
-			"city": "Maui"
+			"countryCode": "GR",
+			"city": "Panoromos"
 		},
-		"bathrooms": 2,
-		"price": 595,
+		"id": "12223067",
+		"bathrooms": 4,
+		"price": 795,
 		"securityDeposit": 500,
-		"cleaningFee": null,
-		"extraPeople": 0,
+		"cleaningFee": 40,
+		"extraPeople": 6,
 		"reviewScores": {
 			"accuracy": 10,
 			"cleanliness": 10,
@@ -199,132 +200,15 @@
 		],
 		"_id": "622f337a75c7d36e498aaaf8",
 		"imgUrls": [
-			"090.jpeg",
-			"010.jpeg",
-			"153.jpeg",
-			"093.jpeg",
-			"094.jpeg"
-		],
-		"label": "Campings"
+			"415.jpeg",
+			"416.jpeg",
+			"417.jpeg",
+			"418.jpeg",
+			"419.jpeg"
+		]
 	},
 	{
-		"name": "Belle chambre à côté Metro Papineau",
-		"summary": "Chambre dans un bel appartement moderne avec balcon, ascenseur et terrasse. Private room in a beautiful modern apartment  with balcony, elevator and patio. La chambre est fermée avec une lit double. Vous aurez accès à une salle de bain avec une douche, terrasse. L'appartement est climatisé.  Votre chambre est équipé d'une connexion Wi-Fi illimité. Vous serez proche du centre ville, au pied du pont Jacques Cartier et à distance de marche de toutes les commodités (métro, supermarché, pharmacie",
-		"interaction": "J'adore recevoir mes invités personnellement mais il arrive que je ne puis être sur place lors de votre arrivée.",
-		"houseRules": "",
-		"propertyType": "Apartment",
-		"roomType": "Private room",
-		"bedType": "Real Bed",
-		"cancellationPolicy": "moderate",
-		"capacity": 2,
-		"bedrooms": 1,
-		"beds": 1,
-		"numOfReviews": 4,
-		"amenities": [
-			"TV",
-			"Wifi",
-			"Air conditioning",
-			"Kitchen",
-			"Elevator",
-			"Buzzer/wireless intercom",
-			"Heating",
-			"Family/kid friendly",
-			"Washer",
-			"Dryer",
-			"Smoke detector",
-			"Carbon monoxide detector",
-			"Essentials",
-			"Iron",
-			"translation missing: en.hosting_amenity_50"
-		],
-		"host": {
-			"_id": "622f3401e36c59e6164fabab",
-			"fullname": "Angel",
-			"location": "Montreal, Québec, Canada",
-			"about": "",
-			"thumbnailUrl": "https://a0.muscache.com/im/pictures/12be1141-74de-4f04-bf28-82c3ed589d11.jpg?aki_policy=profile_small",
-			"pictureUrl": "https://a0.muscache.com/im/pictures/12be1141-74de-4f04-bf28-82c3ed589d11.jpg?aki_policy=profile_x_medium",
-			"isSuperhost": false,
-			"id": "80344827"
-		},
-		"address": {
-			"street": "Montréal, QC, Canada",
-			"country": "Canada",
-			"location": {
-				"lat": -73.54985,
-				"lan": 45.52797
-			},
-			"countryCode": "CA",
-			"city": "Montreal"
-		},
-		"bathrooms": 1,
-		"price": 30,
-		"securityDeposit": 150,
-		"cleaningFee": 8,
-		"extraPeople": 15,
-		"reviewScores": {
-			"accuracy": 10,
-			"cleanliness": 9,
-			"checkin": 10,
-			"communication": 10,
-			"location": 9,
-			"value": 10,
-			"rating": 100
-		},
-		"reviews": [
-			{
-				"at": "2016-07-07T04:00:00.000Z",
-				"by": {
-					"_id": "622f3407e36c59e6164fc058",
-					"fullname": "Rowan",
-					"imgUrl": "https://robohash.org/81703602?set=set1",
-					"id": "81703602"
-				},
-				"txt": "The place was great, as was the host! I would recommend staying here."
-			},
-			{
-				"at": "2016-07-08T04:00:00.000Z",
-				"by": {
-					"_id": "622f3403e36c59e6164fb274",
-					"fullname": "Adriana",
-					"imgUrl": "https://robohash.org/64310987?set=set1",
-					"id": "64310987"
-				},
-				"txt": "J'ai adoré rester là. Très acceuillant."
-			},
-			{
-				"at": "2016-07-12T04:00:00.000Z",
-				"by": {
-					"_id": "622f3405e36c59e6164fb87c",
-					"fullname": "Emma",
-					"imgUrl": "https://robohash.org/23709900?set=set1",
-					"id": "23709900"
-				},
-				"txt": "Angel est un hôte très sympa et arrangeant ! L'appartement est agréable à vivre et propre. Proche du métro et du centre ville. Nous avons passé un très bon séjour !"
-			},
-			{
-				"at": "2016-08-02T04:00:00.000Z",
-				"by": {
-					"_id": "622f3408e36c59e6164fc082",
-					"fullname": "Jeffery",
-					"imgUrl": "https://robohash.org/44882622?set=set1",
-					"id": "44882622"
-				},
-				"txt": "Angel was warm and welcoming and has a beautiful apartment. I'd recommend his place to anyone visiting downtown Montreal!"
-			}
-		],
-		"_id": "622f337a75c7d36e498aaaf9",
-		"imgUrls": [
-			"074.jpeg",
-			"077.jpeg",
-			"060.jpeg",
-			"110.jpeg",
-			"086.jpeg"
-		],
-		"label": "Campings"
-	},
-	{
-		"name": "M&M Space MM2  Apartamento no centro da cidade",
+		"name": "Sunflower House",
 		"summary": "O apartamento fica perto de arte e cultura e dos mais belos monumentos da cidade. Belos jardins e paisagens da cidade e do rio Douro ficam perto e podem ser apreciadas.  Existem restaurantes típicos e de comida internacional ao redor do apartamento.   O espaço fica numa rua típica da cidade, cheia da sua magia e magnetismo e é muito pratico e confortável. O espaço é excelente para quem pretende visitar e conhecer a zona histórica e turística do Porto. Transportes públicos ficam próximos.",
 		"interaction": "Será prestada ajuda aos hospedes, 24 horas por dia, desde que solicitada.",
 		"houseRules": "- Devem respeitar o restantes hospedes a morar no prédio evitando barulhos excessivos. - Animais de estimação: Questionar o proprietário. Podem ser permitidos a um custo extra a acordar. e em casos excepcionais. Fumar: Podem fumar na varanda desde que cumpram as regras de segurança necessárias. - Ter cuidado com o manuseamento dos equipamentos existentes na casa. Dão-se informações se solicitado. - Levar o lixo utilizado para os contentores no exterior. São fornecidos sacos extra para o feito. - Ter uma boa estadia.",
@@ -332,9 +216,9 @@
 		"roomType": "Entire home/apt",
 		"bedType": "Real Bed",
 		"cancellationPolicy": "moderate",
-		"capacity": 4,
-		"bedrooms": 2,
-		"beds": 2,
+		"capacity": 6,
+		"bedrooms": 4,
+		"beds": 6,
 		"numOfReviews": 18,
 		"amenities": [
 			"TV",
@@ -403,21 +287,21 @@
 			"id": "78704763"
 		},
 		"address": {
-			"street": "Porto, Porto, Portugal",
-			"country": "Portugal",
+			"street": "El port de la Selva",
+			"country": "Spain",
 			"location": {
-				"lat": -8.60154,
-				"lan": 41.14834
+				"lat": 42.33873,
+				"lan": 3.20496
 			},
-			"countryCode": "PT",
-			"city": "Porto"
+			"countryCode": "ES",
+			"city": "La selva"
 		},
 		"id": "13605461",
-		"bathrooms": 1,
-		"price": 65,
-		"securityDeposit": 0,
-		"cleaningFee": 0,
-		"extraPeople": 0,
+		"bathrooms": 3,
+		"price": 465,
+		"securityDeposit": 200,
+		"cleaningFee": 15,
+		"extraPeople": 4,
 		"reviewScores": {
 			"accuracy": 9,
 			"cleanliness": 10,
@@ -611,17 +495,130 @@
 		],
 		"_id": "622f337a75c7d36e498aaafa",
 		"imgUrls": [
-			"112.jpeg",
-			"080.jpeg",
-			"140.jpeg",
-			"042.jpeg",
-			"055.jpeg"
-		],
-		"label": "Campings"
+			"401.jpeg",
+			"402.jpeg",
+			"403.jpeg",
+			"404.jpeg"
+		]
 	},
 	{
-		"label": "Campings",
-		"name": "Fresh and modern 1BR in Bed-Stuy",
+		"name": "Belle chambre à côté Metro Papineau",
+		"summary": "Chambre dans un bel appartement moderne avec balcon, ascenseur et terrasse. Private room in a beautiful modern apartment  with balcony, elevator and patio. La chambre est fermée avec une lit double. Vous aurez accès à une salle de bain avec une douche, terrasse. L'appartement est climatisé.  Votre chambre est équipé d'une connexion Wi-Fi illimité. Vous serez proche du centre ville, au pied du pont Jacques Cartier et à distance de marche de toutes les commodités (métro, supermarché, pharmacie",
+		"interaction": "J'adore recevoir mes invités personnellement mais il arrive que je ne puis être sur place lors de votre arrivée.",
+		"houseRules": "",
+		"propertyType": "Apartment",
+		"roomType": "Private room",
+		"bedType": "Real Bed",
+		"cancellationPolicy": "moderate",
+		"capacity": 2,
+		"bedrooms": 1,
+		"beds": 1,
+		"numOfReviews": 4,
+		"amenities": [
+			"TV",
+			"Wifi",
+			"Air conditioning",
+			"Kitchen",
+			"Elevator",
+			"Buzzer/wireless intercom",
+			"Heating",
+			"Family/kid friendly",
+			"Washer",
+			"Dryer",
+			"Smoke detector",
+			"Carbon monoxide detector",
+			"Essentials",
+			"Iron",
+			"translation missing: en.hosting_amenity_50"
+		],
+		"host": {
+			"_id": "622f3401e36c59e6164fabab",
+			"fullname": "Angel",
+			"location": "Montreal, Québec, Canada",
+			"about": "",
+			"thumbnailUrl": "https://a0.muscache.com/im/pictures/12be1141-74de-4f04-bf28-82c3ed589d11.jpg?aki_policy=profile_small",
+			"pictureUrl": "https://a0.muscache.com/im/pictures/12be1141-74de-4f04-bf28-82c3ed589d11.jpg?aki_policy=profile_x_medium",
+			"isSuperhost": false,
+			"id": "80344827"
+		},
+		"address": {
+			"street": "Sidemen,indonesia",
+			"country": "Indonesia",
+			"location": {
+				"lat": -8.650000,
+				"lan": 115.216667
+			},
+			"countryCode": "ID",
+			"city": "Sidemen"
+		},
+		"id": "13732894",
+		"bathrooms": 1,
+		"price": 130,
+		"securityDeposit": 150,
+		"cleaningFee": 8,
+		"extraPeople": 6,
+		"reviewScores": {
+			"accuracy": 10,
+			"cleanliness": 9,
+			"checkin": 10,
+			"communication": 10,
+			"location": 9,
+			"value": 10,
+			"rating": 98
+		},
+		"reviews": [
+			{
+				"at": "2016-07-07T04:00:00.000Z",
+				"by": {
+					"_id": "622f3407e36c59e6164fc058",
+					"fullname": "Rowan",
+					"imgUrl": "https://robohash.org/81703602?set=set1",
+					"id": "81703602"
+				},
+				"txt": "The place was great, as was the host! I would recommend staying here."
+			},
+			{
+				"at": "2016-07-08T04:00:00.000Z",
+				"by": {
+					"_id": "622f3403e36c59e6164fb274",
+					"fullname": "Adriana",
+					"imgUrl": "https://robohash.org/64310987?set=set1",
+					"id": "64310987"
+				},
+				"txt": "J'ai adoré rester là. Très acceuillant."
+			},
+			{
+				"at": "2016-07-12T04:00:00.000Z",
+				"by": {
+					"_id": "622f3405e36c59e6164fb87c",
+					"fullname": "Emma",
+					"imgUrl": "https://robohash.org/23709900?set=set1",
+					"id": "23709900"
+				},
+				"txt": "Angel est un hôte très sympa et arrangeant ! L'appartement est agréable à vivre et propre. Proche du métro et du centre ville. Nous avons passé un très bon séjour !"
+			},
+			{
+				"at": "2016-08-02T04:00:00.000Z",
+				"by": {
+					"_id": "622f3408e36c59e6164fc082",
+					"fullname": "Jeffery",
+					"imgUrl": "https://robohash.org/44882622?set=set1",
+					"id": "44882622"
+				},
+				"txt": "Angel was warm and welcoming and has a beautiful apartment. I'd recommend his place to anyone visiting downtown Montreal!"
+			}
+		],
+		"_id": "622f337a75c7d36e498aaaf9",
+		"imgUrls": [
+			"410.jpeg",
+			"411.jpeg",
+			"412.jpeg",
+			"413.jpeg",
+			"414.jpeg"
+		]
+	},
+	{
+		"name": "Cavo Dago Villa",
 		"summary": "A spacious, art-filled one-bedroom apartment near the express train (28 minutes to Times Square) and a Citibike station. Sample Bed-Stuy life at a nearby French restaurant,  a sunny Haitian cafe, a boutique grocery and more. We do NOT discriminate based on race, religion or sexual orientation.",
 		"interaction": ".  Guests stay in a separate,  private apartment and we make every effort to not disturb you unless absolutely necessary. We live above the apartment and will be happy to accommodate any reasonable requests",
 		"houseRules": "A/C may be used only when you are at home.  Please respect our delicate old pipes (no grease down the drain, etc.).  No smoking on premises. Guests are expected to wash take out their trash and recycling as needed. Guests are expected to wash and put away dishes prior to check-out (apartment has a dishwasher, soap packets are under the sink) Longer term guests may wish to launder the sheets and towels during their stay. This service is not provided. (There are two sets of bed linens provided and two sets of towels for each adult guest.) Owners may occasionally need to go through the apartment to access the basement. We shall endeavor to give advance notice of this and find a mutually convenient time.  $50 fee if keys are lost or not returned.",
@@ -629,9 +626,9 @@
 		"roomType": "Entire home/apt",
 		"bedType": "Real Bed",
 		"cancellationPolicy": "strict_14_with_grace_period",
-		"capacity": 2,
-		"bedrooms": 1,
-		"beds": 1,
+		"capacity": 8,
+		"bedrooms": 4,
+		"beds": 6,
 		"numOfReviews": 180,
 		"amenities": [
 			"Internet",
@@ -666,21 +663,21 @@
 			"id": "6334250"
 		},
 		"address": {
-			"street": "Brooklyn, NY, United States",
-			"country": "United States",
+			"street": "Chania,Greece",
+			"country": "Greece",
 			"location": {
-				"lat": -73.92922,
-				"lan": 40.68683
+				"lat": 35.5138298,
+				"lan": 24.0180367
 			},
-			"countryCode": "US",
-			"city": "New York"
+			"countryCode": "GR",
+			"city": "Chania"
 		},
 		"id": "1155885",
-		"bathrooms": 1,
-		"price": 79,
-		"securityDeposit": 250,
-		"cleaningFee": 80,
-		"extraPeople": 0,
+		"bathrooms": 6,
+		"price": 3079,
+		"securityDeposit": 1250,
+		"cleaningFee": 180,
+		"extraPeople": 10,
 		"reviewScores": {
 			"accuracy": 10,
 			"cleanliness": 10,
@@ -894,11 +891,11 @@
 		],
 		"_id": "622f337a75c7d36e498aaafb",
 		"imgUrls": [
-			"101.jpeg",
-			"037.jpeg",
-			"038.jpeg",
-			"043.jpeg",
-			"113.jpeg"
+			"405.jpeg",
+			"406.jpeg",
+			"407.jpeg",
+			"408.jpeg",
+			"409.jpeg"
 		]
 	},
 	{
@@ -987,7 +984,7 @@
 		],
 		"_id": "622f337a75c7d36e498aaafc",
 		"imgUrls": [
-			"088.jpeg",
+			"020.jpeg",
 			"027.jpeg",
 			"008.jpeg",
 			"023.jpeg",
