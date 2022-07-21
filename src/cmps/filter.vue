@@ -1,13 +1,10 @@
 <template>
-    <div class="header-filter-layout">
+    <div class="header-filter-layout" v-if="!isSearch">
         <div class="header-filter-container">
-            <div v-if="!isSearch" class="header-txt-container" @click.prevent="isSearch=true">Anywhere</div>
-            <div v-if="!isSearch" class="header-txt-container">Any week</div>
-            <div  v-if="!isSearch" class="header-txt-container">Add guests</div>
-            <div v-else>
-                <input v-model="where" type="text">
-            </div>
-            <div class="header-demo-search" @click.prevent="setFilter">
+            <div class="header-txt-container" @click.prevent="isSearch=true">Anywhere</div>
+            <div class="header-txt-container">Any week</div>
+            <div class="header-txt-container">Add guests</div>
+            <div class="header-demo-search" @click.prevent="emitFilter">
 
                 <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
                     focusable="false"
@@ -21,10 +18,16 @@
             </div>
         </div>
     </div>
+    <div v-else>
+        <filter-modal @filter="setFilter" @emit="emitFilter"/>
+    </div>
 </template>
+
 <script>
+    import filterModal from './filter-modal.vue'
 
 export default {
+
     data() {
         return {
             where: '',
@@ -32,21 +35,23 @@ export default {
         }
     },
     methods: {
-        setFilter(){
-            if(this.where) {
-                let filterWhere = this.where
-                this.isSearch = false
-                this.where = ''
+        emitFilter(){
+            let filterWhere = this.where
+            this.isSearch = false
+            this.where = ''
 
-                this.$emit('filter',filterWhere)
-            }
+            this.$emit('filter',filterWhere)
+        },
+        setFilter(filter){
+            this.where = filter
         }
     },
     computed: {
 
     },
-    created() {
-
+    components:{
+        filterModal
     }
+
 }
 </script>

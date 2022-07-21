@@ -19,12 +19,13 @@ export default {
     methods: {
         setFilter(filter){
             var filterBy = Object.assign({}, this.$store.getters.filterBy)
-            if(filter.where){
-                filterBy.where = filter.where
-            }else{
+           
+            if(filter.label){
                 filterBy.label = filter.label
+            }else{
+                filterBy.where = filter.where
             }
-            console.log(filterBy);
+            
             this.$store.dispatch({ type: "setFilter", filterBy })
         }
     },
