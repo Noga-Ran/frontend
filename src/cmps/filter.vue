@@ -1,7 +1,7 @@
 <template>
     <div class="header-filter-layout" v-if="!isSearch">
         <div class="header-filter-container">
-            <div class="header-txt-container" @click.prevent="isSearch=true">Anywhere</div>
+            <div class="header-txt-container" @click.prevent="searching">Anywhere</div>
             <div class="header-txt-container">Any week</div>
             <div class="header-txt-container">Add guests</div>
             <div class="header-demo-search" @click.prevent="emitFilter">
@@ -31,10 +31,15 @@ export default {
     data() {
         return {
             where: '',
-            isSearch: false
+            isSearch: false,
+            windowY: 0,
         }
     },
     methods: {
+        searching(){
+            this.$emit('search')
+            this.isSearch = true
+        },
         emitFilter(){
             let filterWhere = this.where
             this.isSearch = false
@@ -44,6 +49,11 @@ export default {
         },
         setFilter(filter){
             this.where = filter
+        },
+        handleScroll (event) {
+            event.preventDefault()
+            console.log(window.scrollTo());
+            this.isSearch=false
         }
     },
     computed: {
@@ -51,7 +61,13 @@ export default {
     },
     components:{
         filterModal
-    }
+    },
+    created () {
+        window.addEventListener('scroll', this.handleScroll);
+    },
+    destroyed () {
+        window.removeEventListener('scroll', this.handleScroll);
+    },
 
 }
 </script>

@@ -1,13 +1,13 @@
 
 <template>
     <section class="header-layout">
-        <section class="header-container">
-            <div class="logo-container">
+        <section :class="{'header-container-alt':isSearch, 'header-container':!isSearch}">
+            <div class="logo-container" :class="{'grid-area-logo':isSearch}">
                 <img src="../../public/favicon.png" alt="">
                 airbnb
             </div>
-            <filter-cmp @filter="setFilter"/>
-            <div class="header-tools-container">
+            <filter-cmp @search="isSearch=true" @filter="setFilter"/>
+            <div class="header-tools-container" :class="{'grid-area-user':isSearch}">
                 <div>
                     Become a Host
                 </div>
@@ -47,10 +47,13 @@
 
     export default {
         data() {
-        return {}
-    },
+        return {
+            isSearch:false
+        }
+        },
     methods: {
         setFilter(where){
+            this.isSearch = false
             this.$emit('filter',{where})
         }
     },

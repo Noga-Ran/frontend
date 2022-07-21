@@ -1,4 +1,5 @@
 .form-modal-container {
+    grid-area: second;
     * {
         font-family: circular;
     }
@@ -6,6 +7,7 @@
     flex-direction: column;
     align-items: center;
     transition: 1000ms;
+    position: sticky;
 }
 
 .search-opts {
@@ -14,6 +16,7 @@
     text-align: center;
     flex: 0 1 auto;
     min-width: 348px;
+    grid-area: search;
 
     button {
         border-width: 1px;
@@ -60,6 +63,7 @@
     align-items: center;
     margin: 5px;
     padding: 0px;
+    grid-area: search-bar;
 
 }
 .filter-modal-where-container {
@@ -152,7 +156,9 @@
 }
 
 .search-container {
+    margin-right: 7px;
     button {
+        cursor:pointer;
         display: flex;
         border: none;
         background-color: #ff385c;

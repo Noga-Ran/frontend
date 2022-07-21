@@ -16,6 +16,18 @@
     align-items: center;
 }
 
+.header-container-alt {
+    margin: 0 80px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, max-content);
+    grid-template-areas: 
+    "logo search user"
+    ". search-bar .";
+    align-items: center;
+}
+
 .logo-container {
     cursor: pointer;
     display: flex;
@@ -32,6 +44,10 @@
         padding-right: 2.4px;
         padding-top: 4.5px;
     }
+}
+
+.grid-area-logo{
+    grid-area: logo;
 }
 
 .header-filter-layout {
@@ -87,6 +103,10 @@
     svg {
         color: #ffffff;
     }
+}
+
+.grid-area-user{
+    grid-area: user;
 }
 
 .header-tools-container {
