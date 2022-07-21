@@ -2,7 +2,9 @@
     <div class="header-filter-layout" v-if="!isSearch">
         <div class="header-filter-container"  @click.prevent="searching">
             <div class="header-txt-container">Anywhere</div>
+            <span></span>
             <div class="header-txt-container">Any week</div>
+            <span></span>
             <div class="header-txt-container">Add guests</div>
             <div class="header-demo-search" @click.prevent="emitFilter">
 

@@ -4,7 +4,7 @@
         <section :class="{'header-container-alt':isSearch, 'header-container':!isSearch}">
             <div class="logo-container" :class="{'grid-area-logo':isSearch}" @click.prevent="goHome">
                 <img src="../../public/favicon.png" alt="">
-                airbnb
+                <p>airbnb</p>
             </div>
             <filter-cmp @search="isSearch=true" @filter="setFilter"/>
             <div class="header-tools-container" :class="{'grid-area-user':isSearch}">

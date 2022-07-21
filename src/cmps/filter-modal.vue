@@ -23,6 +23,7 @@
                 <div class="check-in-container" role="button">
                     <p>Check in</p>
                     <span>Add dates</span>
+                    <Datepicker v-model="date" range multiCalendars />
                 </div>
                 <div class="filter-seperator"></div>
                 <div class="check-out-container">

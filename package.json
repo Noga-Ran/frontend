@@ -7,6 +7,7 @@
     "preview": "vite preview --port 4173"
   },
   "dependencies": {
+    "@vuepic/vue-datepicker": "^3.3.1",
     "axios": "^0.27.2",
     "fs": "^0.0.1-security",
     "require": "^2.4.20",
