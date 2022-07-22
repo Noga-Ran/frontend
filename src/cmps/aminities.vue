@@ -1,8 +1,14 @@
 <template>
   <section>
     <h2 class="aminities-title">What this place offers</h2>
+
     <ul class="amenities-list">
       <li v-for="amenitie in stayAmenitiesSliced" :key="amenitie">
+        <img
+          class="amenitie-svg"
+          src="../assets/img/aminities/Wifi.svg"
+          alt=""
+        />
         {{ amenitie }}
         <hr />
       </li>
@@ -38,6 +44,11 @@
             <h2 class="aminities-title">What this place offers</h2>
             <ul class="amenities-list">
               <li v-for="amenitie in stayAmenities" :key="amenities">
+                <img
+                  class="amenitie-svg"
+                  src="../assets/img/aminities/Wifi.svg"
+                  alt=""
+                />
                 {{ amenitie }}
                 <hr />
               </li>
