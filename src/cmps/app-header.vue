@@ -47,7 +47,8 @@ export default {
             this.$emit('date',date)
         },
         goHome() {
-            window.open(`/#/`);
+            this.$router.push(`/`)
+            // window.open(`/#/`);
         }
     },
     components: {

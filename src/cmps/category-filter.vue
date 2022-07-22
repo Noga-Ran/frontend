@@ -2,110 +2,158 @@
   <div :class="{ shadow: isActive }"></div>
   <section class="category-filters-layout">
     <section class="category-filters-container">
-      <div class="filter-img-layout">
-        <div class="filter-img-container">
-          <img src="../assets/img/filter-imgs/islands.jpg" alt="" />
-          <div @click.prevent="choosenLabel($event)" class="filter-img-txt">
-            Islands
+      <section class="category-filter-container">
+        <section @click="selectLabel($event)" class="filter-img-layout">
+          <div class="filter-img-container">
+            <img src="../assets/img/filter-imgs/islands.jpg" />
+            <div class="filter-img-txt">
+              Islands
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="filter-img-layout">
-        <div class="filter-img-container">
-          <img src="../assets/img/filter-imgs/beach.jpg" alt="" />
-          <div @click.prevent="choosenLabel($event)" class="filter-img-txt">
-            Beach
+        </section>
+      </section>
+      <section class="category-filter-container">
+        <section @click="selectLabel($event)" class="filter-img-layout">
+          <div class="filter-img-container">
+            <img src="../assets/img/filter-imgs/beach.jpg" />
+            <div class="filter-img-txt">
+              Beach
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="filter-img-layout">
-        <div class="filter-img-container">
-          <img src="../assets/img/filter-imgs/amazing-pools.jpg" alt="" />
-          <div @click.prevent="choosenLabel($event)" class="filter-img-txt">
-            Amazing pools
+        </section>
+      </section>
+      <section class="category-filter-container">
+        <section @click="selectLabel($event)" class="filter-img-layout">
+          <div class="filter-img-container">
+            <img src="../assets/img/filter-imgs/amazing-pools.jpg" />
+            <div class="filter-img-txt">
+              Amazing pools
+            </div>
           </div>
-        </div>
+        </section>
+      </section>
+      <div>
+        <section class="category-filter-container">
+          <section @click="selectLabel($event)" class="filter-img-layout">
+            <div class="filter-img-container">
+              <img src="../assets/img/filter-imgs/omg.jpg" />
+              <div class="filter-img-txt">
+                OMG!
+              </div>
+            </div>
+          </section>
+        </section>
       </div>
-      <div class="filter-img-layout">
-        <div class="filter-img-container">
-          <img src="../assets/img/filter-imgs/omg.jpg" alt="" />
-          <div @click.prevent="choosenLabel($event)" class="filter-img-txt">
-            OMG!
+      <section class="category-filter-container">
+        <section @click="selectLabel($event)" class="filter-img-layout">
+          <div class="filter-img-container">
+            <img src="../assets/img/filter-imgs/national-parks.jpg" />
+            <div class="filter-img-txt">
+              National parks
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="filter-img-layout">
-        <div class="filter-img-container">
-          <img src="../assets/img/filter-imgs/national-parks.jpg" alt="" />
-          <div @click.prevent="choosenLabel($event)" class="filter-img-txt">
-            National parks
+        </section>
+      </section>
+      <section class="category-filter-container">
+        <section @click="selectLabel($event)" class="filter-img-layout">
+          <div class="filter-img-container">
+            <img src="../assets/img/filter-imgs/cabins.jpg" />
+            <div class="filter-img-txt">
+              Cabins
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="filter-img-layout">
-        <div class="filter-img-container">
-          <img src="../assets/img/filter-imgs/cabins.jpg" alt="" />
-          <div @click.prevent="choosenLabel($event)" class="filter-img-txt">
-            Cabins
+        </section>
+      </section>
+      <section class="category-filter-container">
+        <section @click="selectLabel($event)" class="filter-img-layout">
+          <div class="filter-img-container">
+            <img src="../assets/img/filter-imgs/design.jpg" />
+            <div class="filter-img-txt">
+              Design
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="filter-img-layout">
-        <div class="filter-img-container">
-          <img src="../assets/img/filter-imgs/design.jpg" alt="" />
-          <div @click.prevent="choosenLabel($event)" class="filter-img-txt">
-            Design
+        </section>
+      </section>
+      <section class="category-filter-container">
+        <section @click="selectLabel($event)" class="filter-img-layout">
+          <div class="filter-img-container">
+            <img src="../assets/img/filter-imgs/campings.jpg" />
+            <div class="filter-img-txt">
+              Camping
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="filter-img-layout">
-        <div class="filter-img-container">
-          <img src="../assets/img/filter-imgs/campings.jpg" alt="" />
-          <div @click.prevent="choosenLabel($event)" class="filter-img-txt">
-            Camping
+        </section>
+      </section>
+      <section class="category-filter-container">
+        <section @click="selectLabel($event)" class="filter-img-layout">
+          <div class="filter-img-container">
+            <img src="../assets/img/filter-imgs/tiny-homes.jpg" />
+            <div class="filter-img-txt">
+              Tiny homes
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="filter-img-layout">
-        <div class="filter-img-container">
-          <img src="../assets/img/filter-imgs/tiny-homes.jpg" alt="" />
-          <div @click.prevent="choosenLabel($event)" class="filter-img-txt">
-            Tiny homes
+        </section>
+      </section>
+      <section class="category-filter-container">
+        <section @click="selectLabel($event)" class="filter-img-layout">
+          <div class="filter-img-container">
+            <img src="../assets/img/filter-imgs/desert.jpg" />
+            <div class="filter-img-txt">
+              Desert
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="filter-img-layout">
-        <div class="filter-img-container">
-          <img src="../assets/img/filter-imgs/desert.jpg" alt="" />
-          <div @click.prevent="choosenLabel($event)" class="filter-img-txt">
-            Desert
+        </section>
+      </section>
+      <section class="category-filter-container">
+        <section @click="selectLabel($event)" class="filter-img-layout">
+          <div class="filter-img-container">
+            <img src="../assets/img/filter-imgs/arctic.jpg" />
+            <div class="filter-img-txt">
+              Arctic
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="filter-img-layout">
-        <div class="filter-img-container">
-          <img src="../assets/img/filter-imgs/arctic.jpg" alt="" />
-          <div @click.prevent="choosenLabel($event)" class="filter-img-txt">
-            Arctic
+        </section>
+      </section>
+      <section class="category-filter-container">
+        <section @click="selectLabel($event)" class="filter-img-layout">
+          <div class="filter-img-container">
+            <img src="../assets/img/filter-imgs/amazing-views.jpg" />
+            <div class="filter-img-txt">
+              Amazing views
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="filter-img-layout">
-        <div class="filter-img-container">
-          <img src="../assets/img/filter-imgs/amazing-views.jpg" alt="" />
-          <div @click.prevent="choosenLabel($event)" class="filter-img-txt">
-            Amazing views
+        </section>
+      </section>
+      <section class="category-filter-container">
+        <section @click="selectLabel($event)" class="filter-img-layout">
+          <div class="filter-img-container">
+            <img src="../assets/img/filter-imgs/lakefront.jpg" />
+            <div class="filter-img-txt">
+              Lakefront
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="filter-img-layout">
-        <div class="filter-img-container">
-          <img src="../assets/img/filter-imgs/lakefront.jpg" alt="" />
-          <div @click.prevent="choosenLabel($event)" class="filter-img-txt">
-            Lakefront
+        </section>
+      </section>
+      <section class="category-filter-container">
+        <section @click="selectLabel($event)" class="filter-img-layout">
+          <div class="filter-img-container">
+            <img src="../assets/img/filter-imgs/surfing.jpg" />
+            <div class="filter-img-txt">
+              Surfing
+            </div>
           </div>
-        </div>
-      </div>
+        </section>
+      </section>
+      <section class="category-filter-container">
+        <section @click="selectLabel($event)" class="filter-img-layout">
+          <div class="filter-img-container">
+            <img src="../assets/img/filter-imgs/tropical.jpg" />
+            <div class="filter-img-txt">
+              Tropical
+            </div>
+          </div>
+        </section>
+      </section>
     </section>
   </section>
 </template>
@@ -120,10 +168,24 @@ export default {
   },
   components: {},
   methods: {
-    choosenLabel(ev) {
-      this.label = ev.target.outerText
-      this.$emit('filter', this.label)
-    },
+    selectLabel(ev) {
+      var elElement
+      if (ev.path[0].tagName !== 'SECTION') {
+        if (ev.path[1].tagName === 'SECTION') {
+          elElement = ev.path[1]
+        }
+        else elElement = ev.path[2]
+      }
+      else elElement = ev.target
+
+      var elActiveFilter = document.querySelector('.selected-filter')
+      if (elActiveFilter !== elElement && elActiveFilter) {
+        elActiveFilter.classList.remove('selected-filter')
+      }
+      elElement.classList.toggle('selected-filter')
+      var filter = elElement.outerText
+      this.$emit('filter', filter)
+    }
   },
   created() {
   }
