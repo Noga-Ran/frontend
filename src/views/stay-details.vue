@@ -101,8 +101,7 @@
           </div>
           <hr />
           <section class="stay-amenities">
-            <h2 class="aminities-title">What this place offers</h2>
-            <div class="amenities-list">{{ stay.amenities }}</div>
+            <aminities :stayAmenities="stay.amenities"></aminities>
           </section>
           <section class="stay-reviews">
             <h3>
@@ -127,11 +126,14 @@
 <script>
 import tripSettings from '../cmps/trip-settings.vue'
 import appHeader from '../cmps/app-header.vue'
+import aminities from '../cmps/aminities.vue'
+
 export default {
   name: 'stay-details',
   components: {
     appHeader,
     tripSettings,
+    aminities,
   },
   data() {
     return {

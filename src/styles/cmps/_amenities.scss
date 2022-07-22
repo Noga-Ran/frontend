@@ -1,0 +1,29 @@
+.show-amenities-btn {
+  background-color: white;
+  padding: 13px 23px;
+  border: 1px solid black;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+// .main-bg-grey {
+//   background-color: grey;
+// }
+
+.amenitiesModal {
+  z-index: 2000;
+  position: fixed;
+  //   inset: 0px !important;
+  inset: 2em;
+  justify-content: center;
+  background-color: lightblue;
+  border-radius: 12px;
+  overflow-y: scroll;
+  //   pointer-events: auto;
+
+  //   padding-top: 12px !important;
+  //   display: flex !important;
+  //   flex-direction: row !important;
+  //   align-items: flex-end !important;
+}
