@@ -46,6 +46,10 @@
         margin-left: -2px;
         margin-right: 4px;
     }
+
+    p {
+        margin: 0 0 5px -3px;
+    }
 }
 
 .grid-area-logo {
@@ -75,6 +79,65 @@
 
     &:hover {
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+    }
+
+    span {
+        background-color: #DDDDDD;
+        flex: 0 0 1px;
+        height: 24px;
+        width: 1px;
+    }
+}
+
+.header-txt-container {
+    height: fit-content;
+    width: fit-content;
+    font-size: 14px;
+    font-family: circular;
+    color: #222222;
+    margin: auto;
+    padding-bottom: 3px;
+    padding-left: 10px;
+    font-weight: 600;
+
+    &:nth-child(5) {
+        color: #717171;
+        font-weight: 200;
+    }
+}
+
+
+.header-demo-search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    width: 32px;
+    background-color: #ff385c;
+    border-radius: 50%;
+    margin: 7px 7px 7px 0;
+
+    svg {
+        color: #ffffff;
+    }
+}
+
+.grid-area-user {
+    grid-area: user;
+}
+
+.header-tools-container {
+    display: flex;
+    justify-self: end;
+    width: fit-content;
+    font-family: circular;
+    font-weight: 600;
+    font-size: 14px;
+    margin-right: 5px;
+
+    div {
+        height: 42px;
+        padding: 0 13px;
     }
 }
 
@@ -144,6 +207,12 @@
             border-radius: 22px;
             cursor: pointer;
         }
+
+        &:first-of-type {
+            line-height: 18px;
+            font-size: 14px;
+            display: flex;
+        }
     }
 }
 
@@ -154,7 +223,7 @@
     justify-content: center;
     align-items: center;
     height: 42px;
-    width: 72px;
+    width: fit-content;
     outline: 1px solid #dddddd;
     border-radius: 22px;
     transition: 250ms;
@@ -163,13 +232,18 @@
     &:hover {
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
     }
+
+    .navburger-svg {
+        margin: 2px 0 0 9px;
+    }
 }
 
 .header-profile-img {
     display: flex;
 
     img {
-        margin-left: 12px;
+        margin-left: 11px;
+        margin-right: 8px;
         height: 30px;
         width: 30px;
         border-radius: 50%;

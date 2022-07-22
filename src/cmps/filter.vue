@@ -2,7 +2,9 @@
     <div class="header-filter-layout" v-if="!isSearch">
         <div class="header-filter-container" @click.prevent="searching">
             <div class="header-txt-container">Anywhere</div>
+            <span></span>
             <div class="header-txt-container">Any week</div>
+            <span></span>
             <div class="header-txt-container">Add guests</div>
             <div class="header-demo-search" @click.prevent="emitFilter">
                 <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
@@ -18,7 +20,7 @@
         </div>
     </div>
     <div v-else :class="{ 'filter-modal-container': isSearch }">
-        <filter-modal @filter="setFilter" @emit="emitFilter" />
+        <filter-modal @filter="setFilter" @emit="emitFilter" @date="emitDate"/>
     </div>
 </template>
 
@@ -49,6 +51,9 @@ export default {
         setFilter(filter) {
             this.where = filter
         },
+        emitDate(date){
+            this.$emit('date', date)
+        }
         // handleScroll (event) {
         //     event.preventDefault()
         //     console.log(window.scrollTo());

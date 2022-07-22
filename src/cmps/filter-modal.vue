@@ -22,12 +22,17 @@
             <div class="check-in-out-container">
                 <div class="check-in-container" role="button">
                     <p>Check in</p>
-                    <span>Add dates</span>
+                    <!-- <span>Add dates</span> -->
+                    <Datepicker v-if="!show" @blur="setDate('start')" hideInputIcon position="center" :enableTimePicker="false" v-model="startDate"
+                    range multiCalendars placeholder="Add dates" :minDate="new Date()" textInput autoApply :closeOnAutoApply="false" />
+                    <p v-if="show" @click="endDate='',startDate='',show=false">{{startDate}}</p>
                 </div>
                 <div class="filter-seperator"></div>
                 <div class="check-out-container">
                     <p>Check out</p>
-                    <span>Add dates</span>
+                    <Datepicker v-if="!show" @blur="setDate('end')" hideInputIcon position="center" :enableTimePicker="false" v-model="endDate"
+                    range multiCalendars placeholder="Add dates"  :minDate="new Date()" textInput autoApply :closeOnAutoApply="false"/>
+                    <p v-if="show" @click="endDate='',startDate='', show=false">{{endDate}}</p>
                 </div>
             </div>
             <div class="filter-seperator"></div>
@@ -58,13 +63,17 @@
 
 
 <script>
+// import { ref } from 'vue'
 // props: {
 // propName: propType
 // }
 export default {
     data() {
         return {
-            where: ''
+            where: '',
+            startDate: '',
+            endDate: '',
+            show:false,
         }
     },
     methods: {
@@ -73,9 +82,29 @@ export default {
         },
         setFilter() {
             this.$emit('emit')
+        },
+        setDate(isStart){
+          if(isStart==='start'){
+            let dates = Object.values(this.startDate)
+            this.startDate = (''+dates[0]).substring(4, 15)
+            this.endDate = (''+dates[1]).substring(4, 15)
+          }else{
+            let dates = Object.values(this.endDate)
+            this.startDate = (''+dates[0]).substring(4, 15)
+            this.endDate = (''+dates[1]).substring(4, 15)
+          }
+          console.log(this.startDate,this.endDate);
+
+          if(this.startDate!=='fined' && this.startDate!=='' && this.startDate!=='' && this.endDate!=='fined'){
+            this.show = true
+            this.$emit('date',{start:this.startDate, end:this.endDate})
+          }
         }
     },
-    computed: {},
-    created() { },
+    computed: {
+    },
+    created() {
+        
+    },
 }
 </script>

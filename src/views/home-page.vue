@@ -1,7 +1,7 @@
 
 <template>
     <section class="homepage-layout">
-        <app-header @filter="setFilter" />
+        <app-header @filter="setFilter" @date="setDate"/>
         <stay-list @filter="setFilter"/>
     </section>
 </template>
@@ -27,6 +27,11 @@ export default {
             }
             
             this.$store.dispatch({ type: "setFilter", filterBy })
+        },
+        setDate(date){
+            console.log(date);
+            var filterBy = Object.assign({}, this.$store.getters.filterBy)
+            filterBy.dates = date
         }
     },
     created(){

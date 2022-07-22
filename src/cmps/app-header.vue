@@ -4,9 +4,9 @@
         <section :class="{ 'header-container-alt': isSearch, 'header-container': !isSearch }">
             <div class="logo-container" :class="{ 'grid-area-logo': isSearch }" @click.prevent="goHome">
                 <img src="../../public/favicon.png" alt="">
-                skybnb
+                <p>skybnb</p>
             </div>
-            <filter-cmp @search="isSearch = true" @filter="setFilter" />
+            <filter-cmp @search="isSearch = true" @filter="setFilter" @date="setDate"/>
             <div class="header-tools-container" :class="{ 'grid-area-user': isSearch }">
                 <div>
                     Become a Host
@@ -42,6 +42,9 @@ export default {
         setFilter(where) {
             this.isSearch = false
             this.$emit('filter', { where })
+        },
+        setDate(date){
+            this.$emit('date',date)
         },
         goHome() {
             window.open(`/#/`);

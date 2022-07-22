@@ -71,6 +71,7 @@ grid-column: 2;
     grid-area: search-bar;
 
 }
+
 .filter-modal-where-container {
     background-clip: padding-box;
     border: 1px solid transparent;
@@ -132,6 +133,20 @@ grid-column: 2;
         background-color: rgb(186, 186, 186);
         border-radius: 32px;
     }
+
+    input{
+        border: none;
+        background-color: transparent;
+        padding: 0;
+        color: #717171;
+        font-size: 14px;
+        font-family: circular;
+    }
+
+    .dp__clear_icon{
+        top: 30%;
+        left: 85%;
+    }
 }
 
 .filter-who-container {
@@ -157,6 +172,12 @@ grid-column: 2;
     &:hover{
         background-color: rgb(186, 186, 186);
         border-radius: 32px;
+    }
+
+    span{
+        color: #717171;
+        font-size: 14px;
+        font-family: circular;
     }
 }
 

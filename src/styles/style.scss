@@ -3,3 +3,8 @@
 @import 'basics/main-basics';
 @import 'set-up/main-set-up';
 
+@media screen and (max-width:1128px) {
+    .demo-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
