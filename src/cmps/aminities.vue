@@ -1,12 +1,13 @@
 <template>
   <section>
     <h2 class="aminities-title">What this place offers</h2>
-    <ul>
+    <ul class="amenities-list">
       <li v-for="amenitie in stayAmenitiesSliced" :key="amenitie">
         {{ amenitie }}
+        <hr />
       </li>
     </ul>
-    <button class="show-amenities-btn" @click="toggleAmenitiesModal">
+    <!-- <button class="show-amenities-btn" @click="toggleAmenitiesModal">
       Show all {{ stayAmenities.length }} amenities
     </button>
     <section v-if="showAmenitiesModal" class="amenitiesModal main-bg-grey">
@@ -19,11 +20,46 @@
           {{ amenitie }}
         </li>
       </ul>
-    </section>
+    </section> -->
+
+    <div class="amenitiesModal">
+      <vue-final-modal
+        v-model="showModal"
+        classes="modal-container"
+        content-class="modal-content"
+      >
+        <!-- <span class="modal__title">Hello, vue-final-modal</span> -->
+        <section class="modal-container">
+          <button class="modal__close" @click="showModal = false">
+            <!-- <mdi-close></mdi-close> -->
+            X
+          </button>
+          <div class="modal__title">
+            <h2 class="aminities-title">What this place offers</h2>
+            <ul class="amenities-list">
+              <li v-for="amenitie in stayAmenities" :key="amenities">
+                {{ amenitie }}
+                <hr />
+              </li>
+            </ul>
+          </div>
+        </section>
+      </vue-final-modal>
+      <v-button class="show-amenities-btn" @click="showModal = true">
+        Show all {{ stayAmenities.length }} amenities
+      </v-button>
+    </div>
   </section>
 </template>
+
 <script>
+import { $vfm, VueFinalModal, ModalsContainer } from 'vue-final-modal'
 export default {
+  components: {
+    VueFinalModal,
+    ModalsContainer,
+  },
+
   props: {
     stayAmenities: {
       type: Object,
@@ -34,6 +70,7 @@ export default {
       stayAmenitiesSliced: null,
       numOfAmenities: null,
       showAmenitiesModal: false,
+      showModal: false,
     }
   },
   created() {
@@ -41,9 +78,9 @@ export default {
     return this.stayAmenitiesSliced
   },
   methods: {
-    toggleAmenitiesModal() {
-      this.showAmenitiesModal = !this.showAmenitiesModal
-    },
+    // toggleAmenitiesModal() {
+    //   this.showAmenitiesModal = !this.showAmenitiesModal
+    // },
   },
   computed: {},
   unmounted() {},
