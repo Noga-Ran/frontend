@@ -20,7 +20,7 @@
         </div>
     </div>
     <div v-else :class="{ 'filter-modal-container': isSearch }">
-        <filter-modal @filter="setFilter" @emit="emitFilter" />
+        <filter-modal @filter="setFilter" @emit="emitFilter" @date="emitDate"/>
     </div>
 </template>
 
@@ -51,6 +51,9 @@ export default {
         setFilter(filter) {
             this.where = filter
         },
+        emitDate(date){
+            this.$emit('date', date)
+        }
         // handleScroll (event) {
         //     event.preventDefault()
         //     console.log(window.scrollTo());
