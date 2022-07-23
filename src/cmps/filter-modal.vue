@@ -5,7 +5,7 @@
         <p>Stays</p>
       </button>
       <button>
-        <p>Experiencesy</p>
+        <p>Experiences</p>
       </button>
       <button>
         <p>Online Experiences</p>
