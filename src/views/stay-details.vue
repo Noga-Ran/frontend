@@ -112,9 +112,9 @@
           </div>
         </section>
       </section>
-      <section class="stay-reviews">
+      <!-- <section class="stay-reviews">
         <reviews :stay="stay"></reviews>
-      </section>
+      </section> -->
     </section>
   </section>
 </template>
@@ -123,7 +123,7 @@
 import tripSettings from '../cmps/trip-settings.vue'
 import appHeader from '../cmps/app-header.vue'
 import aminities from '../cmps/aminities.vue'
-import reviews from '../cmps/reviews.vue'
+// import reviews from '../cmps/reviews.vue'
 
 export default {
   name: 'stay-details',
@@ -131,7 +131,7 @@ export default {
     appHeader,
     tripSettings,
     aminities,
-    reviews,
+    // reviews,
   },
   data() {
     return {
