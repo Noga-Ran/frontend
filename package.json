@@ -9,6 +9,7 @@
   "dependencies": {
     "@vuepic/vue-datepicker": "^3.3.1",
     "axios": "^0.27.2",
+    "element-plus": "^2.2.10",
     "fs": "^0.0.1-security",
     "require": "^2.4.20",
     "sass": "^1.53.0",

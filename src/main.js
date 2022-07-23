@@ -6,6 +6,7 @@ import router from './router'
 import Datepicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
 import { vfmPlugin } from 'vue-final-modal'
+import ElementPlus from 'element-plus'
 
 import './styles/style.scss'
 
@@ -15,4 +16,5 @@ app.component('Datepicker', Datepicker);
 app.use(router)
 app.use(store)
 app.use(vfmPlugin)
+app.use(ElementPlus)
 app.mount('#app')

@@ -33,11 +33,16 @@
     line-height: 19px;
     gap: 2px 8px;
 
-    div:not(.preview-rating) {
+    span {
+        font-family: circular;
+    }
+
+    div:not(.preview-rating):not(.preview-location) {
         align-self: center;
         grid-column: 1;
         height: fit-content;
         width: fit-content;
+        font-family: circular-light;
     }
 }
 
