@@ -21,6 +21,36 @@
       <span class="review-count">{{ stay.numOfReviews }} reviews </span>
     </h2>
 
+    <section class="review-scores-container">
+      <div class="cleanliness">
+        Cleanliness <span>{{ stay.reviewScores.cleanliness }}</span>
+      </div>
+      <div class="communication">
+        Communication <span>{{ stay.reviewScores.communication }}</span>
+      </div>
+      <div class="checkin">
+        Checkin <span>{{ stay.reviewScores.checkin }}</span>
+      </div>
+      <div class="accuracy">
+        Accuracy<span>{{ stay.reviewScores.accuracy }}</span>
+      </div>
+      <div class="location">
+        <span>Location{{ stay.reviewScores.location }}</span>
+      </div>
+      <div class="value">
+        <span>Value{{ stay.reviewScores.value }}</span>
+      </div>
+
+      <template>
+        <div class="demo-progress">
+          <el-progress :percentage="50" />
+        </div>
+      </template>
+      <!-- 
+<script lang="ts" setup>
+  </script> -->
+    </section>
+
     <ul class="reviews-list">
       <li v-for="review in stayReviewsSliced" :key="review">
         <div class="review-deatails-container">
@@ -98,6 +128,9 @@
 
 <script>
 import { $vfm, VueFinalModal, ModalsContainer } from 'vue-final-modal'
+
+const format = (percentage) => (percentage === 100 ? 'Full' : `${percentage}%`)
+
 export default {
   components: {
     VueFinalModal,
@@ -141,3 +174,10 @@ export default {
   unmounted() {},
 }
 </script>
+
+<style scoped>
+.demo-progress .el-progress--line {
+  margin-bottom: 15px;
+  width: 350px;
+}
+</style>
