@@ -1,0 +1,83 @@
+// .modal-vue .overlay {
+//     position: fixed;
+//     z-index: 9998;
+//     top: 160px;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     background-color: rgba(0, 0, 0, .5);
+// }
+
+.modal-vue .modal {
+    position: fixed;
+    margin-top: 23px;
+    z-index: 9999;
+    margin: 42px -25px;
+    padding: 20px 30px;
+    background-color: #fff;
+    max-width: 848px;
+}
+
+.modal-vue .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.modal {
+
+    .searchs {
+        display: flex;
+
+        .resent-search {
+            min-width: 345px;
+        }
+
+        .search-region {
+            border-left: 1px solid #ebebeb;
+            padding: 0 28px 0 44px;
+            margin: 8px 0 16px 0;
+
+            >p {
+                margin: 0 0 28px 5px;
+                font-size: 14px;
+                font-weight: 700;
+                line-height: 18px;
+            }
+
+        }
+    }
+
+    img {
+        width: 120px !important;
+        height: 120px !important;
+        background-color: transparent !important;
+        top: -1px !important;
+        left: -1px !important;
+        border-color: inherit !important;
+        border-style: solid !important;
+        /* border-width: 3px !important; */
+        border-radius: 20px;
+    }
+
+    .imgs-container {
+        column-gap: 5px;
+        display: grid;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 24px;
+
+        p {
+            color: #222222;
+            font-size: 14px;
+            line-height: 18px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            margin: 8px 2px 0 2px;
+            text-transform: capitalize;
+        }
+    }
+}

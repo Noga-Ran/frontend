@@ -13,94 +13,126 @@
         </div>
         <div class="modal-filter-choices-layout">
             <div class="filter-modal-where-container">
-                <p>Where</p>
-                <input v-model="where" @input="emit" type="text" name="query" placeholder="Search destinations"
-                    aria-describedby="bigsearch-query-location-description" aria-autocomplete="none" autocomplete="off"
-                    autocorrect="off">
+                <p @click="showModal = true,showWho = false">Where</p>
+                <input @click="showModal = true,showWho = false" v-model="where" @input="emit" type="text" name="query"
+                    placeholder="Search destinations" aria-describedby="bigsearch-query-location-description"
+                    aria-autocomplete="none" autocomplete="off" autocorrect="off">
+
+                <div class="modal-vue">
+
+                    <div class="overlay" v-if="showModal" @click="showModal = false"></div>
+
+                    <div class="modal" v-if="showModal">
+                        <button class="close" @click="showModal = false">x</button>
+                        <div class="searchs">
+                            <div class="resent-search">
+                                <p>Resent searchs</p>
+                                <div>New York</div>
+                                <div>Spain</div>
+                                <div>Us</div>
+                                <div>hong kong</div>
+                            </div>
+                            <div class="search-region">
+                                <p>Search by region</p>
+                                <div class="imgs-container">
+                                    <div v-for="(label, idx) in countryLabels" :key="indx" @click="setWhere(label)">
+                                        <img v-if="label != 'Im flexiable'" :src="getImgUrl(label)" alt="" />
+                                        <img v-else src="../assets/img/countries/world.png" alt="" />
+                                        <p>{{ label }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
             <div class="filter-seperator"></div>
             <div class="check-in-out-container">
-                <div class="check-in-container" role="button">
+                <div class="check-in-container" role="button" @click="showModal = false">
                     <p>Check in</p>
                     <!-- <span>Add dates</span> -->
-                    <Datepicker v-if="!show" @blur="setDate('start')" hideInputIcon :autoPosition="false"
-                        :enableTimePicker="false" v-model="startDate" range multiCalendars placeholder="Add dates"
-                        :minDate="new Date()" textInput autoApply :closeOnAutoApply="false" />
-                    <p v-if="show" @click="endDate = '', startDate = '', show = false">{{ startDate }}</p>
+                    <Datepicker @click="showWho = false" v-if="!show" @blur="setDate('start')" hideInputIcon
+                        :autoPosition="false" :enableTimePicker="false" v-model="startDate" range multiCalendars
+                        placeholder="Add dates" :minDate="new Date()" textInput autoApply  closeOnScroll/>
+                    <p v-if="show" @click="clearDates">{{ startDate }}</p>
                 </div>
                 <div class="filter-seperator"></div>
-                <div class="check-out-container">
+                <div class="check-out-container" @click="showModal = false">
                     <p>Check out</p>
-                    <Datepicker v-if="!show" @blur="setDate('end')" hideInputIcon :autoPosition="false"
-                        :enableTimePicker="false" v-model="endDate" range multiCalendars placeholder="Add dates"
-                        :minDate="new Date()" textInput autoApply :closeOnAutoApply="false" />
-                    <p v-if="show" @click="endDate = '', startDate = '', show = false">{{ endDate }}</p>
+                    <Datepicker @click="showWho = false" v-if="!show" @blur="setDate('end')" hideInputIcon
+                        :autoPosition="false" :enableTimePicker="false" v-model="endDate" range multiCalendars
+                        placeholder="Add dates" :minDate="new Date()" textInput autoApply  closeOnScroll/>
+                    <p v-if="show" @click="clearDates">{{ endDate }}</p>
                 </div>
             </div>
             <div class="filter-seperator"></div>
-            <div class="filter-who-container" @click.self="showWho=!showWho">
-                <p>Who</p>
-                <span>Add guests</span>
-                <div v-if="showWho" class="guests-modal" @click.self="showWho=!showWho">
-                    <div class="modal-g-container">
-                        <div class="adults-filter-container">
-                            <div>
-                                <span>Adults</span>
-                                <span>Ages 13 or above</span>
+            <div class="filter-who-container" @click.self="showWho = !showWho,showModal = false">
+                <p @click.self="showWho = !showWho,showModal = false">Who</p>
+                <span @click.self="showWho = !showWho,showModal = false">Add guests</span>
+                <div v-if="showWho" class="overlay" @click="showWho = false">
+                    <div class="guests-modal" @click.self="showWho = !showWho">
+                        <div class="modal-g-container">
+                            <div class="adults-filter-container">
+                                <div>
+                                    <span>Adults</span>
+                                    <span>Ages 13 or above</span>
+                                </div>
+                                <div>
+                                    <button type="button" class="g-modal-buttons" :disabled="guests.adults == 0">
+                                        <span class="material-icons-sharp">-</span>
+                                    </button>
+                                    <span class="guests-num">{{ guests.adults }}</span>
+                                    <button type="button" class="g-modal-buttons">
+                                        <span class="material-icons-sharp">+</span>
+                                    </button>
+                                </div>
                             </div>
-                            <div>
-                                <button type="button" class="g-modal-buttons" :disabled="guests.adults == 0">
-                                    <span class="material-icons-sharp">-</span>
-                                </button>
-                                <span class="guests-num">{{guests.adults}}</span>
-                                <button type="button" class="g-modal-buttons">
-                                    <span class="material-icons-sharp">+</span>
-                                </button>
+                            <div class="children-filter-container">
+                                <div>
+                                    <span>Children</span>
+                                    <span>Ages 2–12</span>
+                                </div>
+                                <div>
+                                    <button type="button" class="g-modal-buttons" :disabled="guests.children == 0">
+                                        <span class="material-icons-sharp">-</span>
+                                    </button>
+                                    <span class="guests-num">{{ guests.children }}</span>
+                                    <button type="button" class="g-modal-buttons">
+                                        <span class="material-icons-sharp">+</span>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="children-filter-container">
-                            <div>
-                                <span>Children</span>
-                                <span>Ages 2–12</span>
+                            <div class="babies-filter-container">
+                                <div>
+                                    <span>Infants</span>
+                                    <span>Under 2</span>
+                                </div>
+                                <div>
+                                    <button type="button" class="g-modal-buttons" :disabled="guests.infants == 0">
+                                        <span class="material-icons-sharp">-</span>
+                                    </button>
+                                    <span class="guests-num">{{ guests.infants }}</span>
+                                    <button type="button" class="g-modal-buttons">
+                                        <span class="material-icons-sharp">+</span>
+                                    </button>
+                                </div>
                             </div>
-                            <div>
-                                <button type="button" class="g-modal-buttons" :disabled="guests.children == 0">
-                                    <span class="material-icons-sharp">-</span>
-                                </button>
-                                <span class="guests-num">{{guests.children}}</span>
-                                <button type="button" class="g-modal-buttons">
-                                    <span class="material-icons-sharp">+</span>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="babies-filter-container">
-                            <div>
-                                <span>Infants</span>
-                                <span>Under 2</span>
-                            </div>
-                            <div>
-                                <button type="button" class="g-modal-buttons" :disabled="guests.infants == 0">
-                                    <span class="material-icons-sharp">-</span>
-                                </button>
-                                <span class="guests-num">{{guests.infants}}</span>
-                                <button type="button" class="g-modal-buttons">
-                                    <span class="material-icons-sharp">+</span>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="pets-filter-container">
-                            <div>
-                                <span>Pets</span>
-                                <span>(not counting service animals)</span>
-                            </div>
-                            <div>
-                                <button type="button" class="g-modal-buttons" :disabled="guests.pets == 0">
-                                    <span class="material-icons-sharp">-</span>
-                                </button>
-                                <span class="guests-num">{{guests.pets}}</span>
-                                <button type="button" class="g-modal-buttons">
-                                    <span class="material-icons-sharp">+</span>
-                                </button>
+                            <div class="pets-filter-container">
+                                <div>
+                                    <span>Pets</span>
+                                    <span>(doesn't include service animals)</span>
+                                </div>
+                                <div>
+                                    <button type="button" class="g-modal-buttons" :disabled="guests.pets == 0">
+                                        <span class="material-icons-sharp">-</span>
+                                    </button>
+                                    <span class="guests-num">{{ guests.pets }}</span>
+                                    <button type="button" class="g-modal-buttons">
+                                        <span class="material-icons-sharp">+</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -129,10 +161,6 @@
 
 
 <script>
-// import { ref } from 'vue'
-// props: {
-// propName: propType
-// }
 export default {
     data() {
         return {
@@ -141,7 +169,9 @@ export default {
             endDate: '',
             show: false,
             showWho: false,
-            guests: {adults:1,children:0,infants:2,pets:0}
+            guests: { adults: 1, children: 0, infants: 2, pets: 0 },
+            showModal: false,
+            countryLabels: ['Im flexiable', 'australia', 'brazil', 'canada', 'spain', 'united states']
         }
     },
     methods: {
@@ -152,8 +182,10 @@ export default {
             this.$emit('emit')
         },
         setDate(isStart) {
+            console.log(this.startDate);
             if (isStart === 'start') {
                 let dates = Object.values(this.startDate)
+                console.log(new Date(dates[0]).toISOString().slice(0, 16).replace('T', ', ').replaceAll('-', '/'))
                 this.startDate = ('' + dates[0]).substring(4, 15)
                 this.endDate = ('' + dates[1]).substring(4, 15)
             } else {
@@ -161,18 +193,44 @@ export default {
                 this.startDate = ('' + dates[0]).substring(4, 15)
                 this.endDate = ('' + dates[1]).substring(4, 15)
             }
-            console.log(this.startDate, this.endDate);
-
             if (this.startDate !== 'fined' && this.startDate !== '' && this.startDate !== '' && this.endDate !== 'fined') {
                 this.show = true
                 this.$emit('date', { start: this.startDate, end: this.endDate })
+            } else {
+                console.log('dhfsj');
+                this.$emit('date', { start: '', end: '' })
             }
+        },
+        clearDates() {
+            this.show = false
+            this.endDate = ''
+            this.startDate = ''
+            this.$emit('date', { start: '', end: '' })
+        },
+        getImgUrl(country) {
+            // const { imgUrls } = this.stay
+            return new URL('../assets/img/countries/' + country + '.png', import.meta.url).href
+        },
+        setWhere(country){
+            if(country!=='Im flexiable'){
+                this.where = country
+            }else{
+                let countries = ['spain','portugal','United States','Istanbul','hong kong','Brazil','canada','Indonesia','greece']
+                let country = countries[Math.floor(Math.random()*countries.length)]
+                this.where = country
+            }
+                this.emit()
         }
     },
     computed: {
     },
     created() {
-
+        if (this.$route.query) {
+            this.where = this.$route.query.where
+            this.startDate = this.$route.query.checkIn
+            this.endDate = this.$route.query.checkOut
+            if (this.startDate && this.endDate) this.show = true
+        }
     },
 }
 </script>
