@@ -30,13 +30,13 @@
 
     <div class="amenitiesModal">
       <vue-final-modal
-        v-model="showModal"
+        v-model="showAmenitiesModal"
         classes="modal-container"
         content-class="modal-content"
       >
         <!-- <span class="modal__title">Hello, vue-final-modal</span> -->
         <section class="modal-container">
-          <button class="modal__close" @click="showModal = false">
+          <button class="modal__close" @click="showAmenitiesModal = false">
             <!-- <mdi-close></mdi-close> -->
             X
           </button>
@@ -56,7 +56,7 @@
           </div>
         </section>
       </vue-final-modal>
-      <v-button class="show-amenities-btn" @click="showModal = true">
+      <v-button class="show-amenities-btn" @click="showAmenitiesModal = true">
         Show all {{ stayAmenities.length }} amenities
       </v-button>
     </div>
@@ -81,7 +81,6 @@ export default {
       stayAmenitiesSliced: null,
       numOfAmenities: null,
       showAmenitiesModal: false,
-      showModal: false,
     }
   },
   created() {
