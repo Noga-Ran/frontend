@@ -4,7 +4,16 @@
 @import 'set-up/main-set-up';
 
 @media screen and (max-width:1128px) {
-    .demo-list {
-        grid-template-columns: repeat(3, 1fr);
+  .demo-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .stay-details-layout {
+
+    .details-padding {
+      padding: 0 40px;
+
     }
+
+  }
 }
