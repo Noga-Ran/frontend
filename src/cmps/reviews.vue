@@ -23,32 +23,51 @@
 
     <section class="review-scores-container">
       <div class="cleanliness">
-        Cleanliness <span>{{ stay.reviewScores.cleanliness }}</span>
+        <span> Cleanliness</span>
+        <span>
+          <progress id="determinate" value="10" min="0" max="10"></progress>
+          <span>{{ scoreToDisplay('cleanliness') }}</span></span
+        >
       </div>
       <div class="communication">
-        Communication <span>{{ stay.reviewScores.communication }}</span>
+        <span>Communication</span>
+        <span>
+          <progress id="determinate" value="10" min="0" max="10"></progress>
+          <span>{{ scoreToDisplay('communication') }}</span></span
+        >
       </div>
       <div class="checkin">
-        Checkin <span>{{ stay.reviewScores.checkin }}</span>
+        <span>Checkin </span>
+        <span>
+          <progress id="determinate" value="10" min="0" max="10"></progress>
+          <span>{{ scoreToDisplay('checkin') }}</span></span
+        >
       </div>
       <div class="accuracy">
-        Accuracy<span>{{ stay.reviewScores.accuracy }}</span>
+        <span>Accuracy</span>
+        <span>
+          <progress id="determinate" value="10" min="0" max="10"></progress>
+          <span>{{ scoreToDisplay('accuracy') }}</span></span
+        >
       </div>
       <div class="location">
-        <span>Location{{ stay.reviewScores.location }}</span>
+        <span>Location</span>
+        <span>
+          <progress id="determinate" value="10" min="0" max="10"></progress>
+          <span>{{ scoreToDisplay('location') }}</span></span
+        >
       </div>
       <div class="value">
-        <span>Value{{ stay.reviewScores.value }}</span>
+        <span>Value</span>
+        <span>
+          <progress id="determinate" value="10" min="0" max="10"></progress>
+          <span>{{ scoreToDisplay('value') }}</span></span
+        >
       </div>
-
-      <template>
-        <div class="demo-progress">
-          <el-progress :percentage="50" />
-        </div>
-      </template>
-      <!-- 
-<script lang="ts" setup>
-  </script> -->
+      <!-- <div class="progress-bar">
+        <label for="determinate">A determinate progress bar:</label>
+        <progress id="determinate" value="8" min="0" max="10"></progress>
+      </div> -->
     </section>
 
     <ul class="reviews-list">
@@ -63,7 +82,17 @@
           <span class="review-time">{{ formateTime(review.at) }}</span>
         </div>
         <div class="reviews-txt-container">
-          <div>{{ review.txt }}</div>
+          <!-- <div>{{ review.txt }}</div> -->
+          <div>{{ formatedReviewTxt(review.txt) }}</div>
+          <div class="show-more-review-container" v-if="this.isLongTxt">
+            <v-button
+              class="show-more-review-btn"
+              @click="showReviewsModal = true"
+            >
+              Show more
+            </v-button>
+            <span>></span>
+          </div>
         </div>
       </li>
     </ul>
@@ -129,8 +158,6 @@
 <script>
 import { $vfm, VueFinalModal, ModalsContainer } from 'vue-final-modal'
 
-const format = (percentage) => (percentage === 100 ? 'Full' : `${percentage}%`)
-
 export default {
   components: {
     VueFinalModal,
@@ -150,6 +177,7 @@ export default {
       averageRating: null,
       stayReviewsSliced: null,
       showReviewsModal: false,
+      isLongTxt: false,
     }
   },
   created() {
@@ -163,6 +191,18 @@ export default {
       let month = date.toLocaleString('en', { month: 'long' })
       return month + ' ' + year
     },
+    scoreToDisplay(type) {
+      return (this.stay.reviewScores[type] / 2).toFixed(1)
+    },
+    formatedReviewTxt(txt) {
+      if (txt.length > 156) {
+        this.isLongTxt = true
+        return txt.slice(0, 156) + '...'
+      } else {
+        this.isLongTxt = false
+        return txt
+      }
+    },
   },
   computed: {
     getRating() {
@@ -175,9 +215,9 @@ export default {
 }
 </script>
 
-<style scoped>
+<!-- <style scoped>
 .demo-progress .el-progress--line {
   margin-bottom: 15px;
   width: 350px;
 }
-</style>
+</style> -->
