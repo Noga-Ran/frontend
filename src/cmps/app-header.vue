@@ -7,7 +7,7 @@
                 <img src="../../public/favicon.png" alt="">
                 <p>skybnb</p>
             </div>
-            <filter-cmp @search="setSearch" @filter="setFilter" @date="setDate" />
+            <filter-cmp @search="isSearch = true" @filter="setFilter" @date="setDate" />
             <div class="header-tools-container" :class="{ 'grid-area-user': isSearch }">
                 <div>
                     Become a Host
@@ -51,9 +51,7 @@ export default {
             this.$router.push(`/`)
             // window.open(`/#/`);
         },
-        setSearch(isSearching){
-            this.isSearch = isSearching
-        }
+        
     },
     components: {
         filterCmp
