@@ -1,0 +1,41 @@
+.el-carousel__arrow {
+  background-color: rgba(255, 255, 255, 0.866);
+  height: 30px;
+  width: 30px;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.979);
+    outline: 1PX solid rgba(255, 255, 255, 0.979);
+  }
+}
+
+.el-carousel svg {
+  &:not(.heart-svg) {
+    color: black;
+    height: 14px;
+    width: 14px;
+    top: auto;
+    right: auto;
+  }
+}
+
+.el-carousel__indicator {
+  padding: 0;
+  margin: 0;
+}
+
+.el-carousel__button {
+  border-radius: 50%;
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 12px;
+  margin-left: 2.5px;
+  margin-right: 2.5px;
+}
+
+.el-carousel__container {
+  height: 100%;
+  width: 100%;
+}
