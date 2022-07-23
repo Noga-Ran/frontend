@@ -4,11 +4,14 @@
 }
 
 @font-face {
-    font-family: circular;
-    src: url("../assets/fonts/Circular/CircularStd-Medium.otf");
+    font-family: circular-light;
+    src: url("@/assets/fonts/Circular/CircularStd-Light.otf");
 }
 @font-face {
     font-family: circular;
-    font-weight: bold;
+    src: url("@/assets/fonts/Circular/CircularStd-Medium.otf");
+}
+@font-face {
+    font-family: circular-bold;
     src: url("../assets/fonts/Circular/CircularStd-Bold.otf");
 }
