@@ -32,18 +32,16 @@
           </div>
         </section>
       </section>
-      <div>
-        <section class="category-filter-container">
-          <section @click="selectLabel($event)" class="filter-img-layout">
-            <div class="filter-img-container">
-              <img src="../assets/img/filter-imgs/omg.jpg" />
-              <div class="filter-img-txt">
-                OMG!
-              </div>
+      <section class="category-filter-container">
+        <section @click="selectLabel($event)" class="filter-img-layout">
+          <div class="filter-img-container">
+            <img src="../assets/img/filter-imgs/omg.jpg" />
+            <div class="filter-img-txt">
+              OMG!
             </div>
-          </section>
+          </div>
         </section>
-      </div>
+      </section>
       <section class="category-filter-container">
         <section @click="selectLabel($event)" class="filter-img-layout">
           <div class="filter-img-container">
@@ -87,9 +85,9 @@
       <section class="category-filter-container">
         <section @click="selectLabel($event)" class="filter-img-layout">
           <div class="filter-img-container">
-            <img src="../assets/img/filter-imgs/tiny-homes.jpg" />
+            <img src="../assets/img/filter-imgs/amazing-views.jpg" />
             <div class="filter-img-txt">
-              Tiny homes
+              Amazing views
             </div>
           </div>
         </section>
@@ -117,9 +115,9 @@
       <section class="category-filter-container">
         <section @click="selectLabel($event)" class="filter-img-layout">
           <div class="filter-img-container">
-            <img src="../assets/img/filter-imgs/amazing-views.jpg" />
+            <img src="../assets/img/filter-imgs/tiny-homes.jpg" />
             <div class="filter-img-txt">
-              Amazing views
+              Tiny homes
             </div>
           </div>
         </section>

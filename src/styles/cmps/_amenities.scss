@@ -1,25 +1,35 @@
+.stay-amenities {
+  padding-top: 48px;
+}
+
 .show-amenities-btn {
+  margin-top: 48px;
   background-color: white;
   padding: 13px 23px;
   border: 1px solid black;
   border-radius: 8px;
-  font-weight: 600;
   font-size: 16px;
+  transition: 200ms;
+
+  &:hover {
+    background-color: #f7f7f7;
+    cursor: pointer;
+  }
 }
 
 .modal-container {
-  height: 70vh;
+  height: 633px;
   max-height: fit-content;
-  overflow-y: auto;
-  width: 70vw;
+  width: 780px;
   margin: auto;
   display: flex;
-  padding: 20px;
   background-color: white;
   border-radius: 12px;
   position: fixed;
   inset: 0;
+  flex-direction: column;
 }
+
 ::v-deep .modal-content {
   display: flex;
   flex-direction: column;
@@ -29,55 +39,92 @@
   border-radius: 0.25rem;
   background: #fff;
 }
-.modal__title {
-  font-size: 1em;
-}
 
 .dark-mode div::v-deep .modal-content {
   border-color: #2d3748;
   background-color: #1a202c;
 }
+.close-modal{
+  height: 72px;
+  svg{
+    padding: 0;
+  }
+}
 .modal__close {
-  position: absolute;
-  top: 0.5rem;
-  left: 0.5rem;
-  background-color: #fff;
-  border: unset;
+  padding: 0;
+  margin: 24px;
+  background-color: transparent;
+  border: 0;
+  height: 32px;
+  width: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  &:hover{
+    cursor: pointer;
+    background-color: #f7f7f7;
+  }
 }
 
-.amenities-list {
-  list-style: none;
+.seperating-line {
+  margin: 0;
 }
 
-// .main-bg-grey {
-//   background-color: grey;
-// }
+.amenities-list-main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-bottom: 48px;
 
-// .amenitiesModal {
-//   z-index: 2000;
-//   position: fixed;
-//   inset: 2em;
-//   justify-content: center;
-//   background-color: lightblue;
-//   border-radius: 12px;
-//   overflow-y: scroll;
+  img {
+    margin-right: 16px;
+  }
 
-//   pointer-events: auto;
+  &>div {
+    margin-bottom: 16px;
+  }
+}
 
-//   padding-top: 12px !important;
-//   display: flex !important;
-//   flex-direction: row !important;
-//   align-items: flex-end !important;
-// }
+.modal-amenities-container {
+  width: 100%;
+  overflow-y: auto;
+}
 
-// .amenitiesModal {
-//   inset: 2em;
-//   justify-content: center;
-//   border-radius: 12px;
-//   background-color: white;
-// }
+.modal__title {
+  padding: 24px;
+  color: #222222;
+
+  .modal-amenitie {
+    display: flex;
+    align-items: center;
+  }
+
+  .amenities-list {
+    display: grid;
+    grid-auto-flow: row;
+    margin-bottom: 48px;
+
+    img {
+      margin-right: 16px;
+    }
+
+    &>div {
+      margin-bottom: 16px;
+    }
+  }
+}
+
+.modal-amenitie {
+  width: 100%;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
 
 .amenitie-svg {
   height: 24px;
   width: 24px;
+}
+.amenitiesModal{
+  margin-bottom: 50px;
+  // להוריד
 }
