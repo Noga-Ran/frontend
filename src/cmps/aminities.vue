@@ -3,12 +3,12 @@
     <h2 class="aminities-title">What this place offers</h2>
     <section class="amenities-list-main">
       <div v-for="amenitie in stayAmenitiesSliced" :key="amenitie">
-        <img class="amenitie-svg" :src="getImgUrl(amenitie)" alt="" />
+        <img class="amenitie-svg" :src="getImgUrl(amenitie)" alt=img />
         {{ amenitie }}
       </div>
     </section> 
     <div class="amenitiesModal">
-      <vue-final-modal v-model="showModal" classes="modal-container" content-class="modal-content">
+      <vue-final-modal v-model="showModal" class="modal-container" content-class="modal_content">
         <section class="modal-container">
           <div class="close-modal">
             <button class="modal__close" @click="showModal = false">
@@ -26,7 +26,7 @@
               <section class="amenities-list">
                 <div v-for="amenitie in stayAmenities" :key="amenitie">
                   <div class="modal-amenitie">
-                    <img class="amenitie-svg" :src="getImgUrl(amenitie)" alt="" />
+                    <img class="amenitie-svg" :src="getImgUrl(amenitie)" alt='img' />
                     {{ amenitie }}
                   </div>
                   <hr class="seperating-line" />
