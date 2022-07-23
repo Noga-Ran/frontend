@@ -6,7 +6,7 @@
         <img class="amenitie-svg" :src="getImgUrl(amenitie)" alt="" />
         {{ amenitie }}
       </div>
-    </section>
+    </section> 
     <div class="amenitiesModal">
       <vue-final-modal v-model="showModal" classes="modal-container" content-class="modal-content">
         <section class="modal-container">
