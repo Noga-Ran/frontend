@@ -6,6 +6,9 @@ export default {
     filterBy: {
       where: '',
       label: '',
+      checkIn:'',
+      checkOut:'',
+      guests:0,
     },
   },
   getters: {

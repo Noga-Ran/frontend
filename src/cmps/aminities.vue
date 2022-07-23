@@ -3,18 +3,35 @@
     <h2 class="aminities-title">What this place offers</h2>
     <section class="amenities-list-main">
       <div v-for="amenitie in stayAmenitiesSliced" :key="amenitie">
-        <img class="amenitie-svg" :src="getImgUrl(amenitie)" alt=img />
+        <img class="amenitie-svg" :src="getImgUrl(amenitie)" alt="img" />
         {{ amenitie }}
       </div>
-    </section> 
+    </section>
     <div class="amenitiesModal">
-      <vue-final-modal v-model="showModal" class="modal-container" content-class="modal_content">
+      <vue-final-modal
+        v-model="showModal"
+        class="modal-container"
+        content-class="modal_content"
+      >
         <section class="modal-container">
           <div class="close-modal">
             <button class="modal__close" @click="showModal = false">
-              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
+              <svg
+                viewBox="0 0 32 32"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+                role="presentation"
                 focusable="false"
-                style="display: block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 3; overflow: visible;">
+                style="
+                  display: block;
+                  fill: none;
+                  height: 16px;
+                  width: 16px;
+                  stroke: currentcolor;
+                  stroke-width: 3;
+                  overflow: visible;
+                "
+              >
                 <path d="m6 6 20 20"></path>
                 <path d="m26 6-20 20"></path>
               </svg>
@@ -26,7 +43,18 @@
               <section class="amenities-list">
                 <div v-for="amenitie in stayAmenities" :key="amenitie">
                   <div class="modal-amenitie">
-                    <img class="amenitie-svg" :src="getImgUrl(amenitie)" alt='img' />
+                    <img
+                      class="amenitie-svg"
+                      :src="getImgUrl(amenitie)"
+                      alt=""
+                    />
+                    =======
+                    <img
+                      class="amenitie-svg"
+                      :src="getImgUrl(amenitie)"
+                      alt="img"
+                    />
+                    >>>>>>> fdbedc7f541f50f83987552af6e1fe5b61bd853a
                     {{ amenitie }}
                   </div>
                   <hr class="seperating-line" />
@@ -73,11 +101,10 @@ export default {
       if (!imgUrl) {
         console.log('imgUrl: ', imgUrl)
       }
-      return new URL(imgUrl, import.meta.url)
-        .href
+      return new URL(imgUrl, import.meta.url).href
     },
   },
   computed: {},
-  unmounted() { },
+  unmounted() {},
 }
 </script>

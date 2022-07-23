@@ -7,7 +7,7 @@
                 <img src="../../public/favicon.png" alt="">
                 <p>skybnb</p>
             </div>
-            <filter-cmp @search="isSearch = true" @filter="setFilter" @date="setDate"/>
+            <filter-cmp @search="isSearch = true" @filter="setFilter" @date="setDate" />
             <div class="header-tools-container" :class="{ 'grid-area-user': isSearch }">
                 <div>
                     Become a Host
@@ -36,7 +36,7 @@ import filterCmp from './filter.vue'
 export default {
     data() {
         return {
-            isSearch: false
+            isSearch: false,
         }
     },
     methods: {
@@ -44,17 +44,17 @@ export default {
             this.isSearch = false
             this.$emit('filter', { where })
         },
-        setDate(date){
-            this.$emit('date',date)
+        setDate(date) {
+            this.$emit('date', date)
         },
         goHome() {
             this.$router.push(`/`)
             // window.open(`/#/`);
-        }
+        },
+        
     },
     components: {
         filterCmp
     },
-    created() { },
 }
 </script>
