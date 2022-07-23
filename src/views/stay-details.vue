@@ -1,8 +1,8 @@
 <template>
   <section class="stay-details-layout">
-    <app-header />
+    <app-header class="ss" />
     <section class="stay-details-container">
-      <section class="details-layout-top">
+      <section class="details-layout-top details-padding">
         <h1 class="stay-name">{{ stay.name }}</h1>
         <section class="stay-sub-title">
           <span>
@@ -67,7 +67,7 @@
         </section>
       </section>
 
-      <section class="stay-info">
+      <section class="stay-info details-padding">
         <section class="info-left">
           <h2 class="stay-type-and-host">
             {{ stay.roomType }} hosted by {{ stay.host.fullname }}
@@ -134,27 +134,7 @@ export default {
       return (rating / 20).toFixed(1)
     },
   },
-  unmounted() {},
+  unmounted() { },
 }
 </script>
-<style>
-.stay-info {
-  padding: 0 max(80px, 12vw);
-  display: grid;
-  grid-template-columns: 3fr 2fr;
-}
 
-.details-layout-top {
-  padding: 0 max(80px, 12vw);
-}
-
-.trip-setting-cmp-container {
-  z-index: 1;
-  top: 80px;
-  position: relative;
-  width: 67%;
-  margin-left: 8.333333333333332%;
-  margin-right: 0%;
-  padding-bottom: 48px;
-}
-</style>

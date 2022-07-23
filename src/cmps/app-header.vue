@@ -1,7 +1,8 @@
 
 <template>
     <section class="header-layout">
-        <section :class="{ 'header-container-alt': isSearch, 'header-container': !isSearch }">
+        <section :class="{ 'header-container-alt': isSearch, 'header-container': !isSearch }"
+        class="details-padding">
             <div class="logo-container" :class="{ 'grid-area-logo': isSearch }" @click.prevent="goHome">
                 <img src="../../public/favicon.png" alt="">
                 <p>skybnb</p>
