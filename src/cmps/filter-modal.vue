@@ -62,7 +62,7 @@
                     <Datepicker @click="showWho = false" v-if="!show" @blur="setDate('start')" hideInputIcon
                         :autoPosition="false" :enableTimePicker="false" v-model="startDate" range multiCalendars
                         placeholder="Add dates" :minDate="new Date()" textInput autoApply closeOnScroll />
-                    <p v-if="show" @click="clearDates">{{ startDate }}</p>
+                    <p v-if="show" @click.self="clearDates">{{ startDate }}</p>
                 </div>
                 <div class="filter-seperator"></div>
                 <div class="check-out-container" @click="showModal = false">
@@ -70,7 +70,7 @@
                     <Datepicker @click="showWho = false" v-if="!show" @blur="setDate('end')" hideInputIcon
                         :autoPosition="false" :enableTimePicker="false" v-model="endDate" range multiCalendars
                         placeholder="Add dates" :minDate="new Date()" textInput autoApply closeOnScroll />
-                    <p v-if="show" @click="clearDates">{{ endDate }}</p>
+                    <p v-if="show" @click.self="clearDates">{{ endDate }}</p>
                 </div>
             </div>
             <div class="filter-seperator"></div>
@@ -227,7 +227,6 @@ export default {
             this.emit()
         },
         closeFilters() {
-            this.show = false
             this.showWho = false
             this.showModal = false
         }
@@ -242,6 +241,5 @@ export default {
             if (this.startDate && this.endDate) this.show = true
         }
     },
-    created() { },
 }
 </script>

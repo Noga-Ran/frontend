@@ -38,7 +38,7 @@ export default {
     },
     methods: {
         searching() {
-            this.$emit('search')
+            this.$emit('search',true)
             this.isSearch = true
         },
         emitFilter() {
@@ -54,11 +54,6 @@ export default {
         emitDate(date){
             this.$emit('date', date)
         }
-        // handleScroll (event) {
-        //     event.preventDefault()
-        //     console.log(window.scrollTo());
-        //     this.isSearch=false
-        // }
     },
     computed: {
 
@@ -66,12 +61,6 @@ export default {
     components: {
         filterModal
     },
-    // created () {
-    //     window.addEventListener('scroll', this.handleScroll);
-    // },
-    // destroyed () {
-    //     window.removeEventListener('scroll', this.handleScroll);
-    // },
 
 }
 </script>
