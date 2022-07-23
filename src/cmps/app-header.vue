@@ -6,7 +6,7 @@
                 <img src="../../public/favicon.png" alt="">
                 <p>skybnb</p>
             </div>
-            <filter-cmp @search="isSearch = true" @filter="setFilter" @date="setDate"/>
+            <filter-cmp @search="isSearch = true" @filter="setFilter" @date="setDate" />
             <div class="header-tools-container" :class="{ 'grid-area-user': isSearch }">
                 <div>
                     Become a Host
@@ -43,17 +43,30 @@ export default {
             this.isSearch = false
             this.$emit('filter', { where })
         },
-        setDate(date){
-            this.$emit('date',date)
+        setDate(date) {
+            this.$emit('date', date)
         },
         goHome() {
             this.$router.push(`/`)
             // window.open(`/#/`);
-        }
+        },
+        // handleScroll(event) {
+        //     // Any code to be executed when the window is scrolled
+        //     this.isUserScrolling = (window.scrollY > 0);
+        //     console.log('calling handleScroll');
+        // }
     },
     components: {
         filterCmp
     },
-    created() { },
+    // mounted() {
+    //     window.addEventListener('scroll', this.handleDebouncedScroll);
+    // },
+
+    // beforeDestroy() {
+    //     // I switched the example from `destroyed` to `beforeDestroy`
+    //     // to exercise your mind a bit. This lifecycle method works too.
+    //     window.removeEventListener('scroll', this.handleDebouncedScroll);
+    // },
 }
 </script>
