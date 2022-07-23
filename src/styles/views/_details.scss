@@ -19,7 +19,6 @@
 
 .stay-details-container {
   width: 100%;
-  font-family: circular;
 }
 
 .stay-images {
@@ -81,7 +80,6 @@
   display: flex;
   margin-top: 12px;
   line-height: 20px;
-  font-weight: 600;
   font-size: 14px;
 
   span {
@@ -115,10 +113,8 @@
 
 .aminities-title {
   font-size: 22px;
-}
-
-.amenities-list {
-  font-size: 1em;
+  margin: 0;
+  padding-bottom: 24px;
 }
 
 .about-stay-reviews {

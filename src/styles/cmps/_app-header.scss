@@ -35,7 +35,6 @@
     align-items: center;
     font-family: airbnb;
     color: #ff385c;
-    letter-spacing: -1.7px;
     font-size: 1.5em;
     height: 80px;
 
@@ -93,16 +92,13 @@
     height: fit-content;
     width: fit-content;
     font-size: 14px;
-    font-family: circular;
     color: #222222;
     margin: auto;
     padding-bottom: 3px;
     padding-left: 10px;
-    font-weight: 600;
 
     &:nth-child(5) {
         color: #717171;
-        font-weight: 200;
     }
 }
 
@@ -130,8 +126,6 @@
     display: flex;
     justify-self: end;
     width: fit-content;
-    font-family: circular;
-    font-weight: 600;
     font-size: 14px;
     margin-right: 5px;
 
@@ -155,10 +149,8 @@
     height: fit-content;
     width: fit-content;
     font-size: 14px;
-    font-family: circular;
     color: #222222;
     margin: auto;
-    font-weight: 600;
     padding-bottom: 3px;
     padding-left: 12px;
 
@@ -191,8 +183,6 @@
     display: flex;
     justify-self: end;
     width: fit-content;
-    font-family: circular;
-    font-weight: 600;
     font-size: 14px;
 
     div {

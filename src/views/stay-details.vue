@@ -80,7 +80,7 @@
 
             {{ stay.beds }} beds
           </div>
-          <hr />
+          <hr class="seperating-line" />
           <section class="stay-amenities">
             <aminities :stayAmenities="stay.amenities"></aminities>
           </section>

@@ -1,6 +1,4 @@
 .trip-settings-container {
-    font-family: circular;
-    font-family: circular;
     border: 1px solid rgb(221, 221, 221);
     height: 411px;
     border-radius: 12px;
@@ -14,13 +12,11 @@
     h1,
     h2 {
         margin: 0;
-        font-weight: inherit;
     }
 
     h1 {
         font-size: 10px;
         text-transform: uppercase;
-        font-weight: bold;
     }
 
     h2 {
@@ -36,7 +32,6 @@
 }
 
 .num {
-    font-weight: (600, 800);
     font-size: 22px;
 }
 
@@ -78,8 +73,6 @@
 }
 
 .reserve-btn {
-    letter-spacing: 1px;
-    font-weight: bolder;
     width: 100%;
     color: white;
     font-size: 16px;
@@ -97,7 +90,6 @@
     justify-content: center;
     align-items: center;
     line-height: 18px;
-    font-weight: 500;
 }
 
 .price-details {
@@ -121,7 +113,6 @@
 }
 
 .total-price {
-    font-weight: 600;
     display: flex;
     justify-content: space-between;
     align-items: center;
