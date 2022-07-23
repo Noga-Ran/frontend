@@ -18,7 +18,12 @@ export default {
     },
     removeStay(state,{stayId}){
         state.wishList = state.wishList.filter(stay => stay._id !==stayId)
-    }
+    },
+    // getById(state,{stayId}){
+    //     var isWish = state.wishList.some(function(stay) {
+    //         return stay._id === stayId;
+    //     })
+    // }
   },
   actions: {
     async loadWishList({ commit, state }) {
@@ -30,9 +35,12 @@ export default {
         commit({ type: 'addWishStay', stay})
       },
       async removeWishStay({commit},{stayId}){
-        console.log(stayId);
         await userService.remove(stayId)
         commit({ type: 'removeStay', stayId})
+      },
+      async getById({commit},{stayId}){
+        let isWish = await userService.getById(stayId)
+        return isWish
       }
     },
 }

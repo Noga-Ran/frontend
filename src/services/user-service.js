@@ -4,7 +4,7 @@ const KEY = 'wishList'
 
 export const userService = {
     query,
-    // getById,
+    getById,
     remove,
     // save,
     // getEmptyToy,
@@ -22,4 +22,8 @@ async function remove(stayId){
 
 async function update(stayId){
     storageService.post(KEY,stayId)
+}
+
+async function getById(stayId){
+    return storageService.getById(KEY,stayId)
 }
