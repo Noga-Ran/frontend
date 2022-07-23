@@ -87,7 +87,7 @@
         </section>
         <section class="info-right">
           <div class="trip-setting-cmp-container">
-            <trip-settings/>
+            <trip-settings />
           </div>
         </section>
       </section>
