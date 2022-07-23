@@ -1,58 +1,38 @@
 <template>
   <section>
     <h2 class="aminities-title">What this place offers</h2>
-
-    <ul class="amenities-list">
-      <li v-for="amenitie in stayAmenitiesSliced" :key="amenitie">
-        <img
-          class="amenitie-svg"
-          src="../assets/img/aminities/Wifi.svg"
-          alt=""
-        />
+    <section class="amenities-list-main">
+      <div v-for="amenitie in stayAmenitiesSliced" :key="amenitie">
+        <img class="amenitie-svg" :src="getImgUrl(amenitie)" alt="" />
         {{ amenitie }}
-        <hr />
-      </li>
-    </ul>
-    <!-- <button class="show-amenities-btn" @click="toggleAmenitiesModal">
-      Show all {{ stayAmenities.length }} amenities
-    </button>
-    <section v-if="showAmenitiesModal" class="amenitiesModal main-bg-grey">
-      <button class="closeAmenitiesModal" @click="toggleAmenitiesModal">
-        X
-      </button>
-      <h2 class="aminities-title">What this place offers</h2>
-      <ul>
-        <li v-for="amenitie in stayAmenities" :key="amenities">
-          {{ amenitie }}
-        </li>
-      </ul>
-    </section> -->
-
+      </div>
+    </section> 
     <div class="amenitiesModal">
-      <vue-final-modal
-        v-model="showAmenitiesModal"
-        classes="modal-container"
-        content-class="modal-content"
-      >
-        <!-- <span class="modal__title">Hello, vue-final-modal</span> -->
+      <vue-final-modal v-model="showModal" classes="modal-container" content-class="modal-content">
         <section class="modal-container">
-          <button class="modal__close" @click="showAmenitiesModal = false">
-            <!-- <mdi-close></mdi-close> -->
-            X
-          </button>
-          <div class="modal__title">
-            <h2 class="aminities-title">What this place offers</h2>
-            <ul class="amenities-list">
-              <li v-for="amenitie in stayAmenities" :key="amenities">
-                <img
-                  class="amenitie-svg"
-                  src="../assets/img/aminities/Wifi.svg"
-                  alt=""
-                />
-                {{ amenitie }}
-                <hr />
-              </li>
-            </ul>
+          <div class="close-modal">
+            <button class="modal__close" @click="showModal = false">
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
+                focusable="false"
+                style="display: block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 3; overflow: visible;">
+                <path d="m6 6 20 20"></path>
+                <path d="m26 6-20 20"></path>
+              </svg>
+            </button>
+          </div>
+          <div class="modal-amenities-container">
+            <div class="modal__title">
+              <h2 class="aminities-title">What this place offers</h2>
+              <section class="amenities-list">
+                <div v-for="amenitie in stayAmenities" :key="amenitie">
+                  <div class="modal-amenitie">
+                    <img class="amenitie-svg" :src="getImgUrl(amenitie)" alt="" />
+                    {{ amenitie }}
+                  </div>
+                  <hr class="seperating-line" />
+                </div>
+              </section>
+            </div>
           </div>
         </section>
       </vue-final-modal>
@@ -88,11 +68,16 @@ export default {
     return this.stayAmenitiesSliced
   },
   methods: {
-    // toggleAmenitiesModal() {
-    //   this.showAmenitiesModal = !this.showAmenitiesModal
-    // },
+    getImgUrl(amenitie) {
+      var imgUrl = '../assets/img/aminities/' + amenitie + '.svg'
+      if (!imgUrl) {
+        console.log('imgUrl: ', imgUrl)
+      }
+      return new URL(imgUrl, import.meta.url)
+        .href
+    },
   },
   computed: {},
-  unmounted() {},
+  unmounted() { },
 }
 </script>
