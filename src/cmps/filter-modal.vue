@@ -1,160 +1,161 @@
 <template>
     <form class="form-modal-container">
-        <div class="search-opts">
-            <button>
-                <p>Stays</p>
-            </button>
-            <button>
-                <p>Experiences</p>
-            </button>
-            <button>
-                <p>Online Experiences</p>
-            </button>
-        </div>
-        <div class="modal-filter-choices-layout">
-            <div class="filter-modal-where-container">
-                <p @click="showModal = true,showWho = false">Where</p>
-                <input @click="showModal = true,showWho = false" v-model="where" @input="emit" type="text" name="query"
-                    placeholder="Search destinations" aria-describedby="bigsearch-query-location-description"
-                    aria-autocomplete="none" autocomplete="off" autocorrect="off">
-
-                <div class="modal-vue">
-
-                    <div class="overlay" v-if="showModal" @click="showModal = false"></div>
-
-                    <div class="modal" v-if="showModal">
-                        <button class="close" @click="showModal = false">x</button>
-                        <div class="searchs">
-                            <div class="resent-search">
-                                <p>Resent searchs</p>
-                                <div>New York</div>
-                                <div>Spain</div>
-                                <div>Us</div>
-                                <div>hong kong</div>
+        <div class="overlay" @click="closeFilters"></div>
+            <div class="search-opts">
+                <button>
+                    <p>Stays</p>
+                </button>
+                <button>
+                    <p>Experiences</p>
+                </button>
+                <button>
+                    <p>Online Experiences</p>
+                </button>
+            </div>
+            <div class="modal-filter-choices-layout">
+                <div class="filter-modal-where-container">
+                    <p @click="showModal = true,showWho = false">Where</p>
+                    <input @click="showModal = true,showWho = false" v-model="where" @input="emit" type="text" name="query"
+                        placeholder="Search destinations" aria-describedby="bigsearch-query-location-description"
+                        aria-autocomplete="none" autocomplete="off" autocorrect="off">
+    
+                    <div class="modal-vue">
+    
+                        <!-- <div class="overlay" v-if="showModal" @click="showModal = false"></div> -->
+    
+                        <div class="modal" v-if="showModal">
+                            <button class="close" @click="showModal = false">x</button>
+                            <div class="searchs">
+                                <div class="resent-search">
+                                    <p>Resent searchs</p>
+                                    <div>New York</div>
+                                    <div>Spain</div>
+                                    <div>Us</div>
+                                    <div>hong kong</div>
+                                </div>
+                                <div class="search-region">
+                                    <p>Search by region</p>
+                                    <div class="imgs-container">
+                                        <div v-for="(label, idx) in countryLabels" :key="indx" @click="setWhere(label)">
+                                            <img v-if="label != 'Im flexiable'" :src="getImgUrl(label)" alt="" />
+                                            <img v-else src="../assets/img/countries/world.png" alt="" />
+                                            <p>{{ label }}</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="search-region">
-                                <p>Search by region</p>
-                                <div class="imgs-container">
-                                    <div v-for="(label, idx) in countryLabels" :key="indx" @click="setWhere(label)">
-                                        <img v-if="label != 'Im flexiable'" :src="getImgUrl(label)" alt="" />
-                                        <img v-else src="../assets/img/countries/world.png" alt="" />
-                                        <p>{{ label }}</p>
+                        </div>
+    
+                    </div>
+    
+                </div>
+                <div class="filter-seperator"></div>
+                <div class="check-in-out-container">
+                    <div class="check-in-container" role="button" @click="showModal = false">
+                        <p>Check in</p>
+                        <!-- <span>Add dates</span> -->
+                        <Datepicker @click="showWho = false" v-if="!show" @blur="setDate('start')" hideInputIcon
+                            :autoPosition="false" :enableTimePicker="false" v-model="startDate" range multiCalendars
+                            placeholder="Add dates" :minDate="new Date()" textInput autoApply  closeOnScroll/>
+                        <p v-if="show" @click="clearDates">{{ startDate }}</p>
+                    </div>
+                    <div class="filter-seperator"></div>
+                    <div class="check-out-container" @click="showModal = false">
+                        <p>Check out</p>
+                        <Datepicker @click="showWho = false" v-if="!show" @blur="setDate('end')" hideInputIcon
+                            :autoPosition="false" :enableTimePicker="false" v-model="endDate" range multiCalendars
+                            placeholder="Add dates" :minDate="new Date()" textInput autoApply  closeOnScroll/>
+                        <p v-if="show" @click="clearDates">{{ endDate }}</p>
+                    </div>
+                </div>
+                <div class="filter-seperator"></div>
+                <div class="filter-who-container" @click.self="showWho = !showWho,showModal = false">
+                    <p @click.self="showWho = !showWho,showModal = false">Who</p>
+                    <span @click.self="showWho = !showWho,showModal = false">Add guests</span>
+                    <div v-if="showWho" @click="showWho = false">
+                        <div class="guests-modal" @click.self="showWho = !showWho">
+                            <div class="modal-g-container">
+                                <div class="adults-filter-container">
+                                    <div>
+                                        <span>Adults</span>
+                                        <span>Ages 13 or above</span>
+                                    </div>
+                                    <div>
+                                        <button type="button" class="g-modal-buttons" :disabled="guests.adults == 0">
+                                            <span class="material-icons-sharp">-</span>
+                                        </button>
+                                        <span class="guests-num">{{ guests.adults }}</span>
+                                        <button type="button" class="g-modal-buttons">
+                                            <span class="material-icons-sharp">+</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="children-filter-container">
+                                    <div>
+                                        <span>Children</span>
+                                        <span>Ages 2–12</span>
+                                    </div>
+                                    <div>
+                                        <button type="button" class="g-modal-buttons" :disabled="guests.children == 0">
+                                            <span class="material-icons-sharp">-</span>
+                                        </button>
+                                        <span class="guests-num">{{ guests.children }}</span>
+                                        <button type="button" class="g-modal-buttons">
+                                            <span class="material-icons-sharp">+</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="babies-filter-container">
+                                    <div>
+                                        <span>Infants</span>
+                                        <span>Under 2</span>
+                                    </div>
+                                    <div>
+                                        <button type="button" class="g-modal-buttons" :disabled="guests.infants == 0">
+                                            <span class="material-icons-sharp">-</span>
+                                        </button>
+                                        <span class="guests-num">{{ guests.infants }}</span>
+                                        <button type="button" class="g-modal-buttons">
+                                            <span class="material-icons-sharp">+</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="pets-filter-container">
+                                    <div>
+                                        <span>Pets</span>
+                                        <span>(doesn't include service animals)</span>
+                                    </div>
+                                    <div>
+                                        <button type="button" class="g-modal-buttons" :disabled="guests.pets == 0">
+                                            <span class="material-icons-sharp">-</span>
+                                        </button>
+                                        <span class="guests-num">{{ guests.pets }}</span>
+                                        <button type="button" class="g-modal-buttons">
+                                            <span class="material-icons-sharp">+</span>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
-
-            </div>
-            <div class="filter-seperator"></div>
-            <div class="check-in-out-container">
-                <div class="check-in-container" role="button" @click="showModal = false">
-                    <p>Check in</p>
-                    <!-- <span>Add dates</span> -->
-                    <Datepicker @click="showWho = false" v-if="!show" @blur="setDate('start')" hideInputIcon
-                        :autoPosition="false" :enableTimePicker="false" v-model="startDate" range multiCalendars
-                        placeholder="Add dates" :minDate="new Date()" textInput autoApply  closeOnScroll/>
-                    <p v-if="show" @click="clearDates">{{ startDate }}</p>
-                </div>
-                <div class="filter-seperator"></div>
-                <div class="check-out-container" @click="showModal = false">
-                    <p>Check out</p>
-                    <Datepicker @click="showWho = false" v-if="!show" @blur="setDate('end')" hideInputIcon
-                        :autoPosition="false" :enableTimePicker="false" v-model="endDate" range multiCalendars
-                        placeholder="Add dates" :minDate="new Date()" textInput autoApply  closeOnScroll/>
-                    <p v-if="show" @click="clearDates">{{ endDate }}</p>
-                </div>
-            </div>
-            <div class="filter-seperator"></div>
-            <div class="filter-who-container" @click.self="showWho = !showWho,showModal = false">
-                <p @click.self="showWho = !showWho,showModal = false">Who</p>
-                <span @click.self="showWho = !showWho,showModal = false">Add guests</span>
-                <div v-if="showWho" class="overlay" @click="showWho = false">
-                    <div class="guests-modal" @click.self="showWho = !showWho">
-                        <div class="modal-g-container">
-                            <div class="adults-filter-container">
-                                <div>
-                                    <span>Adults</span>
-                                    <span>Ages 13 or above</span>
-                                </div>
-                                <div>
-                                    <button type="button" class="g-modal-buttons" :disabled="guests.adults == 0">
-                                        <span class="material-icons-sharp">-</span>
-                                    </button>
-                                    <span class="guests-num">{{ guests.adults }}</span>
-                                    <button type="button" class="g-modal-buttons">
-                                        <span class="material-icons-sharp">+</span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="children-filter-container">
-                                <div>
-                                    <span>Children</span>
-                                    <span>Ages 2–12</span>
-                                </div>
-                                <div>
-                                    <button type="button" class="g-modal-buttons" :disabled="guests.children == 0">
-                                        <span class="material-icons-sharp">-</span>
-                                    </button>
-                                    <span class="guests-num">{{ guests.children }}</span>
-                                    <button type="button" class="g-modal-buttons">
-                                        <span class="material-icons-sharp">+</span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="babies-filter-container">
-                                <div>
-                                    <span>Infants</span>
-                                    <span>Under 2</span>
-                                </div>
-                                <div>
-                                    <button type="button" class="g-modal-buttons" :disabled="guests.infants == 0">
-                                        <span class="material-icons-sharp">-</span>
-                                    </button>
-                                    <span class="guests-num">{{ guests.infants }}</span>
-                                    <button type="button" class="g-modal-buttons">
-                                        <span class="material-icons-sharp">+</span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="pets-filter-container">
-                                <div>
-                                    <span>Pets</span>
-                                    <span>(doesn't include service animals)</span>
-                                </div>
-                                <div>
-                                    <button type="button" class="g-modal-buttons" :disabled="guests.pets == 0">
-                                        <span class="material-icons-sharp">-</span>
-                                    </button>
-                                    <span class="guests-num">{{ guests.pets }}</span>
-                                    <button type="button" class="g-modal-buttons">
-                                        <span class="material-icons-sharp">+</span>
-                                    </button>
-                                </div>
-                            </div>
+                <div class="search-container">
+                    <button @click.prevent="setFilter">
+                        <div class="modal-search">
+                            <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                                role="presentation" focusable="false"
+                                style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;">
+                                <g fill="none">
+                                    <path
+                                        d="m13 24c6.0751322 0 11-4.9248678 11-11 0-6.07513225-4.9248678-11-11-11-6.07513225 0-11 4.92486775-11 11 0 6.0751322 4.92486775 11 11 11zm8-3 9 9">
+                                    </path>
+                                </g>
+                            </svg>
                         </div>
-                    </div>
+                        <p>Search</p>
+                    </button>
                 </div>
             </div>
-            <div class="search-container">
-                <button @click.prevent="setFilter">
-                    <div class="modal-search">
-                        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-                            role="presentation" focusable="false"
-                            style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 5.33333; overflow: visible;">
-                            <g fill="none">
-                                <path
-                                    d="m13 24c6.0751322 0 11-4.9248678 11-11 0-6.07513225-4.9248678-11-11-11-6.07513225 0-11 4.92486775-11 11 0 6.0751322 4.92486775 11 11 11zm8-3 9 9">
-                                </path>
-                            </g>
-                        </svg>
-                    </div>
-                    <p>Search</p>
-                </button>
-            </div>
-        </div>
     </form>
     <!-- <input v-model="where" @input="emit" type="text"> -->
 </template>
@@ -220,6 +221,11 @@ export default {
                 this.where = country
             }
                 this.emit()
+        },
+        closeFilters(){
+            this.show =  false
+            this.showWho= false
+            this.showModal= false
         }
     },
     computed: {
