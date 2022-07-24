@@ -3,7 +3,9 @@
 
   &>*:first-child {
     margin: 0;
-    margin-bottom: 31px;
+    margin-bottom: 27px;
+    padding-top: 48px;
+    border-top: 1px solid rgb(221, 221, 221);
   }
 }
 
@@ -107,19 +109,21 @@
   margin-top: 24px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 103px;
-  padding: 0 8px;
+  gap: 30px;
+  // להחליף ל10 כשמסדרים עם הריד מור
+  column-gap: 15px;
   padding-left: 0;
+  margin-bottom: 53px;
 
   li {
-    // margin-right: 8.3%;
     padding: 0 8px;
-  padding-left: 0;
+    padding-left: 0;
+    width: 30vw;
   }
 }
 
 progress {
-  height: 5px;
+  height: 4px;
   display: block;
   width: 8vw;
 }
@@ -132,13 +136,13 @@ label {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  column-gap: 103px;
+  column-gap: 15px;
 
   &>* {
-    padding: 0 8px;
-  padding-left: 0;
+    width: 30vw;
+    padding-left: 0;
     display: flex;
-    margin-bottom: 10px;
+    margin-bottom: 13px;
   }
 
   &>*>*:nth-child(2) {
