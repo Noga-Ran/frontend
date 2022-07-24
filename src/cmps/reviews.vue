@@ -19,7 +19,7 @@
     <ul class="reviews-list">
       <li v-for="review in stayReviewsSliced" :key="review">
         <div class="review-deatails-container">
-          <img class="profile-img" src="../assets/img/demo-profile-img.jpg" alt="" />
+          <img class="profile-img" src="../assets/img/demo-profile-img.svg" alt="" />
           <div class="review-info">
             <span class="review-name">{{ review.by.fullname }}</span>
             <span class="review-time">{{ formateTime(review.at) }}</span>
@@ -67,7 +67,7 @@
             <ul class="reviews-list">
               <li v-for="review in stay.reviews" :key="review">
                 <div class="review-deatails-container">
-                  <img class="profile-img" src="../assets/img/demo-profile-img.jpg" alt="" />
+                  <img class="profile-img" src="../assets/img/demo-profile-img.svg" alt="" />
                   <div class="review-name-and-time">
                     <span class="review-name">{{ review.by.fullname }}</span>
                     <span class="review-time">{{ formateTime(review.at) }}</span>

@@ -15,17 +15,17 @@
                     <img class="globe-img" src="../assets/img/globe.svg" alt="">
                 </div>
                 <section @click.prevent="showMenu = !showMenu">
-                <div class="header-user-options">
-                    <section>
-                        <img class="navburger-svg" src="../assets/img/navburger.svg" alt="">
+                    <div class="header-user-options">
+                        <section>
+                            <img class="navburger-svg" src="../assets/img/navburger.svg" alt="">
+                        </section>
+                        <section class="header-profile-img">
+                            <img src="../assets/img/demo-profile-img.svg" alt="">
+                        </section>
+                    </div>
+                    <section class="user-menu" v-if="showMenu">
+                        <p @click.stop="goToWishList">Wish List</p>
                     </section>
-                    <section class="header-profile-img">
-                        <img src="../assets/img/demo-profile-img.jpg" alt="">
-                    </section>
-                </div>
-                <section class="user-menu" v-if="showMenu">
-                    <p @click.stop="goToWishList">Wish List</p>
-                </section>
                 </section>
             </div>
         </section>
