@@ -1,5 +1,10 @@
 .reviews-container {
   margin-top: 70px;
+
+  &>*:first-child {
+    margin: 0;
+    margin-bottom: 31px;
+  }
 }
 
 .profile-img {
@@ -33,6 +38,7 @@
   position: fixed;
   inset: 0;
 }
+
 ::v-deep .modal-content {
   display: flex;
   flex-direction: column;
@@ -42,6 +48,7 @@
   border-radius: 0.25rem;
   background: #fff;
 }
+
 .modal__title {
   font-size: 1em;
 }
@@ -50,6 +57,7 @@
   border-color: #2d3748;
   background-color: #1a202c;
 }
+
 .modal__close {
   position: absolute;
   top: 0.5rem;
@@ -74,38 +82,46 @@
 }
 
 .review-deatails-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 18px;
 
-  & > *:first-child {
-    grid-column: 1;
-    grid-row: 1/3;
+  div {
+    margin-left: 12px;
+    display: flex;
+    flex-direction: column;
+
+    &>* {
+      height: fit-content;
+    }
   }
 
-  & > *:nth-child(2) {
-    grid-column: 2;
-    grid-row: 1;
+  img {
+    width: fit-content;
   }
 
-  & > *:nth-child(3) {
-    grid-column: 2;
-    grid-row: 2;
-  }
 }
 
 .reviews-list {
+  margin: 0;
+  margin-top: 24px;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 103px;
+  padding: 0 8px;
+  padding-left: 0;
+
   li {
-    width: 41%;
-    margin-right: 8.3%;
+    // margin-right: 8.3%;
+    padding: 0 8px;
+  padding-left: 0;
   }
 }
 
 progress {
+  height: 5px;
   display: block;
-  margin: 0px auto 20px auto;
+  width: 8vw;
 }
 
 label {
@@ -116,16 +132,20 @@ label {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  column-gap: 70px;
+  column-gap: 103px;
 
-  & > * {
+  &>* {
+    padding: 0 8px;
+  padding-left: 0;
     display: flex;
+    margin-bottom: 10px;
   }
 
-  & > * > *:nth-child(2) {
+  &>*>*:nth-child(2) {
     display: flex;
     margin-left: auto;
     gap: 10px;
+    align-items: center;
   }
 }
 
@@ -134,4 +154,13 @@ label {
   background-color: unset;
   cursor: pointer;
   border: unset;
+}
+
+.show-more-review-container {
+  margin-top: 8px;
+}
+
+.review-score-display {
+  font-size: 12px;
+  font-family: circular-bold;
 }
