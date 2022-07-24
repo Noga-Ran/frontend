@@ -102,3 +102,36 @@
     margin-right: 8.3%;
   }
 }
+
+progress {
+  display: block;
+  margin: 0px auto 20px auto;
+}
+
+label {
+  margin-top: 30px;
+}
+
+.review-scores-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  column-gap: 70px;
+
+  & > * {
+    display: flex;
+  }
+
+  & > * > *:nth-child(2) {
+    display: flex;
+    margin-left: auto;
+    gap: 10px;
+  }
+}
+
+.show-more-review-btn {
+  text-decoration: underline;
+  background-color: unset;
+  cursor: pointer;
+  border: unset;
+}

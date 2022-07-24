@@ -1,20 +1,20 @@
 
 <template>
-    <section @click="showDetails" class="preview-container">
+    <section @click.prevent="showDetails" class="preview-container">
         <Transition name="fade">
-                <el-carousel v-if="this.isLoad" class="preview-img-container" interval="" trigger="click">
-                    <el-carousel-item v-for="item in 5" :key="item">
-                        <svg class="heart-svg"
-                         @click="toggleFavorite" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
-                            aria-hidden="true" role="presentation" focusable="false"
-                            style="display: block; fill: rgba(0, 0, 0, 0.5); height: 24px; width: 24px; stroke: white; stroke-width: 2; overflow: visible;">
-                            <path
-                                d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z">
-                            </path>
-                        </svg>
-                        <img :src='getImgUrl(item)' alt=''>
-                    </el-carousel-item>
-                </el-carousel>
+            <el-carousel v-if="this.isLoad" class="preview-img-container" interval="" trigger="click">
+                <el-carousel-item v-for="item in 5" :key="item">
+                    <svg class="heart-svg" @click.stop="toggleFavorite" viewBox="0 0 32 32"
+                        xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"
+                        style="display: block; height: 24px; width: 24px; stroke: white; stroke-width: 2; overflow: visible;"
+                        v-bind:style="[isFav ? { fill: '#FF385C' } : { fill: '#00000080' }]">
+                        <path
+                            d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z">
+                        </path>
+                    </svg>
+                    <img :src='getImgUrl(item)' alt=''>
+                </el-carousel-item>
+            </el-carousel>
 
         </transition>
         <div v-if="!this.isLoad" class="demo-img">
@@ -60,6 +60,7 @@ export default {
             TlvCoords: { lat: 32.109333, lang: 34.855499 },
             isLoad: false,
             distanceFromStay: null,
+            isFav: false,
         }
     },
     computed: {
@@ -97,18 +98,38 @@ export default {
             const formatted = numberFormatter.format(num);
             return formatted;
         },
-        showDetails() {
+        showDetails(event) {
+            // console.log(event.target);
+            // var targetName = event.targe
+            // if(targetName) {
+            //     console.log('heart')
+            //     return
+            // }else{
+            //     console.log(targetName);
+            // }
             window.open(`/#/stay/${this.currStay._id}`, '_blank');
 
             // let routeData = this.$router.resolve({ name: 'stay-details', query: { id: this.currStay._id } });
             // window.open(routeData.href, '_blank');
             // this.$router.push(`/stay/${this.currStay._id}`)
+        },
+        toggleFavorite() {
+            this.isFav = !this.isFav
+
+            if (this.isFav) {
+                this.$store.dispatch({ type: "addWishStay", stay: this.currStay })
+            } else {
+                this.$store.dispatch({ type: "removeWishStay", stayId: this.currStay._id })
+            }
         }
     },
     created() {
         var distanceInKm = this.getDistanceInKm().toFixed(0)
         this.distanceFromStay = this.formatNumber(distanceInKm)
         setTimeout(() => this.isLoad = true, 550)
+        
+        var id = this.currStay._id
+        this.isFav = this.$store.getters.wishListById(id)
     }
 }
 </script>

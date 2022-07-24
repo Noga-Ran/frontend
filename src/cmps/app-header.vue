@@ -1,13 +1,12 @@
 
 <template>
     <section class="header-layout">
-        <section :class="{ 'header-container-alt': isSearch, 'header-container': !isSearch }"
-        class="details-padding">
+        <section :class="{ 'header-container-alt': isSearch, 'header-container': !isSearch }" class="details-padding">
             <div class="logo-container" :class="{ 'grid-area-logo': isSearch }" @click.prevent="goHome">
                 <img src="../../public/favicon.png" alt="">
                 <p>skybnb</p>
             </div>
-            <filter-cmp @search="setSearch" @filter="setFilter" @date="setDate" :isSearch="isSearch"/>
+            <filter-cmp @search="setSearch" @filter="setFilter" @date="setDate" :isSearch="isSearch" />
             <div class="header-tools-container" :class="{ 'grid-area-user': isSearch }">
                 <div>
                     Become a Host
@@ -15,13 +14,18 @@
                 <div>
                     <img class="globe-img" src="../assets/img/globe.svg" alt="">
                 </div>
-                <section class="header-user-options">
+                <section @click.prevent="showMenu = !showMenu">
+                <div class="header-user-options">
                     <section>
                         <img class="navburger-svg" src="../assets/img/navburger.svg" alt="">
                     </section>
                     <section class="header-profile-img">
                         <img src="../assets/img/demo-profile-img.jpg" alt="">
                     </section>
+                </div>
+                <section class="user-menu" v-if="showMenu">
+                    <p @click.stop="goToWishList">Wish List</p>
+                </section>
                 </section>
             </div>
         </section>
@@ -37,6 +41,7 @@ export default {
     data() {
         return {
             isSearch: false,
+            showMenu: false
         }
     },
     methods: {
@@ -50,8 +55,11 @@ export default {
         goHome() {
             this.$router.push(`/`)
         },
-        setSearch(isSearching){
+        setSearch(isSearching) {
             this.isSearch = isSearching
+        },
+        goToWishList() {
+            window.open(`/#/wishList`, '_blank')
         }
     },
     components: {
