@@ -432,9 +432,9 @@
 		"roomType": "Private room",
 		"bedType": "Real Bed",
 		"cancellationPolicy": "moderate",
-		"capacity": 2,
-		"bedrooms": 1,
-		"beds": 1,
+		"capacity": 6,
+		"bedrooms": 3,
+		"beds": 3,
 		"numOfReviews": 4,
 		"amenities": [
 			"TV",
