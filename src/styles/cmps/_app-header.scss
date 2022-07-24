@@ -152,8 +152,7 @@
     font-size: 14px;
     color: #222222;
     margin: auto;
-    padding-bottom: 3px;
-    padding-left: 12px;
+    padding-right: 7px;
 
     &:nth-child(3) {
         color: #717171;
@@ -200,11 +199,15 @@
         }
 
         &:first-of-type {
+            padding: 0;
+            padding-right: 5px;
             line-height: 18px;
-            font-size: 14px;
             display: flex;
+            margin-right: -3px;
         }
+
     }
+
 }
 
 
@@ -225,7 +228,7 @@
     }
 
     .navburger-svg {
-        margin: 2px 0 0 9px;
+        margin: 4px 12px 0 12px;
     }
 }
 
@@ -233,15 +236,13 @@
     display: flex;
 
     img {
-        margin-left: 11px;
-        margin-right: 8px;
         height: 30px;
         width: 30px;
         border-radius: 50%;
     }
 }
 
-.user-menu{
+.user-menu {
     border-radius: 5px;
     width: 100px;
     background-color: white;
@@ -250,8 +251,17 @@
     padding: 10px;
     cursor: pointer;
 
-    p{
+    p {
         padding: 0;
-        margin:0;
+        margin: 0;
     }
+}
+
+.header-user-options {
+    padding: 0 6px;
+}
+
+.become-a-host {
+    padding-right: 12px !important;
+    font-size: 14.5px;
 }
