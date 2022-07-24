@@ -1,5 +1,8 @@
 .stay-amenities {
   padding-top: 48px;
+  // border: 1px solid rgb(221, 221, 221);
+  border-left: 0px;
+  border-right: 0px;
 }
 
 .show-amenities-btn {
@@ -44,12 +47,15 @@
   border-color: #2d3748;
   background-color: #1a202c;
 }
-.close-modal{
+
+.close-modal {
   height: 72px;
-  svg{
+
+  svg {
     padding: 0;
   }
 }
+
 .modal__close {
   padding: 0;
   margin: 24px;
@@ -61,7 +67,8 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  &:hover{
+
+  &:hover {
     cursor: pointer;
     background-color: #f7f7f7;
   }
@@ -69,6 +76,7 @@
 
 .seperating-line {
   margin: 0;
+
 }
 
 .amenities-list-main {
@@ -124,7 +132,8 @@
   height: 24px;
   width: 24px;
 }
-.amenitiesModal{
+
+.amenitiesModal {
   margin-bottom: 50px;
   // להוריד
 }

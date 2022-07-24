@@ -53,8 +53,8 @@
             </section>
         </div>
     </div>
-    <div v-else>
-        <h1>Create your first wishlist</h1>
+    <div class="alt-wish-conatiner" v-else>
+        <h1>Nothing saved yet</h1>
         <p>As you search, tap the heart icon to save your favorite places to stay or things to do to a wishlist.</p>
         <router-link to="/">start exploring</router-link>
     </div>
