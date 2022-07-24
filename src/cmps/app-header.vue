@@ -8,7 +8,7 @@
             </div>
             <filter-cmp @search="setSearch" @filter="setFilter" @date="setDate" :isSearch="isSearch" />
             <div class="header-tools-container" :class="{ 'grid-area-user': isSearch }">
-                <div>
+                <div class="become-a-host">
                     Become a Host
                 </div>
                 <div>

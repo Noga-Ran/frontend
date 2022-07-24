@@ -2,7 +2,7 @@
 <template>
     <section @click.prevent="showDetails" class="preview-container">
         <Transition name="fade">
-            <el-carousel v-if="this.isLoad" class="preview-img-container" autoplay="false" trigger="click">
+            <el-carousel v-if="this.isLoad" class="preview-img-container" :autoplay="false" trigger="click">
                 <el-carousel-item v-for="item in 5" :key="item">
                     <svg class="heart-svg" @click.stop="toggleFavorite" viewBox="0 0 32 32"
                         xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"

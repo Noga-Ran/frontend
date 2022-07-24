@@ -102,14 +102,96 @@
           </h2>
           <div class="stay-contains">
             {{ stay.capacity }} guests &middot {{ stay.bedrooms }} bedrooms
-            &middot
-
-            {{ stay.beds }} beds
+            &middot {{ stay.beds }} beds &middot {{ stay.bathrooms }} baths
           </div>
-          <hr class="seperating-line" />
+          <span>
+            <!-- <img src="{{stay.host.pictureUrl}}" alt="" /> -->
+            <img
+              class="host-img-profile"
+              src="../assets/img/demo-profile-img.jpg"
+              alt=""
+            />
+          </span>
+          <section class="stay-beds">
+            <div class="beds-heading">Where you'll sleep</div>
+            <div class="beds-layout">
+              <div class="bed-container">
+                <div class="bed">
+                  <svg
+                    viewBox="0 0 32 32"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                    role="presentation"
+                    focusable="false"
+                    style="
+                      display: block;
+                      height: 24px;
+                      width: 24px;
+                      fill: currentcolor;
+                    "
+                  >
+                    <path
+                      d="M28 4a2 2 0 0 1 1.995 1.85L30 6v7.839l1.846 5.537a3 3 0 0 1 .115.468l.03.24.009.24V30h-2v-2H2v2H0v-9.675a3 3 0 0 1 .087-.717l.067-.232L2 13.836V6a2 2 0 0 1 1.697-1.977l.154-.018L4 4zm2 18H2v4h28zm-1.388-6H3.387l-1.333 4h27.891zM28 6H4v8h2v-4a2 2 0 0 1 1.85-1.995L8 8h16a2 2 0 0 1 1.995 1.85L26 10v4h2zm-13 4H8v4h7zm9 0h-7v4h7z"
+                    ></path>
+                  </svg>
+                  <div class="bedroom-num">bedroom 1</div>
+                  <div class="bedroom-type">king size </div>
+                </div>
+              </div>
+              <div class="bed-container">
+                <div class="bed">
+                  <svg
+                    viewBox="0 0 32 32"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                    role="presentation"
+                    focusable="false"
+                    style="
+                      display: block;
+                      height: 24px;
+                      width: 24px;
+                      fill: currentcolor;
+                    "
+                  >
+                    <path
+                      d="M28 4a2 2 0 0 1 1.995 1.85L30 6v7.839l1.846 5.537a3 3 0 0 1 .115.468l.03.24.009.24V30h-2v-2H2v2H0v-9.675a3 3 0 0 1 .087-.717l.067-.232L2 13.836V6a2 2 0 0 1 1.697-1.977l.154-.018L4 4zm2 18H2v4h28zm-1.388-6H3.387l-1.333 4h27.891zM28 6H4v8h2v-4a2 2 0 0 1 1.85-1.995L8 8h16a2 2 0 0 1 1.995 1.85L26 10v4h2zm-13 4H8v4h7zm9 0h-7v4h7z"
+                    ></path>
+                  </svg>
+                  <div class="bedroom-num">bedroom 2</div>
+                  <div class="bedroom-type">king size </div>
+                </div>
+              </div>
+              <div class="bed-container">
+                <div class="bed">
+                  <svg
+                    viewBox="0 0 32 32"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                    role="presentation"
+                    focusable="false"
+                    style="
+                      display: block;
+                      height: 24px;
+                      width: 24px;
+                      fill: currentcolor;
+                    "
+                  >
+                    <path
+                      d="M28 4a2 2 0 0 1 1.995 1.85L30 6v7.839l1.846 5.537a3 3 0 0 1 .115.468l.03.24.009.24V30h-2v-2H2v2H0v-9.675a3 3 0 0 1 .087-.717l.067-.232L2 13.836V6a2 2 0 0 1 1.697-1.977l.154-.018L4 4zm2 18H2v4h28zm-1.388-6H3.387l-1.333 4h27.891zM28 6H4v8h2v-4a2 2 0 0 1 1.85-1.995L8 8h16a2 2 0 0 1 1.995 1.85L26 10v4h2zm-13 4H8v4h7zm9 0h-7v4h7z"
+                    ></path>
+                  </svg>
+                  <div class="bedroom-num">bedroom 3</div>
+                  <div class="bedroom-type">king size </div>
+                </div>
+              </div>
+            </div>
+          </section>
           <section class="stay-amenities">
             <aminities :stayAmenities="stay.amenities"></aminities>
           </section>
+          <!-- <section class="stay-summary">
+            {{ stay.summary }}
+          </section> -->
         </section>
         <section class="info-right">
           <div class="trip-setting-cmp-container">
