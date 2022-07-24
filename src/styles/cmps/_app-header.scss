@@ -240,3 +240,18 @@
         border-radius: 50%;
     }
 }
+
+.user-menu{
+    border-radius: 5px;
+    width: 100px;
+    background-color: white;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 18%);
+    position: fixed;
+    padding: 10px;
+    cursor: pointer;
+
+    p{
+        padding: 0;
+        margin:0;
+    }
+}
