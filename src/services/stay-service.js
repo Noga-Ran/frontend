@@ -18,7 +18,7 @@ async function query(filterBy = {}) {
     // return await httpService.get(ENDPOINT, filterBy)
     // // return axios.get(BASE_URL, { params: { filterBy } }).then((res) => res.data)
     var filteredStays =  await storageService.query(KEY)
-    return filteredStays = filtering(filteredStays, filterBy)
+    return filtering(filteredStays, filterBy)
 }
 
 function filtering(filteredStays, filterBy){

@@ -163,7 +163,8 @@
 			"417.jpeg",
 			"418.jpeg",
 			"419.jpeg"
-		]
+		],
+		"label": "Amazing views"
 	},
 	{
 		"name": "Sunflower House",
@@ -419,7 +420,8 @@
 			"403.jpeg",
 			"404.jpeg",
 			"400.jpeg"
-		]
+		],
+		"label": "Amazing views"
 	},
 	{
 		"name": "Belle chambre à côté Metro Papineau",
@@ -534,7 +536,8 @@
 			"412.jpeg",
 			"413.jpeg",
 			"414.jpeg"
-		]
+		],
+		"label": "Amazing views"
 	},
 	{
 		"name": "Cavo Dago Villa",
@@ -810,10 +813,11 @@
 			"407.jpeg",
 			"408.jpeg",
 			"409.jpeg"
-		]
+		],
+		"label": "Amazing views"
 	},
 	{
-		"label": "Campings",
+		"label": "Amazing views",
 		"name": "Habitación centro de Barcelona",
 		"summary": "Mi piso está en el centro de Barcelona. Cerca del metro, las ramblas, los museos, el Portal del Ángel, Plaza Cataluña. Mi alojamiento es bueno para turistas, aventureros, y viajeros de negocios....y tiene ascensor.",
 		"interaction": "Estaré disponible para cualquier duda o problema que se os presente. Conozco muy bien la ciudad y os puedo recomendar sitios.",
@@ -909,7 +913,7 @@
 		]
 	},
 	{
-		"label": "Campings",
+		"label": "Amazing views",
 		"name": "DOUBLE ROOM IN THE HEART OF BCN",
 		"summary": "Lit room with balcony. The apartment is in the center, just meters from the Palau de la Musica Catalana. Well connected, a few minutes from Las Ramblas and the Born. Very close to the beach and Ciutadella Park",
 		"interaction": "Te proporcionaré sábanas y toallas, para que no te preocupes de traerlas tú.",
@@ -1186,7 +1190,7 @@
 		]
 	},
 	{
-		"label": "Campings",
+		"label": "Amazing views",
 		"name": "Home, Sweet, Harlem. Welcome!",
 		"summary": "Welcome! Upgrades Added as of January 2018 This listing is located in the Spanish Harlem Section of Manhattan. I offer a cozy apartment that has great transportation in and out the city! The area has a lot of ethnic restaurants and a lot of local, active residents. This residence is great for a quick, inexpensive stay in New York whether its for business, travel, or personal purposes. I am glad to welcome all guests!",
 		"interaction": "I am great with communicating with my guest and making sure everyone is comfortable as possible. The apartment is yours to use but I am only a phone call away!",
@@ -1462,7 +1466,7 @@
 		]
 	},
 	{
-		"label": "Campings",
+		"label": "Amazing views",
 		"name": "Heroísmo IV",
 		"summary": "If the dates you wish are not available, we have other options in the same location. You can find them on my profile. My goal is for you to have your days with the most comfort i can propose. I want you to taste all the feelings in Porto, as our food, as our best places, our best pointviews. I just love to help you enjoying this beautiful city :)",
 		"interaction": "I'm always available to help as much as I can for my guests to spend a wonderful time in Porto.",
