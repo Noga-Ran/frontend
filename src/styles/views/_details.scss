@@ -147,9 +147,54 @@
   padding-bottom: 48px;
 }
 
-.stay-bads {
+.stay-beds {
   padding: 48px 0;
   border: 1px solid rgb(221, 221, 221);
   border-left: 0;
   border-right: 0;
+
+}
+
+.beds-layout {
+  display: grid;
+  column-gap: 16px;
+  grid-auto-flow: column;
+
+  >* {
+    display: flex;
+    flex-direction: row;
+    width: 15vw;
+    max-width: 207px;
+    height: 143px;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 15px;
+
+    &:first-child {
+      margin-bottom: 8px;
+    }
+
+    >* {
+      padding: 24px;
+    }
+  }
+
+  svg {
+    margin-bottom: 16px;
+  }
+}
+
+.beds-heading {
+  margin-bottom: 24px;
+  font-size: 24px;
+  font-family: circular;
+  color: #222222;
+}
+
+.bedroom-num {
+  font-size: 16px;
+  font-family: circular-bold;
+}
+
+.bedroom-type {
+  font-size: 14px;
 }
