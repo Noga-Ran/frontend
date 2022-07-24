@@ -29,7 +29,6 @@
   grid-template-columns: 2fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   gap: 0.5em;
-  margin-bottom: 48px;
   padding-top: 24px;
 
   &>* {
@@ -130,7 +129,9 @@
   margin-left: 6px;
   text-decoration: none;
 }
-
+.info-left{
+  margin-top: 48px;
+}
 .info-right {
   display: flex;
   justify-content: end;

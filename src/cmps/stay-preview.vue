@@ -2,7 +2,7 @@
 <template>
     <section @click.prevent="showDetails" class="preview-container">
         <Transition name="fade">
-            <el-carousel v-if="this.isLoad" class="preview-img-container" interval="" trigger="click">
+            <el-carousel v-if="this.isLoad" class="preview-img-container" autoplay="false" trigger="click">
                 <el-carousel-item v-for="item in 5" :key="item">
                     <svg class="heart-svg" @click.stop="toggleFavorite" viewBox="0 0 32 32"
                         xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"
@@ -35,7 +35,7 @@
                 </div>
             </div>
             <div class="preview-distance">{{ this.distanceFromStay }} kilometers away</div>
-            <div class="preview-available-dates">oct.29-nov.5</div>
+            <div class="preview-available-dates">{{ this.getRandomDates() }}</div>
             <div class="preview-price"><span>${{ this.currStay.price }}</span> night</div>
         </section>
         <section v-else class="demo-lines">
@@ -71,7 +71,7 @@ export default {
         getRating() {
             const { rating } = this.currStay.reviewScores
             return (rating / 20).toFixed(1)
-        },
+        }
     },
     methods: {
         getDistanceInKm() {
@@ -99,19 +99,7 @@ export default {
             return formatted;
         },
         showDetails(event) {
-            // console.log(event.target);
-            // var targetName = event.targe
-            // if(targetName) {
-            //     console.log('heart')
-            //     return
-            // }else{
-            //     console.log(targetName);
-            // }
             window.open(`/#/stay/${this.currStay._id}`, '_blank');
-
-            // let routeData = this.$router.resolve({ name: 'stay-details', query: { id: this.currStay._id } });
-            // window.open(routeData.href, '_blank');
-            // this.$router.push(`/stay/${this.currStay._id}`)
         },
         toggleFavorite() {
             this.isFav = !this.isFav
@@ -121,13 +109,20 @@ export default {
             } else {
                 this.$store.dispatch({ type: "removeWishStay", stayId: this.currStay._id })
             }
+        },
+        getRandomDates() {
+            return 'jul ' + this.getRandomDay(24) + '- aug ' + this.getRandomDay(2)
+        },
+        getRandomDay(min) {
+            var max = 29
+            return Math.floor(Math.random() * (max - min + 1)) + min
         }
     },
     created() {
         var distanceInKm = this.getDistanceInKm().toFixed(0)
         this.distanceFromStay = this.formatNumber(distanceInKm)
         setTimeout(() => this.isLoad = true, 550)
-        
+
         var id = this.currStay._id
         this.isFav = this.$store.getters.wishListById(id)
     }
