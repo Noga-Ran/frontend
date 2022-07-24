@@ -20,75 +20,9 @@
       <span>&nbsp &middot &nbsp </span>
       <span class="review-count">{{ stay.numOfReviews }} reviews </span>
     </h2>
-
-    <section class="review-scores-container">
-      <div class="cleanliness">
-        <span> Cleanliness</span>
-        <span>
-          <span class="tryone">
-            <progress
-              height="500"
-              :value="scoreToDisplay('cleanliness')"
-              min="0"
-              max="10"
-            ></progress>
-          </span>
-          <span class="review-score-display">{{
-            scoreToDisplay('cleanliness')
-          }}</span></span
-        >
-      </div>
-      <div class="communication">
-        <span>Communication</span>
-        <span>
-          <progress value="10" min="0" max="10"></progress>
-          <span class="review-score-display">{{
-            scoreToDisplay('communication')
-          }}</span></span
-        >
-      </div>
-      <div class="checkin">
-        <span>Checkin </span>
-        <span>
-          <progress value="10" min="0" max="10"></progress>
-          <span class="review-score-display">{{
-            scoreToDisplay('checkin')
-          }}</span></span
-        >
-      </div>
-      <div class="accuracy">
-        <span>Accuracy</span>
-        <span>
-          <progress value="10" min="0" max="10"></progress>
-          <span class="review-score-display">{{
-            scoreToDisplay('accuracy')
-          }}</span></span
-        >
-      </div>
-      <div class="location">
-        <span>Location</span>
-        <span>
-          <progress value="10" min="0" max="10"></progress>
-          <span class="review-score-display">{{
-            scoreToDisplay('location')
-          }}</span></span
-        >
-      </div>
-      <div class="value">
-        <span>Value</span>
-        <span>
-          <progress value="10" min="0" max="10"></progress>
-          <span class="review-score-display">{{
-            scoreToDisplay('value')
-          }}</span></span
-        >
-      </div>
-      <!-- <div class="progress-bar">
-        <label for="determinate">A determinate progress bar:</label>
-        <progress value="8" min="0" max="10"></progress>
-      </div> -->
+    <section class="stay-reviews-scores">
+      <reviewsScores :stay="stay"></reviewsScores>
     </section>
-
     <ul class="reviews-list">
       <li v-for="review in stayReviewsSliced" :key="review">
         <div class="review-deatails-container">
@@ -150,6 +84,10 @@
               <span class="review-count">{{ stay.numOfReviews }} reviews </span>
             </h2>
 
+            <section class="stay-reviews-scores">
+              <reviewsScores :stay="stay"></reviewsScores>
+            </section>
+
             <ul class="reviews-list">
               <li v-for="review in stay.reviews" :key="review">
                 <div class="review-deatails-container">
@@ -178,11 +116,13 @@
 
 <script>
 import { $vfm, VueFinalModal, ModalsContainer } from 'vue-final-modal'
+import reviewsScores from './reviews-scores.vue'
 
 export default {
   components: {
     VueFinalModal,
     ModalsContainer,
+    reviewsScores,
   },
 
   props: {
