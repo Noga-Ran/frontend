@@ -2,11 +2,18 @@
   <section class="reviews-container details-padding">
     <h2 class="reviews-title">
       <span>
-        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
-          focusable="false" style="height: 14px; width: 14px; fill: currentcolor">
+        <svg
+          viewBox="0 0 32 32"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+          role="presentation"
+          focusable="false"
+          style="height: 14px; width: 14px; fill: currentcolor"
+        >
           <path
             d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z"
-            fill-rule="evenodd"></path>
+            fill-rule="evenodd"
+          ></path>
         </svg>
         <span class="rating-average"> {{ getRating }} </span>
       </span>
@@ -18,49 +25,78 @@
       <div class="cleanliness">
         <span> Cleanliness</span>
         <span>
-          <progress id="determinate" value="10" min="0" max="10"></progress>
-          <span class="review-score-display">{{ scoreToDisplay('cleanliness') }}</span></span>
+          <span class="tryone">
+            <progress
+              height="500"
+              :value="scoreToDisplay('cleanliness')"
+              min="0"
+              max="10"
+            ></progress>
+          </span>
+          <span class="review-score-display">{{
+            scoreToDisplay('cleanliness')
+          }}</span></span
+        >
       </div>
       <div class="communication">
         <span>Communication</span>
         <span>
-          <progress id="determinate" value="10" min="0" max="10"></progress>
-          <span class="review-score-display">{{ scoreToDisplay('communication') }}</span></span>
+          <progress value="10" min="0" max="10"></progress>
+          <span class="review-score-display">{{
+            scoreToDisplay('communication')
+          }}</span></span
+        >
       </div>
       <div class="checkin">
         <span>Checkin </span>
         <span>
-          <progress id="determinate" value="10" min="0" max="10"></progress>
-          <span class="review-score-display">{{ scoreToDisplay('checkin') }}</span></span>
+          <progress value="10" min="0" max="10"></progress>
+          <span class="review-score-display">{{
+            scoreToDisplay('checkin')
+          }}</span></span
+        >
       </div>
       <div class="accuracy">
         <span>Accuracy</span>
         <span>
-          <progress id="determinate" value="10" min="0" max="10"></progress>
-          <span class="review-score-display">{{ scoreToDisplay('accuracy') }}</span></span>
+          <progress value="10" min="0" max="10"></progress>
+          <span class="review-score-display">{{
+            scoreToDisplay('accuracy')
+          }}</span></span
+        >
       </div>
       <div class="location">
         <span>Location</span>
         <span>
-          <progress id="determinate" value="10" min="0" max="10"></progress>
-          <span class="review-score-display">{{ scoreToDisplay('location') }}</span></span>
+          <progress value="10" min="0" max="10"></progress>
+          <span class="review-score-display">{{
+            scoreToDisplay('location')
+          }}</span></span
+        >
       </div>
       <div class="value">
         <span>Value</span>
         <span>
-          <progress id="determinate" value="10" min="0" max="10"></progress>
-          <span class="review-score-display">{{ scoreToDisplay('value') }}</span></span>
+          <progress value="10" min="0" max="10"></progress>
+          <span class="review-score-display">{{
+            scoreToDisplay('value')
+          }}</span></span
+        >
       </div>
       <!-- <div class="progress-bar">
         <label for="determinate">A determinate progress bar:</label>
-        <progress id="determinate" value="8" min="0" max="10"></progress>
+        <progress value="8" min="0" max="10"></progress>
       </div> -->
     </section>
 
     <ul class="reviews-list">
       <li v-for="review in stayReviewsSliced" :key="review">
         <div class="review-deatails-container">
-          <img class="profile-img" src="../assets/img/demo-profile-img.jpg" alt="" />
+          <img
+            class="profile-img"
+            src="../assets/img/demo-profile-img.jpg"
+            alt=""
+          />
           <div class="review-info">
             <span class="review-name">{{ review.by.fullname }}</span>
             <span class="review-time">{{ formateTime(review.at) }}</span>
@@ -70,7 +106,10 @@
           <!-- <div>{{ review.txt }}</div> -->
           <div>{{ formatedReviewTxt(review.txt) }}</div>
           <div class="show-more-review-container" v-if="this.isLongTxt">
-            <v-button class="show-more-review-btn" @click="showReviewsModal = true">
+            <v-button
+              class="show-more-review-btn"
+              @click="showReviewsModal = true"
+            >
               Show more
             </v-button>
             <span>></span>
@@ -80,7 +119,11 @@
     </ul>
 
     <div class="reviewsModal">
-      <vue-final-modal v-model="showReviewsModal" classes="modal-container" content-class="modal-content">
+      <vue-final-modal
+        v-model="showReviewsModal"
+        classes="modal-container"
+        content-class="modal-content"
+      >
         <section class="modal-container">
           <button class="modal__close" @click="showReviewsModal = false">
             X
@@ -88,11 +131,18 @@
           <div class="modal__title">
             <h2 class="reviews-title">
               <span>
-                <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
-                  focusable="false" style="height: 14px; width: 14px; fill: currentcolor">
+                <svg
+                  viewBox="0 0 32 32"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                  role="presentation"
+                  focusable="false"
+                  style="height: 14px; width: 14px; fill: currentcolor"
+                >
                   <path
                     d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z"
-                    fill-rule="evenodd"></path>
+                    fill-rule="evenodd"
+                  ></path>
                 </svg>
                 <span class="rating-average"> {{ getRating }} </span>
               </span>
@@ -103,7 +153,11 @@
             <ul class="reviews-list">
               <li v-for="review in stay.reviews" :key="review">
                 <div class="review-deatails-container">
-                  <img class="profile-img" src="../assets/img/demo-profile-img.jpg" alt="" />
+                  <img
+                    class="profile-img"
+                    src="../assets/img/demo-profile-img.jpg"
+                    alt=""
+                  />
                   <span class="review-name">{{ review.by.fullname }}</span>
                   <span class="review-time">{{ formateTime(review.at) }}</span>
                 </div>
@@ -178,7 +232,7 @@ export default {
       return this.averageRating
     },
   },
-  unmounted() { },
+  unmounted() {},
 }
 </script>
 
