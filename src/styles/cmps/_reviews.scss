@@ -61,11 +61,13 @@
 }
 
 .modal__close {
-  position: absolute;
-  top: 0.5rem;
-  left: 0.5rem;
-  background-color: #fff;
-  border: unset;
+  display: flex;
+  position: fixed;
+  margin: 0;
+  top: 6.5rem;
+  left: 11.5rem;
+  background-color:
+    #ffffff3b;
 }
 
 // .reviewsModal {
