@@ -129,10 +129,7 @@ export default {
         setTimeout(() => this.isLoad = true, 550)
         
         var id = this.currStay._id
-        var wishList = this.$store.getters.wishList
-        this.isFav = wishList.some(function(stay) {
-            return stay._id === id
-        })
+        this.isFav = this.$store.getters.wishListById(id)
     }
 }
 </script>
