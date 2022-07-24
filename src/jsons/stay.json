@@ -174,8 +174,8 @@
 		"roomType": "Entire home/apt",
 		"bedType": "Real Bed",
 		"cancellationPolicy": "moderate",
-		"capacity": 6,
-		"bedrooms": 4,
+		"capacity": 5,
+		"bedrooms": 3,
 		"beds": 6,
 		"numOfReviews": 18,
 		"amenities": [

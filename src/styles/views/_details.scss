@@ -78,14 +78,26 @@
 
 .stay-sub-title {
   display: flex;
-  margin-top: 12px;
   line-height: 20px;
   font-size: 14px;
+  margin-top: 6px;
 
   span {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: 250ms;
+
+    span {
+      outline: 0px solid #f7f7f7;
+    }
+
+    &>span:hover {
+      border-radius: 5px;
+      cursor: pointer;
+      outline: 10px solid #f7f7f7;
+      background-color: #f7f7f7;
+    }
   }
 
   >*:not(:first-child):not(:nth-child(2)):not(.separating-dote) {

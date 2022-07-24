@@ -192,7 +192,7 @@
         align-items: center;
         transition: 250ms;
 
-        &:hover {
+        &:hover:not(.header-user-options) {
             background-color: #f7f7f7;
             border-radius: 22px;
             cursor: pointer;
