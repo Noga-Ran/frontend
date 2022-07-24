@@ -31,7 +31,7 @@
   height: 70vh;
   max-height: fit-content;
   overflow-y: auto;
-  width: 70vw;
+  width: 67vw;
   margin: auto;
   display: flex;
   padding: 20px;
@@ -65,7 +65,7 @@
   position: fixed;
   margin: 0;
   top: 6.5rem;
-  left: 11.5rem;
+  left: 15.5rem;
   background-color:
     #ffffff3b;
 }
@@ -169,4 +169,36 @@ label {
 .review-score-display {
   font-size: 12px;
   font-family: circular-bold;
+}
+
+.modal__title {
+  overflow-y: auto;
+  display: grid;
+  grid-auto-flow: column;
+  column-gap: 31px;
+
+  .review-scores-container>* {
+    max-width: 327px;
+  }
+
+  .review-scores-container {
+    grid-auto-flow: row;
+    grid-template-columns: 1fr;
+  }
+
+  .reviews-list {
+    margin-left: auto;
+    margin-right: 20px;
+    grid-auto-flow: row;
+    grid-template-columns: 1fr;
+  }
+
+  .review-deatails-container {
+    display: flex;
+    margin-bottom: 9px;
+  }
+}
+
+.show-reviews-btn {
+  cursor: pointer;
 }

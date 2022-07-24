@@ -2,7 +2,7 @@
   <section class="trip-settings-container">
     <div>
       <section class="txt">
-        <span class="num">${{stay.price}}</span>
+        <span class="num">${{ stay.price }}</span>
         <span class="night"> night</span>
       </section>
       <section class="trip-form">
@@ -10,19 +10,19 @@
           <div class="trip-checkin">
             <h1>check-in</h1>
             <h2>
-              {{getDate(checkIn)}}
+              {{ getDate(checkIn) }}
             </h2>
           </div>
           <div class="trip-checkout">
             <h1>check-out</h1>
             <h2>
-              {{getDate(checkOut)}}
+              {{ getDate(checkOut) }}
             </h2>
           </div>
           <div class="trip-guests">
             <h1>guests</h1>
             <h2>
-              {{guests}} guests
+              {{ guests }} guests
             </h2>
           </div>
         </div>
@@ -37,20 +37,20 @@
     <section class="price-details">
       <div class="price-info">
         <div class="nights-price">
-          <div class="price-name">${{stay.price}} x {{getStayLen()}}
+          <div class="price-name">${{ stay.price }} x {{ getStayLen() }}
           </div>
-          <div class="price-amount">${{getPrice()}}</div>
+          <div class="price-amount">${{ getPrice() }}</div>
         </div>
         <div class="service-price">
           <div class="price-name">Service fee
           </div>
-          <div class="price-amount">${{stay.cleaningFee || 0}}</div>
+          <div class="price-amount">${{ stay.cleaningFee || 0 }}</div>
         </div>
       </div>
       <div class="total-price-container">
         <div class="total-price">
           <div>Total</div>
-          <div>${{getPrice(stay.cleaningFee)}}</div>
+          <div>${{ getPrice(stay.cleaningFee) }}</div>
         </div>
       </div>
     </section>
@@ -58,14 +58,19 @@
   </section>
 </template>
 <script>
+
+import { h } from 'vue'
+import { ElNotification } from 'element-plus'
+
+
 export default {
   data() {
     return {
-      stay:null,
-      query:null,
+      stay: null,
+      query: null,
       checkIn: new Date(new Date().setDate(new Date().getDate() - 6)),
       checkOut: Date.now(),
-      stayDayAmount:null,
+      stayDayAmount: null,
       guests: 2,
       showModal: false
     }
@@ -76,22 +81,29 @@ export default {
     this.query = this.$route.query
   },
   methods: {
-    getStayLen(){
+    open1(msg) {
+      ElNotification({
+        title: 'congratulation!',
+        message: h('i', { style: 'color: #dd0f63' }, msg),
+      })
+    },
+    getStayLen() {
       return this.miliToDays(this.checkOut - this.checkIn)
     },
-    miliToDays(timeStap){
-      this.stayDayAmount = parseInt(timeStap/24/60/60/1000)
+    miliToDays(timeStap) {
+      this.stayDayAmount = parseInt(timeStap / 24 / 60 / 60 / 1000)
       return this.stayDayAmount
     },
-    getPrice(cleaningFee = 0){
+    getPrice(cleaningFee = 0) {
       return this.stay.price * this.stayDayAmount + cleaningFee
     },
-    getDate(date){
+    getDate(date) {
       var date = new Date(date)
-      date = (''+date).substring(4, 15)
+      date = ('' + date).substring(4, 15)
       return date
     },
-    saveTrip(){
+    saveTrip() {
+      this.open1("Your trip was successfully reserved")
       var tripDetails = {
         stay: this.stay._id,
         checkIn: this.getDate(this.checkIn),
@@ -100,8 +112,8 @@ export default {
         guests: this.guests
       }
       this.showModal = true
-      this.$store.dispatch({ type: "addTrip", trip: tripDetails})
-      setTimeout(()=>{this.showModal}, 5000)
+      this.$store.dispatch({ type: "addTrip", trip: tripDetails })
+      setTimeout(() => { this.showModal }, 5000)
     }
   },
   computed: {},

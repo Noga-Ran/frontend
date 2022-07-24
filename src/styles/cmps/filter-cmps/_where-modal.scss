@@ -16,6 +16,7 @@
     padding: 20px 30px;
     background-color: #fff;
     max-width: 848px;
+    border-radius: 32px;
 }
 
 .modal-vue .close {
@@ -41,8 +42,8 @@
             >p {
                 margin: 0 0 28px 5px;
                 font-size: 14px;
-                font-weight: 700;
                 line-height: 18px;
+                font-family: circular-bold;
             }
 
         }
@@ -54,9 +55,7 @@
         background-color: transparent !important;
         top: -1px !important;
         left: -1px !important;
-        border-color: inherit !important;
         border-style: solid !important;
-        /* border-width: 3px !important; */
         border-radius: 20px;
     }
 
@@ -80,4 +79,7 @@
             text-transform: capitalize;
         }
     }
+}
+.dp__menu{
+    border-radius: 21px;
 }
