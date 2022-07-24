@@ -8,6 +8,12 @@ export default {
     wishList({ wishList }) {
       return wishList
     },
+    wishListById: (state) => (stayId) => {
+        if(!state.wishList.length) return false
+        var stay = state.wishList.filter((stay) => stay._id === stayId)
+        if(!(stay.length)) return false
+        return true
+    },
   },
   mutations: {
     setWishList(state, {wishList}){

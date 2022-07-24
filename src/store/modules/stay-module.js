@@ -16,7 +16,8 @@ export default {
       return stays
     },
     stayById: (state) => (stayId) => {
-      return state.stays.find((stay) => stay._id === stayId)
+      var stay = state.stays.filter((stay) => stay._id === stayId)
+      return stay[0]
     },
     filterBy({ filterBy }) {
       return filterBy
