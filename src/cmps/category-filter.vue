@@ -185,7 +185,7 @@ export default {
         }
         elElement.classList.toggle('selected-filter')
         var filter = elElement.outerText
-        this.$emit('filter', filter)
+        this.$emit('filter', {label:filter})
       }
       else{
         this.$emit()

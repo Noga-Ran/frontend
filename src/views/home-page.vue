@@ -29,6 +29,7 @@ export default {
             }else{
                 filterBy.where = filter.where
             }
+            console.log(filterBy);
             this.$store.dispatch({ type: "setFilter", filterBy })
             this.setQuery(filterBy)
         },
@@ -43,7 +44,7 @@ export default {
         },
         setQuery(filterBy){
             console.log(filterBy);
-            if(filterBy.where.length){
+            if(filterBy.where && filterBy.where!==''){
                 this.$router.push({path:`/explore/${filterBy.where}`,query: { where:filterBy.where, checkIn:filterBy.checkIn ,checkOut:filterBy.checkOut ,who: filterBy.who,label:filterBy.label }})
             }else{
                 this.$router.push({path:`/`, query: { where:filterBy.where, checkIn:filterBy.checkIn ,checkOut:filterBy.checkOut ,who: filterBy.who,label:filterBy.label } })

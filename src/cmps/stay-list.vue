@@ -8,7 +8,7 @@
     </section>
 </template>
 <script>
-import categoryFilter from './category-filter.vue'
+// import categoryFilter from './category-filter.vue'
 import stayPreview from './stay-preview.vue'
 export default {
     data() {
@@ -17,7 +17,7 @@ export default {
         }
     },
     components: {
-        categoryFilter,
+        // categoryFilter,
         stayPreview,
     },
     methods: {
