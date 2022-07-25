@@ -1,10 +1,36 @@
 <template>
   <section class="trip-settings-container">
     <div>
-      <section class="txt">
-        <span class="num">${{ stay.price }}</span>
-        <span class="night"> night</span>
-      </section>
+      <div class="txt-and-review-container">
+        <section class="txt">
+          <span class="num">${{ stay.price }}</span>
+          <span class="night"> night</span>
+        </section>
+
+        <section class="reviews-title">
+          <span>
+            <svg
+              viewBox="0 0 32 32"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+              role="presentation"
+              focusable="false"
+              style="height: 14px; width: 14px; fill: currentcolor"
+            >
+              <path
+                d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z"
+                fill-rule="evenodd"
+              ></path>
+            </svg>
+            <span class="rating-average in-oreder"> {{ getRating }} </span>
+          </span>
+          <span>&nbsp &middot &nbsp </span>
+          <span class="review-count in-order"
+            >{{ stay.numOfReviews }} reviews
+          </span>
+        </section>
+      </div>
+
       <section class="trip-form">
         <div class="trip-details">
           <div class="trip-checkin">
@@ -21,29 +47,130 @@
           </div>
           <div class="trip-guests">
             <h1>guests</h1>
-            <h2>
-              {{ guests }} guests
-            </h2>
+            <h2>{{ guests }} guests</h2>
           </div>
         </div>
-        <button class="reserve-btn" @click="saveTrip">Reserve</button>
+
+        <div class="btn-container" @click="saveTrip">
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="content">
+            <button class="action-btn">
+              <span class="reserve-word-btn">Reserve</span>
+            </button>
+          </div>
+        </div>
       </section>
       <div class="trip-txt-container">
-        <div class="trip-txt-container">
-          You won't be charged yet
-        </div>
+        <div class="trip-txt-container">You won't be charged yet</div>
       </div>
     </div>
     <section class="price-details">
       <div class="price-info">
         <div class="nights-price">
-          <div class="price-name">${{ stay.price }} x {{ getStayLen() }}
-          </div>
+          <div class="price-name">${{ stay.price }} x {{ getStayLen() }}</div>
           <div class="price-amount">${{ getPrice() }}</div>
         </div>
         <div class="service-price">
-          <div class="price-name">Service fee
-          </div>
+          <div class="price-name">Service fee</div>
           <div class="price-amount">${{ stay.cleaningFee || 0 }}</div>
         </div>
       </div>
@@ -58,10 +185,8 @@
   </section>
 </template>
 <script>
-
 import { h } from 'vue'
 import { ElNotification } from 'element-plus'
-
 
 export default {
   data() {
@@ -72,7 +197,8 @@ export default {
       checkOut: Date.now(),
       stayDayAmount: null,
       guests: 2,
-      showModal: false
+      showModal: false,
+      averageRating: null,
     }
   },
   created() {
@@ -103,20 +229,28 @@ export default {
       return date
     },
     saveTrip() {
-      this.open1("Your trip was successfully reserved")
+      this.open1('Your trip was successfully reserved')
       var tripDetails = {
         stay: this.stay._id,
         checkIn: this.getDate(this.checkIn),
         checkOut: this.getDate(this.checkOut),
         price: this.getPrice(this.stay.cleaningFee),
-        guests: this.guests
+        guests: this.guests,
       }
       this.showModal = true
-      this.$store.dispatch({ type: "addTrip", trip: tripDetails })
-      setTimeout(() => { this.showModal }, 5000)
-    }
+      this.$store.dispatch({ type: 'addTrip', trip: tripDetails })
+      setTimeout(() => {
+        this.showModal
+      }, 5000)
+    },
   },
-  computed: {},
-  unmounted() { },
+  computed: {
+    getRating() {
+      const { rating } = this.stay.reviewScores
+      this.averageRating = (rating / 20).toFixed(1)
+      return this.averageRating
+    },
+  },
+  unmounted() {},
 }
 </script>
