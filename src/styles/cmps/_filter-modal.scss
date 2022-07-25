@@ -39,36 +39,30 @@
     }
 }
 
-.filter-who-container,
-.check-in-container,
-.check-out-container {
-    transition: 450ms;
-}
-
 .modal-filter-choices-layout,
 .check-in-out-container {
     display: flex;
+    height: inherit;
+    align-items: center;
 }
 
 .filter-seperator {
-    border-right: lightgray 1px solid;
-    flex: 0 0 0;
+    border-right: #dddddd 1px solid;
     height: 32px;
+    margin-top: 17px;
 }
 
 .modal-filter-choices-layout {
-    border: 1px solid #DDDDDD;
+    outline: 1px solid #DDDDDD;
     border-radius: 32px;
-    background-color: #ffffff;
+    background-color: #ebebeb;
     display: flex;
     height: 66px;
     position: relative;
     width: 100%;
-    outline: none;
     flex: 1 1 0%;
     min-width: 0;
     pointer-events: auto;
-    align-items: center;
     margin: 5px;
     padding: 0px;
     grid-area: search-bar;
@@ -77,14 +71,9 @@
 
 .filter-modal-where-container {
     background-clip: padding-box;
-    border: 1px solid transparent;
-    border-radius: 32px;
+    border-radius: 36px;
     padding: 14px 24px;
-    overflow: hidden;
-    position: relative;
-    white-space: nowrap;
-    width: 100%;
-    z-index: 1;
+    height: fit-content;
 
     p {
         font-size: 12px;
@@ -102,14 +91,14 @@
         outline: none !important;
     }
 
-    &:hover {
-        background-color: rgb(186, 186, 186);
+    &:hover:not(.searchbar-selected-filter) {
+        cursor: pointer;
+        background-color: #dddddd;
 
     }
 }
 
 .check-in-out-container {
-    align-items: center;
 
     p {
         width: max-content;
@@ -128,18 +117,18 @@
 
     .check-in-container,
     .check-out-container {
-        padding: 14px 24px;
-        overflow: hidden;
-        position: relative;
-        white-space: nowrap;
-        width: 100%;
-        z-index: 1;
+        padding: 0 24px;
+        display: flex;
+        justify-content: center;
+        height: 100%;
+        flex-direction: column;
     }
 
     .check-in-container:hover,
     .check-out-container:hover {
-        background-color: rgb(186, 186, 186);
+        background-color: #dddddd;
         border-radius: 32px;
+        cursor: pointer;
     }
 
     input {
@@ -159,13 +148,6 @@
 }
 
 .filter-who-container {
-    transition: 450ms;
-    padding: 14px 24px;
-    overflow: hidden;
-    position: relative;
-    white-space: nowrap;
-    width: 100%;
-    z-index: 1;
 
     p {
         width: max-content;
@@ -181,8 +163,9 @@
     }
 
     &:hover {
-        background-color: rgb(186, 186, 186);
+        background-color: #dddddd;
         border-radius: 32px;
+        cursor: pointer;
     }
 
     span {

@@ -2,16 +2,13 @@
     <form class="form-modal-container">
         <div class="overlay" @click="closeFilters"></div>
         <div class="modal-filter-choices-layout">
-            <div class="filter-modal-where-container">
+            <div class="filter-modal-where-container searchbar-selected-filter">
                 <p @click="showModal = true, showWho = false">Where</p>
                 <input @click="showModal = true, showWho = false" v-model="where" @input="emit" type="text" name="query"
                     placeholder="Search destinations" aria-describedby="bigsearch-query-location-description"
                     aria-autocomplete="none" autocomplete="off" autocorrect="off">
 
                 <div class="modal-vue">
-
-                    <!-- <div class="overlay" v-if="showModal" @click="showModal = false"></div> -->
-
                     <div class="modal" v-if="showModal">
                         <button class="close" @click="showModal = false">x</button>
                         <div class="searchs">
@@ -66,7 +63,6 @@
                 </div>
 
             </div>
-            <div class="filter-seperator"></div>
             <div class="check-in-out-container">
                 <div class="check-in-container" role="button" @click="showModal = false">
                     <p>Check in</p>
@@ -76,7 +72,6 @@
                         placeholder="Add dates" :minDate="new Date()" textInput autoApply closeOnScroll />
                     <p v-if="show" @click.self="clearDates">{{ startDate }}</p>
                 </div>
-                <div class="filter-seperator"></div>
                 <div class="check-out-container" @click="showModal = false">
                     <p>Check out</p>
                     <Datepicker @click="showWho = false" v-if="!show" @blur="setDate('end')" hideInputIcon
@@ -85,7 +80,6 @@
                     <p v-if="show" @click.self="clearDates">{{ endDate }}</p>
                 </div>
             </div>
-            <div class="filter-seperator"></div>
             <div class="filter-who-container" @click.self="showWho = !showWho, showModal = false">
                 <p @click.self="showWho = !showWho, showModal = false">Who</p>
                 <span @click.self="showWho = !showWho, showModal = false">Add guests</span>
@@ -174,7 +168,6 @@
             </div>
         </div>
     </form>
-    <!-- <input v-model="where" @input="emit" type="text"> -->
 </template>
 
 <script>
@@ -239,6 +232,7 @@ export default {
             this.emit()
         },
         closeFilters() {
+            this.$emit("closeHeader")
             this.showWho = false
             this.showModal = false
         }
