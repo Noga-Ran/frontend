@@ -202,3 +202,23 @@ label {
 .show-reviews-btn {
   cursor: pointer;
 }
+
+.demo-progress {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.el-progress__text{
+  display: none;
+}
+.el-progress--line {
+  width: 122px;
+
+  div {
+    height: 4px;
+  }
+
+  .el-progress-bar__outer {
+    height: 4px !important;
+  }
+}
