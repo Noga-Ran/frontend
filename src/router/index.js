@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import homePage from '../views/home-page.vue'
 import stayDetails from '../views/stay-details.vue'
 import wishList from '../views/wish-list.vue'
+import explore from '../views/explore.vue'
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -21,6 +22,11 @@ const router = createRouter({
       path: '/wishList',
       name: 'wishList',
       component: wishList,
+    },
+    {
+      path: '/explore/:where',
+      name: 'explore',
+      component: explore,
     }
   ],
 })

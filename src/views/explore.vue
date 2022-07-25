@@ -1,12 +1,18 @@
 <template>
-  <section></section>
+  <section>
+    {{city}}
+  </section>
 </template>
 <script>
 export default {
   data() {
-    return {}
+    return {
+      city:null,
+    }
   },
-  created() {},
+  created() {
+    this.city = this.$route.params.where
+  },
   methods: {},
   computed: {},
   unmounted() {},
