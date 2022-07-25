@@ -1,0 +1,25 @@
+.filters-btn {
+    cursor: pointer;
+    border: 1px solid #e4e4e4;
+    border-radius: 12px;
+    box-shadow: var(--filter-button_box-shadow, unset);
+    background-color: white;
+    margin: 0;
+    padding: 7px 0;
+    height: 48px;
+
+    .filter-btn-container {
+        display: grid;
+        justify-items: center;
+        grid-auto-flow: column;
+        padding: 0 16px;
+        padding-top: 2px;
+        gap: 8px;
+
+        span {
+            font-size: 12px;
+            line-height: 16px;
+            font-weight: 600;
+        }
+    }
+}

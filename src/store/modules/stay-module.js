@@ -22,6 +22,9 @@ export default {
     filterBy({ filterBy }) {
       return filterBy
     },
+    amountOfStays({ stays }){
+      return stays.length
+    }
   },
 
   mutations: {

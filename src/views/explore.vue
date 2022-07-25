@@ -1,5 +1,9 @@
 <template>
   <app-header @filter="setFilter" @date="setDate"></app-header>
+  <div class="explore-filters-conatiner">
+    <p>{{staysAmount}} stays</p>
+    <filter-btn/>
+  </div>
   <stay-list @filter="setFilter"></stay-list>
   <!-- <section>
     {{ city }}
@@ -9,7 +13,7 @@
 <script>
 import appHeader from '../cmps/app-header.vue'
 import stayList from '../cmps/stay-list.vue'
-
+import filterBtn from '../cmps/filter-btn.vue'
 export default {
   data() {
     return {
@@ -54,9 +58,12 @@ export default {
   },
   components: {
     appHeader,
-    stayList
+    stayList,
+    filterBtn
   },
-  computed: {},
+  computed: {
+    staysAmount(){return this.$store.getters.amountOfStays}
+  },
   unmounted() { },
 }
 </script>
