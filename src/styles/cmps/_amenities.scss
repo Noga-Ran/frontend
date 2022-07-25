@@ -19,18 +19,19 @@
     cursor: pointer;
   }
 }
-
-.modal-container {
-  height: 633px;
-  max-height: fit-content;
-  width: 780px;
-  margin: auto;
-  display: flex;
-  background-color: white;
-  border-radius: 12px;
-  position: fixed;
-  inset: 0;
-  flex-direction: column;
+.reviews-modal {
+  .modal-container {
+    height: 633px;
+    max-height: fit-content;
+    width: 780px;
+    margin: auto;
+    display: flex;
+    background-color: white;
+    border-radius: 12px;
+    position: fixed;
+    inset: 0;
+    flex-direction: column;
+  }
 }
 
 ::v-deep .modal-content {
@@ -76,7 +77,6 @@
 
 .seperating-line {
   margin: 0;
-
 }
 
 .amenities-list-main {
@@ -88,7 +88,7 @@
     margin-right: 16px;
   }
 
-  &>div {
+  & > div {
     margin-bottom: 16px;
   }
 }
@@ -116,7 +116,7 @@
       margin-right: 16px;
     }
 
-    &>div {
+    & > div {
       margin-bottom: 16px;
     }
   }
@@ -136,4 +136,9 @@
 .amenitiesModal {
   margin-bottom: 50px;
   // להוריד
+}
+
+.vfm--inset {
+  height: 100vh !important;
+  width: 100vw !important;
 }

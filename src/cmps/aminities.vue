@@ -9,13 +9,13 @@
     </section>
     <div class="amenitiesModal">
       <vue-final-modal
-        v-model="showModal"
+        v-model="showAmenitiesModal"
         class="modal-container"
         content-class="modal_content"
       >
         <section class="modal-container">
           <div class="close-modal">
-            <button class="modal__close" @click="showModal = false">
+            <button class="modal__close" @click="showAmenitiesModal = false">
               <svg
                 viewBox="0 0 32 32"
                 xmlns="http://www.w3.org/2000/svg"
@@ -48,13 +48,6 @@
                       :src="getImgUrl(amenitie)"
                       alt=""
                     />
-                    =======
-                    <img
-                      class="amenitie-svg"
-                      :src="getImgUrl(amenitie)"
-                      alt="img"
-                    />
-                    >>>>>>> fdbedc7f541f50f83987552af6e1fe5b61bd853a
                     {{ amenitie }}
                   </div>
                   <hr class="seperating-line" />
@@ -97,7 +90,9 @@ export default {
   },
   methods: {
     getImgUrl(amenitie) {
-      var imgUrl = '../assets/img/aminities/' + amenitie + '.svg'
+      var formatedAmenitie = amenitie.replaceAll(' ', '-')
+      console.log('formatedAmenitie', formatedAmenitie)
+      var imgUrl = '../assets/img/aminities/' + formatedAmenitie + '.svg'
       if (!imgUrl) {
         console.log('imgUrl: ', imgUrl)
       }
