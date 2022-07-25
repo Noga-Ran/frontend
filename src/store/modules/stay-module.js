@@ -23,19 +23,18 @@ export default {
       return stay[0]
     },
     filterBy({ filterBy }) {
+      console.log(filterBy,'gettes');
       return filterBy
     },
     amountOfStays({ stays }){
       return stays.length
     }
   },
-
   mutations: {
     setStays(state, { stays }) {
       state.stays = stays
     },
     setFilter(state, { filterBy }) {
-      console.log(filterBy);
       state.filterBy = filterBy
     },
   },

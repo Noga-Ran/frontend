@@ -186,7 +186,14 @@ export default {
     this.id = this.$route.params.id
     this.stay = this.$store.getters.stayById(this.id)
     this.isFav = this.$store.getters.wishListById(this.id)
-    console.log(this.isFav)
+    var filterBy = this.$store.getters.filterBy
+    console.log(filterBy);
+    // this.$router.push({
+    //   path: `/stay/${this.id}?`, query: {
+    //     where: filterBy.where, checkIn: filterBy.checkIn
+    //     , checkOut: filterBy.checkOut, label: filterBy.label, adults: filterBy.adults, children: filterBy.children, infants: filterBy.infants, pets: filterBy.pets
+    //   }
+    // })
   },
   methods: {
     getImgUrl(idx) {

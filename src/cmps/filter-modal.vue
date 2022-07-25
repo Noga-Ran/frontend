@@ -96,7 +96,7 @@
             <div class="filter-who-and-search" @click="setActive($event.currentTarget)">
                 <div class="filter-who-container" @click.self="showWho = !showWho, showModal = false">
                     <p @click.prevent="showWho = !showWho, showModal = false">Who</p>
-                    <span @click.prevent="showWho = !showWho, showModal = false">{{gusetsAmount}}</span>
+                    <span @click.prevent="showWho = !showWho, showModal = false">{{ gusetsAmount }}</span>
                     <div v-if="showWho">
                         <div class="guests-modal">
                             <div class="modal-g-container">
@@ -106,7 +106,8 @@
                                         <span>Ages 13 or above</span>
                                     </div>
                                     <div>
-                                        <button type="button" class="g-modal-buttons" :disabled="guests.adults == 0" @click.stop="guests.adults--">
+                                        <button type="button" class="g-modal-buttons" :disabled="isAbled"
+                                            @click.stop="guests.adults--">
                                             <span class="material-icons-sharp">-</span>
                                         </button>
                                         <span class="guests-num">{{ guests.adults }}</span>
@@ -121,7 +122,8 @@
                                         <span>Ages 2–12</span>
                                     </div>
                                     <div>
-                                        <button type="button" class="g-modal-buttons" :disabled="guests.children == 0" @click.stop="guests.children--">
+                                        <button type="button" class="g-modal-buttons" :disabled="guests.children == 0"
+                                            @click.stop="guests.children--">
                                             <span class="material-icons-sharp">-</span>
                                         </button>
                                         <span class="guests-num">{{ guests.children }}</span>
@@ -136,7 +138,8 @@
                                         <span>Under 2</span>
                                     </div>
                                     <div>
-                                        <button type="button" class="g-modal-buttons" :disabled="guests.infants == 0" @click.stop="guests.infants--">
+                                        <button type="button" class="g-modal-buttons" :disabled="guests.infants == 0"
+                                            @click.stop="guests.infants--">
                                             <span class="material-icons-sharp">-</span>
                                         </button>
                                         <span class="guests-num">{{ guests.infants }}</span>
@@ -151,7 +154,8 @@
                                         <span>(doesn't include service animals)</span>
                                     </div>
                                     <div>
-                                        <button type="button" class="g-modal-buttons" :disabled="guests.pets == 0" @click.stop="guests.pets--">
+                                        <button type="button" class="g-modal-buttons" :disabled="guests.pets == 0"
+                                            @click.stop="guests.pets--">
                                             <span class="material-icons-sharp">-</span>
                                         </button>
                                         <span class="guests-num">{{ guests.pets }}</span>
@@ -194,9 +198,10 @@ export default {
             endDate: '',
             show: false,
             showWho: false,
-            guests: { adults: 0, children: 0, infants: 0, pets: 0,sum:0},
+            guests: { adults: 0, children: 0, infants: 0, pets: 0, sum: 0 },
             showModal: false,
             countryLabels: ['Im flexiable', 'australia', 'brazil', 'canada', 'spain', 'united states'],
+            ableZeroAdults: true,
         }
     },
     methods: {
@@ -260,12 +265,22 @@ export default {
         }
     },
     computed: {
-        gusetsAmount(){
+        gusetsAmount() {
+            if (this.guests.adults === 0 && (this.guests.infants > 0 || this.guests.children > 0 || this.guests.pets > 0)) {
+                this.guests.adults = 1
+                this.ableZeroAdults = false
+            } else {
+                this.ableZeroAdults = true
+            }
+
             this.guests.sum = this.guests.adults + this.guests.infants + this.guests.children + this.guests.pets
             this.$emit('guest', this.guests)
-            if(this.guests.sum===0) return 'Add Guests'
-            if(this.guests.sum===1) return this.guests.sum + ' guest'
+            if (this.guests.sum === 0) return 'Add Guests'
+            if (this.guests.sum === 1) return this.guests.sum + ' guest'
             return this.guests.sum + ' guests'
+        },
+        isAbled() {
+            return (this.guests.adults == 0 || (!this.ableZeroAdults && this.guests.adults === 1))
         }
     },
     created() {
@@ -277,7 +292,7 @@ export default {
             if (this.startDate && this.endDate) this.show = true
             this.guests.adults = +this.$route.query.adults || 0
             this.guests.children = +this.$route.query.children || 0
-            this.guests.infants =  +this.$route.query.infants || 0
+            this.guests.infants = +this.$route.query.infants || 0
             this.guests.pets = +this.$route.query.pets || 0
         }
     },
