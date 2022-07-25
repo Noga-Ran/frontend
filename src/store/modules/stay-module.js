@@ -39,7 +39,7 @@ export default {
     loadStays({ commit, state }) {
       stayService.query(state.filterBy).then((stays) => {
         // לזכור להחליף
-        // stays = stays.slice(0,40)
+        stays = stays.slice(0,10)
         commit({ type: 'setStays', stays })
       })
     },
