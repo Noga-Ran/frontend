@@ -19,7 +19,7 @@
     <ul class="reviews-list">
       <li v-for="review in stayReviewsSliced" :key="review">
         <div class="review-deatails-container">
-          <img class="profile-img" src="../assets/img/demo-profile-img.svg" alt="" />
+          <img class="profile-img" :src='review.img' alt="" />
           <div class="review-info">
             <span class="review-name">{{ review.by.fullname }}</span>
             <span class="review-time">{{ formateTime(review.at) }}</span>
@@ -65,9 +65,9 @@
             </section>
 </div>
             <ul class="reviews-list">
-              <li v-for="review in stay.reviews" :key="review">
+              <li v-for="review in reviewsCopy" :key="review">
                 <div class="review-deatails-container">
-                  <img class="profile-img" src="../assets/img/demo-profile-img.svg" alt="" />
+                  <img class="profile-img" :src='review.img' alt="" />
                   <div class="review-name-and-time">
                     <span class="review-name">{{ review.by.fullname }}</span>
                     <span class="review-time">{{ formateTime(review.at) }}</span>
@@ -113,11 +113,21 @@ export default {
       stayReviewsSliced: null,
       showReviewsModal: false,
       isLongTxt: false,
+      copyReview: null,
     }
   },
   created() {
-    this.stayReviewsSliced = this.stay.reviews.slice(0, 6)
-    return this.stayReviewsSliced
+    
+    this.reviewsCopy = JSON.parse(JSON.stringify(this.stay.reviews))
+    this.reviewsCopy.map(function(review){
+      let randomNum = Math.floor(Math.random() * (99 - 1) + 1)
+      var gender = ['men','women']
+      let randomGender =Math.floor(Math.random() * (2))
+      review['img']= `https://randomuser.me/api/portraits/${gender[randomGender]}/${randomNum}.jpg`
+      return review
+    })
+
+    this.stayReviewsSliced = this.reviewsCopy.slice(0, 6)
   },
   methods: {
     formateTime(time) {
@@ -137,6 +147,9 @@ export default {
         this.isLongTxt = false
         return txt
       }
+    },
+    getImgUrl(review) {
+      return review.by.imgUrl
     },
   },
   computed: {

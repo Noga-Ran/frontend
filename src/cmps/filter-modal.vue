@@ -1,22 +1,6 @@
 <template>
     <form class="form-modal-container">
         <div class="overlay" @click="closeFilters"></div>
-        <div class="search-opts">
-            <button>
-                <p>Stays</p>
-            </button>
-            <button>
-                <p>Experiences</p>
-            </button>
-            <button>
-                <p>Online Experiences</p>
-            </button>
-            <!-- <span class="guests-num">{{ guests.adults }}</span>
-            <button type="button" class="g-modal-buttons">
-                <span class="material-icons-sharp">+</span>
-            </button> -->
-        </div>
-        <!-- </div> -->
         <div class="modal-filter-choices-layout">
             <div class="filter-modal-where-container">
                 <p @click="showModal = true, showWho = false">Where</p>

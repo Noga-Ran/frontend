@@ -26,6 +26,15 @@
         "logo search user"
         ". search-bar .";
     align-items: center;
+
+    .header-tools-container{
+        grid-column: 2/4;
+        width: max-content !important;
+    }
+
+    .modal-filter-choices-layout{
+        margin-top: 71px;
+    }
 }
 
 .logo-container {
