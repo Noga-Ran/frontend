@@ -98,7 +98,7 @@ export default {
         }
     },
     components: {
-        appHeader
+        appHeader,
     },
     computed: {
         wishList() { return this.$store.getters.wishList }

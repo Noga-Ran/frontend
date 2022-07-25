@@ -4,6 +4,7 @@
         <app-header @filter="setFilter" @date="setDate"/>
         <category-filter @filter="setFilter"/>
         <stay-list @filter="setFilter"/>
+        <app-footer></app-footer>
     </section>
 </template>
 
@@ -11,12 +12,14 @@
 import appHeader from '../cmps/app-header.vue'
 import stayList from '../cmps/stay-list.vue'
 import categoryFilter from '../cmps/category-filter.vue'
+import appFooter from '../cmps/app-footer.vue'
 
 export default {
     components: {
         appHeader,
         stayList,
         categoryFilter,
+        appFooter
     },
     data(){
     },
