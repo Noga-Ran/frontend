@@ -1,8 +1,59 @@
-.explore-filters-conatiner{
+.explore-filters-conatiner {
     display: flex;
     align-content: stretch;
     justify-content: space-between;
     height: 98px;
     align-items: center;
     margin: 0 80px;
+}
+
+.explore-preview-data {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+
+    &>* {
+        height: fit-content;
+        display: flex;
+        align-items: center;
+    }
+
+    &>*:first-child {
+        justify-content: space-between;
+    }
+
+    &>*:last-child {
+        padding-top: 7px;
+    }
+
+    pre {
+        height: auto;
+        margin: 0;
+        margin-left: -5px;
+        margin-right: -4px;
+    }
+
+    .explore-light-txt {
+        color: rgb(113, 113, 113);
+        font-family: circular-light;
+        font-size: 15px;
+    }
+
+    .explore-price {
+        display: flex;
+        align-items: center;
+
+        .explore-light-txt {
+            text-decoration: underline;
+        }
+    }
+
+    svg {
+        height: 12px;
+    }
+
+    .explore-rating {
+        display: flex;
+        align-items: center;
+    }
 }

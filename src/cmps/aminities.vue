@@ -7,7 +7,7 @@
         {{ amenitie }}
       </div>
     </section>
-    <div class="amenitiesModal">
+    <div class="amenities-modal">
       <vue-final-modal
         v-model="showAmenitiesModal"
         class="modal-container"

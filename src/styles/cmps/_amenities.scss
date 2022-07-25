@@ -19,8 +19,26 @@
     cursor: pointer;
   }
 }
-.reviews-modal {
-  .modal-container {
+.amenities-modal {
+  .modal-container{
+    height: 100%;
+  }
+  .modal-amenities-container{
+    height: 94.85%;
+  }
+  .modal__title{
+    height: inherit;
+    padding-right: 0;
+    grid-auto-flow: row;
+  }
+  .amenities-list{
+    overflow-y: auto;
+  }
+  .modal__close{
+    top: 4.5rem !important;
+    left: 25.5rem !important;
+  }
+  .vfm__content {
     height: 633px;
     max-height: fit-content;
     width: 780px;
@@ -93,13 +111,9 @@
   }
 }
 
-.modal-amenities-container {
-  width: 100%;
-  overflow-y: auto;
-}
-
 .modal__title {
-  padding: 24px;
+  padding: 40px 24px 24px;
+  margin-bottom: 0;
   color: #222222;
 
   .modal-amenitie {
@@ -138,7 +152,7 @@
   // להוריד
 }
 
-.vfm--inset {
-  height: 100vh !important;
-  width: 100vw !important;
-}
+// .vfm--inset {
+//   height: 100vh !important;
+//   width: 100vw !important;
+// }
