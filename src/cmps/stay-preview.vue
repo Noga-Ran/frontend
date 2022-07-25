@@ -19,7 +19,16 @@
         </transition>
         <div v-if="!this.isLoad" class="demo-img">
         </div>
-        <section v-if="this.isLoad" class="stay-preview-data">
+        <section v-if="!this.isLoad" class="demo-lines">
+            <div class="line-a">
+                <div class="sub-a1"></div>
+                <div class="sub-a2"></div>
+            </div>
+            <div class="line-b"></div>
+            <div class="line-c"></div>
+            <div class="line-d"></div>
+        </section>
+        <section v-if="this.isLoad && !this.isExplore" class="stay-preview-data">
             <div class="preview-location">
                 <span>{{ this.getLocation }}</span>
             </div>
@@ -38,14 +47,29 @@
             <div class="preview-available-dates">{{ this.getRandomDates() }}</div>
             <div class="preview-price"><span>${{ this.currStay.price }}</span> night</div>
         </section>
-        <section v-else class="demo-lines">
-            <div class="line-a">
-                <div class="sub-a1"></div>
-                <div class="sub-a2"></div>
+        <section v-if="this.isLoad && this.isExplore" class="explore-preview-data">
+            <div class="explore-location-rating">
+                <span>{{ currStay.roomType }} in {{ currStay.address.city }}</span>
+                <div class="explore-rating">
+                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
+                        focusable="false" style="display: block height: 12px width: 12px fill: currentcolor">
+                        <path
+                            d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z"
+                            fill-rule="evenodd"></path>
+                    </svg>
+                    <div class="rating-num-explore">
+                        {{ this.getRating }} ({{ currStay.reviews.length }})
+                    </div>
+                </div>
             </div>
-            <div class="line-b"></div>
-            <div class="line-c"></div>
-            <div class="line-d"></div>
+            <span class="explore-stay-name explore-light-txt">{{ this.getStayName }}</span>
+            <span class="explore-light-txt">{{ currStay.beds }} beds</span>
+            <div class="preview-chosen-dates explore-light-txt">{{ this.getRandomDates() }}</div>
+            <div class="explore-price">
+                <div class="explore-price-num"><span>${{ this.currStay.price }} </span> night</div>
+                <pre> &middot </pre>
+                <div class="explore-total-price explore-light-txt"> $1,255 total</div>
+            </div>
         </section>
     </section>
 </template>
@@ -61,6 +85,7 @@ export default {
             isLoad: false,
             distanceFromStay: null,
             isFav: false,
+            isExplore: false,
         }
     },
     computed: {
@@ -71,6 +96,13 @@ export default {
         getRating() {
             const { rating } = this.currStay.reviewScores
             return (rating / 20).toFixed(1)
+        },
+        getStayName() {
+            if(this.currStay.name.length > 44){
+                var shortenName = JSON.parse(JSON.stringify(this.currStay.name))
+                return (shortenName.slice(0,40) + "...")
+            }
+            return this.currStay.name
         }
     },
     methods: {
@@ -115,16 +147,25 @@ export default {
             }
         },
         getRandomDates() {
-            return 'jul ' + this.getRandomDay(24) + '- aug ' + this.getRandomDay(2)
+            return 'jul ' + this.getRandomDay(24) + ' - Aug ' + this.getRandomDay(2)
         },
         getRandomDay(min) {
             var max = 29
             return Math.floor(Math.random() * (max - min + 1)) + min
+        },
+        calculateDistance() {
+            var distanceInKm = this.getDistanceInKm().toFixed(0)
+            this.distanceFromStay = this.formatNumber(distanceInKm)
         }
     },
     created() {
-        var distanceInKm = this.getDistanceInKm().toFixed(0)
-        this.distanceFromStay = this.formatNumber(distanceInKm)
+        if (this.$route?.params?.where) {
+            this.isExplore = true
+        }
+        else {
+            this.isExplore = false
+            this.calculateDistance()
+        }
         setTimeout(() => this.isLoad = true, 550)
 
         var id = this.currStay._id
