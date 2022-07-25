@@ -20,7 +20,7 @@
         </div>
     </div>
     <div v-else :class="{ 'filter-modal-container': isSearch }">
-        <filter-modal @filter="setFilter" @emit="emitFilter" @date="emitDate"/>
+        <filter-modal @closeHeader="closeHeader" @filter="setFilter" @emit="emitFilter" @date="emitDate"/>
     </div>
 </template>
 
@@ -37,6 +37,10 @@ export default {
         }
     },
     methods: {
+        closeHeader(){
+            this.isSearch = false
+            this.$emit("closeHeader")
+        },
         searching() {
             this.$emit('search',true)
             this.isSearch = true
