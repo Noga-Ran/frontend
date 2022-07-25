@@ -125,6 +125,6 @@ export default {
 
         var id = this.currStay._id
         this.isFav = this.$store.getters.wishListById(id)
-    }
+    },
 }
 </script>

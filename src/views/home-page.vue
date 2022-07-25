@@ -2,6 +2,7 @@
 <template>
     <section class="homepage-layout">
         <app-header @filter="setFilter" @date="setDate"/>
+        <category-filter @filter="setFilter"/>
         <stay-list @filter="setFilter"/>
     </section>
 </template>
@@ -9,10 +10,13 @@
 <script>
 import appHeader from '../cmps/app-header.vue'
 import stayList from '../cmps/stay-list.vue'
+import categoryFilter from '../cmps/category-filter.vue'
+
 export default {
     components: {
         appHeader,
         stayList,
+        categoryFilter,
     },
     data(){
     },
@@ -25,7 +29,6 @@ export default {
             }else{
                 filterBy.where = filter.where
             }
-            console.log(filterBy);
             this.$store.dispatch({ type: "setFilter", filterBy })
             this.setQuery(filterBy)
         },
@@ -39,7 +42,12 @@ export default {
             this.setQuery(filterBy) 
         },
         setQuery(filterBy){
-            this.$router.push({query: { where:filterBy.where, checkIn:filterBy.checkIn ,checkOut:filterBy.checkOut ,who: filterBy.who,label:filterBy.label } })
+            console.log(filterBy);
+            if(filterBy.where.length){
+                this.$router.push({path:`/explore/${filterBy.where}`,query: { where:filterBy.where, checkIn:filterBy.checkIn ,checkOut:filterBy.checkOut ,who: filterBy.who,label:filterBy.label }})
+            }else{
+                this.$router.push({path:`/`, query: { where:filterBy.where, checkIn:filterBy.checkIn ,checkOut:filterBy.checkOut ,who: filterBy.who,label:filterBy.label } })
+            }
         }
     },
     created(){
