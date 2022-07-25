@@ -1,10 +1,14 @@
 <template>
     <app-header></app-header>
     <div v-if="wishList.length" class="wish-list-container">
-    <h1>Wishlist</h1>
+        <h1>Wishlist</h1>
         <div class="wish-container" v-for="stay in wishList" :key="stay._id" @click.prevent="showDetails(stay._id)">
             <section>
-                <img :src='getImgUrl(stay)' alt=''>
+                    <el-carousel trigger="click" :autoplay="false" height="150px">
+                        <el-carousel-item v-for="item in 5" :key="item">
+                            <img :src='getImgUrl(stay,item)' alt=''>
+                        </el-carousel-item>
+                    </el-carousel>
             </section>
             <section class="wish-details-container">
                 <section class="wish-name">
@@ -25,11 +29,11 @@
                 <section class="about-wish">
                     <p>{{ stay.capacity }} guests</p>
                     <span>&nbsp·&nbsp</span>
-                    <p>{{this.checkMulti(stay.bedrooms, 'bedroom')}}</p>
+                    <p>{{ this.checkMulti(stay.bedrooms, 'bedroom') }}</p>
                     <span>&nbsp·&nbsp</span>
-                    <p>{{this.checkMulti(stay.beds, 'bed')}}</p>
+                    <p>{{ this.checkMulti(stay.beds, 'bed') }}</p>
                     <span>&nbsp·&nbsp</span>
-                    <p>{{this.checkMulti(stay.bathrooms, 'bath')}}</p>
+                    <p>{{ this.checkMulti(stay.bathrooms, 'bath') }}</p>
                 </section>
                 <section class="wish-price-rating">
                     <div>
@@ -58,8 +62,8 @@
         <p>As you search, tap the heart icon to save your favorite places to stay or things to do to a wishlist.</p>
         <router-link to="/">start exploring</router-link>
     </div>
-</template>
 
+</template>
 <script>
 import appHeader from '../cmps/app-header.vue'
 export default {
@@ -67,9 +71,10 @@ export default {
         return {}
     },
     methods: {
-        getImgUrl(stay) {
+        getImgUrl(stay,item) {
+            console.log(item);
             const { imgUrls } = stay
-            return new URL('../assets/img/stays/' + imgUrls[0], import.meta.url).href
+            return new URL('../assets/img/stays/' + imgUrls[item-1], import.meta.url).href
         },
         getRating(stay) {
             const { rating } = stay.reviewScores
@@ -78,7 +83,7 @@ export default {
         getNumRev(stay) {
             var length = stay.reviews.length
             if (length === 0 || !length) return 'New'
-            if(length === 1) return '1 review'
+            if (length === 1) return '1 review'
             return length + ' reviews'
         },
         removeStay(stayId) {
@@ -87,9 +92,9 @@ export default {
         showDetails(stayId) {
             window.open(`/#/stay/${stayId}`, '_blank')
         },
-        checkMulti(stayParam,param){
-            if(stayParam===1) return stayParam + ' ' + param
-            return stayParam + ' ' + param +'s'
+        checkMulti(stayParam, param) {
+            if (stayParam === 1) return stayParam + ' ' + param
+            return stayParam + ' ' + param + 's'
         }
     },
     components: {

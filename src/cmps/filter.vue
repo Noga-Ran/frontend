@@ -1,7 +1,7 @@
 <template>
     <div class="header-filter-layout" v-if="!isSearch">
         <div class="header-filter-container" @click.prevent="searching">
-            <div class="header-txt-container">Anywhere</div>
+            <div class="header-txt-container">{{location}}</div>
             <span></span>
             <div class="header-txt-container">Any week</div>
             <span></span>
@@ -60,11 +60,14 @@ export default {
         }
     },
     computed: {
+        location(){return this.$route.query.where || this.$route.params.where || 'Anywhere'}
 
+    },
+    created() {
     },
     components: {
         filterModal
-    },
+    }
 
 }
 </script>
