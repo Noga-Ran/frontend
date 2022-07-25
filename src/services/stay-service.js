@@ -23,6 +23,7 @@ async function query(filterBy = {}) {
 
 function filtering(filteredStays, filterBy){
     var stayToFilter = filteredStays
+
     if(filterBy.where) {
         stayToFilter = stayToFilter.filter(function(stay)
         {
@@ -34,6 +35,7 @@ function filtering(filteredStays, filterBy){
     if(filterBy.label) {
         stayToFilter = stayToFilter.filter((stay)=> stay.label === filterBy.label)
     }
+    stayToFilter = stayToFilter.filter((stay)=> stay.capacity> (filterBy.adults + filterBy.children))
     
     return stayToFilter
 }

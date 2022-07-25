@@ -8,7 +8,10 @@ export default {
       label: '',
       checkIn:'',
       checkOut:'',
-      guests:0,
+      adults:0,
+      children:0,
+      infants:0,
+      pets:0,
     },
   },
   getters: {
@@ -32,6 +35,7 @@ export default {
       state.stays = stays
     },
     setFilter(state, { filterBy }) {
+      console.log(filterBy);
       state.filterBy = filterBy
     },
   },
@@ -39,7 +43,6 @@ export default {
     loadStays({ commit, state }) {
       stayService.query(state.filterBy).then((stays) => {
         // לזכור להחליף
-        stays = stays.slice(0,10)
         commit({ type: 'setStays', stays })
       })
     },

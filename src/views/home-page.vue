@@ -24,15 +24,17 @@ export default {
     data(){
     },
     methods: {
-        setFilter(filter){
+        setFilter(filter,{who}=''){
             var filterBy = Object.assign({}, this.$store.getters.filterBy)
-           
             if(filter.label){
                 filterBy.label = filter.label
             }else{
                 filterBy.where = filter.where
+                filterBy.adults = who.adults
+                filterBy.children = who.children
+                filterBy.infants = who.infants
+                filterBy.pets = who.pets
             }
-            console.log(filterBy);
             this.$store.dispatch({ type: "setFilter", filterBy })
             this.setQuery(filterBy)
         },
@@ -46,17 +48,21 @@ export default {
             this.setQuery(filterBy) 
         },
         setQuery(filterBy){
-            console.log(filterBy);
             if(filterBy.where && filterBy.where!==''){
-                this.$router.push({path:`/explore/${filterBy.where}`,query: { where:filterBy.where, checkIn:filterBy.checkIn ,checkOut:filterBy.checkOut ,who: filterBy.who,label:filterBy.label }})
+                this.$router.push({path:`/explore/${filterBy.where}`,query: { where:filterBy.where, checkIn:filterBy.checkIn
+                ,checkOut:filterBy.checkOut ,label:filterBy.label,adults:filterBy.adults,children:filterBy.children,infants:filterBy.infants,pets:filterBy.pets}})
             }else{
-                this.$router.push({path:`/`, query: { where:filterBy.where, checkIn:filterBy.checkIn ,checkOut:filterBy.checkOut ,who: filterBy.who,label:filterBy.label } })
+                this.$router.push({path:`/`, query: { where:filterBy.where, checkIn:filterBy.checkIn
+                ,checkOut:filterBy.checkOut ,label:filterBy.label,adults:filterBy.adults,children:filterBy.children,infants:filterBy.infants,pets:filterBy.pets } })
             }
         }
     },
     created(){
-        if(this.$route.query){
-            var filterBy = {where: this.$route.query.where, checkIn:this.$route.query.checkIn ,checkOut:this.$route.query.checkOut , who:this.$route.query.who, label:this.$route.query.label}
+        if(this.$route.query && this.$route.query.length){
+            console.log(this.$route.query);
+            var filterBy = {where: this.$route.query.where, checkIn:this.$route.query.checkIn ,checkOut:this.$route.query.checkOut , label:this.$route.query.label,
+            adults:this.$route.query.adults,children:this.$route.query.children,infants:this.$route.query.infants,pets:this.$route.query.pets}
+            console.log('dskdms',filterBy);
             this.$store.dispatch({ type: "setFilter", filterBy })
         }
         

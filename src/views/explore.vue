@@ -1,8 +1,8 @@
 <template>
   <app-header @filter="setFilter" @date="setDate"></app-header>
   <div class="explore-filters-conatiner">
-    <p>{{staysAmount}} stays</p>
-    <filter-btn/>
+    <p>{{ staysAmount }} stays</p>
+    <filter-btn />
   </div>
   <stay-list @filter="setFilter"></stay-list>
   <!-- <section>
@@ -22,19 +22,27 @@ export default {
   },
   created() {
     this.city = this.$route.params.where
-    if (this.$route.query) {
-      var filterBy = { where: this.$route.query.where, checkIn: this.$route.query.checkIn, checkOut: this.$route.query.checkOut, who: this.$route.query.who, label: this.$route.query.label }
+    if (this.$route.query && this.$route.query.length) {
+      var filterBy = {
+        where: this.$route.query.where, checkIn: this.$route.query.checkIn, checkOut: this.$route.query.checkOut, label: this.$route.query.label,
+        adults: this.$route.query.adults, children: this.$route.query.children, infants: this.$route.query.infants, pets: this.$route.query.pets
+      }
+      console.log('dskdms', filterBy);
       this.$store.dispatch({ type: "setFilter", filterBy })
     }
   },
   methods: {
-    setFilter(filter) {
+    setFilter(filter, { who } = '') {
       var filterBy = Object.assign({}, this.$store.getters.filterBy)
 
       if (filter.label) {
         filterBy.label = filter.label
       } else {
         filterBy.where = filter.where
+        filterBy.adults = who.adults
+        filterBy.children = who.children
+        filterBy.infants = who.infants
+        filterBy.pets = who.pets
       }
       this.$store.dispatch({ type: "setFilter", filterBy })
       this.setQuery(filterBy)
@@ -49,10 +57,20 @@ export default {
       this.setQuery(filterBy)
     },
     setQuery(filterBy) {
-      if (filterBy.where.length) {
-        this.$router.push({ path: `/explore/${filterBy.where}`, query: { where: filterBy.where, checkIn: filterBy.checkIn, checkOut: filterBy.checkOut, who: filterBy.who, label: filterBy.label } })
+      if (filterBy.where && filterBy.where !== '') {
+        this.$router.push({
+          path: `/explore/${filterBy.where}`, query: {
+            where: filterBy.where, checkIn: filterBy.checkIn
+            , checkOut: filterBy.checkOut, label: filterBy.label, adults: filterBy.adults, children: filterBy.children, infants: filterBy.infants, pets: filterBy.pets
+          }
+        })
       } else {
-        this.$router.push({ path: `/`, query: { where: filterBy.where, checkIn: filterBy.checkIn, checkOut: filterBy.checkOut, who: filterBy.who, label: filterBy.label } })
+        this.$router.push({
+          path: `/`, query: {
+            where: filterBy.where, checkIn: filterBy.checkIn
+            , checkOut: filterBy.checkOut, label: filterBy.label, adults: filterBy.adults, children: filterBy.children, infants: filterBy.infants, pets: filterBy.pets
+          }
+        })
       }
     }
   },
@@ -62,7 +80,7 @@ export default {
     filterBtn
   },
   computed: {
-    staysAmount(){return this.$store.getters.amountOfStays}
+    staysAmount() { return this.$store.getters.amountOfStays }
   },
   unmounted() { },
 }

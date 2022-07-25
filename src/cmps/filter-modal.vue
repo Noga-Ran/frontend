@@ -95,10 +95,10 @@
             <span class="filter-seperator"></span>
             <div class="filter-who-and-search" @click="setActive($event.currentTarget)">
                 <div class="filter-who-container" @click.self="showWho = !showWho, showModal = false">
-                    <p @click.self="showWho = !showWho, showModal = false">Who</p>
-                    <span @click.self="showWho = !showWho, showModal = false">Add guests</span>
-                    <div v-if="showWho" @click="showWho = false">
-                        <div class="guests-modal" @click.self="showWho = !showWho">
+                    <p @click.prevent="showWho = !showWho, showModal = false">Who</p>
+                    <span @click.prevent="showWho = !showWho, showModal = false">{{gusetsAmount}}</span>
+                    <div v-if="showWho">
+                        <div class="guests-modal">
                             <div class="modal-g-container">
                                 <div class="adults-filter-container">
                                     <div>
@@ -106,11 +106,11 @@
                                         <span>Ages 13 or above</span>
                                     </div>
                                     <div>
-                                        <button type="button" class="g-modal-buttons" :disabled="guests.adults == 0">
+                                        <button type="button" class="g-modal-buttons" :disabled="guests.adults == 0" @click.stop="guests.adults--">
                                             <span class="material-icons-sharp">-</span>
                                         </button>
                                         <span class="guests-num">{{ guests.adults }}</span>
-                                        <button type="button" class="g-modal-buttons">
+                                        <button type="button" class="g-modal-buttons" @click.stop="guests.adults++">
                                             <span class="material-icons-sharp">+</span>
                                         </button>
                                     </div>
@@ -121,11 +121,11 @@
                                         <span>Ages 2–12</span>
                                     </div>
                                     <div>
-                                        <button type="button" class="g-modal-buttons" :disabled="guests.children == 0">
+                                        <button type="button" class="g-modal-buttons" :disabled="guests.children == 0" @click.stop="guests.children--">
                                             <span class="material-icons-sharp">-</span>
                                         </button>
                                         <span class="guests-num">{{ guests.children }}</span>
-                                        <button type="button" class="g-modal-buttons">
+                                        <button type="button" class="g-modal-buttons" @click.stop="guests.children++">
                                             <span class="material-icons-sharp">+</span>
                                         </button>
                                     </div>
@@ -136,11 +136,11 @@
                                         <span>Under 2</span>
                                     </div>
                                     <div>
-                                        <button type="button" class="g-modal-buttons" :disabled="guests.infants == 0">
+                                        <button type="button" class="g-modal-buttons" :disabled="guests.infants == 0" @click.stop="guests.infants--">
                                             <span class="material-icons-sharp">-</span>
                                         </button>
                                         <span class="guests-num">{{ guests.infants }}</span>
-                                        <button type="button" class="g-modal-buttons">
+                                        <button type="button" class="g-modal-buttons" @click.stop="guests.infants++">
                                             <span class="material-icons-sharp">+</span>
                                         </button>
                                     </div>
@@ -151,11 +151,11 @@
                                         <span>(doesn't include service animals)</span>
                                     </div>
                                     <div>
-                                        <button type="button" class="g-modal-buttons" :disabled="guests.pets == 0">
+                                        <button type="button" class="g-modal-buttons" :disabled="guests.pets == 0" @click.stop="guests.pets--">
                                             <span class="material-icons-sharp">-</span>
                                         </button>
                                         <span class="guests-num">{{ guests.pets }}</span>
-                                        <button type="button" class="g-modal-buttons">
+                                        <button type="button" class="g-modal-buttons" @click.stop="guests.pets++">
                                             <span class="material-icons-sharp">+</span>
                                         </button>
                                     </div>
@@ -194,9 +194,9 @@ export default {
             endDate: '',
             show: false,
             showWho: false,
-            guests: { adults: 1, children: 0, infants: 2, pets: 0 },
+            guests: { adults: 0, children: 0, infants: 0, pets: 0,sum:0},
             showModal: false,
-            countryLabels: ['Im flexiable', 'australia', 'brazil', 'canada', 'spain', 'united states']
+            countryLabels: ['Im flexiable', 'australia', 'brazil', 'canada', 'spain', 'united states'],
         }
     },
     methods: {
@@ -260,13 +260,25 @@ export default {
         }
     },
     computed: {
+        gusetsAmount(){
+            this.guests.sum = this.guests.adults + this.guests.infants + this.guests.children + this.guests.pets
+            this.$emit('guest', this.guests)
+            if(this.guests.sum===0) return 'Add Guests'
+            if(this.guests.sum===1) return this.guests.sum + ' guest'
+            return this.guests.sum + ' guests'
+        }
     },
     created() {
         if (this.$route.query) {
             this.where = this.$route.query.where
+            this.$emit('filter', this.where)
             this.startDate = this.$route.query.checkIn
             this.endDate = this.$route.query.checkOut
             if (this.startDate && this.endDate) this.show = true
+            this.guests.adults = +this.$route.query.adults || 0
+            this.guests.children = +this.$route.query.children || 0
+            this.guests.infants =  +this.$route.query.infants || 0
+            this.guests.pets = +this.$route.query.pets || 0
         }
     },
 }
