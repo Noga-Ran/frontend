@@ -3,9 +3,12 @@ import stays from '../jsons/stay.json';
 
 import { storageService } from './async-storage-service'
 const KEY = 'stays'
+const FILTER = 'filterby'
 
 export const stayService = {
     query,
+    saveFilterBy,
+    getFilterBy,
     // getById,
     // remove,
     // save,
@@ -38,4 +41,12 @@ function filtering(filteredStays, filterBy){
     stayToFilter = stayToFilter.filter((stay)=> stay.capacity> (filterBy.adults + filterBy.children))
     
     return stayToFilter
+}
+
+async function saveFilterBy(filterBy){
+    storageService._save(FILTER,filterBy)
+}
+
+async function getFilterBy(){
+    return await storageService.query(FILTER)
 }

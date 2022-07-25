@@ -2,7 +2,6 @@
     width: 100%;
     display: flex;
     box-sizing: border-box;
-    position: fixed;
     align-items: center;
     padding: 14px 80px 13px 80px;
     border-top: #DDDDDD 1px solid;
@@ -68,4 +67,8 @@
             }
         }
     }
+}
+
+.fixed-footer{
+    position: fixed;
 }

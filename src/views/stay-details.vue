@@ -158,6 +158,7 @@
       </section>
     </section>
   </section>
+  <app-footer :isFixed="'false'"/>
 </template>
 
 <script>
@@ -165,6 +166,7 @@ import tripSettings from '../cmps/trip-settings.vue'
 import appHeader from '../cmps/app-header.vue'
 import aminities from '../cmps/aminities.vue'
 import reviews from '../cmps/reviews.vue'
+import appFooter from '../cmps/app-footer.vue'
 
 export default {
   name: 'stay-details',
@@ -173,6 +175,7 @@ export default {
     tripSettings,
     aminities,
     reviews,
+    appFooter
   },
   data() {
     return {
@@ -186,14 +189,6 @@ export default {
     this.id = this.$route.params.id
     this.stay = this.$store.getters.stayById(this.id)
     this.isFav = this.$store.getters.wishListById(this.id)
-    var filterBy = this.$store.getters.filterBy
-    console.log(filterBy);
-    // this.$router.push({
-    //   path: `/stay/${this.id}?`, query: {
-    //     where: filterBy.where, checkIn: filterBy.checkIn
-    //     , checkOut: filterBy.checkOut, label: filterBy.label, adults: filterBy.adults, children: filterBy.children, infants: filterBy.infants, pets: filterBy.pets
-    //   }
-    // })
   },
   methods: {
     getImgUrl(idx) {

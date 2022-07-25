@@ -23,7 +23,6 @@ export default {
       return stay[0]
     },
     filterBy({ filterBy }) {
-      console.log(filterBy,'gettes');
       return filterBy
     },
     amountOfStays({ stays }){
@@ -45,9 +44,17 @@ export default {
         commit({ type: 'setStays', stays })
       })
     },
-    setFilter({ dispatch, commit }, { filterBy }) {
+    async setFilter({ dispatch, commit }, { filterBy }) {
+      await stayService.saveFilterBy(filterBy)
       commit({ type: 'setFilter', filterBy })
       dispatch({ type: 'loadStays' })
     },
+    async loadFilter({dispatch, commit}){
+      var filterBy = await stayService.getFilterBy()
+      if(filterBy.length){
+        commit({ type: 'setFilter', filterBy })
+        dispatch({ type: 'loadStays' })
+      }
+    }
   },
 }

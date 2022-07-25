@@ -4,7 +4,7 @@
         <app-header @filter="setFilter" @date="setDate"/>
         <category-filter @filter="setFilter"/>
         <stay-list @filter="setFilter"/>
-        <app-footer></app-footer>
+        <app-footer :isFixed="'true'"/>
     </section>
 </template>
 
