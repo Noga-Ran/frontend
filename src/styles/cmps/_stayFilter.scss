@@ -1,11 +1,29 @@
 .searchbar-selected-filter {
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-    outline: 0.4px solid #ffffff;
+    box-shadow: 0 6px 20px 2px rgba(0, 0, 0, 0.2);
     background-color: #ffffff;
-    border: 0;
+    outline: 1px solid white;
     z-index: 99;
 
     &:hover {
-        background-color: #ffffff;
+        background-color: #ffffff !important;
     }
+}
+
+.filter-who-and-search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 58px;
+    width: 261px;
+    height: 63px;
+
+    .filter-who-container {
+        padding: 14px 24px;
+    }
+
+    &:hover {
+        background-color: #dddddd;
+        cursor: pointer;
+    }
+
 }
