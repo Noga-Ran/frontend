@@ -27,7 +27,6 @@ export default {
         where: this.$route.query.where, checkIn: this.$route.query.checkIn, checkOut: this.$route.query.checkOut, label: this.$route.query.label,
         adults: this.$route.query.adults, children: this.$route.query.children, infants: this.$route.query.infants, pets: this.$route.query.pets
       }
-      console.log('dskdms', filterBy);
       this.$store.dispatch({ type: "setFilter", filterBy })
     }
   },
@@ -38,11 +37,11 @@ export default {
       if (filter.label) {
         filterBy.label = filter.label
       } else {
-        filterBy.where = filter.where
-        filterBy.adults = who.adults
-        filterBy.children = who.children
-        filterBy.infants = who.infants
-        filterBy.pets = who.pets
+        filterBy.where = filter.where || ''
+        filterBy.adults = who.adults || 0
+        filterBy.children = who.children || 0
+        filterBy.infants = who.infants || 0
+        filterBy.pets = who.pets || 0
       }
       this.$store.dispatch({ type: "setFilter", filterBy })
       this.setQuery(filterBy)
