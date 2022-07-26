@@ -14,7 +14,7 @@ const router = createRouter({
       component: homePage,
     },
     {
-      path: '/stay/:id',
+      path: '/stay/:id/',
       name: 'stay-details',
       component: stayDetails,
     },
@@ -27,7 +27,7 @@ const router = createRouter({
       path: '/explore/:where',
       name: 'explore',
       component: explore,
-    }
+    },
   ],
 })
 

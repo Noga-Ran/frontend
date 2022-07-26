@@ -47,7 +47,8 @@
           </div>
           <div class="trip-guests">
             <h1>guests</h1>
-            <h2>{{ guests }} guests</h2>
+            <h2 v-if="guests === 1">{{ guests }} guest</h2>
+            <h2 v-else="guests > 1">{{ guests }} guests</h2>
           </div>
         </div>
 
@@ -193,10 +194,12 @@ export default {
     return {
       stay: null,
       query: null,
-      checkIn: new Date(new Date().setDate(new Date().getDate() - 6)),
-      checkOut: Date.now(),
+      // checkIn: new Date(new Date().setDate(new Date().getDate() - 6)),
+      // checkOut: Date.now(),
+      checkIn: null,
+      checkOut: null,
       stayDayAmount: null,
-      guests: 2,
+      guests: 1,
       showModal: false,
       averageRating: null,
     }
@@ -205,6 +208,13 @@ export default {
     this.id = this.$route.params.id
     this.stay = this.$store.getters.stayById(this.id)
     this.query = this.$route.query
+    this.guests = this.query.adults
+      ? +this.query.adults + +this.query.children + +this.query.infants
+      : 1
+    this.checkIn = this.query.checkIn ? this.query.checkIn : Date.now()
+    this.checkOut = this.query.checkOut
+      ? this.query.checkOut
+      : new Date(new Date().setDate(new Date().getDate() + 6))
   },
   methods: {
     open1(msg) {
@@ -229,7 +239,6 @@ export default {
       return date
     },
     saveTrip() {
-      this.open1('Your trip was successfully reserved')
       var tripDetails = {
         stay: this.stay._id,
         checkIn: this.getDate(this.checkIn),
@@ -237,6 +246,8 @@ export default {
         price: this.getPrice(this.stay.cleaningFee),
         guests: this.guests,
       }
+      this.open1('Your trip was successfully reserved')
+
       this.showModal = true
       this.$store.dispatch({ type: 'addTrip', trip: tripDetails })
       setTimeout(() => {
