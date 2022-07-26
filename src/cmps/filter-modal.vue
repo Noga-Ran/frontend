@@ -78,6 +78,7 @@
                     @click="showModal = false; setActive($event.currentTarget)">
                     <p>Check in</p>
                     <!-- <span>Add dates</span> -->
+                    <el-calender></el-calender>
                     <Datepicker @click="showWho = false" v-if="!show" @blur="setDate('start')" hideInputIcon
                         :autoPosition="false" :enableTimePicker="false" v-model="startDate" range multiCalendars
                         placeholder="Add dates" :minDate="new Date()" textInput autoApply closeOnScroll />
