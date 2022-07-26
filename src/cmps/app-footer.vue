@@ -1,6 +1,6 @@
 <template>
   <div class="clear"></div>
-  <section class="footer-container">
+  <section class="footer-container" :class="{ 'fixed-footer': isFixed==='true' }">
     <div>
       <span>© 2022 Airbnb, Inc.</span>
       <span class="sep-footer">·</span>
@@ -42,10 +42,14 @@
 </template>
 <script>
 export default {
+  props:{
+    isFixed:String,
+  },
   data() {
     return {}
   },
-  created() { },
+  created() {
+  },
   methods: {},
   computed: {},
   unmounted() { },

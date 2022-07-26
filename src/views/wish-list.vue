@@ -4,11 +4,11 @@
         <h1>Wishlist</h1>
         <div class="wish-container" v-for="stay in wishList" :key="stay._id" @click.prevent="showDetails(stay._id)">
             <section>
-                    <el-carousel trigger="click" :autoplay="false" height="150px">
-                        <el-carousel-item v-for="item in 5" :key="item">
-                            <img :src='getImgUrl(stay,item)' alt=''>
-                        </el-carousel-item>
-                    </el-carousel>
+                <el-carousel trigger="click" :autoplay="false" height="150px">
+                    <el-carousel-item v-for="item in 5" :key="item">
+                        <img :src='getImgUrl(stay, item)' alt=''>
+                    </el-carousel-item>
+                </el-carousel>
             </section>
             <section class="wish-details-container">
                 <section class="wish-name">
@@ -71,10 +71,10 @@ export default {
         return {}
     },
     methods: {
-        getImgUrl(stay,item) {
+        getImgUrl(stay, item) {
             console.log(item);
             const { imgUrls } = stay
-            return new URL('../assets/img/stays/' + imgUrls[item-1], import.meta.url).href
+            return new URL('../assets/img/stays/' + imgUrls[item - 1], import.meta.url).href
         },
         getRating(stay) {
             const { rating } = stay.reviewScores
@@ -90,7 +90,11 @@ export default {
             this.$store.dispatch({ type: "removeWishStay", stayId })
         },
         showDetails(stayId) {
-            window.open(`/#/stay/${stayId}`, '_blank')
+            if(this.$route.query && this.$route.query?.adults){
+                window.open(`/#/stay/${stayId}?where=${this.$route.query.where || ''}&checkIn=${this.$route.query.checkIn || ''}&checkOut=${this.$route.query.checkOut || ''}&label=${this.$route.query.label || ''}&adults=${this.$route.query.adults}&children=${this.$route.query.children}&infants=${this.$route.query.infants}&pets=${this.$route.query.pets}`, '_blank')
+            }else{
+                window.open(`/#/stay/${stayId}`, '_blank')
+            }
         },
         checkMulti(stayParam, param) {
             if (stayParam === 1) return stayParam + ' ' + param
@@ -104,6 +108,9 @@ export default {
         wishList() { return this.$store.getters.wishList }
     },
     created() {
+        var filterBy = this.$store.getters.filterBy
+        this.$router.push({path:`/wishList/${filterBy.where}`,query: { where:filterBy.where, checkIn:filterBy.checkIn
+                ,checkOut:filterBy.checkOut ,label:filterBy.label,adults:filterBy.adults,children:filterBy.children,infants:filterBy.infants,pets:filterBy.pets}})
     },
 }
 </script>

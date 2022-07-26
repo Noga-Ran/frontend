@@ -8,7 +8,10 @@ export default {
       label: '',
       checkIn:'',
       checkOut:'',
-      guests:0,
+      adults:0,
+      children:0,
+      infants:0,
+      pets:0,
     },
   },
   getters: {
@@ -26,7 +29,6 @@ export default {
       return stays.length
     }
   },
-
   mutations: {
     setStays(state, { stays }) {
       state.stays = stays
@@ -39,13 +41,20 @@ export default {
     loadStays({ commit, state }) {
       stayService.query(state.filterBy).then((stays) => {
         // לזכור להחליף
-        stays = stays.slice(0,10)
         commit({ type: 'setStays', stays })
       })
     },
-    setFilter({ dispatch, commit }, { filterBy }) {
+    async setFilter({ dispatch, commit }, { filterBy }) {
+      await stayService.saveFilterBy(filterBy)
       commit({ type: 'setFilter', filterBy })
       dispatch({ type: 'loadStays' })
     },
+    async loadFilter({dispatch, commit}){
+      var filterBy = await stayService.getFilterBy()
+      if(filterBy.length){
+        commit({ type: 'setFilter', filterBy })
+        dispatch({ type: 'loadStays' })
+      }
+    }
   },
 }

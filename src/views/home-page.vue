@@ -4,7 +4,7 @@
         <app-header @filter="setFilter" @date="setDate"/>
         <category-filter @filter="setFilter"/>
         <stay-list @filter="setFilter"/>
-        <app-footer></app-footer>
+        <app-footer :isFixed="'true'"/>
     </section>
 </template>
 
@@ -24,15 +24,18 @@ export default {
     data(){
     },
     methods: {
-        setFilter(filter){
+        setFilter(filter,{who}=''){
             var filterBy = Object.assign({}, this.$store.getters.filterBy)
-           
             if(filter.label){
                 filterBy.label = filter.label
             }else{
-                filterBy.where = filter.where
+                filterBy.where = filter.where || ''
+                filterBy.adults = who.adults || 0
+                filterBy.children = who.children || 0
+                filterBy.infants = who.infants || 0
+                filterBy.pets = who.pets || 0
             }
-            console.log(filterBy);
+            console.log('search',filterBy);
             this.$store.dispatch({ type: "setFilter", filterBy })
             this.setQuery(filterBy)
         },
@@ -40,23 +43,25 @@ export default {
             var filterBy = Object.assign({}, this.$store.getters.filterBy)
             filterBy.checkIn = date.start
             filterBy.checkOut = date.end
-            console.log(filterBy);
+            console.log('dates',filterBy);
             this.$store.dispatch({ type: "setFilter", filterBy })
 
             this.setQuery(filterBy) 
         },
         setQuery(filterBy){
-            console.log(filterBy);
             if(filterBy.where && filterBy.where!==''){
-                this.$router.push({path:`/explore/${filterBy.where}`,query: { where:filterBy.where, checkIn:filterBy.checkIn ,checkOut:filterBy.checkOut ,who: filterBy.who,label:filterBy.label }})
+                this.$router.push({path:`/explore/${filterBy.where}`,query: { where:filterBy.where, checkIn:filterBy.checkIn
+                ,checkOut:filterBy.checkOut ,label:filterBy.label,adults:filterBy.adults,children:filterBy.children,infants:filterBy.infants,pets:filterBy.pets}})
             }else{
-                this.$router.push({path:`/`, query: { where:filterBy.where, checkIn:filterBy.checkIn ,checkOut:filterBy.checkOut ,who: filterBy.who,label:filterBy.label } })
+                this.$router.push({path:`/`, query: { where:filterBy.where, checkIn:filterBy.checkIn
+                ,checkOut:filterBy.checkOut ,label:filterBy.label,adults:filterBy.adults,children:filterBy.children,infants:filterBy.infants,pets:filterBy.pets } })
             }
         }
     },
     created(){
-        if(this.$route.query){
-            var filterBy = {where: this.$route.query.where, checkIn:this.$route.query.checkIn ,checkOut:this.$route.query.checkOut , who:this.$route.query.who, label:this.$route.query.label}
+        if(this.$route.query && this.$route.query.length){
+            var filterBy = {where: this.$route.query.where, checkIn:this.$route.query.checkIn ,checkOut:this.$route.query.checkOut , label:this.$route.query.label,
+            adults:this.$route.query.adults,children:this.$route.query.children,infants:this.$route.query.infants,pets:this.$route.query.pets}
             this.$store.dispatch({ type: "setFilter", filterBy })
         }
         

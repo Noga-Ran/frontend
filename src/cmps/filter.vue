@@ -20,7 +20,7 @@
         </div>
     </div>
     <div v-else :class="{ 'filter-modal-container': isSearch }">
-        <filter-modal @closeHeader="closeHeader" @filter="setFilter" @emit="emitFilter" @date="emitDate"/>
+        <filter-modal @guest="setGuest" @closeHeader="closeHeader" @filter="setFilter" @emit="emitFilter" @date="emitDate"/>
     </div>
 </template>
 
@@ -34,6 +34,7 @@ export default {
             where: '',
             isSearch: false,
             windowY: 0,
+            guests: 0,
         }
     },
     methods: {
@@ -47,16 +48,22 @@ export default {
         },
         emitFilter() {
             let filterWhere = this.where
+            let who = this.guests
             this.isSearch = false
             this.where = ''
+            this.guests = 0
 
-            this.$emit('filter', filterWhere)
+            this.$emit('filter', filterWhere,who)
         },
         setFilter(filter) {
             this.where = filter
         },
         emitDate(date){
             this.$emit('date', date)
+        },
+        setGuest(guests){
+            // console.log(guests);
+            this.guests = guests
         }
     },
     computed: {

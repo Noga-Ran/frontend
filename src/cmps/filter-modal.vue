@@ -96,74 +96,9 @@
             <span class="filter-seperator"></span>
             <div class="filter-who-and-search" @click="setActive($event.currentTarget)">
                 <div class="filter-who-container" @click.self="showWho = !showWho, showModal = false">
-                    <p @click.self="showWho = !showWho, showModal = false">Who</p>
-                    <span @click.self="showWho = !showWho, showModal = false">Add guests</span>
-                    <div v-if="showWho" @click="showWho = false">
-                        <div class="guests-modal" @click.self="showWho = !showWho">
-                            <div class="modal-g-container">
-                                <div class="adults-filter-container">
-                                    <div>
-                                        <span>Adults</span>
-                                        <span>Ages 13 or above</span>
-                                    </div>
-                                    <div>
-                                        <button type="button" class="g-modal-buttons" :disabled="guests.adults == 0">
-                                            <span class="material-icons-sharp">-</span>
-                                        </button>
-                                        <span class="guests-num">{{ guests.adults }}</span>
-                                        <button type="button" class="g-modal-buttons">
-                                            <span class="material-icons-sharp">+</span>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="children-filter-container">
-                                    <div>
-                                        <span>Children</span>
-                                        <span>Ages 2–12</span>
-                                    </div>
-                                    <div>
-                                        <button type="button" class="g-modal-buttons" :disabled="guests.children == 0">
-                                            <span class="material-icons-sharp">-</span>
-                                        </button>
-                                        <span class="guests-num">{{ guests.children }}</span>
-                                        <button type="button" class="g-modal-buttons">
-                                            <span class="material-icons-sharp">+</span>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="babies-filter-container">
-                                    <div>
-                                        <span>Infants</span>
-                                        <span>Under 2</span>
-                                    </div>
-                                    <div>
-                                        <button type="button" class="g-modal-buttons" :disabled="guests.infants == 0">
-                                            <span class="material-icons-sharp">-</span>
-                                        </button>
-                                        <span class="guests-num">{{ guests.infants }}</span>
-                                        <button type="button" class="g-modal-buttons">
-                                            <span class="material-icons-sharp">+</span>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="pets-filter-container">
-                                    <div>
-                                        <span>Pets</span>
-                                        <span>(doesn't include service animals)</span>
-                                    </div>
-                                    <div>
-                                        <button type="button" class="g-modal-buttons" :disabled="guests.pets == 0">
-                                            <span class="material-icons-sharp">-</span>
-                                        </button>
-                                        <span class="guests-num">{{ guests.pets }}</span>
-                                        <button type="button" class="g-modal-buttons">
-                                            <span class="material-icons-sharp">+</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <p @click.prevent="showWho = !showWho, showModal = false">Who</p>
+                    <span @click.prevent="showWho = !showWho, showModal = false">{{ guestsAmount }}</span>
+                    <guests-filter @guest="updateGuests" v-if="showWho"/>
                 </div>
                 <div class="search-container">
                     <button @click.prevent="setFilter">
@@ -187,6 +122,8 @@
 </template>
 
 <script>
+import guestsFilter from './filter-modal-cmps/guests-filter-modal.vue'
+
 export default {
     data() {
         return {
@@ -195,9 +132,9 @@ export default {
             endDate: '',
             show: false,
             showWho: false,
-            guests: { adults: 1, children: 0, infants: 2, pets: 0 },
             showModal: false,
-            countryLabels: ['Im flexiable', 'australia', 'brazil', 'canada', 'spain', 'united states']
+            countryLabels: ['Im flexiable', 'australia', 'brazil', 'canada', 'spain', 'united states'],
+            guestsAmount: 'Add guests'
         }
     },
     methods: {
@@ -215,10 +152,12 @@ export default {
             this.$emit('emit')
         },
         setDate(isStart) {
-            console.log(this.startDate);
             if (isStart === 'start') {
                 let dates = Object.values(this.startDate)
-                console.log(new Date(dates[0]).toISOString().slice(0, 16).replace('T', ', ').replaceAll('-', '/'))
+                var emitStartDate = new Date(dates[0]).toISOString().slice(0, 16).replace('T', ', ').replaceAll('-', '/')
+                emitStartDate = emitStartDate.slice(0,10)
+                var emitEndDate = new Date(dates[1]).toISOString().slice(0, 16).replace('T', ', ').replaceAll('-', '/')
+                emitEndDate = emitEndDate.slice(0,10)
                 this.startDate = ('' + dates[0]).substring(4, 15)
                 this.endDate = ('' + dates[1]).substring(4, 15)
             } else {
@@ -226,11 +165,11 @@ export default {
                 this.startDate = ('' + dates[0]).substring(4, 15)
                 this.endDate = ('' + dates[1]).substring(4, 15)
             }
+
             if (this.startDate !== 'fined' && this.startDate !== '' && this.startDate !== '' && this.endDate !== 'fined') {
                 this.show = true
-                this.$emit('date', { start: this.startDate, end: this.endDate })
+                this.$emit('date', { start: emitStartDate, end: emitEndDate })
             } else {
-                console.log('dhfsj');
                 this.$emit('date', { start: '', end: '' })
             }
         },
@@ -258,16 +197,27 @@ export default {
             this.$emit("closeHeader")
             this.showWho = false
             this.showModal = false
+        },
+        updateGuests(guests){
+            if (guests.sum === 0) this.guestsAmount = 'Add Guests'
+            else if (guests.sum === 1) this.guestsAmount = guests.sum + ' guest'
+            else this.guestsAmount = guests.sum + ' guests'
+            this.$emit('guest',guests)
         }
     },
-    computed: {
+    components:{
+        guestsFilter,
     },
     created() {
         if (this.$route.query) {
             this.where = this.$route.query.where
+            this.$emit('filter', this.where)
             this.startDate = this.$route.query.checkIn
             this.endDate = this.$route.query.checkOut
             if (this.startDate && this.endDate) this.show = true
+            this.guestsAmount = +this.$route.query.adults + +this.$route.query.children + +this.$route.query.infants + +this.$route.query.pets || 'Add guests'
+           if(this.guestsAmount===1) this.guestsAmount+= ' guest'
+           else if(this.guestsAmount>1) this.guestsAmount+=' guests'
         }
     },
 }

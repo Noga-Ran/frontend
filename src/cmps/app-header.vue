@@ -6,7 +6,8 @@
                 <img src="../../public/favicon.png" alt="">
                 <p>skybnb</p>
             </div>
-            <filter-cmp @closeHeader="closeHeader" @search="setSearch" @filter="setFilter" @date="setDate" :isSearch="isSearch" />
+            <filter-cmp @closeHeader="closeHeader" @search="setSearch" @filter="setFilter" @date="setDate"
+                :isSearch="isSearch" />
             <div class="header-tools-container" :class="{ 'grid-area-user': isSearch }">
                 <div class="become-a-host">
                     Become a Host
@@ -45,12 +46,12 @@ export default {
         }
     },
     methods: {
-        closeHeader(){
+        closeHeader() {
             this.isSearch = false
         },
-        setFilter(where) {
+        setFilter(where, who) {
             this.isSearch = false
-            this.$emit('filter', { where })
+            this.$emit('filter', { where }, { who })
         },
         setDate(date) {
             this.$emit('date', date)
