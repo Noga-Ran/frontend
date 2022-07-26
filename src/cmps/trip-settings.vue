@@ -47,7 +47,8 @@
           </div>
           <div class="trip-guests">
             <h1>guests</h1>
-            <h2 v-if="guests === 1">{{ guests }} guest</h2>
+            <h2 v-if="guests <= 1">1 guest</h2>
+            <!-- <h2 v-if="guests === 1">{{ guests }} guest</h2> -->
             <h2 v-else="guests > 1">{{ guests }} guests</h2>
           </div>
         </div>
@@ -215,6 +216,8 @@ export default {
     this.checkOut = this.query.checkOut
       ? this.query.checkOut
       : new Date(new Date().setDate(new Date().getDate() + 6))
+    console.log('this.checkIn', this.checkIn)
+    console.log(' this.checkOut', this.checkOut)
   },
   methods: {
     open1(msg) {
@@ -223,14 +226,25 @@ export default {
         message: h('i', { style: 'color: #dd0f63' }, msg),
       })
     },
+    // getStayLen() {
+    //   return this.miliToDays(this.checkOut - this.checkIn)
+    // },
+    // miliToDays(timeStap) {
+    //   this.stayDayAmount = parseInt(timeStap / 24 / 60 / 60 / 1000)
+    //   return this.stayDayAmount
+    // },
+
     getStayLen() {
-      return this.miliToDays(this.checkOut - this.checkIn)
-    },
-    miliToDays(timeStap) {
-      this.stayDayAmount = parseInt(timeStap / 24 / 60 / 60 / 1000)
+      var date1 = new Date(this.checkIn)
+      var date2 = new Date(this.checkOut)
+      var time_difference = date2.getTime() - date1.getTime()
+      this.stayDayAmount = time_difference / (1000 * 60 * 60 * 24)
       return this.stayDayAmount
     },
+
     getPrice(cleaningFee = 0) {
+      console.log('this.stay.price', this.stay.price)
+      console.log('this.stayDayAmount', this.stayDayAmount)
       return this.stay.price * this.stayDayAmount + cleaningFee
     },
     getDate(date) {
