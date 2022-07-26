@@ -49,7 +49,6 @@ export default {
     return {}
   },
   created() {
-    console.log(this.isFixed);
   },
   methods: {},
   computed: {},

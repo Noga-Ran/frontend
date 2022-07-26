@@ -96,77 +96,8 @@
             <div class="filter-who-and-search" @click="setActive($event.currentTarget)">
                 <div class="filter-who-container" @click.self="showWho = !showWho, showModal = false">
                     <p @click.prevent="showWho = !showWho, showModal = false">Who</p>
-                    <span @click.prevent="showWho = !showWho, showModal = false">{{ gusetsAmount }}</span>
-                    <div v-if="showWho">
-                        <div class="guests-modal">
-                            <div class="modal-g-container">
-                                <div class="adults-filter-container">
-                                    <div>
-                                        <span>Adults</span>
-                                        <span>Ages 13 or above</span>
-                                    </div>
-                                    <div>
-                                        <button type="button" class="g-modal-buttons" :disabled="isAbled"
-                                            @click.stop="guests.adults--">
-                                            <span class="material-icons-sharp">-</span>
-                                        </button>
-                                        <span class="guests-num">{{ guests.adults }}</span>
-                                        <button type="button" class="g-modal-buttons" @click.stop="guests.adults++">
-                                            <span class="material-icons-sharp">+</span>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="children-filter-container">
-                                    <div>
-                                        <span>Children</span>
-                                        <span>Ages 2–12</span>
-                                    </div>
-                                    <div>
-                                        <button type="button" class="g-modal-buttons" :disabled="guests.children == 0"
-                                            @click.stop="guests.children--">
-                                            <span class="material-icons-sharp">-</span>
-                                        </button>
-                                        <span class="guests-num">{{ guests.children }}</span>
-                                        <button type="button" class="g-modal-buttons" @click.stop="guests.children++">
-                                            <span class="material-icons-sharp">+</span>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="babies-filter-container">
-                                    <div>
-                                        <span>Infants</span>
-                                        <span>Under 2</span>
-                                    </div>
-                                    <div>
-                                        <button type="button" class="g-modal-buttons" :disabled="guests.infants == 0"
-                                            @click.stop="guests.infants--">
-                                            <span class="material-icons-sharp">-</span>
-                                        </button>
-                                        <span class="guests-num">{{ guests.infants }}</span>
-                                        <button type="button" class="g-modal-buttons" @click.stop="guests.infants++">
-                                            <span class="material-icons-sharp">+</span>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="pets-filter-container">
-                                    <div>
-                                        <span>Pets</span>
-                                        <span>(doesn't include service animals)</span>
-                                    </div>
-                                    <div>
-                                        <button type="button" class="g-modal-buttons" :disabled="guests.pets == 0"
-                                            @click.stop="guests.pets--">
-                                            <span class="material-icons-sharp">-</span>
-                                        </button>
-                                        <span class="guests-num">{{ guests.pets }}</span>
-                                        <button type="button" class="g-modal-buttons" @click.stop="guests.pets++">
-                                            <span class="material-icons-sharp">+</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <span @click.prevent="showWho = !showWho, showModal = false">{{ guestsAmount }}</span>
+                    <guests-filter @guest="updateGuests" v-if="showWho"/>
                 </div>
                 <div class="search-container">
                     <button @click.prevent="setFilter">
@@ -190,6 +121,8 @@
 </template>
 
 <script>
+import guestsFilter from './filter-modal-cmps/guests-filter-modal.vue'
+
 export default {
     data() {
         return {
@@ -198,10 +131,9 @@ export default {
             endDate: '',
             show: false,
             showWho: false,
-            guests: { adults: 0, children: 0, infants: 0, pets: 0, sum: 0 },
             showModal: false,
             countryLabels: ['Im flexiable', 'australia', 'brazil', 'canada', 'spain', 'united states'],
-            ableZeroAdults: true,
+            guestsAmount: 'Add guests'
         }
     },
     methods: {
@@ -264,26 +196,16 @@ export default {
             this.$emit("closeHeader")
             this.showWho = false
             this.showModal = false
+        },
+        updateGuests(guests){
+            if (guests.sum === 0) this.guestsAmount = 'Add Guests'
+            else if (guests.sum === 1) this.guestsAmount = guests.sum + ' guest'
+            else this.guestsAmount = guests.sum + ' guests'
+            this.$emit('guest',guests)
         }
     },
-    computed: {
-        gusetsAmount() {
-            if (this.guests.adults === 0 && (this.guests.infants > 0 || this.guests.children > 0 || this.guests.pets > 0)) {
-                this.guests.adults = 1
-                this.ableZeroAdults = false
-            } else {
-                this.ableZeroAdults = true
-            }
-
-            this.guests.sum = this.guests.adults + this.guests.infants + this.guests.children + this.guests.pets
-            this.$emit('guest', this.guests)
-            if (this.guests.sum === 0) return 'Add Guests'
-            if (this.guests.sum === 1) return this.guests.sum + ' guest'
-            return this.guests.sum + ' guests'
-        },
-        isAbled() {
-            return (this.guests.adults == 0 || (!this.ableZeroAdults && this.guests.adults === 1))
-        }
+    components:{
+        guestsFilter,
     },
     created() {
         if (this.$route.query) {
@@ -292,10 +214,9 @@ export default {
             this.startDate = this.$route.query.checkIn
             this.endDate = this.$route.query.checkOut
             if (this.startDate && this.endDate) this.show = true
-            this.guests.adults = +this.$route.query.adults || 0
-            this.guests.children = +this.$route.query.children || 0
-            this.guests.infants = +this.$route.query.infants || 0
-            this.guests.pets = +this.$route.query.pets || 0
+            this.guestsAmount = +this.$route.query.adults + +this.$route.query.children + +this.$route.query.infants + +this.$route.query.pets || 'Add guests'
+           if(this.guestsAmount===1) this.guestsAmount+= ' guest'
+           else if(this.guestsAmount>1) this.guestsAmount+=' guests'
         }
     },
 }

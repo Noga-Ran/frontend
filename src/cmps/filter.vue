@@ -62,6 +62,7 @@ export default {
             this.$emit('date', date)
         },
         setGuest(guests){
+            // console.log(guests);
             this.guests = guests
         }
     },
