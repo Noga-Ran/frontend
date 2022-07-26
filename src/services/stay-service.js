@@ -11,7 +11,7 @@ export const stayService = {
     query,
     saveFilterBy,
     getFilterBy,
-    // getById,
+    getStayById,
     // remove,
     // save,
     // getEmptyToy,
@@ -21,8 +21,13 @@ export const stayService = {
 async function query(filterBy = {}) {
     // storageService._save(KEY,stays)
     // var filteredStays =  await storageService.query(KEY)
-    return filteredStays = await httpService.get(ENDPOINT,filterBy)
+    return await httpService.get(ENDPOINT,filterBy)
     // return filtering(filteredStays, filterBy)
+}
+
+async function getStayById(stayId){
+    var stay =  await httpService.get(`${ENDPOINT}/${stayId}`)
+    return stay
 }
 
 function filtering(filteredStays, filterBy){

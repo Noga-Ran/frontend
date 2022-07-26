@@ -1,17 +1,21 @@
-.dp__month_year_select>*:nth-of-type(2),
-.dp__month_year_row:first-child>*:nth-child(3) {
-    // display: none !important;
-}
-
-.dp__instance_calendar .dp__month_year_row{
-    &:first-of-type{
-        background-color: aquamarine;
-    }
-.dp__month_year_select:nth-of-type(3),
-    .dp__month_year_select:nth-of-type(2){
+.dp__flex_display>*:first-child{
+    margin: 50px !important;
     background-color: aqua;
-// .dp__month_year_select {
-//     background-color: beige !important;
-// }
+
+    .dp__month_year_select:nth-of-type(2){
+        margin-left: 50px;
+    }
+
+    .dp__month_year_select:nth-of-type(3){
+        background-color:darkred;
+    }
+
 }
+.dp__flex_display>*:last-child
+{
+    .dp__month_year_select:nth-of-type(2){
+        background-color:darkred;
+
+    }
+
 }

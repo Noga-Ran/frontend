@@ -18,10 +18,12 @@ export default {
     stays({ stays }) {
       return stays
     },
-    stayById: (state) => (stayId) => {
-      var stay = state.stays.filter((stay) => stay._id === stayId)
-      return stay[0]
-    },
+    // stayById: (state) => async(stayId) => {
+    //   console.log(stayId);
+    //   // var stay = state.stays.filter((stay) => stay._id === stayId)
+    //   var stay = await stayService.getById(stayId)
+    //   return stay
+    // },
     filterBy({ filterBy }) {
       return filterBy
     },
@@ -32,17 +34,16 @@ export default {
   mutations: {
     setStays(state, { stays }) {
       state.stays = stays
+      console.log(state.stays);
     },
     setFilter(state, { filterBy }) {
       state.filterBy = filterBy
     },
   },
   actions: {
-    loadStays({ commit, state }) {
-      stayService.query(state.filterBy).then((stays) => {
-        // לזכור להחליף
-        commit({ type: 'setStays', stays })
-      })
+    async loadStays({ commit, state }) {
+      var stays = await stayService.query(state.filterBy)
+      commit({ type: 'setStays', stays })
     },
     async setFilter({ dispatch, commit }, { filterBy }) {
       await stayService.saveFilterBy(filterBy)
@@ -54,6 +55,13 @@ export default {
       if(filterBy.length){
         commit({ type: 'setFilter', filterBy })
         dispatch({ type: 'loadStays' })
+      }
+    },
+    async getStayById(state,{stayId}){
+      try {
+        return await stayService.getStayById(stayId)
+      } catch (err) {
+        console.log(err)
       }
     }
   },

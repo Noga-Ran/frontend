@@ -189,6 +189,9 @@ import { h } from 'vue'
 import { ElNotification } from 'element-plus'
 
 export default {
+  props:{
+    currStay:Object
+  },
   data() {
     return {
       stay: null,
@@ -203,7 +206,8 @@ export default {
   },
   created() {
     this.id = this.$route.params.id
-    this.stay = this.$store.getters.stayById(this.id)
+    // this.stay = this.$store.getters.stayById(this.id)
+    this.stay = JSON.parse(JSON.stringify(this.currStay))
     this.query = this.$route.query
   },
   methods: {
