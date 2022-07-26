@@ -1,9 +1,11 @@
 
 import stays from '../jsons/stay.json';
-
+import {httpService} from './http.service.js';
 import { storageService } from './async-storage-service'
 const KEY = 'stays'
 const FILTER = 'filterby'
+
+const ENDPOINT = 'stay'
 
 export const stayService = {
     query,
@@ -17,11 +19,10 @@ export const stayService = {
 }
 
 async function query(filterBy = {}) {
-    storageService._save(KEY,stays)
-    // return await httpService.get(ENDPOINT, filterBy)
-    // // return axios.get(BASE_URL, { params: { filterBy } }).then((res) => res.data)
-    var filteredStays =  await storageService.query(KEY)
-    return filtering(filteredStays, filterBy)
+    // storageService._save(KEY,stays)
+    // var filteredStays =  await storageService.query(KEY)
+    return filteredStays = await httpService.get(ENDPOINT,filterBy)
+    // return filtering(filteredStays, filterBy)
 }
 
 function filtering(filteredStays, filterBy){
