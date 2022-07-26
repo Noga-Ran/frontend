@@ -219,10 +219,12 @@ export default {
             this.$emit('emit')
         },
         setDate(isStart) {
-            console.log(this.startDate);
             if (isStart === 'start') {
                 let dates = Object.values(this.startDate)
-                console.log(new Date(dates[0]).toISOString().slice(0, 16).replace('T', ', ').replaceAll('-', '/'))
+                var emitStartDate = new Date(dates[0]).toISOString().slice(0, 16).replace('T', ', ').replaceAll('-', '/')
+                emitStartDate = emitStartDate.slice(0,10)
+                var emitEndDate = new Date(dates[1]).toISOString().slice(0, 16).replace('T', ', ').replaceAll('-', '/')
+                emitEndDate = emitEndDate.slice(0,10)
                 this.startDate = ('' + dates[0]).substring(4, 15)
                 this.endDate = ('' + dates[1]).substring(4, 15)
             } else {
@@ -230,11 +232,11 @@ export default {
                 this.startDate = ('' + dates[0]).substring(4, 15)
                 this.endDate = ('' + dates[1]).substring(4, 15)
             }
+
             if (this.startDate !== 'fined' && this.startDate !== '' && this.startDate !== '' && this.endDate !== 'fined') {
                 this.show = true
-                this.$emit('date', { start: this.startDate, end: this.endDate })
+                this.$emit('date', { start: emitStartDate, end: emitEndDate })
             } else {
-                console.log('dhfsj');
                 this.$emit('date', { start: '', end: '' })
             }
         },
