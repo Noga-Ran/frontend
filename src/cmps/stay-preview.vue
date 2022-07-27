@@ -141,7 +141,7 @@ export default {
             this.isFav = !this.isFav
 
             if (this.isFav) {
-                this.$store.dispatch({ type: "addWishStay", stay: this.currStay })
+                this.$store.dispatch({ type: "addWishStay", stayId: this.currStay._id })
             } else {
                 this.$store.dispatch({ type: "removeWishStay", stayId: this.currStay._id })
             }
