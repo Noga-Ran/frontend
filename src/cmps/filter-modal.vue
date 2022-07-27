@@ -79,7 +79,7 @@
                     <p>Check in</p>
                     <!-- <span>Add dates</span> -->
                     <el-calender></el-calender>
-                    <Datepicker @click="showWho = false" v-if="!show" @blur="setDate('start')" hideInputIcon
+                    <Datepicker :full-month-name="true" @click="showWho = false" v-if="!show" @blur="setDate('start')" hideInputIcon
                         :autoPosition="false" :enableTimePicker="false" v-model="startDate" range multiCalendars
                         placeholder="Add dates" :minDate="new Date()" textInput autoApply closeOnScroll />
                     <p v-if="show" @click.self="clearDates">{{ startDate }}</p>
@@ -87,7 +87,7 @@
                 <span class="filter-seperator"></span>
                 <div class="check-out-container" @click="showModal = false; setActive($event.currentTarget)">
                     <p>Check out</p>
-                    <Datepicker @click="showWho = false" v-if="!show" @blur="setDate('end')" hideInputIcon
+                    <Datepicker :full-month-name="true" @click="showWho = false" v-if="!show" @blur="setDate('end')" hideInputIcon
                         :autoPosition="false" :enableTimePicker="false" v-model="endDate" range multiCalendars
                         placeholder="Add dates" :minDate="new Date()" textInput autoApply closeOnScroll />
                     <p v-if="show" @click.self="clearDates">{{ endDate }}</p>
