@@ -14,6 +14,7 @@ export const userService = {
     login,
     signup,
     logout,
+    getGuestUser,
 }
 async function query(filterBy = {}) {
     return storageService.query(KEY)
@@ -39,4 +40,13 @@ async function signup(cred) {
 }
 async function logout() {
     return await httpService.post(ENDPOINT + '/logout')
+}
+
+function getGuestUser() {
+  return {
+    fullname: 'Guest User',
+    username: 'guest',
+    password: 'guest',
+    isAdmin: true,
+  }
 }

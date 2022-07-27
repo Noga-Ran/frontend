@@ -45,6 +45,7 @@
               {{ getDate(checkOut) }}
             </h2>
           </div>
+
           <div class="trip-guests">
             <h1>guests</h1>
             <h2 v-if="guests <= 1">1 guest</h2>
@@ -191,21 +192,20 @@ import { h } from 'vue'
 import { ElNotification } from 'element-plus'
 
 export default {
-  props:{
-    currStay:Object
+  props: {
+    currStay: Object,
   },
   data() {
     return {
       stay: null,
       query: null,
-      // checkIn: new Date(new Date().setDate(new Date().getDate() - 6)),
-      // checkOut: Date.now(),
       checkIn: null,
       checkOut: null,
       stayDayAmount: null,
       guests: 1,
       showModal: false,
       averageRating: null,
+      showModal: false,
     }
   },
   created() {
@@ -230,13 +230,6 @@ export default {
         message: h('i', { style: 'color: #dd0f63' }, msg),
       })
     },
-    // getStayLen() {
-    //   return this.miliToDays(this.checkOut - this.checkIn)
-    // },
-    // miliToDays(timeStap) {
-    //   this.stayDayAmount = parseInt(timeStap / 24 / 60 / 60 / 1000)
-    //   return this.stayDayAmount
-    // },
 
     getStayLen() {
       var date1 = new Date(this.checkIn)
@@ -271,6 +264,13 @@ export default {
       setTimeout(() => {
         this.showModal
       }, 5000)
+    },
+    setActive(elElement) {
+      var elActiveArea = document.querySelector('.searchbar-selected-filter')
+      if (elActiveArea && elActiveArea !== elElement) {
+        elActiveArea.classList.remove('searchbar-selected-filter')
+      }
+      elElement.classList.add('searchbar-selected-filter')
     },
   },
   computed: {

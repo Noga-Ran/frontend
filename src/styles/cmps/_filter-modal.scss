@@ -38,6 +38,7 @@
         }
     }
 }
+.header-layout{
 
 .modal-filter-choices-layout,
 .check-in-out-container {
@@ -45,6 +46,7 @@
     height: inherit;
     align-items: center;
 }
+
 
 .filter-seperator {
     border-right: #dddddd 1px solid;
@@ -148,6 +150,7 @@
         left: 85%;
     }
 
+}
 }
 
 .filter-who-container {
