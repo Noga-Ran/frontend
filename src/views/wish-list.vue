@@ -68,7 +68,9 @@
 import appHeader from '../cmps/app-header.vue'
 export default {
     data() {
-        return {}
+        return {
+            wishList:null
+        }
     },
     methods: {
         getImgUrl(stay, item) {
@@ -99,18 +101,25 @@ export default {
         checkMulti(stayParam, param) {
             if (stayParam === 1) return stayParam + ' ' + param
             return stayParam + ' ' + param + 's'
+        },
+        async loadWishList(){
+            this.wishList =  await this.$store.getters.wishList
+           console.log(this.wishList);
         }
     },
     components: {
         appHeader,
     },
     computed: {
-        wishList() { return this.$store.getters.wishList }
+        // ishList() { var wishList =this.loadWishList()
+        // console.log(wishList)
+        // }w
     },
     created() {
         var filterBy = this.$store.getters.filterBy
         this.$router.push({path:`/wishList/${filterBy.where}`,query: { where:filterBy.where, checkIn:filterBy.checkIn
                 ,checkOut:filterBy.checkOut ,label:filterBy.label,adults:filterBy.adults,children:filterBy.children,infants:filterBy.infants,pets:filterBy.pets}})
+        this.loadWishList()
     },
 }
 </script>

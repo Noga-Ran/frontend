@@ -48,7 +48,7 @@ export default {
             this.setQuery(filterBy) 
         },
         setQuery(filterBy){
-            if(filterBy.where && filterBy.where!==''){
+            if(filterBy.where){
                 this.$router.push({path:`/explore/${filterBy.where}`,query: { where:filterBy.where, checkIn:filterBy.checkIn
                 ,checkOut:filterBy.checkOut ,label:filterBy.label,adults:filterBy.adults,children:filterBy.children,infants:filterBy.infants,pets:filterBy.pets}})
             }else{
