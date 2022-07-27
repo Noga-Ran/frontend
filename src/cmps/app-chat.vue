@@ -26,6 +26,7 @@
 
 <script>
 import {socketService, SOCKET_EMIT_SEND_MSG, SOCKET_EVENT_ADD_MSG, SOCKET_EMIT_SET_TOPIC} from '../services/socket.service'
+import { userService } from '../services/user-service'
 
 export default {
   data() {
