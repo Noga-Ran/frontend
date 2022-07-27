@@ -4,6 +4,7 @@ import hostPage from '../views/host-page.vue'
 import stayDetails from '../views/stay-details.vue'
 import wishList from '../views/wish-list.vue'
 import explore from '../views/explore.vue'
+import appChat from '../cmps/app-chat.vue'
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -33,6 +34,11 @@ const router = createRouter({
       path: '/explore/:where',
       name: 'explore',
       component: explore,
+    },
+    {
+    path: '/chat',
+    name: 'appChat',
+    component: appChat
     },
   ],
 })
