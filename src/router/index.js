@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import homePage from '../views/home-page.vue'
+import hostPage from '../views/host-page.vue'
 import stayDetails from '../views/stay-details.vue'
 import wishList from '../views/wish-list.vue'
 import explore from '../views/explore.vue'
@@ -12,6 +13,11 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: homePage,
+    }, 
+    {
+      path: '/host',
+      name: 'host',
+      component: hostPage,
     },
     {
       path: '/stay/:id/',

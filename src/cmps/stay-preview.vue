@@ -15,7 +15,6 @@
                     <img :src='getImgUrl(item)' alt=''>
                 </el-carousel-item>
             </el-carousel>
-
         </transition>
         <div v-if="!this.isLoad" class="demo-img">
         </div>

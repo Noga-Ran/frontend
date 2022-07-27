@@ -2,14 +2,14 @@
 <template>
     <section class="header-layout">
         <section :class="{ 'header-container-alt': isSearch, 'header-container': !isSearch }" class="details-padding">
-            <div class="logo-container" :class="{ 'grid-area-logo': isSearch }" @click.prevent="goHome">
+            <div class="logo-container" :class="{ 'grid-area-logo': isSearch }" @click.prevent="redirect">
                 <img src="../../public/favicon.png" alt="">
                 <p>skybnb</p>
             </div>
             <filter-cmp @closeHeader="closeHeader" @search="setSearch" @filter="setFilter" @date="setDate"
                 :isSearch="isSearch" />
             <div class="header-tools-container" :class="{ 'grid-area-user': isSearch }">
-                <div class="become-a-host">
+                <div class="become-a-host" @click="redirect('host')">
                     Become a Host
                 </div>
                 <div>
@@ -56,8 +56,10 @@ export default {
         setDate(date) {
             this.$emit('date', date)
         },
-        goHome() {
-            this.$router.push(`/`)
+        redirect(page) {
+            if (page === "host") {
+                this.$router.push(`/host`)
+            } else this.$router.push(`/`)
         },
         setSearch(isSearching) {
             this.isSearch = isSearching

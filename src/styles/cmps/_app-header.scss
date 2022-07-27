@@ -27,12 +27,12 @@
         ". search-bar .";
     align-items: center;
 
-    .header-tools-container{
+    .header-tools-container {
         grid-column: 2/4;
         width: max-content !important;
     }
 
-    .modal-filter-choices-layout{
+    .modal-filter-choices-layout {
         margin-top: 71px;
     }
 }
@@ -271,6 +271,10 @@
 }
 
 .become-a-host {
-    padding-right: 12px !important;
+    padding: 0 12px !important;
     font-size: 14.5px;
+}
+
+.header-tools-container div:not(.header-user-options) {
+    border-radius: 22px;
 }
