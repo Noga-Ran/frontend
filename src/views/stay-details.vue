@@ -199,7 +199,7 @@ export default {
           stayId,
         })
         this.stay = this.stay
-
+        this.isFav = this.$store.getters.wishListById(this.stay._id)
       } catch (err) {
         console.log(err);
       }
@@ -221,9 +221,9 @@ export default {
       this.isFav = !this.isFav
 
       if (this.isFav) {
-        this.$store.dispatch({ type: 'addWishStay', stay: this.stay })
+        this.$store.dispatch({ type: 'addWishStay', stayId: this.stay._id })
       } else {
-        this.$store.dispatch({ type: 'removeWishStay', stayId: this.id })
+        this.$store.dispatch({ type: 'removeWishStay', stayId: this.stay._id })
       }
     },
   },
