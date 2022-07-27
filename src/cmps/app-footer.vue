@@ -2,7 +2,7 @@
   <div class="clear"></div>
   <section class="footer-container" :class="{ 'fixed-footer': isFixed==='true' }">
     <div>
-      <span>© 2022 Airbnb, Inc.</span>
+      <span>© 2022 Skybnb, Inc.</span>
       <span class="sep-footer">·</span>
       <span>Privacy</span>
       <span class="sep-footer">·</span>

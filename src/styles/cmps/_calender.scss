@@ -1,21 +1,99 @@
-.dp__flex_display>*:first-child{
-    margin: 50px !important;
-    background-color: aqua;
+.dp__calendar_header_separator {
+    display: none;
+}
 
-    .dp__month_year_select:nth-of-type(2){
-        margin-left: 50px;
+.dp__calendar_header_item {
+    color: gray !important;
+    font-family: circular-light;
+    font-size: 12px;
+    height: 48px;
+    width: 48px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dp__flex_display>*:first-child {
+    margin: 50px 24px !important;
+
+    .dp__month_year_select {
+        font-weight: 600;
+
+        &:nth-of-type(2) {
+            margin-left: 100px;
+            width: fit-content;
+        }
+
+        &:nth-of-type(3) {
+            width: fit-content;
+            margin-left: 8px;
+        }
     }
+}
 
-    .dp__month_year_select:nth-of-type(3){
-        background-color:darkred;
+.dp__flex_display>*:last-child {
+    margin: 50px 24px !important;
+
+    .dp__month_year_select {
+        font-weight: 600;
+
+        &:nth-of-type(2) {
+            margin-right: 78px;
+            width: fit-content;
+            margin-left: 8px;
+        }
+
+        &:nth-of-type(1) {
+            margin-left: 98px;
+            width: fit-content;
+        }
+
+        &:nth-of-type(3) {
+            background-color: aqua;
+        }
     }
 
 }
-.dp__flex_display>*:last-child
-{
-    .dp__month_year_select:nth-of-type(2){
-        background-color:darkred;
 
+.dp__calendar_item {
+    height: 48px;
+    width: 48px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // border: 1px solid transparent;
+    border-radius: 50%;
+
+    *>:hover {
+        background-color: transparent !important;
     }
 
+    &:hover {}
+}
+
+.dp__range_end,
+.dp__range_start,
+.dp__active_date {
+    background-color: black !important;
+}
+
+.dp__cell_inner {
+    height: 100%;
+    width: 100%;
+    border-radius: inherit;
+
+    &:hover {
+        border-color: black;
+        background-color: transparent;
+        border-radius: inherit !important;
+    }
+}
+.dp__range_between{
+    border-radius: 0 !important;
+    background-color: #f7f7f7 !important;
+}
+.dp__cell_offset{
+    display: none;
 }
