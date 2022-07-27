@@ -9,6 +9,9 @@ export default {
     wishList({ wishList }) {
       return wishList
     },
+    getUser({ loggedinUser }) {
+      return loggedinUser
+    },
     wishListById: (state) => (stayId) => {
       if(!state.wishList) return false
       if(!state.wishList.length) return false

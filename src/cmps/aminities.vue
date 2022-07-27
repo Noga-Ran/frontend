@@ -91,11 +91,7 @@ export default {
   methods: {
     getImgUrl(amenitie) {
       var formatedAmenitie = amenitie.replaceAll(' ', '-')
-      console.log('formatedAmenitie', formatedAmenitie)
       var imgUrl = '../assets/img/aminities/' + formatedAmenitie + '.svg'
-      if (!imgUrl) {
-        console.log('imgUrl: ', imgUrl)
-      }
       return new URL(imgUrl, import.meta.url).href
     },
   },

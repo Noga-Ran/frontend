@@ -19,7 +19,6 @@ export default {
       return stays
     },
     // stayById: (state) => async(stayId) => {
-    //   console.log(stayId);
     //   // var stay = state.stays.filter((stay) => stay._id === stayId)
     //   var stay = await stayService.getById(stayId)
     //   return stay
