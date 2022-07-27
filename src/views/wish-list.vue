@@ -1,6 +1,7 @@
 <template>
     <app-header></app-header>
-    <div v-if="wishList.length" class="wish-list-container">
+    {{wishList}}
+    <div v-if="wishList" class="wish-list-container">
         <h1>Wishlist</h1>
         <div class="wish-container" v-for="stay in wishList" :key="stay._id" @click.prevent="showDetails(stay._id)">
             <section>
@@ -67,9 +68,11 @@
 <script>
 import appHeader from '../cmps/app-header.vue'
 export default {
+    // props:{
+    //     wishList:Object
+    // },
     data() {
         return {
-            wishList:null
         }
     },
     methods: {
@@ -101,10 +104,6 @@ export default {
         checkMulti(stayParam, param) {
             if (stayParam === 1) return stayParam + ' ' + param
             return stayParam + ' ' + param + 's'
-        },
-        async loadWishList(){
-            this.wishList =  await this.$store.getters.wishList
-           console.log(this.wishList);
         }
     },
     components: {
@@ -119,7 +118,6 @@ export default {
         var filterBy = this.$store.getters.filterBy
         this.$router.push({path:`/wishList/${filterBy.where}`,query: { where:filterBy.where, checkIn:filterBy.checkIn
                 ,checkOut:filterBy.checkOut ,label:filterBy.label,adults:filterBy.adults,children:filterBy.children,infants:filterBy.infants,pets:filterBy.pets}})
-        this.loadWishList()
     },
 }
 </script>
