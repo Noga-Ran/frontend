@@ -1,5 +1,7 @@
 import {httpService} from './http.service.js';
 import { storageService } from './async-storage-service'
+import { socketService } from './socket.service.js'
+
 const KEY = 'wishList'
 const ENDPOINT = 'auth'
 const USERENDPOINT = 'user'
