@@ -47,7 +47,8 @@
           <div class="trip-guests">
             <h1>guests</h1>
             <div class="filter-who-container" @click.self="showWho = !showWho">
-              <span @click.self="showWho = !showWho">{{ guestsAmount }}</span>
+              <span v-if="(guests>1)" @click.self="showWho = !showWho">{{ guests }} guests</span>
+              <span v-else @click.self="showWho = !showWho"> 1 guest</span>
             </div>
             <guests-filter @guest="updateGuests" v-if="showWho" :max="currStay.capacity" />
           </div>
