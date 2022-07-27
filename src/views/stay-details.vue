@@ -6,9 +6,9 @@
         <section class="stay-name-and-sub">
           <h1 class="stay-name">{{ stay.name }}</h1>
           <section class="stay-sub-title">
-            <span >
-              <svg class="rating-star" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
-                focusable="false" style="height: 14px; width: 14px; fill: currentcolor">
+            <span>
+              <svg class="rating-star" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                role="presentation" focusable="false" style="height: 14px; width: 14px; fill: currentcolor">
                 <path
                   d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z"
                   fill-rule="evenodd"></path>
@@ -143,13 +143,13 @@
           <section class="stay-amenities">
             <aminities :stayAmenities="stay.amenities"></aminities>
           </section>
-          <!-- <section class="stay-summary">
+          <section class="stay-summary">
             {{ stay.summary }}
-          </section> -->
+          </section>
         </section>
         <section class="info-right">
           <div class="trip-setting-cmp-container">
-            <trip-settings />
+            <trip-settings :currStay="stay"/>
           </div>
         </section>
       </section>
@@ -158,7 +158,7 @@
       </section>
     </section>
   </section>
-  <app-footer :isFixed="'false'"/>
+  <app-footer :isFixed="'false'" />
 </template>
 
 <script>
@@ -181,16 +181,37 @@ export default {
     return {
       stay: null,
       averageRating: null,
-      isFav: null,
+      isFav: false,
       id: null,
     }
   },
   created() {
     this.id = this.$route.params.id
-    this.stay = this.$store.getters.stayById(this.id)
-    this.isFav = this.$store.getters.wishListById(this.id)
+    this.getStayById(this.id)
+    // this.loadPage(id)
   },
   methods: {
+    async getStayById(stayId) {
+      try {
+
+        this.stay = await this.$store.dispatch({
+          type: 'getStayById',
+          stayId,
+        })
+        this.stay = this.stay
+
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    // async loadPage() {
+    //   try {
+
+    //     // this.isFav = this.$store.getters.wishListById(this.id)
+    //   }
+    //   catch {
+    //     console.log('err')
+    //   }
     getImgUrl(idx) {
       const { imgUrls } = this.stay
       return new URL('../assets/img/stays/' + imgUrls[idx], import.meta.url)

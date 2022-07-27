@@ -6,10 +6,8 @@ import { RouterLink, RouterView } from 'vue-router'
         RouterLink,
         RouterView
     },
-    data(){
-    },
     created(){
-        this.$store.dispatch({type: 'loadStays'})
+        // this.$store.dispatch({type: 'loadStays'})
         this.$store.dispatch({ type: "loadWishList"})
         this.$store.dispatch({ type: "loadTrips"})
     }

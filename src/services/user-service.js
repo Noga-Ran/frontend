@@ -1,6 +1,7 @@
 
 import { storageService } from './async-storage-service'
 const KEY = 'wishList'
+const ENDPOINT = 'auth'
 
 export const userService = {
     query,
@@ -10,8 +11,10 @@ export const userService = {
     // getEmptyToy,
     // getlabels,
     update,
+    login,
+    signup,
+    logout,
 }
-
 async function query(filterBy = {}) {
     return storageService.query(KEY)
 }
@@ -26,4 +29,14 @@ async function update(stayId){
 
 async function getById(stayId){
     return storageService.getById(KEY,stayId)
+}
+
+async function login(cred) {
+    return await httpService.post(ENDPOINT + '/login', cred)
+}
+async function signup(cred) {
+    return await httpService.post(ENDPOINT + '/signup', cred)
+}
+async function logout() {
+    return await httpService.post(ENDPOINT + '/logout')
 }
