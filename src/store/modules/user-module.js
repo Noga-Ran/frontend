@@ -13,7 +13,6 @@ export default {
       return loggedinUser
     },
     wishListById: (state) => (stayId) => {
-      console.log(state.wishList)
       if(!state.wishList) return false
       if(!state.wishList.length) return false
       var stay = state.wishList.filter((stay) => stay === stayId)
@@ -38,8 +37,8 @@ export default {
   },
   actions: {
     async loadWishList({ commit, state }) {
-        var wishList = await userService.query()
-        commit({ type: 'setWishList', wishList })
+      var user = await userService.addWish(stayId,state.loggedinUser)
+        return user.wishlist
       },
       // async getWishById(state,{stayId}){
       //   try {

@@ -25,7 +25,7 @@
                         </section>
                     </div>
                     <section class="user-menu" v-if="showMenu">
-                        <p @click.stop="goToWishList">Wish List</p>
+                        <p @click.stop="goToWishList" :wishList="wishList()">Wish List</p>
                     </section>
                 </section>
             </div>
@@ -42,7 +42,7 @@ export default {
     data() {
         return {
             isSearch: false,
-            showMenu: false
+            showMenu: false,
         }
     },
     methods: {
@@ -66,6 +66,9 @@ export default {
         },
         goToWishList() {
             window.open(`/#/wishList`, '_blank')
+        },
+        wishList(){
+            return this.$store.getters.wishList
         }
     },
     components: {

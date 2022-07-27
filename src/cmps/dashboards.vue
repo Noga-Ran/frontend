@@ -10,7 +10,6 @@
     </div>
   </section> -->
 </template>
-
 <script>
 // import { defineComponent } from "vue";
 // import { DoughnutChart } from "vue-chart-3";
