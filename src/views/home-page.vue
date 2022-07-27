@@ -35,7 +35,6 @@ export default {
                 filterBy.infants = who.infants || 0
                 filterBy.pets = who.pets || 0
             }
-            console.log('search',filterBy);
             this.$store.dispatch({ type: "setFilter", filterBy })
             this.setQuery(filterBy)
         },
@@ -59,10 +58,13 @@ export default {
         }
     },
     created(){
+        console.log(this.$route.query);
         if(this.$route.query && this.$route.query.length){
             var filterBy = {where: this.$route.query.where, checkIn:this.$route.query.checkIn ,checkOut:this.$route.query.checkOut , label:this.$route.query.label,
             adults:this.$route.query.adults,children:this.$route.query.children,infants:this.$route.query.infants,pets:this.$route.query.pets}
             this.$store.dispatch({ type: "setFilter", filterBy })
+        }else{
+            this.$store.dispatch({type: 'loadStays', filter:false})
         }
         
     }

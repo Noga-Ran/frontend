@@ -3,6 +3,7 @@ import { userService } from '../../services/user-service.js'
 export default {
   state: {
     wishList: [],
+    currUser: null
   },
   getters: {
     wishList({ wishList }) {

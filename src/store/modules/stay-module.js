@@ -41,8 +41,9 @@ export default {
     },
   },
   actions: {
-    async loadStays({ commit, state }) {
-      var stays = await stayService.query(state.filterBy)
+    async loadStays({ commit, state },{filter = true}) {
+      if(filter) var stays = await stayService.query(state.filterBy)
+      else var stays = await stayService.query()
       commit({ type: 'setStays', stays })
     },
     async setFilter({ dispatch, commit }, { filterBy }) {
