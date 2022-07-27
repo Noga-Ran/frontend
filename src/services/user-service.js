@@ -3,6 +3,7 @@ import { storageService } from './async-storage-service'
 const KEY = 'wishList'
 const ENDPOINT = 'auth'
 const USERENDPOINT = 'user'
+const STORAGE_KEY_LOGGEDIN_USER= "loggedinUser"
 
 export const userService = {
     query,
@@ -18,6 +19,7 @@ export const userService = {
     // getGuestUser,
     addWish,
     removeWish,
+    getLoggedinUser,
 }
 async function query(filterBy = {}) {
     return storageService.query(KEY)
@@ -32,20 +34,39 @@ async function update(stayId){
 }
 
 async function login(cred) {
-    return await httpService.post(ENDPOINT + '/login', cred)
+    const user =  await httpService.post(ENDPOINT + '/login', cred)
+    if (user) {
+        socketService.login(user._id)
+        return saveLocalUser(user)
+    }
 }
 async function signup(cred) {
-    return await httpService.post(ENDPOINT + '/signup', cred)
+    const user = await httpService.post(ENDPOINT + '/signup', cred)
+    socketService.login(user._id)
+    return saveLocalUser(user)
 }
 async function logout() {
-    return await httpService.post(ENDPOINT + '/logout')
+    sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
+    return await httpService.post(ENDPOINT + '/logout')   
 }
+
+
+function getLoggedinUser() {
+    return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
+}
+
+function saveLocalUser(user) {
+    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
+    return user
+}
+
 
 async function getById(stayId){
     var user = httpService.get(USERENDPOINT+'/'+stayId)
     console.log(user)
     return user
 }
+
 
 async function addWish(stayId,user){
     var copyUser= JSON.parse(JSON.stringify(user))

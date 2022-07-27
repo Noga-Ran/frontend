@@ -15,6 +15,7 @@
     "io": "^1.0.5",
     "require": "^2.4.20",
     "sass": "^1.53.0",
+    "socket.io-client": "^4.5.1",
     "vue": "^3.2.37",
     "vue-chartjs": "^4.1.1",
     "vue-final-modal": "^3.4.4",
