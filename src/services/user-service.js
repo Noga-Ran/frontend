@@ -15,6 +15,7 @@ export const userService = {
     login,
     signup,
     logout,
+    // getGuestUser,
     addWish,
     removeWish,
 }
