@@ -98,7 +98,7 @@
                 <div class="filter-who-container" @click.self="showWho = !showWho, showModal = false">
                     <p @click.prevent="showWho = !showWho, showModal = false">Who</p>
                     <span @click.prevent="showWho = !showWho, showModal = false">{{ guestsAmount }}</span>
-                    <guests-filter @guest="updateGuests" v-if="showWho"/>
+                    <guests-filter @guest="updateGuests" v-if="showWho" :max="100"/>
                 </div>
                 <div class="search-container">
                     <button @click.prevent="setFilter">

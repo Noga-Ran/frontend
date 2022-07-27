@@ -11,7 +11,7 @@
                         <span class="material-icons-sharp">-</span>
                     </button>
                     <span class="guests-num">{{ guests.adults }}</span>
-                    <button type="button" class="g-modal-buttons" @click.stop="guests.adults++; guestsAmount();">
+                    <button type="button" class="g-modal-buttons" @click.stop="guests.adults++; guestsAmount();" :disabled="aboveMax">
                         <span class="material-icons-sharp">+</span>
                     </button>
                 </div>
@@ -27,7 +27,7 @@
                         <span class="material-icons-sharp">-</span>
                     </button>
                     <span class="guests-num">{{ guests.children }}</span>
-                    <button type="button" class="g-modal-buttons" @click.stop="guests.children++; guestsAmount();">
+                    <button type="button" class="g-modal-buttons" @click.stop="guests.children++; guestsAmount();" :disabled="aboveMax">
                         <span class="material-icons-sharp">+</span>
                     </button>
                 </div>
@@ -43,7 +43,7 @@
                         <span class="material-icons-sharp">-</span>
                     </button>
                     <span class="guests-num">{{ guests.infants }}</span>
-                    <button type="button" class="g-modal-buttons" @click.stop="guests.infants++; guestsAmount();">
+                    <button type="button" class="g-modal-buttons" @click.stop="guests.infants++; guestsAmount();" :disabled="aboveMax">
                         <span class="material-icons-sharp">+</span>
                     </button>
                 </div>
@@ -59,7 +59,7 @@
                         <span class="material-icons-sharp">-</span>
                     </button>
                     <span class="guests-num">{{ guests.pets }}</span>
-                    <button type="button" class="g-modal-buttons" @click.stop="guests.pets++; guestsAmount();">
+                    <button type="button" class="g-modal-buttons" @click.stop="guests.pets++; guestsAmount();" :disabled="aboveMax">
                         <span class="material-icons-sharp">+</span>
                     </button>
                 </div>
@@ -70,12 +70,16 @@
 <script>
 
 export default {
+    props:{
+        max:Number
+    },
     data() {
         return {
             guests: { adults: 0, children: 0, infants: 0, pets: 0, sum: 0 },
             ableZeroAdults: true,
             showWho: false,
             showModal: false,
+            aboveMax:false,
         }
     },
     methods: {
@@ -90,6 +94,8 @@ export default {
                 this.ableZeroAdults = true
             }
             this.guests.sum = this.guests.adults + this.guests.infants + this.guests.children + this.guests.pets
+            if(this.guests.sum===this.max) this.aboveMax = true
+            else this.aboveMax = false
             this.$emit('guest', this.guests)
         },
     },

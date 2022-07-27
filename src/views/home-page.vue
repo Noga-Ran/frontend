@@ -28,6 +28,7 @@ export default {
             var filterBy = Object.assign({}, this.$store.getters.filterBy)
             if(filter.label){
                 filterBy.label = filter.label
+                console.log(filter.label);
             }else{
                 filterBy.where = filter.where || ''
                 filterBy.adults = who.adults || 0

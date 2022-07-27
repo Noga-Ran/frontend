@@ -22,6 +22,32 @@
   h2 {
     font-size: 14px;
   }
+
+  .guests-modal {
+    z-index: 10;
+    position: absolute !important;
+    top: 11.3em !important;
+    right: 24px !important;
+    width: 230px !important;
+    border-radius: 4px !important;
+    box-shadow: rgb(0 0 0 / 15%) 0px 2px 6px, rgb(0 0 0 / 7%) 0px 0px 0px 1px !important;
+
+    .modal-g-container div div span:first-of-type {
+      font-size: 16px;
+      line-height: 20px;
+      font-weight: 900;
+    }
+
+    .modal-g-container div div span:last-of-type {
+      font-size: 14px;
+      line-height: 18px;
+    }
+
+    .modal-g-container div:last-child {
+      display: inline-flex !important;
+      align-items: center;
+    }
+  }
 }
 
 .txt {
@@ -47,7 +73,7 @@
   border: 1px solid rgb(176, 176, 176);
   margin-bottom: 16px;
 
-  & > * {
+  &>* {
     display: flex;
     flex-direction: column;
     height: 56px;
@@ -67,6 +93,42 @@
       border-top: 2px solid rgb(176, 176, 176);
       grid-row: 2;
       grid-column: 1/-1;
+    }
+  }
+
+  .trip-checkin,
+  .trip-checkout {
+    p {
+      margin: 0;
+      padding: 0;
+      border: none !important;
+      outline: none !important;
+      background-color: transparent !important;
+      color: inherit !important;
+      font-family: inherit !important;
+      font-size: 14px !important;
+      line-height: 18px !important;
+      appearance: none !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      white-space: nowrap !important;
+      font-weight: 500;
+    }
+
+    .dp__input {
+      border: 0 !important;
+      padding: 0 !important;
+      background: none !important;
+      background-color: transparent !important;
+      font-family: inherit !important;
+      font-size: 14px !important;
+      font-weight: 400;
+      line-height: 18px !important;
+      appearance: none !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+      white-space: nowrap !important;
+      color: rgb(113, 113, 113) !important;
     }
   }
 }
@@ -96,7 +158,7 @@
   margin-top: 24px;
 }
 
-.price-info > * {
+.price-info>* {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -143,12 +205,11 @@
   grid-template: repeat(10, 1fr) / repeat(10, 1fr);
 
   @for $i from 0 to 10 {
-    .cell:nth-child(10n + #{$i + 1}):hover ~ .content {
+    .cell:nth-child(10n + #{$i + 1}):hover~.content {
       --positionX: #{$i};
     }
 
-    .cell:nth-child(n + #{10 * $i + 1}):nth-child(-n + #{10 * ($i + 1)}):hover
-      ~ .content {
+    .cell:nth-child(n + #{10 * $i + 1}):nth-child(-n + #{10 * ($i + 1)}):hover~.content {
       --positionY: #{$i};
     }
   }
@@ -175,16 +236,13 @@
   height: 100%;
   border-radius: 8px;
 
-  background-image: radial-gradient(
-    circle at calc((0 + var(--positionX, 0)) * 10%)
-      calc((0 + var(--positionY, 0)) * 5%),
-    rgb(241, 37, 75) 0%,
-    rgb(230, 30, 77) 27.5%,
-    rgb(227, 28, 95) 40%,
-    rgb(215, 4, 102) 57.5%,
-    rgb(189, 30, 89) 75%,
-    rgb(189, 30, 89) 100%
-  );
+  background-image: radial-gradient(circle at calc((0 + var(--positionX, 0)) * 10%) calc((0 + var(--positionY, 0)) * 5%),
+      rgb(241, 37, 75) 0%,
+      rgb(230, 30, 77) 27.5%,
+      rgb(227, 28, 95) 40%,
+      rgb(215, 4, 102) 57.5%,
+      rgb(189, 30, 89) 75%,
+      rgb(189, 30, 89) 100%);
 }
 
 .action-btn {

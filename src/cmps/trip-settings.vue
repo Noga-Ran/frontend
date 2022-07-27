@@ -36,25 +36,32 @@
           <div class="trip-checkin">
             <h1>check-in</h1>
             <h2>
-              {{ getDate(checkIn) }}
+              <Datepicker :full-month-name="true" v-if="!show" @blur="setDate('start')" hideInputIcon
+                        :autoPosition="false" :enableTimePicker="false" v-model="startDate" range multiCalendars
+                        placeholder="Add date" :minDate="new Date()" textInput autoApply closeOnScroll />
+              <p v-if="show" @click.self="show=!show">{{ getDate(checkIn) }}</p>
             </h2>
           </div>
           <div class="trip-checkout">
             <h1>check-out</h1>
             <h2>
-              {{ getDate(checkOut) }}
+              <Datepicker :full-month-name="true" v-if="!show" @blur="setDate('end')" hideInputIcon
+                        :autoPosition="false" :enableTimePicker="false" v-model="endDate" range multiCalendars
+                        placeholder="Add date" :minDate="new Date()" textInput autoApply closeOnScroll />
+              <p v-if="show" @click.self="show=!show">{{ getDate(checkOut) }}</p>
             </h2>
           </div>
 
           <div class="trip-guests">
             <h1>guests</h1>
-            <h2 v-if="guests <= 1">1 guest</h2>
-            <!-- <h2 v-if="guests === 1">{{ guests }} guest</h2> -->
-            <h2 v-else="guests > 1">{{ guests }} guests</h2>
+            <div class="filter-who-container" @click.self="showWho = !showWho">
+                <span @click.self="showWho = !showWho">{{ guestsAmount }}</span>
+            </div>
+            <guests-filter @guest="updateGuests" v-if="showWho" :max="currStay.capacity"/>
           </div>
         </div>
 
-        <div class="btn-container" @click="saveTrip">
+        <div class="btn-container" :disabled="showWho" @click="saveTrip">
           <div class="cell"></div>
           <div class="cell"></div>
           <div class="cell"></div>
@@ -190,6 +197,7 @@
 <script>
 import { h } from 'vue'
 import { ElNotification } from 'element-plus'
+import guestsFilter from './filter-modal-cmps/guests-filter-modal.vue'
 
 export default {
   props: {
@@ -202,10 +210,15 @@ export default {
       checkIn: null,
       checkOut: null,
       stayDayAmount: null,
-      guests: 1,
       showModal: false,
       averageRating: null,
-      showModal: false,
+      // showModal: false,
+      show:true,
+      startDate: '',
+      endDate: '',
+      showWho:false,
+      guestsAmount: 'Add guests',
+      guests: 1,
     }
   },
   created() {
@@ -233,6 +246,7 @@ export default {
 
     getStayLen() {
       var date1 = new Date(this.checkIn)
+      console.log(this.checkIn);
       var date2 = new Date(this.checkOut)
       var time_difference = date2.getTime() - date1.getTime()
       this.stayDayAmount = time_difference / (1000 * 60 * 60 * 24)
@@ -250,6 +264,7 @@ export default {
       return date
     },
     saveTrip() {
+      console.log(this.guests);
       var tripDetails = {
         stay: this.stay._id,
         checkIn: this.getDate(this.checkIn),
@@ -272,6 +287,29 @@ export default {
       }
       elElement.classList.add('searchbar-selected-filter')
     },
+    setDate(isStart) {
+      if (isStart === 'start') {
+        var dates = Object.values(this.startDate)
+      } else {
+        var dates = Object.values(this.endDate)
+      }
+      var newtartDate = new Date(dates[0]).toISOString().slice(0, 16).replace('T', ', ').replaceAll('-', '/')
+        newtartDate = newtartDate.slice(0,10)
+        var newEndDate = new Date(dates[1]).toISOString().slice(0, 16).replace('T', ', ').replaceAll('-', '/')
+        newEndDate = newEndDate.slice(0,10)
+        this.startDate = ('' + dates[0]).substring(4, 15)
+        this.endDate = ('' + dates[1]).substring(4, 15)
+        this.checkIn = newtartDate
+        this.checkOut = newEndDate
+        this.show = true
+    },
+    updateGuests(guests){
+        if (guests.sum === 0) this.guestsAmount = 'Add Guests'
+        else if (guests.sum === 1) this.guestsAmount = guests.sum + ' guest'
+        else this.guestsAmount = guests.sum + ' guests'
+        this.guests = guests.sum
+        console.log('fdsjhdskjdha',this.guests,guests);
+    }
   },
   computed: {
     getRating() {
@@ -279,6 +317,9 @@ export default {
       this.averageRating = (rating / 20).toFixed(1)
       return this.averageRating
     },
+  },
+  components:{
+    guestsFilter
   },
   unmounted() {},
 }

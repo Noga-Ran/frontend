@@ -30,25 +30,6 @@ async function getStayById(stayId){
     return stay
 }
 
-function filtering(filteredStays, filterBy){
-    var stayToFilter = filteredStays
-
-    if(filterBy.where) {
-        stayToFilter = stayToFilter.filter(function(stay)
-        {
-            var stayAdressValues = (JSON.stringify(Object.values(stay.address))).toLowerCase()
-            let filter = stayAdressValues.includes((filterBy.where).toLowerCase())
-            return filter
-        })
-    }
-    if(filterBy.label) {
-        stayToFilter = stayToFilter.filter((stay)=> stay.label === filterBy.label)
-    }
-    stayToFilter = stayToFilter.filter((stay)=> stay.capacity> (filterBy.adults + filterBy.children))
-    
-    return stayToFilter
-}
-
 async function saveFilterBy(filterBy){
     storageService._save(FILTER,filterBy)
 }
