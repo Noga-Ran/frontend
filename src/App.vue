@@ -10,7 +10,7 @@ import { RouterLink, RouterView } from 'vue-router'
         // this.$store.dispatch({type: 'loadStays'})
         // this.$store.dispatch({ type: "loadWishList"})
         // this.$store.dispatch({ type: "loadTrips"})
-        this.$store.dispatch({type:"login" ,cred:{"username":"Noga","password":"1234"}})
+        this.$store.dispatch({type:"login" ,cred:{"username":"user","password":"user"}})
     }
 }
 </script>

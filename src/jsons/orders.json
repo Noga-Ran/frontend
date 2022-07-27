@@ -1,0 +1,23 @@
+{
+    "_id": "מיוצר אוטומטי",
+    "hostId": "this.stay.host._id",
+    "createdAt": "get",
+    "buyer": {
+        "_id": "store",
+        "fullname": "store"
+    },
+    "totalPrice": 160,
+    "startDate": "chin",
+    "endDate": "chout",
+    "guests": {
+        "adults": 2,
+        "kids": 1,
+        "total": 3
+    },
+    "stay": {
+        "_id": "stay",
+        "name": "stay",
+        "price": "stay"
+    },
+    "status": "pending"
+}
