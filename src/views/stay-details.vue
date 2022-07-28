@@ -143,9 +143,9 @@
           <section class="stay-amenities">
             <aminities :stayAmenities="stay.amenities"></aminities>
           </section>
-          <section class="stay-summary">
+          <!-- <section class="stay-summary">
             {{ stay.summary }}
-          </section>
+          </section> -->
         </section>
         <section class="info-right">
           <div class="trip-setting-cmp-container">

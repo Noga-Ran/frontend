@@ -5,7 +5,7 @@
       <span></span>
       <div class="header-txt-container">Any week</div>
       <span></span>
-      <div class="header-txt-container">Add guests</div>
+      <div class="header-txt-container filter-guests">Add guests</div>
       <div class="header-demo-search" @click.prevent="emitFilter">
         <svg
           viewBox="0 0 32 32"

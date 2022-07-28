@@ -98,6 +98,13 @@
     }
 }
 
+.filter-guests {
+    padding-left: 9px !important;
+    font-family: circular-light;
+    font-weight: 300;
+    font-size: 15px !important;
+}
+
 .header-txt-container {
     height: fit-content;
     width: fit-content;
@@ -106,6 +113,10 @@
     margin: auto;
     padding-bottom: 3px;
     padding-left: 10px;
+
+    &:nth-child(3) {
+        padding-left: 6.7px !important;
+    }
 
     &:nth-child(5) {
         color: #717171;
@@ -158,12 +169,12 @@
     padding: 0 16px;
     height: fit-content;
     width: fit-content;
-    font-size: 14px;
+    font-size: 15px;
     color: #222222;
     margin: auto;
     padding-right: 7px;
 
-    &:nth-child(3) {
+    &:nth-child(4) {
         color: #717171;
     }
 }
@@ -197,6 +208,7 @@
     div {
         height: 42px;
         padding: 0 15px;
+        padding-right: 12px;
         display: flex;
         align-items: center;
         transition: 250ms;

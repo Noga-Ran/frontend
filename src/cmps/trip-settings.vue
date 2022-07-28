@@ -17,7 +17,7 @@
             </svg>
             <span class="rating-average in-oreder"> {{ getRating }} </span>
           </span>
-          <span>&nbsp &middot &nbsp </span>
+          <span class="trips-dot">&nbsp &middot &nbsp </span>
           <span class="review-count in-order">{{ stay.numOfReviews }} reviews
           </span>
         </section>

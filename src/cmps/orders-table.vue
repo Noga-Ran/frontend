@@ -3,6 +3,7 @@
         <h3> Your Orders</h3>
         <table class="orders-table-container">
             <tr>
+                <th></th>
                 <th>Stay Name</th>
                 <th>Booked At</th>
                 <th>Booked By</th>
@@ -14,19 +15,42 @@
                 <th>Status</th>
             </tr>
             <tr v-for="order in orders" :key="order.id">
-                <td>{{ this.getStayName(order) }}</td>
-                <td>{{ getDate(order.createdAt) }} </td>
-                <td class="tac">{{ order.buyer.fullname }}</td>
-                <td>{{ getDate(order.startDate,true) }} - {{ getDate(order.endDate,true) }}</td>
-                <td class="tac">{{ this.getNightsCount(order) }}</td>
-                <td class="tac">{{ order.guests }}</td>
-                <td class="money-class tac">{{ order.stay.price }} $</td>
-                <td class="money-class tac">{{ order.totalPrice }} $</td>
-                <td>{{ order.status }}</td>
                 <div class="order-actions">
                     <img src="../assets/img/tick.svg" alt="">
                     <img src="../assets/img/x.svg" alt="">
                 </div>
+                <td class="host-page-stay-name">
+                    <div class="td-content-container">
+
+                        {{ this.getStayName(order) }}
+                    </div>
+                </td>
+                <td>
+                    <div class="td-content-container">{{ getDate(order.createdAt) }} </div>
+                </td>
+                <td class="tac">
+                    <div class="td-content-container">{{ order.buyer.fullname }}</div>
+                </td>
+                <td>
+                    <div class="td-content-container">{{ getDate(order.startDate, true) }} - {{ getDate(order.endDate,
+                            true)
+                    }}</div>
+                </td>
+                <td class="tac">
+                    <div class="td-content-container">{{ this.getNightsCount(order) }}</div>
+                </td>
+                <td class="tac">
+                    <div class="td-content-container">{{ order.guests }}</div>
+                </td>
+                <td class="money-class tac">
+                    <div class="td-content-container">{{ order.stay.price }} $</div>
+                </td>
+                <td class="money-class tac">
+                    <div class="td-content-container">{{ order.totalPrice.toFixed(0) }} $</div>
+                </td>
+                <td>
+                    <div class="td-content-container">{{ order.status }}</div>
+                </td>
             </tr>
         </table>
     </div>
@@ -45,10 +69,10 @@ export default {
     created() {
     },
     methods: {
-        getDate(num,isDdMm = false) {
-            if(isDdMm){
-            return num.slice(0,6)
-           }
+        getDate(num, isDdMm = false) {
+            if (isDdMm) {
+                return num.slice(0, 6)
+            }
             return new Date(num).toLocaleDateString('en-GB')
         },
         getStayImgById(stayId) {
@@ -60,7 +84,7 @@ export default {
         getStayName(order) {
             if (order.stay.name.length > 17) {
                 var shortenName = JSON.parse(JSON.stringify(order.stay.name))
-                console.log('shortenName: ',shortenName)
+                console.log('shortenName: ', shortenName)
                 return (shortenName.slice(0, 12) + "...")
             }
             return order.stay.name
@@ -70,7 +94,7 @@ export default {
             const date2 = new Date(order.endDate);
             const diffTime = Math.abs(date2 - date1);
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-           return diffDays
+            return diffDays
         }
     },
     computed: {

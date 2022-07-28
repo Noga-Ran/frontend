@@ -57,11 +57,19 @@
 }
 
 .num {
-  font-size: 22px;
+  font-size: 24px;
+  font-family: circular;
 }
 
 .night {
   font-size: 16px;
+}
+
+.trips-dot {
+  width: min-content !important;
+  display: flex;
+  padding: 0 5px;
+  justify-content: center;
 }
 
 .trip-details {
@@ -166,15 +174,18 @@
 
 .price-name {
   text-decoration: underline;
+  text-decoration-thickness: 1px;
 }
 
 .total-price-container {
-  margin: 24px 0 0;
+  height: 45px;
+  margin:14px 0 0;
   padding: 24px 0 0;
   border-top: 1px solid rgb(221, 221, 221);
 }
 
 .total-price {
+  font-family: circular;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -278,7 +289,11 @@
 .txt-and-review-container {
   display: flex;
 
-  & :nth-child(2) {
+  &>:nth-child(2) {
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     margin-left: auto;
     align-self: baseline;
   }

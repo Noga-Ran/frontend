@@ -56,4 +56,17 @@
         display: flex;
         align-items: center;
     }
+
+    .rating-num-explore {
+        font-family: circular-light !important;
+    }
+    
+    .explore-price-num {
+        font-family: circular-light !important;
+        font-weight: 100 !important;
+        font-size: 16px !important;
+        span{
+            font-family: circular-bold !important;
+        }
+    }
 }

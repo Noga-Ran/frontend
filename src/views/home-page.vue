@@ -21,8 +21,6 @@ export default {
         categoryFilter,
         appFooter
     },
-    data(){
-    },
     methods: {
         setFilter(filter,{who}=''){
             var filterBy = Object.assign({}, this.$store.getters.filterBy)

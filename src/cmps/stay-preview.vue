@@ -65,7 +65,7 @@
             <span class="explore-light-txt">{{ currStay.beds }} beds</span>
             <div class="preview-chosen-dates explore-light-txt">{{ this.getRandomDates() }}</div>
             <div class="explore-price">
-                <div class="explore-price-num"><span>${{ this.currStay.price }} </span> night</div>
+                <div class="explore-price-num"><span>${{ this.currStay.price }}</span> night </div>
                 <pre> &middot </pre>
                 <div class="explore-total-price explore-light-txt"> $1,255 total</div>
             </div>

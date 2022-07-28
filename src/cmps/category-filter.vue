@@ -166,6 +166,7 @@ export default {
     }
   },
   components: {},
+  emits: ['filter'],
   methods: {
     selectLabel(ev=false,idx=false) {
       if(ev){
