@@ -55,6 +55,7 @@ export default {
         commit({ type: 'setWishList', user })
       },
       async removeWishStay({commit,state},{stayId}){
+        console.log(stayId);
         var user = await userService.removeWish(stayId,state.loggedinUser)
         commit({ type: 'setWishList', user })
       },

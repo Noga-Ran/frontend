@@ -1,6 +1,5 @@
 <template>
     <app-header></app-header>
-    {{wishList}}
     <div v-if="wishList" class="wish-list-container">
         <h1>Wishlist</h1>
         <div class="wish-container" v-for="stay in wishList" :key="stay._id" @click.prevent="showDetails(stay._id)">
@@ -67,17 +66,20 @@
 </template>
 <script>
 import appHeader from '../cmps/app-header.vue'
+import { userService } from '../services/user-service'
+
 export default {
     // props:{
     //     wishList:Object
     // },
     data() {
         return {
+            wishListIds: this.$store.getters.wishList,
+            wishList:null,
         }
     },
     methods: {
         getImgUrl(stay, item) {
-            console.log(item);
             const { imgUrls } = stay
             return new URL('../assets/img/stays/' + imgUrls[item - 1], import.meta.url).href
         },
@@ -93,6 +95,7 @@ export default {
         },
         removeStay(stayId) {
             this.$store.dispatch({ type: "removeWishStay", stayId })
+            this.loadWishList()
         },
         showDetails(stayId) {
             if(this.$route.query && this.$route.query?.adults){
@@ -104,20 +107,29 @@ export default {
         checkMulti(stayParam, param) {
             if (stayParam === 1) return stayParam + ' ' + param
             return stayParam + ' ' + param + 's'
+        },
+        async loadWishList() {
+            this.wishListIds = userService.getLoggedinUser()
+            this.wishListIds =  this.wishListIds.wishlist
+            var wishStays = []
+                for (var wish in this.wishListIds){
+                    var stay = await this.$store.dispatch({type:'getStayById',stayId: this.wishListIds[wish]})
+                    wishStays.push(stay)
+                }
+            this.wishList = wishStays
         }
+
     },
     components: {
         appHeader,
     },
     computed: {
-        // ishList() { var wishList =this.loadWishList()
-        // console.log(wishList)
-        // }w
     },
     created() {
         var filterBy = this.$store.getters.filterBy
         this.$router.push({path:`/wishList/${filterBy.where}`,query: { where:filterBy.where, checkIn:filterBy.checkIn
                 ,checkOut:filterBy.checkOut ,label:filterBy.label,adults:filterBy.adults,children:filterBy.children,infants:filterBy.infants,pets:filterBy.pets}})
+        this.loadWishList()
     },
 }
 </script>

@@ -264,8 +264,8 @@ export default {
         endDate: this.getDate(this.checkOut),
         createdAt: Date.now(),
         buyer: {
-          _id: this.loggedInUser._id,
-          fullname: this.loggedInUser.fullname
+          _id: this.loggedInUser._id || Date.now(),
+          fullname: this.loggedInUser.fullname || 'guest'
         },
         totalPrice: this.getPrice(this.stay.cleaningFee),
         guests: this.guests,
