@@ -205,7 +205,6 @@ export default {
       stayDayAmount: null,
       showModal: false,
       averageRating: null,
-      // showModal: false,
       show: true,
       startDate: '',
       endDate: '',
@@ -227,7 +226,7 @@ export default {
     this.checkIn = this.query.checkIn ? this.query.checkIn : Date.now()
     this.checkOut = this.query.checkOut
       ? this.query.checkOut
-      : new Date(new Date().setDate(new Date().getDate() + 6))
+      : (Date.now() + 518400000)
   },
   methods: {
     open1(msg) {
@@ -272,7 +271,7 @@ export default {
         guests: this.guests,
         status: "pending"
       }
-      console.log('tripDetails: ',tripDetails)
+      console.log('tripDetails: ', tripDetails)
       this.open1('Your trip was successfully reserved')
 
       this.showModal = true

@@ -1,9 +1,13 @@
 
 <template>
-    <app-header></app-header>
+<app-header></app-header>
     <section class="host-page-layout">
-        <dash-boards></dash-boards>
-        <orders-table></orders-table>
+        <section class="host-layout-top">
+            <dash-boards />
+        </section>
+        <section class="host-layout-bottom">
+            <orders-table :orders="orders" />
+        </section>
     </section>
 </template>
 
@@ -22,18 +26,23 @@ export default {
         return {
             isLoggedIn: false,
             user: null,
+            orders: null,
         }
     },
     methods: {
+        async loadPage() {
+            await this.$store.dispatch({ type: 'loadOrders' })
+            this.orders = await this.$store.getters.getOrders
+            this.user = await this.$store.getters.getUser
+            if (this.user) {
+                this.isLoggedIn = await true
+            }
+        }
     },
     created() {
-        this.user = this.$store.getters.getUser
-        if (this.user) {
-            this.isLoggedIn = true
-        }
+        this.loadPage()
     }
 
 }
 </script>
-
 

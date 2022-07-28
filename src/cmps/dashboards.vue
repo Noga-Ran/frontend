@@ -1,63 +1,32 @@
 <template>
-  <!-- <section class="dashboard flex align-center justify-center space-around" v-if="labelsData">
-    <div class="toys-per-label">
-      <h3>Toys per label: </h3>
-      <DoughnutChart :chartData="labelsData" />
-    </div>
-    <div class="toys-per-stock">
-      <h3>Toys availability: </h3>
-      <DoughnutChart :chartData="toysData" />
-    </div>
-  </section> -->
+  <section class="dashboard">
+    <DoughnutChart :chartData="testData" />
+  </section>
 </template>
-<script>
-// import { defineComponent } from "vue";
-// import { DoughnutChart } from "vue-chart-3";
-// import { Chart, registerables } from "chart.js";
 
-// Chart.register(...registerables);
+<script lang="ts">
+import { DoughnutChart } from 'vue-chart-3';
+import { Chart, registerables } from "chart.js";
 
-// export default defineComponent({
-//   name: "dashboard",
-//   components: { DoughnutChart },
-//   data() {
-//     return {
-//       labelsData: {
-//         labels: [],
-//         datasets: [
-//           {
-//             data: [],
-//             backgroundColor: [
-//               "#77CEFF",
-//               "#0079AF",
-//               "#123E6B",
-//               "#97B0C4",
-//               "#A5C8ED",
-//               "#0079AF",
-//               "#A5C8ED",
-//             ],
-//           },
-//         ],
-//       },
-//       toysData: {
-//         labels: ["In Stock", "Out of stock"],
-//         datasets: [
-//           {
-//             data: null,
-//             backgroundColor: ["#7fffd4", "#f28c8c"],
-//           },
-//         ],
-//       },
-//     };
-//   },
-//   created() {
-    // const dataSet = this.$store.getters.getLabelsCount;
+Chart.register(...registerables);
 
-    // for (var label in dataSet) {
-    //   this.labelsData.labels.push(label)
-    //   this.labelsData.datasets[0].data.push(dataSet[label]);
-    // }
-    // this.toysData.datasets[0].data = this.$store.getters.getToysStock;
-//   },
-// });
+export default {
+  name: 'Doughnut',
+  data() {
+    return {
+      testData: {
+        labels: ['1-4 nights', '5-6 nights', '7+ nights'],
+        datasets: [
+          {
+            data: [6, 5,2],
+            backgroundColor: [  "#ff7482",'#2c9df0','#ffcb4f' ],
+          },
+        ]
+      }
+    }
+  },
+
+  components: { DoughnutChart },
+
+}
 </script>
