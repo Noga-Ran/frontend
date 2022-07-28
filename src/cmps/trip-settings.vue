@@ -191,6 +191,8 @@
 import { h } from 'vue'
 import { ElNotification } from 'element-plus'
 import guestsFilter from './filter-modal-cmps/guests-filter-modal.vue'
+import {socketService} from '../services/socket.service'
+
 
 export default {
   props: {
@@ -279,6 +281,10 @@ export default {
       setTimeout(() => {
         this.showModal
       }, 5000)
+      const msg= {from:'system',txt:'your order was reserved'}
+      console.log('msg', msg);
+      socketService.emit('chat newMsg', msg)
+
     },
     setActive(elElement) {
       var elActiveArea = document.querySelector('.searchbar-selected-filter')
