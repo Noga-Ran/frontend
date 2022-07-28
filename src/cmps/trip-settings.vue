@@ -47,7 +47,8 @@
           <div class="trip-guests">
             <h1>guests</h1>
             <div class="filter-who-container" @click.self="showWho = !showWho">
-              <span @click.self="showWho = !showWho">{{ guestsAmount }}</span>
+              <span v-if="(guests>1)" @click.self="showWho = !showWho">{{ guests }} guests</span>
+              <span v-else @click.self="showWho = !showWho"> 1 guest</span>
             </div>
             <guests-filter @guest="updateGuests" v-if="showWho" :max="currStay.capacity" />
           </div>
@@ -190,6 +191,8 @@
 import { h } from 'vue'
 import { ElNotification } from 'element-plus'
 import guestsFilter from './filter-modal-cmps/guests-filter-modal.vue'
+import {socketService} from '../services/socket.service'
+import { userService } from '../services/user-service'
 
 export default {
   props: {
@@ -214,7 +217,8 @@ export default {
     }
   },
   created() {
-    this.loggedInUser = this.$store.getters.getUser
+    this.loggedInUser = userService.getLoggedinUser()
+    console.log(this.loggedInUser );
     this.id = this.$route.params.id
     // this.stay = this.$store.getters.stayById(this.id)
     this.stay = JSON.parse(JSON.stringify(this.currStay))
@@ -263,8 +267,8 @@ export default {
         endDate: this.getDate(this.checkOut),
         createdAt: Date.now(),
         buyer: {
-          _id: this.loggedInUser._id,
-          fullname: this.loggedInUser.fullname
+          _id: this.loggedInUser._id || Date.now(),
+          fullname: this.loggedInUser.fullname || 'guest'
         },
         totalPrice: this.getPrice(this.stay.cleaningFee),
         guests: this.guests,
@@ -278,6 +282,10 @@ export default {
       setTimeout(() => {
         this.showModal
       }, 5000)
+      const msg= {from:'system',txt:'your order was reserved',at:Date.now()}
+      console.log('msg', msg);
+      socketService.emit('chat newMsg', msg)
+
     },
     setActive(elElement) {
       var elActiveArea = document.querySelector('.searchbar-selected-filter')

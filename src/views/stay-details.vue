@@ -157,6 +157,7 @@
         <reviews :stay="stay"></reviews>
       </section>
     </section>
+    <stayMap :stayLocation="stay.address"></stayMap>
   </section>
   <app-footer :isFixed="'false'" />
 </template>
@@ -167,6 +168,7 @@ import appHeader from '../cmps/app-header.vue'
 import aminities from '../cmps/aminities.vue'
 import reviews from '../cmps/reviews.vue'
 import appFooter from '../cmps/app-footer.vue'
+import stayMap from '../cmps/stay-map.vue'
 
 export default {
   name: 'stay-details',
@@ -175,7 +177,8 @@ export default {
     tripSettings,
     aminities,
     reviews,
-    appFooter
+    appFooter,
+    stayMap,
   },
   data() {
     return {

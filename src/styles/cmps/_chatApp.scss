@@ -1,0 +1,38 @@
+.messages-container {
+
+    .header-container {
+        margin: 0 24px;
+    }
+
+    .header-filter-container {
+        display: none;
+    }
+
+}
+
+.messages{
+    div:first-child {
+        -webkit-box-align: center !important;
+        -webkit-box-direction: normal !important;
+        -webkit-box-orient: horizontal !important;
+        height: 72px !important;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        padding-left: 24px !important;
+        position: relative !important;
+        padding-right: 20px !important;
+        border-bottom: 1px solid rgb(235, 235, 235) !important;
+        
+        h1{
+            color: rgb(34, 34, 34) !important;
+            font-size: 1em !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+            margin: 0px !important;
+            padding: 0px !important;
+            contain: paint !important;
+        }
+    }
+    
+}

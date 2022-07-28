@@ -14,7 +14,7 @@ export const userService = {
     // save,
     // getEmptyToy,
     // getlabels,
-    update,
+    save,
     login,
     signup,
     logout,
@@ -31,15 +31,28 @@ async function remove(stayId){
     return storageService.remove(KEY,stayId)
 }
 
-async function update(stayId){
-    storageService.post(KEY,stayId)
+async function save(user){
+    saveLocalUser(user)
+    if (user._id) {
+        return await httpService.put(`${USERENDPOINT}/${user._id}`, user)
+      } else {
+        return await httpService.post(USERENDPOINT, user)
+      }
 }
 
 async function login(cred) {
-    const user =  await httpService.post(ENDPOINT + '/login', cred)
-    if (user) {
-        socketService.login(user._id)
-        return saveLocalUser(user)
+    try{
+        const user =  await httpService.post(ENDPOINT + '/login', cred)
+        if (user) {
+            socketService.login(user._id)
+            return saveLocalUser(user)
+        }
+        else{
+            console.log('not a user');
+        }
+    }catch(error){
+        console.log(error);
+        throw error
     }
 }
 async function signup(cred) {
@@ -77,12 +90,13 @@ async function addWish(stayId,user){
     }else{
         copyUser.wishlist = [stayId]
     }
+    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return await httpService.put(USERENDPOINT+'/'+copyUser._id,copyUser)
 }
 
 async function removeWish(stayId,user){
     var copyUser= JSON.parse(JSON.stringify(user))
     copyUser.wishlist = copyUser.wishlist.filter(wish => wish!==stayId)
-
+    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return await httpService.put(`${USERENDPOINT}/${copyUser._id}`,copyUser)
 }

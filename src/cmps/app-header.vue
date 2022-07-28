@@ -25,7 +25,8 @@
                         </section>
                     </div>
                     <section class="user-menu" v-if="showMenu">
-                        <p @click.stop="goToWishList" :wishList="wishList()">Wish List</p>
+                        <p @click.stop="goToChat">Messages</p>
+                        <p @click.stop="goToWishList">Wish List</p>
                     </section>
                 </section>
             </div>
@@ -69,6 +70,9 @@ export default {
         },
         wishList(){
             return this.$store.getters.wishList
+        },
+        goToChat(){
+            window.open(`/#/chat`, '_blank')
         }
     },
     components: {
