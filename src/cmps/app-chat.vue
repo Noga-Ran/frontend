@@ -1,27 +1,24 @@
 <template>
   <div class="messages-container">
     <app-header></app-header>
-    <h1>About Us</h1>
-    <p>We like You</p>
-    <h2>Lets Chat About {{ topic }}</h2>
-    <label>
-      <input type="radio" value="Politics" v-model="topic" @change="changeTopic" />
-      Politics
-    </label>
-    <label>
-      <input type="radio" value="Love" v-model="topic" @change="changeTopic" />
-      Love
-    </label>
-    <ul>
-      <li v-for="(msg, idx) in msgs" :key="idx">
-        <span>{{ msg.from }}:</span>{{ msg.txt }}
-      </li>
-    </ul>
-    <hr />
-    <form @submit.prevent="sendMsg">
-      <input type="text" v-model="msg.txt" placeholder="Your msg" />
-      <button>Send</button>
-    </form>
+    <section class="messages">
+      <h1>Messages</h1>  
+      <div v-if="msgs.length">
+        <section v-for="(msg, idx) in msgs" :key="idx">
+          <p v-if="msg.from!==user.fullname">{{ msg.from }}:{{ msg.txt }}</p>
+          <p v-else>You:{{ msg.txt }}</p>
+        </section>
+      </div>
+      <div v-else>
+        <h1>You have no unread messages</h1>
+        <p>When you book a trip, messages from your host will show up here.</p>
+        <button>Explore Skybnb</button>
+      </div>
+      <form @submit.prevent="sendMsg">
+        <input type="text" v-model="msg.txt" placeholder="Your msg" />
+        <button>Send</button>
+      </form>
+    </section>
   </div>
 </template>
 
@@ -33,21 +30,18 @@ import appHeader from '../cmps/app-header.vue'
 export default {
   data() {
     return {
-      msg: { from: 'Guest', txt: '' },
+      msg: { from: 'Guest', txt: '',at:'' },
       msgs: [],
-      topic: 'Love',
       user: null,
     }
   },
   created() {
     // socketService.setup()
-    socketService.emit('chat topic', this.topic)
-    this.user = userService.getLoggedinUser()
+    this.user = this.$store.getters.getUser || userService.getLoggedinUser()
+    var chatTopic = (this.user._id) ? this.user._id : '62e0e12f44d0ad7220e291a1'
+    this.msgs = this.user.msgs || []
+    socketService.emit('chat topic',chatTopic)
     socketService.on('chat addMsg', this.addMsg)
-  },
-  destroyed() {
-    socketService.off('chat addMsg', this.addMsg)
-    // socketService.terminate()
   },
   methods: {
     addMsg(msg) {
@@ -59,8 +53,9 @@ export default {
       // setTimeout(()=>this.addMsg({from: 'Dummy', txt: 'Yey'}), 2000)
       const from = (this.user && this.user.fullname) || 'Guest'
       this.msg.from = from
+      this.msg.at = Date.now()
       socketService.emit('chat newMsg', this.msg)
-      this.msg = { from, txt: '' }
+      this.msg = { from, txt: '',at:''}
     },
     changeTopic() {
       socketService.emit('chat topic', this.topic)
@@ -68,6 +63,11 @@ export default {
   },
   components: {
     appHeader
-  }
+  },
+  unmounted() {
+      socketService.off('chat addMsg', this.addMsg)
+      socketService.off('user-typing')
+      this.user = null
+  },
 }
 </script>

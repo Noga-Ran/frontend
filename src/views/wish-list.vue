@@ -1,6 +1,6 @@
 <template>
     <app-header></app-header>
-    <div v-if="wishList" class="wish-list-container">
+    <div v-if="wishList.length" class="wish-list-container">
         <h1>Wishlist</h1>
         <div class="wish-container" v-for="stay in wishList" :key="stay._id" @click.prevent="showDetails(stay._id)">
             <section>
