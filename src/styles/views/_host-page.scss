@@ -1,0 +1,122 @@
+.host-page-layout {
+    margin-top: 7vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0 80px;
+}
+
+.host-layout-top {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .dashboard {
+        grid-column: 3;
+        box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+        border: 1px solid rgb(221, 221, 221);
+        padding: 30px 0;
+        border-radius: 15px;
+        margin-right: 0px;
+        margin-left: auto;
+    }
+
+    // .chart-to-be {
+    //     width: 60vw;
+    //     height: 64.25vh;
+    //     border-radius: 15px;
+    //     box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+    //     border: 1px solid rgb(221, 221, 221);
+    // }
+}
+
+.orders-table-layout {
+    padding: 8px 0;
+    border-radius: 15px;
+    margin: 0;
+    margin-top: 3vh;
+    margin-bottom: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-display: row;
+    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+    border: 0.7px solid rgb(221, 221, 221);
+
+    table {
+        border-collapse: collapse;
+    }
+
+    h3 {
+        color: #222222;
+        width: fit-content;
+        margin-bottom: 50px;
+        margin-top: 20px;
+        font-size: 37px;
+        font-family: circular-light;
+    }
+
+    th {
+        padding-bottom: 30px;
+        font-size: 20px;
+        font-family: circular-light;
+    }
+
+    .money-class {
+        color: #69e76c;
+        font-family: circular-light
+    }
+
+    tr {
+        margin: 0 30px;
+    }
+
+    td {
+        border-bottom: 0.5px solid #ddd;
+        border-radius: 50%;
+        color: #3b3a3a;
+        font-family: circular-light;
+        min-width: 56px;
+        text-align: left;
+        padding: 10px 23px !important;
+        font-size: 18px;
+    }
+
+    .tac {
+        text-align: center;
+    }
+
+    button {
+        border: 0;
+        cursor: pointer;
+    }
+
+    .order-actions {
+        margin-left: 30px;
+        display: flex;
+        justify-content: space-between;
+        width: 60px;
+        height: 55px;
+        align-items: center;
+
+        img {
+            width: 25px;
+            height: 25px;
+            transition: 0.4s;
+            border-radius: 50%;
+
+            &:first-of-type:hover {
+                background-color: #85f087ad;
+                cursor: pointer;
+            }
+
+            &:last-of-type:hover {
+                background-color: #f79584ad;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+        }
+    }
+
+}

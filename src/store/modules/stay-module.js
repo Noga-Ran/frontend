@@ -6,12 +6,12 @@ export default {
     filterBy: {
       where: '',
       label: '',
-      checkIn:'',
-      checkOut:'',
-      adults:0,
-      children:0,
-      infants:0,
-      pets:0,
+      checkIn: '',
+      checkOut: '',
+      adults: 0,
+      children: 0,
+      infants: 0,
+      pets: 0,
     },
   },
   getters: {
@@ -26,7 +26,7 @@ export default {
     filterBy({ filterBy }) {
       return filterBy
     },
-    amountOfStays({ stays }){
+    amountOfStays({ stays }) {
       return stays.length
     }
   },
@@ -37,31 +37,31 @@ export default {
     setFilter(state, { filterBy }) {
       state.filterBy = filterBy
     },
+},
+actions: {
+    async loadStays({ commit, state }, { filter = true }) {
+    if (filter) var stays = await stayService.query(state.filterBy)
+    else var stays = await stayService.query()
+    commit({ type: 'setStays', stays })
   },
-  actions: {
-    async loadStays({ commit, state },{filter = true}) {
-      if(filter) var stays = await stayService.query(state.filterBy)
-      else var stays = await stayService.query()
-      commit({ type: 'setStays', stays })
-    },
     async setFilter({ dispatch, commit }, { filterBy }) {
-      await stayService.saveFilterBy(filterBy)
+    await stayService.saveFilterBy(filterBy)
+    commit({ type: 'setFilter', filterBy })
+    dispatch({ type: 'loadStays' })
+  },
+    async loadFilter({ dispatch, commit }){
+    var filterBy = await stayService.getFilterBy()
+    if (filterBy.length) {
       commit({ type: 'setFilter', filterBy })
       dispatch({ type: 'loadStays' })
-    },
-    async loadFilter({dispatch, commit}){
-      var filterBy = await stayService.getFilterBy()
-      if(filterBy.length){
-        commit({ type: 'setFilter', filterBy })
-        dispatch({ type: 'loadStays' })
-      }
-    },
-    async getStayById(state,{stayId}){
-      try {
-        return await stayService.getStayById(stayId)
-      } catch (err) {
-        console.log(err)
-      }
     }
   },
+    async getStayById(state, { stayId }){
+    try {
+      return await stayService.getStayById(stayId)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+},
 }
