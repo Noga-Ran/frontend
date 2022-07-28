@@ -60,7 +60,19 @@ export default {
         redirect(page) {
             if (page === "host") {
                 this.$router.push(`/host`)
-            } else this.$router.push(`/`)
+            } else 
+            {
+                this.$store.dispatch({type:'setFilter' ,filterBy: 
+                {where: '',
+                label: '',
+                checkIn: '',
+                checkOut: '',
+                adults: 0,
+                children: 0,
+                infants: 0,
+                pets: 0,},})
+                this.$router.push(`/`)
+            }
         },
         setSearch(isSearching) {
             this.isSearch = isSearching

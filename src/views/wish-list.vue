@@ -109,7 +109,7 @@ export default {
             return stayParam + ' ' + param + 's'
         },
         async loadWishList() {
-            this.wishListIds = userService.getLoggedinUser()
+            this.wishListIds = this.getUser
             this.wishListIds =  this.wishListIds.wishlist
             var wishStays = []
                 for (var wish in this.wishListIds){
@@ -124,6 +124,9 @@ export default {
         appHeader,
     },
     computed: {
+        getUser(){
+            return this.$store.getters.getUser
+        }
     },
     created() {
         var filterBy = this.$store.getters.filterBy
