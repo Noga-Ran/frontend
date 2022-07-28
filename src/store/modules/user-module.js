@@ -85,5 +85,14 @@ export default {
           console.log(err);
         }
       },
+      async saveUser({commit},{user}){
+        console.log(user);
+        try{
+          await userService.save(user)
+          commit({ type: 'setUser', user });
+        }catch(err){
+          console.log(err);
+        }
+      }
     },
 }

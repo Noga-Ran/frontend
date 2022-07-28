@@ -14,7 +14,7 @@ export const userService = {
     // save,
     // getEmptyToy,
     // getlabels,
-    update,
+    save,
     login,
     signup,
     logout,
@@ -31,7 +31,7 @@ async function remove(stayId){
     return storageService.remove(KEY,stayId)
 }
 
-async function update(user){
+async function save(user){
     saveLocalUser(user)
     if (user._id) {
         return await httpService.put(`${USERENDPOINT}/${user._id}`, user)
