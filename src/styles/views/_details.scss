@@ -83,10 +83,13 @@
   font-size: 14px;
   margin-top: 9px;
   font-family: circular-bold;
-
-  .rating-star {
-    margin-top: 2.5px;
-  }
+span{
+  display: flex;
+  align-items: center;
+}
+  // .rating-star {
+  //   margin-top: 2.5px;
+  // }
 
   .rating-average {
     margin-left: 3.5px;
@@ -94,7 +97,6 @@
 
   .share-save-actions {
     margin-bottom: 1px;
-    margin-top: 1px;
     margin-right: -2px;
   }
 
