@@ -79,17 +79,19 @@
                     <p>Check in</p>
                     <!-- <span>Add dates</span> -->
                     <el-calender></el-calender>
-                    <Datepicker :full-month-name="true" @click="showWho = false" v-if="!show" @blur="setDate('start')" hideInputIcon
-                        :autoPosition="false" :enableTimePicker="false" v-model="startDate" range multiCalendars
-                        placeholder="Add dates" :minDate="new Date()" textInput autoApply closeOnScroll />
+                    <Datepicker :full-month-name="true" @click="showWho = false" v-if="!show" @blur="setDate('start')"
+                        hideInputIcon :autoPosition="false" :enableTimePicker="false" v-model="startDate" range
+                        multiCalendars placeholder="Add dates" :minDate="new Date()" textInput autoApply
+                        closeOnScroll />
                     <p v-if="show" @click.self="clearDates">{{ startDate }}</p>
                 </div>
                 <span class="filter-seperator"></span>
                 <div class="check-out-container" @click="showModal = false; setActive($event.currentTarget)">
                     <p>Check out</p>
-                    <Datepicker :full-month-name="true" @click="showWho = false" v-if="!show" @blur="setDate('end')" hideInputIcon
-                        :autoPosition="false" :enableTimePicker="false" v-model="endDate" range multiCalendars
-                        placeholder="Add dates" :minDate="new Date()" textInput autoApply closeOnScroll />
+                    <Datepicker :full-month-name="true" @click="showWho = false" v-if="!show" @blur="setDate('end')"
+                        hideInputIcon :autoPosition="false" :enableTimePicker="false" v-model="endDate" range
+                        multiCalendars placeholder="Add dates" :minDate="new Date()" textInput autoApply
+                        closeOnScroll />
                     <p v-if="show" @click.self="clearDates">{{ endDate }}</p>
                 </div>
             </div>
@@ -98,7 +100,7 @@
                 <div class="filter-who-container" @click.self="showWho = !showWho, showModal = false">
                     <p @click.prevent="showWho = !showWho, showModal = false">Who</p>
                     <span @click.prevent="showWho = !showWho, showModal = false">{{ guestsAmount }}</span>
-                    <guests-filter @guest="updateGuests" v-if="showWho" :max="100"/>
+                    <guests-filter @guest="updateGuests" v-if="showWho" :max="100" />
                 </div>
                 <div class="search-container">
                     <button @click.prevent="setFilter">
@@ -153,18 +155,17 @@ export default {
         },
         setDate(isStart) {
             if (isStart === 'start') {
-                let dates = Object.values(this.startDate)
-                var emitStartDate = new Date(dates[0]).toISOString().slice(0, 16).replace('T', ', ').replaceAll('-', '/')
-                emitStartDate = emitStartDate.slice(0,10)
-                var emitEndDate = new Date(dates[1]).toISOString().slice(0, 16).replace('T', ', ').replaceAll('-', '/')
-                emitEndDate = emitEndDate.slice(0,10)
-                this.startDate = ('' + dates[0]).substring(4, 15)
-                this.endDate = ('' + dates[1]).substring(4, 15)
+                var dates = Object.values(this.startDate)
+
             } else {
-                let dates = Object.values(this.endDate)
-                this.startDate = ('' + dates[0]).substring(4, 15)
-                this.endDate = ('' + dates[1]).substring(4, 15)
+                var dates = Object.values(this.endDate)
             }
+            var emitStartDate = new Date(dates[0]).toISOString().slice(0, 16).replace('T', ', ').replaceAll('-', '/')
+            emitStartDate = emitStartDate.slice(0, 10)
+            var emitEndDate = new Date(dates[1]).toISOString().slice(0, 16).replace('T', ', ').replaceAll('-', '/')
+            emitEndDate = emitEndDate.slice(0, 10)
+            this.startDate = ('' + dates[0]).substring(4, 15)
+            this.endDate = ('' + dates[1]).substring(4, 15)
 
             if (this.startDate !== 'fined' && this.startDate !== '' && this.startDate !== '' && this.endDate !== 'fined') {
                 this.show = true
@@ -198,14 +199,14 @@ export default {
             this.showWho = false
             this.showModal = false
         },
-        updateGuests(guests){
+        updateGuests(guests) {
             if (guests.sum === 0) this.guestsAmount = 'Add Guests'
             else if (guests.sum === 1) this.guestsAmount = guests.sum + ' guest'
             else this.guestsAmount = guests.sum + ' guests'
-            this.$emit('guest',guests)
+            this.$emit('guest', guests)
         }
     },
-    components:{
+    components: {
         guestsFilter,
     },
     created() {
@@ -216,8 +217,8 @@ export default {
             this.endDate = this.$route.query.checkOut
             if (this.startDate && this.endDate) this.show = true
             this.guestsAmount = +this.$route.query.adults + +this.$route.query.children + +this.$route.query.infants + +this.$route.query.pets || 'Add guests'
-           if(this.guestsAmount===1) this.guestsAmount+= ' guest'
-           else if(this.guestsAmount>1) this.guestsAmount+=' guests'
+            if (this.guestsAmount === 1) this.guestsAmount += ' guest'
+            else if (this.guestsAmount > 1) this.guestsAmount += ' guests'
         }
     },
 }
