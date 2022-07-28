@@ -38,11 +38,11 @@ export default {
   },
   created() {
     // socketService.setup()
-    socketService.emit(SOCKET_EMIT_SET_TOPIC, this.topic)
-    socketService.on(SOCKET_EVENT_ADD_MSG, this.addMsg)
+    socketService.emit('chat topic', this.topic)
+    socketService.on('chat addMsg', this.addMsg)
   },
   destroyed() {
-    socketService.off(SOCKET_EVENT_ADD_MSG, this.addMsg)
+    socketService.off('chat addMsg', this.addMsg)
     // socketService.terminate()
   },
   methods: {
@@ -50,18 +50,17 @@ export default {
       this.msgs.push(msg)
     },
     sendMsg() {
-      console.log('Sending', this.msg)
       // TODO: next line not needed after connecting to backend
       // this.addMsg(this.msg)
       // setTimeout(()=>this.addMsg({from: 'Dummy', txt: 'Yey'}), 2000)
       const user = userService.getLoggedinUser()
       const from = (user && user.fullname) || 'Guest'
       this.msg.from = from
-      socketService.emit(SOCKET_EMIT_SEND_MSG, this.msg)
+      socketService.emit('chat newMsg', this.msg)
       this.msg = {from, txt: ''}
     },
     changeTopic() {
-      socketService.emit(SOCKET_EMIT_SET_TOPIC, this.topic)
+      socketService.emit('chat topic', this.topic)
     }
   }
 }
