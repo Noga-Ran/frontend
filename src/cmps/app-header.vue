@@ -62,15 +62,6 @@ export default {
                 this.$router.push(`/host`)
             } else 
             {
-                this.$store.dispatch({type:'setFilter' ,filterBy: 
-                {where: '',
-                label: '',
-                checkIn: '',
-                checkOut: '',
-                adults: 0,
-                children: 0,
-                infants: 0,
-                pets: 0,},})
                 this.$router.push(`/`)
             }
         },
