@@ -7,6 +7,7 @@
     "preview": "vite preview --port 4173"
   },
   "dependencies": {
+    "@fawmi/vue-google-maps": "^0.9.72",
     "@vuepic/vue-datepicker": "^3.3.1",
     "axios": "^0.27.2",
     "chart.js": "^3.8.2",
