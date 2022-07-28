@@ -1,0 +1,38 @@
+<template>
+<section class="stay-map-layout">
+<h1>Where you’ll be</h1>
+<div class="map-stay-address">{{ this.stayLocation.street }}</div>
+
+   <GMapMap :center="center"
+      :options="options"
+       :zoom="10" map-type-id="terrain" style="height: 40rem">
+        <GMapCluster :zoomOnClick="true">
+          <GMapMarker :key="index" v-for="(m, index) in markers" :position="m.position" :clickable="true" :draggable="true"
+            @click="center = m.position" />
+        </GMapCluster>
+      </GMapMap>
+      </section>
+</template>
+
+<script >
+export default {
+  name: 'App',
+   props: {
+    stayLocation: {
+      type: Object,
+    },
+  },
+  data() {
+    return {
+      center: {lat: this.stayLocation.location.lat, lng:this.stayLocation.location.lan },
+        markers: [
+        {
+          position: {
+            lat: this.stayLocation.location.lat, lng: this.stayLocation.location.lan
+          },
+        }
+      ]
+    }
+  }
+}
+</script>
