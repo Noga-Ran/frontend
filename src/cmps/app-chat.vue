@@ -42,6 +42,7 @@ export default {
   created() {
     // socketService.setup()
     socketService.emit('chat topic', this.topic)
+    this.user = userService.getLoggedinUser()
     socketService.on('chat addMsg', this.addMsg)
   },
   destroyed() {
@@ -64,9 +65,6 @@ export default {
     changeTopic() {
       socketService.emit('chat topic', this.topic)
     }
-  },
-  created() {
-    this.user = userService.getLoggedinUser()
   },
   components: {
     appHeader
