@@ -24,7 +24,7 @@ export const userService = {
     getLoggedinUser,
 }
 async function query(filterBy = {}) {
-    return storageService.query(KEY)
+    return httpService.get(USERENDPOINT,filterBy)
 }
 
 async function remove(stayId){

@@ -1,6 +1,6 @@
 <template>
     <app-header></app-header>
-    <div v-if="wishList" class="wish-list-container">
+    <div v-if="wishList && displayWishStays.length" class="wish-list-container">
         <h1>Wishlist</h1>
         <div class="wish-container" v-for="stay in displayWishStays" :key="stay._id" @click.prevent="showDetails(stay._id)">
             <section>
@@ -46,7 +46,7 @@
                         </svg>
                         <div class="rating-num">
                             <p>{{ this.getRating(stay) }}</p>
-                            <span>({{ getNumRev(stay) }})</span>
+                            <span>&nbsp;({{ getNumRev(stay) }})</span>
                         </div>
                     </div>
                     <div class="wish-price">
@@ -94,8 +94,8 @@ export default {
             return length + ' reviews'
         },
         removeStay(stayId) {
+             this.displayWishStays = this.displayWishStays.filter(wish => wish._id !== stayId)
             this.$store.dispatch({ type: "removeWishStay", stayId })
-            this.loadWishList()
         },
         showDetails(stayId) {
             if (this.$route.query && this.$route.query?.adults) {
@@ -124,9 +124,7 @@ export default {
                 var stay = await this.$store.dispatch({ type: 'getStayById', stayId: this.user.wishlist[wish]})
                 wishStays.push(stay)
             }
-            console.log('aaa', wishStays);
             this.displayWishStays = wishStays
-            return wishStays
         }
     },
     created() {

@@ -10,8 +10,15 @@
 
 }
 
-.messages{
-    div:first-child {
+.chat-container{
+    display: flex;
+    > section {
+        height: 88.5vh;
+        border-right : 1px solid rgb(235, 235, 235);
+        width: 100%;
+    }
+
+    header {
         -webkit-box-align: center !important;
         -webkit-box-direction: normal !important;
         -webkit-box-orient: horizontal !important;
@@ -27,12 +34,22 @@
         h1{
             color: rgb(34, 34, 34) !important;
             font-size: 1em !important;
-            font-weight: inherit !important;
-            line-height: inherit !important;
+            font-size: 18px !important;
+            line-height: 24px !important;
+            font-weight: 800 !important;
             margin: 0px !important;
             padding: 0px !important;
             contain: paint !important;
         }
+    }
+}
+
+.user-messages{
+    header{
+        justify-content: space-between;
+    }
+    .you-msg{
+        direction: rtl;
     }
     
 }
