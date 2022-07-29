@@ -232,9 +232,15 @@ export default {
   },
   computed: {
     getRating() {
-      const { rating } = this.stay.reviewScores
-      this.averageRating = (rating / 20).toFixed(1)
-      return this.averageRating
+      const { accuracy,
+        checkin,
+        cleanliness,
+        communication,
+        location,
+        value } = this.stay.reviewScores
+      var average = (accuracy + checkin + cleanliness + communication + location + value) / 6
+      this.averageRating = average / 2
+      return this.averageRating.toFixed(1)
     },
   },
   unmounted() { },

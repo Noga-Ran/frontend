@@ -126,9 +126,9 @@ export default {
                 cleanliness,
                 communication,
                 location,
-                value } = this.stay.reviewScores
+                value } = this.currStay.reviewScores
             var average = (accuracy + checkin + cleanliness + communication + location + value) / 6
-            return average / 2
+            return (average / 2).toFixed(1)
         },
         formatNumber(num) {
             const numberFormatter = Intl.NumberFormat('en-US');

@@ -164,7 +164,7 @@ export default {
         value } = this.stay.reviewScores
       var average = (accuracy + checkin + cleanliness + communication + location + value) / 6
       this.averageRating = average / 2
-      return this.averageRating
+      return this.averageRating.toFixed(1)
     },
   },
   computed: {
