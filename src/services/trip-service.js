@@ -9,19 +9,15 @@ export const tripService = {
     getById,
     remove,
     // save,
-    // getEmptyToy,
-    // getlabels,
     update,
 }
 
 async function query() {
-    // return storageService.query(KEY)
     return await httpService.get(ENDPOINT)
 }
 
 async function remove(tripId){
     return await httpService.delete(ENDPOINT+'/'+tripId)
-    // return storageService.remove(KEY,tripId)
 }
 
 async function update(trip){
@@ -30,11 +26,9 @@ async function update(trip){
     return await httpService.put(`${ENDPOINT}/${trip._id}`, trip);
   } else {
     return await httpService.post(ENDPOINT, trip);
-  }    // trip._id = Date.now()
-    // storageService.post(KEY,trip)
+  } 
 }
 
 async function getById(tripId){
     return await httpService.get(ENDPOINT+'/'+tripId)
-    // return storageService.getById(KEY,tripId)
-}
+  }

@@ -54,7 +54,7 @@
           </div>
         </div>
 
-        <div class="btn-container" :disabled="showWho" @click="saveTrip">
+        <div class="btn-container show-order-sum-btn" :disabled="showWho" @click="saveTrip; showOrderSumModal = true">
           <div class="cell"></div>
           <div class="cell"></div>
           <div class="cell"></div>
@@ -156,9 +156,9 @@
           <div class="cell"></div>
           <div class="cell"></div>
           <div class="content">
-            <button class="action-btn">
-              <span class="reserve-word-btn">Reserve</span>
-            </button>
+            <v-button class="action-btn">
+              <span class="word-btn">Reserve</span>
+            </v-button>
           </div>
         </div>
       </section>
@@ -184,15 +184,150 @@
         </div>
       </div>
     </section>
-    <div></div>
   </section>
+
+
+  <div class="order-sum-modal">
+    <vue-final-modal v-model="showOrderSumModal" classes="modal-container" content-class="modal-content">
+      <section class="modal-container">
+        <div class="order-sum-container">
+          <button class="modal__close" @click="showOrderSumModal = false">
+            X
+          </button>
+          <h2 class="order-sum-title">
+
+            Your order has been reserved
+          </h2>
+          <div class="bold">Order Details</div>
+          <div> <span class="bold">Name of stay:</span> {{ stay.name }}</div>
+          <div><span class="bold">Location: </span> {{ stay.address.city }}, {{ stay.address.country }}</div>
+          <div><span class="bold">Dates:</span> {{ getDate(checkIn) }} - {{ getDate(checkOut) }}, {{ stayDayAmount }}
+            nights</div>
+          <div><span class="bold">Number of guests:</span> {{ guests }} </div>
+          <div><span class="bold">Total price:</span> ${{ getPrice(stay.cleaningFee) }}</div>
+          <div class="btn-container" @click="showOrderSumModal = false">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="content">
+              <button class="action-btn">
+                <span class="word-btn">Contact my host</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div>
+          <img class="order-img" :src="getImgUrl(0)" alt="" />
+          <h2 class="enjoy-greeting">Enjoy your holiday!</h2>
+        </div>
+      </section>
+    </vue-final-modal>
+  </div>
 </template>
 <script>
 import { h } from 'vue'
-import { ElNotification } from 'element-plus'
+// import { ElNotification } from 'element-plus'
 import guestsFilter from './filter-modal-cmps/guests-filter-modal.vue'
 import { socketService } from '../services/socket.service'
 import { userService } from '../services/user-service'
+import { $vfm, VueFinalModal, ModalsContainer } from 'vue-final-modal'
 
 export default {
   props: {
@@ -214,6 +349,7 @@ export default {
       guestsAmount: 'Add guests',
       guests: 1,
       loggedInUser: null,
+      showOrderSumModal: false,
     }
   },
   created() {
@@ -232,11 +368,16 @@ export default {
       : (Date.now() + 518400000)
   },
   methods: {
-    open1(msg) {
-      ElNotification({
-        title: 'congratulation!',
-        message: h('i', { style: 'color: #dd0f63' }, msg),
-      })
+    // open1(msg) {
+    //   ElNotification({
+    //     title: 'congratulation!',
+    //     message: h('i', { style: 'color: #dd0f63' }, msg),
+    //   })
+    // },
+    getImgUrl(idx) {
+      const { imgUrls } = this.stay
+      return new URL('../assets/img/stays/' + imgUrls[idx], import.meta.url)
+        .href
     },
 
     getStayLen() {
@@ -274,18 +415,25 @@ export default {
         guests: this.guests,
         status: "pending"
       }
-      console.log('tripDetails: ', tripDetails)
-      this.open1('Your trip was successfully reserved')
+      // console.log('tripDetails: ', tripDetails)
+      // this.open1('Your trip was successfully reserved')
 
-      this.showModal = true
+      // this.showModal = true
       this.$store.dispatch({ type: 'addTrip', trip: tripDetails })
-      setTimeout(() => {
-        this.showModal
-      }, 5000)
-      const msg = { from: 'system', txt: 'your order was reserved', at: Date.now() }
-      console.log('msg', msg);
+      // setTimeout(() => {
+      //   this.showModal
+      // }, 5000)
+      const msg = { from: 'system', txt: 'your order was reserved', at: Date.now(), tripDetails }
+      const user = userService.getLoggedinUser()
+      var chatTopic = user._id
+      socketService.emit('chat topic', chatTopic)
       socketService.emit('chat newMsg', msg)
 
+      chatTopic = tripDetails.hostId
+      msg = { from: 'system', txt: 'a stay was reserved', at: Date.now(), tripDetails }
+      socketService.emit('chat topic', chatTopic)
+      socketService.emit('chat newMsg', msg)
+      // console.log('msg', msg);
     },
     setActive(elElement) {
       var elActiveArea = document.querySelector('.searchbar-selected-filter')
@@ -331,7 +479,9 @@ export default {
   computed: {
   },
   components: {
-    guestsFilter
+    guestsFilter,
+    VueFinalModal,
+    ModalsContainer,
   },
   unmounted() { },
 }

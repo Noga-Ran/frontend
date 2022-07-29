@@ -9,14 +9,14 @@ export default {
     RouterView
   },
   created() {
-    // this.$store.dispatch({type: 'loadStays'})
+    // this.$store.dispatch({type: 'loadStays',filter:false})
     // this.$store.dispatch({ type: "loadWishList"})
     // this.$store.dispatch({ type: "loadTrips"})
     this.login()
     // socketService.setup()
-    const user = userService.getLoggedinUser()
-    var chatTopic = (user) ? user._id : '62e0e12f44d0ad7220e291a1'
-    socketService.emit('chat topic', chatTopic)
+    // const user = userService.getLoggedinUser()
+    // var chatTopic = (user) ? user._id : '62e3b52c39fea7d494c0e2ac'
+    // socketService.emit('chat topic', chatTopic)
   },
   methods: {
     async login(){

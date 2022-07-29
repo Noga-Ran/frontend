@@ -1,11 +1,11 @@
 <template>
 <section class="stay-map-layout">
-<h1>Where you’ll be</h1>
+<h1 class="map-title">Where you’ll be</h1>
 <div class="map-stay-address">{{ this.stayLocation.street }}</div>
 <!-- <img src="" alt=""> -->
    <GMapMap :center="center"
       :options="options"
-       :zoom="10" map-type-id="roadmap" style="height: 40rem">
+       :zoom="7" map-type-id="roadmap" style="height: 40rem">
         <GMapCluster :zoomOnClick="true">
           <GMapMarker :key="m" v-for="(m, index) in markers" :position="m.position" :clickable="true" :draggable="true"
             @click="center = m.position"  />
