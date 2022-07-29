@@ -7,7 +7,7 @@
                 <p>skybnb</p>
             </div>
             <filter-cmp @closeHeader="closeHeader" @search="setSearch" @filter="setFilter" @date="setDate"
-                :isSearch="isSearch" />
+                :isSearch="isSearch" :isDetails="isDetails" />
             <div class="header-tools-container" :class="{ 'grid-area-user': isSearch }">
                 <div class="become-a-host" @click="redirect('host')">
                     Become a Host
@@ -44,7 +44,11 @@ export default {
         return {
             isSearch: false,
             showMenu: false,
+            isDetails: false
         }
+    },
+    created() {
+        if (this.$route.name === 'stay-details') this.isDetails = true
     },
     methods: {
         closeHeader() {
@@ -60,8 +64,7 @@ export default {
         redirect(page) {
             if (page === "host") {
                 this.$router.push(`/host`)
-            } else 
-            {
+            } else {
                 this.$router.push(`/`)
             }
         },
@@ -71,10 +74,10 @@ export default {
         goToWishList() {
             window.open(`/#/wishList`, '_blank')
         },
-        wishList(){
+        wishList() {
             return this.$store.getters.wishList
         },
-        goToChat(){
+        goToChat() {
             window.open(`/#/chat`, '_blank')
         }
     },
