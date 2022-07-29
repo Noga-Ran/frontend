@@ -426,10 +426,17 @@ export default {
       // setTimeout(() => {
       //   this.showModal
       // }, 5000)
-      const msg= {from:'system',txt:'your order was reserved',at:Date.now()}
-      // console.log('msg', msg);
+      const msg= {from:'system',txt:'your order was reserved',at:Date.now(),tripDetails}
+      const user = userService.getLoggedinUser()
+      var chatTopic = user._id
+      socketService.emit('chat topic', chatTopic)
       socketService.emit('chat newMsg', msg)
 
+      chatTopic = tripDetails.hostId
+      msg= {from:'system',txt:'a stay was reserved',at:Date.now(),tripDetails}
+      socketService.emit('chat topic', chatTopic)
+      socketService.emit('chat newMsg', msg)
+      // console.log('msg', msg);
     },
     setActive(elElement) {
       var elActiveArea = document.querySelector('.searchbar-selected-filter')
