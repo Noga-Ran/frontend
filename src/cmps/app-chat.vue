@@ -65,7 +65,11 @@ export default {
       userChat: 'UserName'
     }
   },
-  created() {
+  // created() {
+  //   socketService.emit('chat topic', this.chatTopic)
+  //   socketService.on('chat addMsg', this.addMsg)
+  // },
+  mounted() {
     socketService.emit('chat topic', this.chatTopic)
     socketService.on('chat addMsg', this.addMsg)
   },
@@ -79,6 +83,7 @@ export default {
   },
   methods: {
     addMsg(msg) {
+      console.log('new Msg',msg);
       var userCopy = JSON.parse(JSON.stringify(this.user))
       if (userCopy?.msgs) {
         userCopy.msgs.push(msg)
