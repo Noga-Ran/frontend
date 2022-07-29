@@ -424,8 +424,8 @@ export default {
 
       socketService.emit('chat topic', this.stay.host._id)
       socketService.emit('chat newMsg', { from: 'system', txt: 'a stay of yours was reserved', at: Date.now(), tripDetails })
-      console.log('tripDetails: ', tripDetails)
-      this.open1('Your trip was successfully reserved')
+      // console.log('tripDetails: ', tripDetails)
+      // this.open1('Your trip was successfully reserved')
 
       // this.showModal = true
       this.$store.dispatch({ type: 'addTrip', trip: tripDetails })
