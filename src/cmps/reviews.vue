@@ -2,20 +2,13 @@
   <section class="reviews-container details-padding">
     <h2 class="reviews-title">
       <span>
-        <svg
-          viewBox="0 0 32 32"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true"
-          role="presentation"
-          focusable="false"
-          style="height: 14px; width: 14px; fill: currentcolor"
-        >
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
+          focusable="false" style="height: 14px; width: 14px; fill: currentcolor">
           <path
             d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z"
-            fill-rule="evenodd"
-          ></path>
+            fill-rule="evenodd"></path>
         </svg>
-        <span class="rating-average"> {{ getRating }} </span>
+        <span class="rating-average"> {{ this.getRating() }} </span>
       </span>
       <span>&nbsp &middot &nbsp </span>
       <span class="review-count">{{ stay.numOfReviews }} reviews </span>
@@ -36,10 +29,7 @@
           <!-- <div>{{ review.txt }}</div> -->
           <div>{{ formatedReviewTxt(review.txt) }}</div>
           <div class="show-more-review-container" v-if="this.isLongTxt">
-            <v-button
-              class="show-more-review-btn"
-              @click="showReviewsModal = true"
-            >
+            <v-button class="show-more-review-btn" @click="showReviewsModal = true">
               Show more
             </v-button>
             <span>></span>
@@ -49,11 +39,7 @@
     </ul>
 
     <div class="reviews-modal">
-      <vue-final-modal
-        v-model="showReviewsModal"
-        classes="modal-container"
-        content-class="modal-content"
-      >
+      <vue-final-modal v-model="showReviewsModal" classes="modal-container" content-class="modal-content">
         <section class="modal-container">
           <button class="modal__close" @click="showReviewsModal = false">
             X
@@ -62,24 +48,16 @@
             <div>
               <h2 class="reviews-title">
                 <span>
-                  <svg
-                    viewBox="0 0 32 32"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                    role="presentation"
-                    focusable="false"
-                    style="height: 14px; width: 14px; fill: currentcolor"
-                  >
+                  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
+                    focusable="false" style="height: 14px; width: 14px; fill: currentcolor">
                     <path
                       d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z"
-                      fill-rule="evenodd"
-                    ></path>
+                      fill-rule="evenodd"></path>
                   </svg>
                   <span class="rating-average"> {{ getRating }} </span>
                 </span>
                 <span>&nbsp &middot &nbsp </span>
-                <span class="review-count"
-                  >{{ stay.numOfReviews }} reviews
+                <span class="review-count">{{ stay.numOfReviews }} reviews
                 </span>
               </h2>
 
@@ -94,7 +72,7 @@
                   <div class="review-name-and-time">
                     <span class="review-name">{{ review.by.fullname }}</span>
                     <span class="review-time">{{
-                      formateTime(review.at)
+                        formateTime(review.at)
                     }}</span>
                   </div>
                 </div>
@@ -177,15 +155,21 @@ export default {
     getImgUrl(review) {
       return review.by.imgUrl
     },
-  },
-  computed: {
     getRating() {
-      const { rating } = this.stay.reviewScores
-      this.averageRating = (rating / 20).toFixed(1)
+      const { accuracy,
+        checkin,
+        cleanliness,
+        communication,
+        location,
+        value } = this.stay.reviewScores
+      var average = (accuracy + checkin + cleanliness + communication + location + value) / 6
+      this.averageRating = average / 2
       return this.averageRating
     },
   },
-  unmounted() {},
+  computed: {
+  },
+  unmounted() { },
 }
 </script>
 

@@ -15,7 +15,7 @@
                 d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z"
                 fill-rule="evenodd"></path>
             </svg>
-            <span class="rating-average in-oreder"> {{ getRating }} </span>
+            <span class="rating-average in-oreder"> {{ this.getRating() }} </span>
           </span>
           <span class="trips-dot">&nbsp &middot &nbsp </span>
           <span class="review-count in-order">{{ stay.numOfReviews }} reviews
@@ -47,7 +47,7 @@
           <div class="trip-guests">
             <h1>guests</h1>
             <div class="filter-who-container" @click.self="showWho = !showWho">
-              <span v-if="(guests>1)" @click.self="showWho = !showWho">{{ guests }} guests</span>
+              <span v-if="(guests > 1)" @click.self="showWho = !showWho">{{ guests }} guests</span>
               <span v-else @click.self="showWho = !showWho"> 1 guest</span>
             </div>
             <guests-filter @guest="updateGuests" v-if="showWho" :max="currStay.capacity" />
@@ -191,7 +191,7 @@
 import { h } from 'vue'
 import { ElNotification } from 'element-plus'
 import guestsFilter from './filter-modal-cmps/guests-filter-modal.vue'
-import {socketService} from '../services/socket.service'
+import { socketService } from '../services/socket.service'
 import { userService } from '../services/user-service'
 
 export default {
@@ -218,7 +218,7 @@ export default {
   },
   created() {
     this.loggedInUser = userService.getLoggedinUser()
-    console.log(this.loggedInUser );
+    console.log(this.loggedInUser);
     this.id = this.$route.params.id
     // this.stay = this.$store.getters.stayById(this.id)
     this.stay = JSON.parse(JSON.stringify(this.currStay))
@@ -244,11 +244,11 @@ export default {
       var date2 = new Date(this.checkOut)
       var time_difference = date2.getTime() - date1.getTime()
       this.stayDayAmount = time_difference / (1000 * 60 * 60 * 24)
-      return this.stayDayAmount
+      return this.stayDayAmount.toFixed(0)
     },
 
     getPrice(cleaningFee = 0) {
-      return this.stay.price * this.stayDayAmount + cleaningFee
+      return (this.stay.price * this.stayDayAmount + cleaningFee).toFixed(0)
     },
     getDate(date) {
       var date = new Date(date)
@@ -282,7 +282,7 @@ export default {
       setTimeout(() => {
         this.showModal
       }, 5000)
-      const msg= {from:'system',txt:'your order was reserved',at:Date.now()}
+      const msg = { from: 'system', txt: 'your order was reserved', at: Date.now() }
       console.log('msg', msg);
       socketService.emit('chat newMsg', msg)
 
@@ -315,14 +315,20 @@ export default {
       else if (guests.sum === 1) this.guestsAmount = guests.sum + ' guest'
       else this.guestsAmount = guests.sum + ' guests'
       this.guests = guests.sum
-    }
-  },
-  computed: {
+    },
     getRating() {
-      const { rating } = this.stay.reviewScores
-      this.averageRating = (rating / 20).toFixed(1)
+      const { accuracy,
+        checkin,
+        cleanliness,
+        communication,
+        location,
+        value } = this.stay.reviewScores
+      var average = (accuracy + checkin + cleanliness + communication + location + value) / 6
+      this.averageRating = average / 2
       return this.averageRating
     },
+  },
+  computed: {
   },
   components: {
     guestsFilter

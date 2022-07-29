@@ -7,7 +7,7 @@
       :options="options"
        :zoom="10" map-type-id="roadmap" style="height: 40rem">
         <GMapCluster :zoomOnClick="true">
-          <GMapMarker :key="index" v-for="(m, index) in markers" :position="m.position" :clickable="true" :draggable="true"
+          <GMapMarker :key="m" v-for="(m, index) in markers" :position="m.position" :clickable="true" :draggable="true"
             @click="center = m.position"  />
          <!-- :icon="getImgUrl()" -->
         </GMapCluster>

@@ -10,24 +10,28 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
 
-    .dashboard {
-        grid-column: 3;
-        box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
-        border: 1px solid rgb(221, 221, 221);
-        padding: 30px 0;
-        border-radius: 15px;
-        margin-right: 0px;
-        margin-left: auto;
-    }
+.dashboard-layout {
+    width: 100vw;
+    height: 65vh;
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-rows: 1fr;
 
-    // .chart-to-be {
-    //     width: 60vw;
-    //     height: 64.25vh;
-    //     border-radius: 15px;
-    //     box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
-    //     border: 1px solid rgb(221, 221, 221);
+    // section {
+    //     position: relative;
+    //     height: 65vh;
+    //     width: 100%;
     // }
+
+    // grid-column: 3;
+    // box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+    // border: 1px solid rgb(221, 221, 221);
+    // padding: 30px 0;
+    // border-radius: 15px;
+    // margin-right: 0px;
+    // margin-left: auto;
 }
 
 .orders-table-layout {
@@ -50,12 +54,21 @@
     }
 
     h3 {
+        display: flex;
+        align-items: center;
         color: #222222;
         width: fit-content;
         margin-bottom: 50px;
         margin-top: 20px;
+        margin-left: 55px;
         font-size: 37px;
         font-family: circular-light;
+
+        img {
+            margin-left: 10px;
+            margin-top: 3px;
+            height: 55px;
+        }
     }
 
     th {
@@ -65,8 +78,8 @@
     }
 
     .money-class {
-        color: #6be67b;
-        font-family: circular-light
+        color: #6fecac;
+        font-family: circular-light;
     }
 
     tr {
@@ -76,6 +89,7 @@
             border-bottom: 0.5px solid #ddd;
         }
     }
+
     .host-page-stay-name {
         .td-content-container {
             background-color: rgba(249, 221, 221, 0.099);
@@ -114,8 +128,8 @@
         display: flex;
         padding-right: 20px;
         justify-content: space-between;
-        width: 70px;
-        height: 55px;
+        width: 62px;
+        height: 57px;
         align-items: center;
 
         img {
@@ -125,17 +139,27 @@
             border-radius: 50%;
 
             &:first-of-type {
-                background-color: #85f0875a;
+                background-color: #9efdb9ea;
+                outline: 0.5px solid transparent;
                 cursor: pointer;
+                transition: 0.3s;
 
                 &:hover {
-                    background-color: #85f087ad;
+                    outline: 0.5px solid black;
                 }
             }
 
+            &:last-of-type {
+                transition: 0.2s;
+                border: 2px solid transparent;
+                height: 22px;
+                width: 22px;
+            }
+
             &:last-of-type:hover {
-                background-color: #f79584ad;
-                border-radius: 8px;
+                background-color: #f4a699f9;
+                border: 2px solid black;
+                border-radius: 32%;
                 cursor: pointer;
             }
         }

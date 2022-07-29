@@ -39,7 +39,7 @@
                         fill-rule="evenodd"></path>
                 </svg>
                 <div class="rating-num">
-                    {{ this.getRating }}
+                    {{ this.getRating() }}
                 </div>
             </div>
             <div class="preview-distance">{{ this.distanceFromStay }} kilometers away</div>
@@ -57,7 +57,7 @@
                             fill-rule="evenodd"></path>
                     </svg>
                     <div class="rating-num-explore">
-                        {{ this.getRating }} ({{ currStay.reviews.length }})
+                        {{ this.getRating() }} ({{ currStay.reviews.length }})
                     </div>
                 </div>
             </div>
@@ -92,14 +92,10 @@ export default {
             const { city, country } = this.currStay.address
             return city + "," + country
         },
-        getRating() {
-            const { rating } = this.currStay.reviewScores
-            return (rating / 20).toFixed(1)
-        },
         getStayName() {
-            if(this.currStay.name.length > 44){
+            if (this.currStay.name.length > 44) {
                 var shortenName = JSON.parse(JSON.stringify(this.currStay.name))
-                return (shortenName.slice(0,40) + "...")
+                return (shortenName.slice(0, 40) + "...")
             }
             return this.currStay.name
         }
@@ -124,15 +120,25 @@ export default {
             const { imgUrls } = this.currStay
             return new URL('../assets/img/stays/' + imgUrls[item - 1], import.meta.url).href
         },
+        getRating() {
+            const { accuracy,
+                checkin,
+                cleanliness,
+                communication,
+                location,
+                value } = this.stay.reviewScores
+            var average = (accuracy + checkin + cleanliness + communication + location + value) / 6
+            return average / 2
+        },
         formatNumber(num) {
             const numberFormatter = Intl.NumberFormat('en-US');
             const formatted = numberFormatter.format(num);
             return formatted;
         },
         showDetails(event) {
-             if(this.$route.query && this.$route.query?.adults){
+            if (this.$route.query && this.$route.query?.adults) {
                 window.open(`/#/stay/${this.currStay._id}?where=${this.$route.query.where || ''}&checkIn=${this.$route.query.checkIn || ''}&checkOut=${this.$route.query.checkOut || ''}&label=${this.$route.query.label || ''}&adults=${this.$route.query.adults}&children=${this.$route.query.children}&infants=${this.$route.query.infants}&pets=${this.$route.query.pets}`, '_blank')
-            }else{
+            } else {
                 window.open(`/#/stay/${this.currStay._id}`, '_blank')
             }
         },

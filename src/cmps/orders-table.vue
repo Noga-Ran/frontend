@@ -1,6 +1,6 @@
 <template>
     <div class="orders-table-layout">
-        <h3> Your Orders</h3>
+        <h3> Your Orders <img src="../assets/img/order-list-header.svg"></h3>
         <table class="orders-table-container">
             <tr>
                 <th></th>
@@ -43,10 +43,10 @@
                     <div class="td-content-container">{{ order.guests }}</div>
                 </td>
                 <td class="money-class tac">
-                    <div class="td-content-container">{{ order.stay.price }} $</div>
+                    <div class="td-content-container"> $ {{ order.stay.price }}</div>
                 </td>
                 <td class="money-class tac">
-                    <div class="td-content-container">{{ order.totalPrice.toFixed(0) }} $</div>
+                    <div class="td-content-container"> $ {{ order.totalPrice.toFixed(0) }}</div>
                 </td>
                 <td>
                     <div class="td-content-container">{{ order.status }}</div>

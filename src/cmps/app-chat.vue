@@ -9,7 +9,7 @@
         </path></svg>
       </div>
       <div v-if="msgs.length">
-        <section v-for="(msg, idx) in msgs" :key="idx">
+        <section v-for="(msg, idx) in msgs" :key="msg">
           <p v-if="msg.from !== user.fullname">{{ msg.from }}:{{ msg.txt }}</p>
           <p v-else>You:{{ msg.txt }}</p>
         </section>

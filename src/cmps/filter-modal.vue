@@ -59,7 +59,7 @@
                             <div class="search-region">
                                 <p>Search by region</p>
                                 <div class="imgs-container">
-                                    <div v-for="(label, idx) in countryLabels" :key="indx" @click="setWhere(label)">
+                                    <div v-for="(label, idx) in countryLabels" :key="label" @click="setWhere(label)">
                                         <img v-if="label != 'Im flexiable'" :src="getImgUrl(label)" alt="" />
                                         <img v-else src="../assets/img/countries/world.png" alt="" />
                                         <p>{{ label }}</p>
