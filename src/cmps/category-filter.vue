@@ -162,7 +162,6 @@ export default {
     return {
       isActive: true,
       label: '',
-      queryLabel: '',
     }
   },
   components: {},
@@ -186,16 +185,19 @@ export default {
         }
         elElement.classList.toggle('selected-filter')
         var filter = elElement.outerText
-        this.$emit('filter', {label:filter})
+        if(filter===this.queryLabel){
+           this.$emit('filter', {label:'remove'})
+        }else this.$emit('filter', {label:filter})
       }
       else{
         this.$emit()
       }
     }
   },
-  created() {
-    if(this.$route.query?.label){
-      this.queryLabel = this.$route.query.label
+  computed:{
+    queryLabel(){
+      if(this.$route.query?.label) return this.$route.query.label
+      else ''
     }
   }
 }

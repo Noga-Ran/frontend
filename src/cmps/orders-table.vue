@@ -82,6 +82,7 @@ export default {
             })
         },
         getStayName(order) {
+            console.log(order);
             if (order.stay.name.length > 17) {
                 var shortenName = JSON.parse(JSON.stringify(order.stay.name))
                 console.log('shortenName: ', shortenName)

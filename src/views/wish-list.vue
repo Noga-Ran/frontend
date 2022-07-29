@@ -1,8 +1,8 @@
 <template>
     <app-header></app-header>
-    <div v-if="wishList.length" class="wish-list-container">
+    <div v-if="wishList" class="wish-list-container">
         <h1>Wishlist</h1>
-        <div class="wish-container" v-for="stay in wishList" :key="stay._id" @click.prevent="showDetails(stay._id)">
+        <div class="wish-container" v-for="stay in displayWishStays" :key="stay._id" @click.prevent="showDetails(stay._id)">
             <section>
                 <el-carousel trigger="click" :autoplay="false" height="150px">
                     <el-carousel-item v-for="item in 5" :key="item">
@@ -74,8 +74,8 @@ export default {
     // },
     data() {
         return {
-            wishListIds: this.$store.getters.wishList,
-            wishList:null,
+            wishListIds: this.user?.wishlist || [],
+            displayWishStays: [],
         }
     },
     methods: {
@@ -98,9 +98,9 @@ export default {
             this.loadWishList()
         },
         showDetails(stayId) {
-            if(this.$route.query && this.$route.query?.adults){
+            if (this.$route.query && this.$route.query?.adults) {
                 window.open(`/#/stay/${stayId}?where=${this.$route.query.where || ''}&checkIn=${this.$route.query.checkIn || ''}&checkOut=${this.$route.query.checkOut || ''}&label=${this.$route.query.label || ''}&adults=${this.$route.query.adults}&children=${this.$route.query.children}&infants=${this.$route.query.infants}&pets=${this.$route.query.pets}`, '_blank')
-            }else{
+            } else {
                 window.open(`/#/stay/${stayId}`, '_blank')
             }
         },
@@ -108,28 +108,35 @@ export default {
             if (stayParam === 1) return stayParam + ' ' + param
             return stayParam + ' ' + param + 's'
         },
-        async loadWishList() {
-            this.wishListIds = userService.getLoggedinUser()
-            this.wishListIds =  this.wishListIds.wishlist
-            var wishStays = []
-                for (var wish in this.wishListIds){
-                    var stay = await this.$store.dispatch({type:'getStayById',stayId: this.wishListIds[wish]})
-                    wishStays.push(stay)
-                }
-            this.wishList = wishStays
-        }
-
     },
     components: {
         appHeader,
     },
     computed: {
+        user() {
+            var user = this.$store.getters.getUser
+            return user
+        },
+        async wishList() {
+            var wishStays = []
+            if(!this.user && !this.user?.wishlist) return []
+            for (var wish in this.user.wishlist) {
+                var stay = await this.$store.dispatch({ type: 'getStayById', stayId: this.user.wishlist[wish]})
+                wishStays.push(stay)
+            }
+            console.log('aaa', wishStays);
+            this.displayWishStays = wishStays
+            return wishStays
+        }
     },
     created() {
         var filterBy = this.$store.getters.filterBy
-        this.$router.push({path:`/wishList/${filterBy.where}`,query: { where:filterBy.where, checkIn:filterBy.checkIn
-                ,checkOut:filterBy.checkOut ,label:filterBy.label,adults:filterBy.adults,children:filterBy.children,infants:filterBy.infants,pets:filterBy.pets}})
-        this.loadWishList()
+        this.$router.push({
+            path: `/wishList/${filterBy.where}`, query: {
+                where: filterBy.where, checkIn: filterBy.checkIn
+                , checkOut: filterBy.checkOut, label: filterBy.label, adults: filterBy.adults, children: filterBy.children, infants: filterBy.infants, pets: filterBy.pets
+            }
+        })
     },
 }
 </script>

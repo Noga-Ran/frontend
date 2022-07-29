@@ -25,14 +25,17 @@ export default {
         setFilter(filter,{who}=''){
             var filterBy = Object.assign({}, this.$store.getters.filterBy)
             if(filter.label){
-                filterBy.label = filter.label
-                console.log(filter.label);
+                if(filter.label==='remove'){
+                    filterBy.label = ''
+                }else {
+                    filterBy.label = filter.label
+                }
             }else{
-                filterBy.where = filter.where || ''
-                filterBy.adults = who.adults || 0
-                filterBy.children = who.children || 0
-                filterBy.infants = who.infants || 0
-                filterBy.pets = who.pets || 0
+                filterBy.where = filter?.where || ''
+                filterBy.adults = who?.adults || 0
+                filterBy.children = who?.children || 0
+                filterBy.infants = who?.infants || 0
+                filterBy.pets = who?.pets || 0
             }
             this.$store.dispatch({ type: "setFilter", filterBy })
             this.setQuery(filterBy)

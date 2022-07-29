@@ -60,7 +60,10 @@ export default {
         redirect(page) {
             if (page === "host") {
                 this.$router.push(`/host`)
-            } else this.$router.push(`/`)
+            } else 
+            {
+                this.$router.push(`/`)
+            }
         },
         setSearch(isSearching) {
             this.isSearch = isSearching
