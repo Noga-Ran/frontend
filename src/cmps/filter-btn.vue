@@ -27,60 +27,62 @@
         <div class="price-inputs">
             <span class="input-price-container">
                 <div>min price</div>
-                <div>$ <input class="price-input" type="text" value="10"></div>
+                <div>$ <input class="price-input" type="text" v-model="multyFilterBy.minPrice"></div>
             </span>
             <span>-</span>
              <span class="input-price-container">
                 <div>max price</div>
-                <div>$ <input class="price-input" type="text" value="1000"></div>
+                <div>$ <input class="price-input" type="text" v-model="multyFilterBy.maxPrice"></div>
             </span>
             </div>
             <h1 class="place-type-header">Type of place</h1>
-            <input type="checkbox" class="entire-place" name="entirePlace" value="entirePlace">
+            <input type="checkbox" class="entire-place" name="entirePlace" value="entirePlace" @click="multyFilterBy.entirePlace=!multyFilterBy.entirePlace">
             <label for="entirePlace"> EntirePlace  <div class="grey">A place all to yourself</div></label><br>
             
-            <input type="checkbox" class="private-room" name="privateRoom" value="privateRoom">
+            <input type="checkbox" class="private-room" name="privateRoom" value="privateRoom" @click="multyFilterBy.privateRoom=!multyFilterBy.privateRoom">
             <label for="privateRoom"> Private room   <div class="grey">Your own room in a home or a hotel, plus some shared common spaces</div></label><br>
           
-           <input type="checkbox" class="shared-room" name="sharedRoom" value="sharedRoom">
+           <input type="checkbox" class="shared-room" name="sharedRoom" value="sharedRoom" @click="multyFilterBy.sharedRoom=!multyFilterBy.sharedRoom">
             <label for="sharedRoom"> Shared room  <div class="grey">A sleeping space and common areas that may be shared with others</div></label><br>
           <h1>Rooms and beds</h1>
           <div>Bedrooms</div>
          <section class="bedroom-btns">
-          <button>Any</button>
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
+          <button @click="multyFilterBy.bedRooms='any'">Any</button>
+          <button @click="multyFilterBy.bedRooms=1">1</button>
+          <button @click="multyFilterBy.bedRooms=2">2</button>
+          <button @click="multyFilterBy.bedRooms=3">3</button>
           </section> 
            <div>Beds</div>
          <section class="bedroom-btns">
-          <button>Any</button>
-          <button>1</button>
-          <button>2</button>
-          <button>3</button>
+          <button @click="multyFilterBy.beds='any'">Any</button>
+          <button @click="multyFilterBy.beds=1">1</button>
+          <button @click="multyFilterBy.beds=2">2</button>
+          <button @click="multyFilterBy.beds=3">3</button>
           </section>
           <h1>Property type</h1>
           <section class="property-btns">
-          <button> <img src="https://a0.muscache.com/pictures/4d7580e1-4ab2-4d26-a3d6-97f9555ba8f9.jpg" alt="">
+          <button @click="multyFilterBy.propertyType='house'"> <img src="https://a0.muscache.com/pictures/4d7580e1-4ab2-4d26-a3d6-97f9555ba8f9.jpg" alt="">
             House</button>
-          <button> <img src="https://a0.muscache.com/pictures/21cfc7c9-5457-494d-9779-7b0c21d81a25.jpg" alt="">
+          <button @click="multyFilterBy.propertyType='apartment'"> <img src="https://a0.muscache.com/pictures/21cfc7c9-5457-494d-9779-7b0c21d81a25.jpg" alt="">
             Apartment</button>
-          <button> <img src="https://a0.muscache.com/pictures/6f261426-2e47-4c91-8b1a-7a847da2b21b.jpg" alt=""> Guesthouse</button>
+          <button @click="multyFilterBy.propertyType='guesthouse'"> <img src="https://a0.muscache.com/pictures/6f261426-2e47-4c91-8b1a-7a847da2b21b.jpg" alt=""> Guesthouse</button>
          </section>
          <h1>Amenities</h1>
           <section class="amenities-filter">
             <div>
-          <input type="checkbox" class="wifi" name="wifi" value="Wifi">
+          <input type="checkbox" class="wifi" name="wifi" value="Wifi" @click="multyFilterBy.wifi=!multyFilterBy.wifi">
           <label for="Wifi">Wifi</label></div>
-          <div><input type="checkbox" class="air-conditioning" name="air-conditioning" value="air-conditioning">
+          <div><input type="checkbox" class="air-conditioning" name="air-conditioning" value="air-conditioning" @click="multyFilterBy.airConditioning=!multyFilterBy.airConditioning">
           <label for="air-conditioning">Air conditioning</label></div>
-         <div> <input type="checkbox" class="kitchen" name="kitchen" value="kitchen">
+         <div> <input type="checkbox" class="kitchen" name="kitchen" value="kitchen" @click="multyFilterBy.kitchen=!multyFilterBy.kitchen">
           <label for="kitchen">Kitchen</label></div>
-         <div> <input type="checkbox" class="washer" name="washer" value="washer">
+         <div> <input type="checkbox" class="washer" name="washer" value="washer" @click="multyFilterBy.washer=!multyFilterBy.washer">
           <label for="washer">Washer</label></div>
-         <div><input type="checkbox" class="free-parking" name="free-parking" value="free-parking">
+         <div><input type="checkbox" class="free-parking" name="free-parking" value="free-parking" @click="multyFilterBy.freeParking=!multyFilterBy.freeParking">
           <label for="free-parking">Free parking</label></div>
           </section>
+          <button class="clear-multy-filter-btn" @click="clearFilter">Clear all</button>
+          <button class="show-filtered-btn" @click="sendMultyFilter">Show stays</button>
            </div>
           </div>
         </section>
@@ -90,6 +92,7 @@
 </template>
 
 <script>
+
 import { $vfm, VueFinalModal, ModalsContainer } from 'vue-final-modal'
 export default {
   components: {
@@ -98,11 +101,52 @@ export default {
   },
     data() {
         return {
-             showFilterModal: false,
+            showFilterModal: false,
+            multyFilterBy: {
+             minPrice: 10,
+             maxPrice: 1000,
+             entirePlace: false,
+             privateRoom: false,
+             sharedRoom: false,
+             bedRooms: 'any',
+             beds: 'any',
+             propertyType: null,
+             wifi: false,
+             airConditioning: false,
+             kitchen: false,
+             washer: false,
+             freeParking: false,
+            }
         }
     },
-    methods: {},
+    methods: {
+        sendMultyFilter(){
+            console.log('multyFilterBy', this.multyFilterBy)
+            // this.$emit('setMultyFilter', this.multyFilterBy)
+        },
+        clearFilter(){
+            this.multyFilterBy = this.getEmptyFilter()
+        },
+        
+        getEmptyFilter(){
+            return {
+            minPrice: 10,
+             maxPrice: 1000,
+             entirePlace: false,
+             privateRoom: false,
+             sharedRoom: false,
+             bedRooms: 'any',
+             beds: 'any',
+             propertyType: null,
+             wifi: false,
+             airConditioning: false,
+             kitchen: false,
+             washer: false,
+             freeParking: false,
+            }
+        }
+    },
     computed: {},
-    created() { },
+    created() {},
 }
 </script>

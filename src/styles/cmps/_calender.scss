@@ -49,8 +49,7 @@
             width: fit-content;
         }
 
-        &:nth-of-type(3) {
-        }
+        &:nth-of-type(3) {}
     }
 
 }
@@ -89,10 +88,20 @@
         border-radius: inherit !important;
     }
 }
-.dp__range_between{
+
+.dp__range_between {
     border-radius: 0 !important;
     background-color: #f7f7f7 !important;
 }
-.dp__cell_offset{
+
+.dp__cell_offset {
     display: none;
+}
+
+.dp__today {
+    border-color: transparent;
+}
+
+.dp__flex_display {
+    padding: 0 12px !important;
 }

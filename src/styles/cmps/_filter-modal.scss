@@ -203,8 +203,8 @@
 
 .guests-modal {
     line-height: 20px;
-    top: 123.25px;
-    right: 300px;
+    top: 148.25px;
+    right: 328px;
     width: 350px;
     position: fixed;
     background-color: #FFFFFF;
@@ -224,6 +224,7 @@
     flex-direction: column;
 
     >div {
+        width: 95%;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -242,6 +243,8 @@
 }
 
 .g-modal-buttons {
+    padding-right: 0;
+    padding-left: 0px;
     width: 32px !important;
     height: 32px !important;
     cursor: pointer !important;
@@ -257,16 +260,33 @@
     border-radius: 50% !important;
     margin: 5px;
 
+    &:nth-of-type(2):hover {
+        color: #222222 !important;
+        border-color: #222222 !important;
+    }
+
     &:disabled {
+        filter: opacity(0.3);
         cursor: not-allowed !important;
         color: rgb(235, 235, 235) !important;
-        border-color: rgb(235, 235, 235) !important;
         background: rgb(255, 255, 255) !important;
+    }
+
+    svg {
+        margin: auto;
     }
 }
 
 .guests-num {
+    color: #222222 !important;
+    font-family: circular-light !important;
     padding: 0 6px;
+    width: 9px;
+    margin: 0;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 //where modal
@@ -300,7 +320,10 @@
         }
     }
 }
-
+.choose-guests-num-cont{
+display: flex;
+align-items: center;
+}
 .recents-header {
     font-size: 16px;
     font-family: circular-bold;
@@ -319,10 +342,30 @@
 
 .modal img {
     border: 1px solid rgb(221, 221, 221);
+    transition: 250ms;
+    &:hover{
+        border-color: #222222;
+    }
 }
 
 .imgs-container {
+    div {
+        cursor: default;
+
+        img {
+            cursor: pointer;
+        }
+    }
+
     p {
         font-family: circular-light;
+        padding-left: 0 !important;
     }
+}
+
+.guests-modal-guest-type {
+    color: #222222 !important;
+    font-size: 16px !important;
+    font-family: circular-light !important;
+    font-weight: bold;
 }

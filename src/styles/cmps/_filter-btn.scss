@@ -171,3 +171,18 @@ gap: 1em
         }
     }
 }
+
+.show-filtered-btn{
+ background-color: black;
+ color: white;
+ padding: 15px 30px;
+ border-radius: 25px;
+ cursor: pointer;
+margin-top: 2em;
+}
+
+.clear-multy-filter-btn{
+    border: unset;
+    background-color: white;
+    text-decoration: underline;
+}
