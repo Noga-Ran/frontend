@@ -1,10 +1,10 @@
 
 <template>
     <section class="homepage-layout">
-        <app-header @filter="setFilter" @date="setDate"/>
-        <category-filter @filter="setFilter"/>
-        <stay-list/>
-        <app-footer :isFixed="'true'"/>
+        <app-header @filter="setFilter" @date="setDate" />
+        <category-filter @filter="setFilter" />
+        <stay-list />
+        <app-footer :isFixed="'true'" />
     </section>
 </template>
 
@@ -22,15 +22,15 @@ export default {
         appFooter
     },
     methods: {
-        setFilter(filter,{who}=''){
+        setFilter(filter, { who } = '') {
             var filterBy = Object.assign({}, this.$store.getters.filterBy)
-            if(filter.label){
-                if(filter.label==='remove'){
+            if (filter.label) {
+                if (filter.label === 'remove') {
                     filterBy.label = ''
-                }else {
+                } else {
                     filterBy.label = filter.label
                 }
-            }else{
+            } else {
                 filterBy.where = filter?.where || ''
                 filterBy.adults = who?.adults || 0
                 filterBy.children = who?.children || 0
@@ -40,34 +40,38 @@ export default {
             this.$store.dispatch({ type: "setFilter", filterBy })
             this.setQuery(filterBy)
         },
-        setDate(date){
+        setDate(date) {
             var filterBy = Object.assign({}, this.$store.getters.filterBy)
             filterBy.checkIn = date.start
             filterBy.checkOut = date.end
-            console.log('dates',filterBy);
+            console.log('dates', filterBy);
             this.$store.dispatch({ type: "setFilter", filterBy })
 
-            this.setQuery(filterBy) 
+            this.setQuery(filterBy)
         },
- 
 
-        setQuery(filterBy){
-            const query= { where:filterBy.where, checkIn:filterBy.checkIn,checkOut:filterBy.checkOut
-            ,label:filterBy.label,adults:filterBy.adults,children:filterBy.children,infants:filterBy.infants,pets:filterBy.pets }
-            if(filterBy.where){
-                this.$router.push({path:`/explore/${filterBy.where}`,query})
-            } else {
-                this.$router.push({path:`/`,query})
+
+        setQuery(filterBy) {
+            const query = {
+                where: filterBy.where, checkIn: filterBy.checkIn, checkOut: filterBy.checkOut
+                , label: filterBy.label, adults: filterBy.adults, children: filterBy.children, infants: filterBy.infants, pets: filterBy.pets
             }
-         }
-        },
-        created() {
-            if(this.$route.query && this.$route.query.length){
-            var filterBy = {where: this.$route.query.where, checkIn:this.$route.query.checkIn ,checkOut:this.$route.query.checkOut , label:this.$route.query.label,
-            adults:this.$route.query.adults,children:this.$route.query.children,infants:this.$route.query.infants,pets:this.$route.query.pets}
+            if (filterBy.where) {
+                this.$router.push({ path: `/explore/${filterBy.where}`, query })
+            } else {
+                this.$router.push({ path: `/`, query })
+            }
+        }
+    },
+    created() {
+        if (this.$route.query && this.$route.query.length) {
+            var filterBy = {
+                where: this.$route.query.where, checkIn: this.$route.query.checkIn, checkOut: this.$route.query.checkOut, label: this.$route.query.label,
+                adults: this.$route.query.adults, children: this.$route.query.children, infants: this.$route.query.infants, pets: this.$route.query.pets
+            }
             this.$store.dispatch({ type: "setFilter", filterBy })
         } else {
-            this.$store.dispatch({type: 'loadStays', filter:false})
+            this.$store.dispatch({ type: 'loadStays', filter: false })
         }
     }
 }
