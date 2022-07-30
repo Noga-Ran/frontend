@@ -5,9 +5,6 @@
     <filter-btn />
   </div>
   <stay-list @filter="setFilter"></stay-list>
-  <!-- <section>
-    {{ city }}
-  </section> -->
 </template>
 
 <script>
@@ -18,6 +15,7 @@ export default {
   data() {
     return {
       city: null,
+
     }
   },
   created() {
@@ -35,9 +33,9 @@ export default {
       var filterBy = Object.assign({}, this.$store.getters.filterBy)
 
       if (filter.label) {
-        if (filter.label==='remove') {
+        if (filter.label === 'remove') {
           filterBy.label = ''
-        }else{
+        } else {
           filterBy.label = filter.label
         }
       } else {
