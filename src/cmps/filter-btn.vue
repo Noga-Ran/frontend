@@ -125,20 +125,26 @@ export default {
             // this.$emit('setMultyFilter', this.multyFilterBy)
         },
         clearFilter(){
-             this.multyFilterBy.minPrice= 10
-             this.multyFilterBy.maxPrice= 1000
-             this.multyFilterBy.entirePlace= false
-             this.multyFilterBy.privateRoom= false
-             this.multyFilterBy.sharedRoom= false
-             this.multyFilterBy.bedRooms= 'any'
-             this.multyFilterBy.beds= 'any'
-             this.multyFilterBy.propertyType= null
-             this.multyFilterBy.wifi= false
-             this.multyFilterBy.airConditioning= false
-             this.multyFilterBy.kitchen= false
-             this.multyFilterBy.washer= false
-             this.multyFilterBy.freeParking= false
+            this.multyFilterBy = this.getEmptyFilter()
         },
+        
+        getEmptyFilter(){
+            return {
+            minPrice: 10,
+             maxPrice: 1000,
+             entirePlace: false,
+             privateRoom: false,
+             sharedRoom: false,
+             bedRooms: 'any',
+             beds: 'any',
+             propertyType: null,
+             wifi: false,
+             airConditioning: false,
+             kitchen: false,
+             washer: false,
+             freeParking: false,
+            }
+        }
     },
     computed: {},
     created() {},
