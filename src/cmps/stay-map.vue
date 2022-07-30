@@ -1,5 +1,5 @@
 <template>
-<section class="stay-map-layout">
+<section class="stay-map-layout details-padding">
 <h1 class="map-title">Where you’ll be</h1>
 <div class="map-stay-address">{{ this.stayLocation.street }}</div>
 <!-- <img src="" alt=""> -->

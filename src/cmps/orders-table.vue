@@ -46,7 +46,7 @@
                     <div class="td-content-container"> $ {{ order.stay.price }}</div>
                 </td>
                 <td class="money-class tac">
-                    <div class="td-content-container"> $ {{ order.totalPrice.toFixed(0) }}</div>
+                    <div class="td-content-container"> $ {{ (+order.totalPrice).toFixed(0)}}</div>
                 </td>
                 <td>
                     <div class="td-content-container">{{ order.status }}</div>
@@ -82,10 +82,8 @@ export default {
             })
         },
         getStayName(order) {
-            console.log(order);
             if (order.stay.name.length > 17) {
                 var shortenName = JSON.parse(JSON.stringify(order.stay.name))
-                console.log('shortenName: ', shortenName)
                 return (shortenName.slice(0, 12) + "...")
             }
             return order.stay.name

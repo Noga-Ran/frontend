@@ -1,8 +1,20 @@
 <template>
   <section class="stay-details-layout">
     <app-header />
+    <section class="alt-header details-padding" v-if="!isGalleryOn">
+      <div class="alt-head-nav">
+        <a @click="scrollMeTo('Photos')" class="alt-head-photos">Photos</a>
+        <a @click="scrollMeTo('Amenities')" class="alt-head-amenities">Amenities</a>
+        <a @click="scrollMeTo('Reviews')" class="alt-head-reviews">Reviews</a>
+        <a @click="scrollMeTo('Location')" class="alt-head-location">Location</a>
+      </div>
+      <div class="header-reservation-cont" v-if="!tripSettingOn">
+        <div>${{ stay.price }} <span>&nbsp;night</span></div>
+        <div class="header-reserve-btn">Reserve</div>
+      </div>
+    </section>
     <section class="stay-details-container">
-      <section class="details-layout-top details-padding">
+      <section class="details-layout-top details-padding" ref="detailsPageTop">
         <section class="stay-name-and-sub">
           <h1 class="stay-name">{{ stay.name }}</h1>
           <section class="stay-sub-title">
@@ -59,13 +71,13 @@
                     d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z">
                   </path>
                 </svg>
-                <span> Save</span>
+                <span style="outline: 0;"> Save</span>
               </span>
             </span>
           </section>
         </section>
 
-        <section class="stay-images">
+        <section class="stay-images" ref="Photos">
           <div class="stay-img-container" v-for="(img, idx) in stay.imgUrls">
             <img :src="getImgUrl(idx)" alt="" />
           </div>
@@ -140,7 +152,7 @@
               </div>
             </div>
           </section>
-          <section class="stay-amenities">
+          <section class="stay-amenities" ref="Amenities">
             <aminities :stayAmenities="stay.amenities"></aminities>
           </section>
           <!-- <section class="stay-summary">
@@ -148,16 +160,18 @@
           </section> -->
         </section>
         <section class="info-right">
-          <div class="trip-setting-cmp-container">
-            <trip-settings :currStay="stay"/>
+          <div class="trip-setting-cmp-container" ref="orderSec">
+            <trip-settings :currStay="stay" />
           </div>
         </section>
       </section>
-      <section class="stay-reviews">
+      <section ref="Reviews" class="stay-reviews">
         <reviews :stay="stay"></reviews>
       </section>
     </section>
-    <stayMap :stayLocation="stay.address"></stayMap>
+    <div ref="Location" class="details-map-cont">
+      <stayMap :stayLocation="stay.address"></stayMap>
+    </div>
   </section>
   <app-footer :isFixed="'false'" />
 </template>
@@ -186,12 +200,23 @@ export default {
       averageRating: null,
       isFav: false,
       id: null,
+      tripSettingOn: true,
+      isGalleryOn: true
     }
   },
   created() {
     this.id = this.$route.params.id
     this.getStayById(this.id)
-    // this.loadPage(id)
+  },
+  mounted() {
+    this.tripSettingObserver = new IntersectionObserver(this.onTripSettingObserved, {
+      rootMargin: "-275px 0px 0px",
+    })
+    this.tripSettingObserver.observe(this.$refs.orderSec);
+    this.detailsPageTopObserver = new IntersectionObserver(this.onGalleryObserved, {
+      rootMargin: "-10px 0px 0px",
+    })
+    this.detailsPageTopObserver.observe(this.$refs.detailsPageTop);
   },
   methods: {
     async getStayById(stayId) {
@@ -201,20 +226,18 @@ export default {
           type: 'getStayById',
           stayId,
         })
-        this.stay = this.stay
         this.isFav = this.$store.getters.wishListById(this.stay._id)
       } catch (err) {
         console.log(err);
       }
     },
-    // async loadPage() {
-    //   try {
-
-    //     // this.isFav = this.$store.getters.wishListById(this.id)
-    //   }
-    //   catch {
-    //     console.log('err')
-    //   }
+    scrollMeTo(refName) {
+      var element = this.$refs[refName];
+      // var top = refName === 'Photos' ? element.offsetTop : element.offsetTop - 78
+      var top = element.offsetTop - 78
+      console.log('top,element.offsetTop,refName: ', top, element.offsetTop, refName)
+      window.scrollTo(0, top);
+    },
     getImgUrl(idx) {
       const { imgUrls } = this.stay
       return new URL('../assets/img/stays/' + imgUrls[idx], import.meta.url)
@@ -229,6 +252,16 @@ export default {
         this.$store.dispatch({ type: 'removeWishStay', stayId: this.stay._id })
       }
     },
+    onTripSettingObserved(entries) {
+      entries.forEach((entry) => {
+        this.tripSettingOn = entry.isIntersecting ? true : false;
+      });
+    },
+    onGalleryObserved(entries) {
+      entries.forEach((entry) => {
+        this.isGalleryOn = entry.isIntersecting ? true : false;
+      });
+    }
   },
   computed: {
     getRating() {
