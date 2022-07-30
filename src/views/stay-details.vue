@@ -9,8 +9,23 @@
         <a @click="scrollMeTo('Location')" class="alt-head-location">Location</a>
       </div>
       <div class="header-reservation-cont" v-if="!tripSettingOn">
-        <div>${{ stay.price }} <span>&nbsp;night</span></div>
-        <div class="header-reserve-btn">Reserve</div>
+        <div class="alt-head-reserve-info">
+          <div>${{ stay.price }} <span>&nbsp;night</span></div>
+          <div>
+            <span>
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
+                focusable="false" style="height: 14px; width: 14px; fill: currentcolor">
+                <path
+                  d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z"
+                  fill-rule="evenodd"></path>
+              </svg>
+              <span class="rating-average"> {{ getRating }} </span>
+            </span>
+            <span>&nbsp &middot &nbsp </span>
+            <span class="review-count header-reviews">{{ stay.numOfReviews }} reviews </span>
+          </div>
+        </div>
+        <div class="header-reserve-btn" @click="scrollMeTo('orderSec')">Reserve</div>
       </div>
     </section>
     <section class="stay-details-container">
@@ -185,18 +200,20 @@
       <section class="mobile-details-stay-info-cont mobile-details-padding">
         <div class="mobile-stay-info">
           <h1 class="mobile-stay-name">{{ stay.name }}</h1>
-          <span>
-            <svg class="mobile-stay-rating-star" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true" role="presentation" focusable="false"
-              style="height: 14px; width: 14px; fill: currentcolor">
-              <path
-                d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z"
-                fill-rule="evenodd"></path>
-            </svg>
-            <span class="rating-average"> {{ this.getRating }} </span>
-          </span>
-          <span>&nbsp &middot &nbsp </span>
-          <span class="mobile-stay-review-count">{{ stay.numOfReviews }} reviews </span>
+          <div class="rating-review-cont">
+            <span>
+              <svg class="mobile-stay-rating-star" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true" role="presentation" focusable="false"
+                style="height: 14px; width: 14px; fill: currentcolor">
+                <path
+                  d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z"
+                  fill-rule="evenodd"></path>
+              </svg>
+              <span class="rating-average"> {{ this.getRating }} </span>
+            </span>
+            <span>&nbsp &middot &nbsp </span>
+            <span class="mobile-stay-review-count">{{ stay.numOfReviews }} reviews </span>
+          </div>
           <span class="stay-address">
             {{ stay.address.city }},
             {{ stay.address.country }}
@@ -206,11 +223,11 @@
           <h2 class="mobile-stay-type-and-host">
             {{ stay.roomType }} hosted by {{ stay.host.fullname }}
           </h2>
+          <img src="../assets/img/jj.jpg" alt="" />
           <div class="mobile-stay-contains">
             {{ stay.capacity }} guests &middot {{ stay.bedrooms }} bedrooms
             &middot {{ stay.beds }} beds &middot {{ stay.bathrooms }} baths
           </div>
-          <img src="../assets/img/jj.jpg" alt="" />
         </div>
         <section class="mobile-stay-beds">
           <div class="mobile-beds-heading">Where you'll sleep</div>
@@ -228,7 +245,7 @@
                     d="M28 4a2 2 0 0 1 1.995 1.85L30 6v7.839l1.846 5.537a3 3 0 0 1 .115.468l.03.24.009.24V30h-2v-2H2v2H0v-9.675a3 3 0 0 1 .087-.717l.067-.232L2 13.836V6a2 2 0 0 1 1.697-1.977l.154-.018L4 4zm2 18H2v4h28zm-1.388-6H3.387l-1.333 4h27.891zM28 6H4v8h2v-4a2 2 0 0 1 1.85-1.995L8 8h16a2 2 0 0 1 1.995 1.85L26 10v4h2zm-13 4H8v4h7zm9 0h-7v4h7z">
                   </path>
                 </svg>
-                <div class="bedroom-num">bedroom {{ idx + 1 }}</div>
+                <div class="bedroom-num">Bedroom {{ idx + 1 }}</div>
                 <div class="bedroom-type">king size </div>
               </div>
             </div>
@@ -254,7 +271,7 @@
           </h2>
           <div class="review-container-mobile">
             <div class="review-deatails-container">
-              <img class="profile-img" :src="stay.reviews[0].img" alt="" />
+              <img class="profile-img" :src="stay.reviews[1].by.imgUrl" alt="" />
               <div class="review-info">
                 <span class="review-name">{{ stay.reviews[0].by.fullname }}</span>
                 <span class="review-time">{{ formateTime(stay.reviews[0].at) }}</span>
