@@ -54,7 +54,7 @@
           </div>
         </div>
 
-        <div class="btn-container show-order-sum-btn" :disabled="showWho" @click="saveTrip; showOrderSumModal = true">
+        <div class="btn-container show-order-sum-btn" :disabled="showWho" @click="saveTrip">
           <div class="cell"></div>
           <div class="cell"></div>
           <div class="cell"></div>
@@ -397,8 +397,11 @@ export default {
       return date
     },
     saveTrip() {
+      this.showOrderSumModal = true
       var tripDetails = {
         hostId: this.stay.host._id,
+        hostName: this.stay.host.fullname,
+        hostResponseTime: this.stay.host.responseTime,
         stay: {
           _id: this.stay._id,
           name: this.stay.name,
@@ -415,24 +418,24 @@ export default {
         guests: this.guests,
         status: "pending"
       }
+
+      const msg = { from: 'system', txt: 'your order was reserved', at: Date.now(),to:this.loggedInUser.fullname,toId:this.loggedInUser._id }
+            // msg: { from: 'Guest', txt: '', at: '',to:'',fromId:'',toId:''},
+
+      socketService.emit('chat topic', this.stay.host._id)
+      socketService.emit('chat newMsg', { from: 'system', txt: 'a stay of yours was reserved', at: Date.now(), tripDetails, to:this.stay.host.fullname ,toId:this.stay.host._id })
+
+      var chatTopic = this.loggedInUser._id
+      socketService.emit('chat topic', chatTopic)
+      socketService.emit('chat newMsg', msg)
+      socketService.emit('chat newMsg', 
+      { from: this.stay.host.fullname, fromId:tripDetails.hostId, to:this.loggedInUser.fullname, toId:this.loggedInUser._id,txt: 'Contact me about anything!', at: Date.now(), tripDetails })
+
       // console.log('tripDetails: ', tripDetails)
       // this.open1('Your trip was successfully reserved')
 
       // this.showModal = true
       this.$store.dispatch({ type: 'addTrip', trip: tripDetails })
-      // setTimeout(() => {
-      //   this.showModal
-      // }, 5000)
-      const msg = { from: 'system', txt: 'your order was reserved', at: Date.now(), tripDetails }
-      const user = userService.getLoggedinUser()
-      var chatTopic = user._id
-      socketService.emit('chat topic', chatTopic)
-      socketService.emit('chat newMsg', msg)
-
-      chatTopic = tripDetails.hostId
-      msg = { from: 'system', txt: 'a stay was reserved', at: Date.now(), tripDetails }
-      socketService.emit('chat topic', chatTopic)
-      socketService.emit('chat newMsg', msg)
       // console.log('msg', msg);
     },
     setActive(elElement) {
