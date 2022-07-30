@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="amenities-layout">
     <h2 class="aminities-title">What this place offers</h2>
     <section class="amenities-list-main">
       <div v-for="amenitie in stayAmenitiesSliced" :key="amenitie">

@@ -1,0 +1,139 @@
+.mobile-gallery {
+    width: 100%;
+    height: 35vh;
+
+    &>* {
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            // object-position: bottom;
+        }
+
+    }
+}
+
+.mobile-stay-info {
+    height: 16vh;
+    width: 100%;
+    border-bottom: 1px solid #acacacab;
+}
+
+.mobile-details-host-and-info {
+    width: 100%;
+    height: 16vh;
+    border-bottom: 1px solid #acacacab;
+
+    .mobile-stay-type-and-host {
+        font-size: 12px;
+    }
+
+    img {
+        height: 30%;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+    }
+}
+
+.mobile-beds-layout {
+    height: 9vh;
+    padding: 9vh 0;
+    display: flex;
+    column-gap: 16px;
+    grid-auto-flow: column;
+    border-bottom: 1px solid #acacacab;
+
+    >* {
+        display: flex;
+        flex-direction: row;
+        aspect-ratio: 25/30;
+        border: 1px solid #acacacab;
+        border-radius: 15px;
+
+        >* {
+            padding: 24px;
+        }
+    }
+
+    svg {
+        margin-bottom: 16px;
+    }
+}
+
+.mobile-details-stay-info-cont {
+    .amenities-layout {
+        height: 73vh !important;
+        border-bottom: 1px solid #acacacab;
+    }
+
+    .aminities-title {
+        padding: 24px 0;
+    }
+
+    .amenities-list-main {
+        padding-left: 2px;
+        margin-bottom: 0px !important;
+        padding-bottom: 20px;
+        grid-template-columns: 1fr !important;
+    }
+
+    .amenitie-svg {
+        height: 22px;
+        width: 22px;
+    }
+
+    .show-amenities-btn {
+        margin-top: 0 !important;
+        margin-bottom: 10px !important;
+        display: flex;
+        flex-grow: 1;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .stay-map-layout {
+        height: 40vh;
+        padding: 0 0px !important;
+        border-bottom: 1px solid #acacacab;
+    }
+
+    .map-title {
+        margin-bottom: 7px !important;
+        margin-top: 20px !important;
+    }
+
+    .mobile-map-cont {
+        height: 10vh !important;
+    }
+}
+
+.mobile-reviews {
+    height: 50vh;
+    border-bottom: 1px solid #acacacab;
+
+    h2 {
+        margin-top: 20px;
+        margin-bottom: 35px;
+    }
+
+    .review-container-mobile {
+        margin-top: 20px;
+        height: 50%;
+        width: 70%;
+        border: 1px solid #acacacab;
+        border-radius: 18px;
+        padding: 10px;
+    }
+
+    .show-reviews-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 40px;
+        border-width: 0.5px;
+    }
+}

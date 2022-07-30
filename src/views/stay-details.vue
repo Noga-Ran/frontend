@@ -1,5 +1,5 @@
 <template>
-  <section class="stay-details-layout">
+  <section class="stay-details-layout" v-if="!isMobile">
     <app-header />
     <section class="alt-header details-padding" v-if="!isGalleryOn">
       <div class="alt-head-nav">
@@ -78,7 +78,7 @@
         </section>
 
         <section class="stay-images" ref="Photos">
-          <div class="stay-img-container" v-for="(img, idx) in stay.imgUrls">
+          <div class="stay-img-container" v-for="(img, idx) in stay.imgUrls" :key="img">
             <img :src="getImgUrl(idx)" alt="" />
           </div>
         </section>
@@ -170,10 +170,108 @@
       </section>
     </section>
     <div ref="Location" class="details-map-cont">
-      <stayMap :stayLocation="stay.address"></stayMap>
+      <stayMap :stayLocation="stay.address" :isMobile="isMobile"></stayMap>
     </div>
+    <app-footer :isFixed="'false'" />
   </section>
-  <app-footer :isFixed="'false'" />
+  <section v-if="isMobile">
+    <section class="mobile-details-layout">
+      <div class="mobile-gallery">
+        <!-- <div class="mobile-img-container" v-for="(img, idx) in stay.imgUrls" :key="img + 89"> -->
+        <div class="mobile-img-container">
+          <img :src="getImgUrl(0)" alt="" />
+        </div>
+      </div>
+      <section class="mobile-details-stay-info-cont mobile-details-padding">
+        <div class="mobile-stay-info">
+          <h1 class="mobile-stay-name">{{ stay.name }}</h1>
+          <span>
+            <svg class="mobile-stay-rating-star" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true" role="presentation" focusable="false"
+              style="height: 14px; width: 14px; fill: currentcolor">
+              <path
+                d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z"
+                fill-rule="evenodd"></path>
+            </svg>
+            <span class="rating-average"> {{ this.getRating }} </span>
+          </span>
+          <span>&nbsp &middot &nbsp </span>
+          <span class="mobile-stay-review-count">{{ stay.numOfReviews }} reviews </span>
+          <span class="stay-address">
+            {{ stay.address.city }},
+            {{ stay.address.country }}
+          </span>
+        </div>
+        <div class="mobile-details-host-and-info">
+          <h2 class="mobile-stay-type-and-host">
+            {{ stay.roomType }} hosted by {{ stay.host.fullname }}
+          </h2>
+          <div class="mobile-stay-contains">
+            {{ stay.capacity }} guests &middot {{ stay.bedrooms }} bedrooms
+            &middot {{ stay.beds }} beds &middot {{ stay.bathrooms }} baths
+          </div>
+          <img src="../assets/img/jj.jpg" alt="" />
+        </div>
+        <section class="mobile-stay-beds">
+          <div class="mobile-beds-heading">Where you'll sleep</div>
+          <div class="mobile-beds-layout">
+            <div class="mobile-bed-container" v-for="(bed, idx) in 3">
+              <div class="mobile-bed">
+                <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
+                  focusable="false" style="
+                      display: block;
+                      height: 24px;
+                      width: 24px;
+                      fill: currentcolor;
+                    ">
+                  <path
+                    d="M28 4a2 2 0 0 1 1.995 1.85L30 6v7.839l1.846 5.537a3 3 0 0 1 .115.468l.03.24.009.24V30h-2v-2H2v2H0v-9.675a3 3 0 0 1 .087-.717l.067-.232L2 13.836V6a2 2 0 0 1 1.697-1.977l.154-.018L4 4zm2 18H2v4h28zm-1.388-6H3.387l-1.333 4h27.891zM28 6H4v8h2v-4a2 2 0 0 1 1.85-1.995L8 8h16a2 2 0 0 1 1.995 1.85L26 10v4h2zm-13 4H8v4h7zm9 0h-7v4h7z">
+                  </path>
+                </svg>
+                <div class="bedroom-num">bedroom {{ idx + 1 }}</div>
+                <div class="bedroom-type">king size </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <aminities :stayAmenities="stay.amenities"></aminities>
+        <div ref="Location" class="details-map-cont">
+          <stayMap :stayLocation="stay.address" :isMobile="isMobile"></stayMap>
+        </div>
+        <div class="mobile-reviews">
+          <h2 class="reviews-title">
+            <span>
+              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
+                focusable="false" style="height: 14px; width: 14px; fill: currentcolor">
+                <path
+                  d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z"
+                  fill-rule="evenodd"></path>
+              </svg>
+              <span class="rating-average"> {{ getRating }} </span>
+            </span>
+            <span>&nbsp &middot &nbsp </span>
+            <span class="review-count">{{ stay.numOfReviews }} reviews </span>
+          </h2>
+          <div class="review-container-mobile">
+            <div class="review-deatails-container">
+              <img class="profile-img" :src="stay.reviews[0].img" alt="" />
+              <div class="review-info">
+                <span class="review-name">{{ stay.reviews[0].by.fullname }}</span>
+                <span class="review-time">{{ formateTime(stay.reviews[0].at) }}</span>
+              </div>
+            </div>
+            <div class="reviews-txt-container">
+              <div>{{ formatedReviewTxt(stay.reviews[0].txt) }}</div>
+            </div>
+          </div>
+          <v-button class="show-reviews-btn" @click="showReviewsModal = true">
+            Show all {{ stay.reviews.length }} reviews
+          </v-button>
+        </div>
+      </section>
+    </section>
+
+  </section>
 </template>
 
 <script>
@@ -201,12 +299,15 @@ export default {
       isFav: false,
       id: null,
       tripSettingOn: true,
-      isGalleryOn: true
+      isGalleryOn: true,
+      isMobile: false
     }
   },
   created() {
     this.id = this.$route.params.id
     this.getStayById(this.id)
+    this.displayWindowSize()
+    window.addEventListener("resize", this.displayWindowSize);
   },
   mounted() {
     this.tripSettingObserver = new IntersectionObserver(this.onTripSettingObserved, {
@@ -252,6 +353,25 @@ export default {
         this.$store.dispatch({ type: 'removeWishStay', stayId: this.stay._id })
       }
     },
+    formateTime(time) {
+      let date = new Date(time)
+      var year = 2022
+      let month = date.toLocaleString('en', { month: 'long' })
+      if (month == "August" || month == "September" || month == "October"
+        || month == "November" || month == "December") {
+        year = 2021
+      }
+      return month + ' ' + year
+    },
+    formatedReviewTxt(txt) {
+      if (txt.length > 156) {
+        this.isLongTxt = true
+        return txt.slice(0, 156) + '...'
+      } else {
+        this.isLongTxt = false
+        return txt
+      }
+    },
     onTripSettingObserved(entries) {
       entries.forEach((entry) => {
         this.tripSettingOn = entry.isIntersecting ? true : false;
@@ -261,6 +381,14 @@ export default {
       entries.forEach((entry) => {
         this.isGalleryOn = entry.isIntersecting ? true : false;
       });
+    },
+    displayWindowSize() {
+      var w = document.documentElement.clientWidth;
+      var h = document.documentElement.clientHeight;
+      if (w < 740) {
+        this.isMobile = true
+      }
+      else this.isMobile = false
     }
   },
   computed: {
