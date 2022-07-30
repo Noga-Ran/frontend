@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     async login(){
-      await this.$store.dispatch({ type: "login", cred: { "username": "pola", "password": "pola" } })
+      await this.$store.dispatch({ type: "login", cred: { "username": "24800102", "password": "Kevin" } })
     }
   },
 }

@@ -56,7 +56,6 @@
         div {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             height: 78.5vh;
             overflow-y: scroll;
         }
@@ -91,11 +90,6 @@
     header {
         justify-content: space-between;
     }
-
-    .you-msg {
-        direction: rtl;
-    }
-
 }
 
 .users-chat {
