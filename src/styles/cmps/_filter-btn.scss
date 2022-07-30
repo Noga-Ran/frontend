@@ -28,134 +28,146 @@
 // .filter-container{
 // }
 
-.filter-modal{
-    margin-left: 30px;
+.filter-modal {
+    margin-left: 24px;
+    margin-bottom: 32px !important;
+    margin-right: 24px;
     // overflow-y: auto;
 }
-.explore-filters-conatiner{
-    .amenities-modal{
-        .modal-container{
+
+.explore-filters-conatiner {
+    .amenities-modal {
+        .modal-container {
             overflow-y: auto;
         }
     }
 }
+
 .filter-modal {
-  .modal-container {
-    height: 60vh;
-    max-height: fit-content;
-    overflow-y: auto;
-    width: 60vw;
-    margin: auto;
-    display: flex;
-    padding: 20px;
-    background-color: white;
-    border-radius: 12px;
-    position: fixed;
-    inset: 0;
-    
-  }
+    .modal-container {
+        height: 60vh;
+        max-height: fit-content;
+        overflow-y: auto;
+        width: 60vw;
+        margin: auto;
+        display: flex;
+        padding: 20px;
+        background-color: white;
+        border-radius: 12px;
+        position: fixed;
+        inset: 0;
+
+    }
 }
 
 ::v-deep .modal-content {
-  display: flex;
-  flex-direction: column;
-  margin: 0 1rem;
-  padding: 1rem;
-  border: 1px solid #e2e8f0;
-  border-radius: 0.25rem;
-  background: #fff;
+    display: flex;
+    flex-direction: column;
+    margin: 0 1rem;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.25rem;
+    background: #fff;
 }
 
 
 .dark-mode div::v-deep .modal-content {
-  border-color: #2d3748;
-  background-color: #1a202c;
+    border-color: #2d3748;
+    background-color: #1a202c;
 }
 
 .modal__close {
-  display: flex;
-  position: fixed;
-  margin: 0;
-  top: 6.5rem;
-  left: 15.5rem;
-  background-color: #ffffff3b;
+    display: flex;
+    position: fixed;
+    margin: 0;
+    top: 6.5rem;
+    left: 15.5rem;
+    background-color: #ffffff3b;
 }
 
-.price-input{
-    border: 0; outline: 0;
+.price-input {
+    border: 0;
+    outline: 0;
 }
 
-.price-input:focus{
-    outline:none!important;
+.price-input:focus {
+    outline: none !important;
 }
 
-.input-price-container{
+.input-price-container {
     border: 0.5px solid #717171;
     width: fit-content;
     padding: 10px;
     border-radius: 8px;
 
-    :first-child{
+    :first-child {
         color: #717171;
         font-size: 14px;
     }
 }
 
-.price-inputs{
+.price-inputs {
     display: flex;
     gap: 1em;
 
-    :nth-child(2){
+    :nth-child(2) {
         align-self: center;
     }
 }
 
-.place-type-header{
+.place-type-header {
     margin-top: 2em;
 }
 
-.filters-title{
-   text-align: center;
-    
+.filters-title {
+    text-align: center;
+    text-align: center;
+    height: 63px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
+
 // input.entire-place,
 // input.private-room,
 // input.shared-room
 // {
 //     width: 30px;
 //     height: 30px;
-    
+
 // }
 
-.bedroom-btns{
+.bedroom-btns {
     display: flex;
     gap: 1em;
     margin-top: 1em;
     margin-bottom: 1.8em;
 
-    >*{
+    >* {
         padding: 15px 30px;
         border-radius: 25px;
         background-color: #fff;
         cursor: pointer;
     }
-    >:first-child{
-        background-color: black;
-        color: white;
+
+    .chosen-amenity {
+        background-color: rgb(34, 34, 34) !important;
+        color: rgb(255, 255, 255) !important;
     }
 }
 
-.amenities-filter{
-display: flex;
-flex-direction: column;
-gap: 1em
+.amenities-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 1em
 }
 
-.property-btns{
+.property-btns {
     display: flex;
-    gap:1em;
+    gap: 1em;
 
-    >*{
+    >* {
         background-color: white;
         display: flex;
         flex-direction: column;
@@ -163,25 +175,29 @@ gap: 1em
         padding: 20px 35px;
         border-radius: 8px;
         border: 0.5px #717171 solid;
-       
+        align-items: center;
 
-        &:hover{
-         border: 1px black solid; 
-         cursor: pointer; 
+
+        &:hover {
+            border: 1px black solid;
+            cursor: pointer;
         }
+    }
+
+    .chosen-propery{
+        border-width: 2px !important;
     }
 }
 
-.show-filtered-btn{
- background-color: black;
- color: white;
- padding: 15px 30px;
- border-radius: 25px;
- cursor: pointer;
-margin-top: 2em;
+.show-filtered-btn {
+    background-color: black;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 25px;
+    cursor: pointer;
 }
 
-.clear-multy-filter-btn{
+.clear-multy-filter-btn {
     border: unset;
     background-color: white;
     text-decoration: underline;

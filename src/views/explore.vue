@@ -5,9 +5,6 @@
     <filter-btn />
   </div>
   <stay-list @filter="setFilter"></stay-list>
-  <!-- <section>
-    {{ city }}
-  </section> -->
 </template>
 
 <script>
@@ -18,6 +15,7 @@ export default {
   data() {
     return {
       city: null,
+
     }
   },
   created() {
@@ -35,9 +33,9 @@ export default {
       var filterBy = Object.assign({}, this.$store.getters.filterBy)
 
       if (filter.label) {
-        if (filter.label==='remove') {
+        if (filter.label === 'remove') {
           filterBy.label = ''
-        }else{
+        } else {
           filterBy.label = filter.label
         }
       } else {
@@ -60,20 +58,14 @@ export default {
       this.setQuery(filterBy)
     },
     setQuery(filterBy) {
-      if (filterBy.where && filterBy.where !== '') {
-        this.$router.push({
-          path: `/explore/${filterBy.where}`, query: {
-            where: filterBy.where, checkIn: filterBy.checkIn
-            , checkOut: filterBy.checkOut, label: filterBy.label, adults: filterBy.adults, children: filterBy.children, infants: filterBy.infants, pets: filterBy.pets
-          }
-        })
+      const query = {
+        where: filterBy.where, checkIn: filterBy.checkIn, checkOut: filterBy.checkOut
+        , label: filterBy.label, adults: filterBy.adults, children: filterBy.children, infants: filterBy.infants, pets: filterBy.pets
+      }
+      if (filterBy.where) {
+        this.$router.push({ path: `/explore/${filterBy.where}`, query })
       } else {
-        this.$router.push({
-          path: `/`, query: {
-            where: filterBy.where, checkIn: filterBy.checkIn
-            , checkOut: filterBy.checkOut, label: filterBy.label, adults: filterBy.adults, children: filterBy.children, infants: filterBy.infants, pets: filterBy.pets
-          }
-        })
+        this.$router.push({ path: `/`, query })
       }
     }
   },

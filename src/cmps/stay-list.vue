@@ -1,6 +1,5 @@
 
 <template>
-    <!-- <category-filter @filter="emitFilter"/> -->
     <section class="demo-list-cont">
         <section class="demo-list">
             <stay-preview :key="currStay" v-for="(currStay,idx) in stays" :currStay="currStay"></stay-preview>
