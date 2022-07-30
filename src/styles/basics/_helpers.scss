@@ -1,9 +1,11 @@
 .stay-details-layout {
-    div {}
 
     .details-padding {
         padding: 0 max(80px, 13.15vw);
     }
+}
+.mobile-details-padding{
+    padding: 0 24px;
 }
 
 .bold {
