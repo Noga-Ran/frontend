@@ -2,173 +2,38 @@
   <div :class="{ shadow: isActive }"></div>
   <section class="category-filters-layout">
     <section class="category-filters-container">
-      <section class="category-filter-container" if>
-        <section @click="selectLabel($event)" class="filter-img-layout" :class="{'selected-filter':queryLabel==='Islands'}">
+      <section class="category-filter-container" v-for="(currLabel, idx) in labels" :key="idx">
+        <section @click="selectLabel($event)" class="filter-img-layout"
+          :class="{ 'selected-filter': queryLabel === currLabel }">
           <div class="filter-img-container">
-            <img src="../assets/img/filter-imgs/islands.jpg" />
+            <img :src='getImgUrl(currLabel)' />
             <div class="filter-img-txt">
-              Islands
+              {{ currLabel }}
             </div>
           </div>
         </section>
       </section>
-      <section class="category-filter-container">
-        <section @click="selectLabel($event)" class="filter-img-layout" :class="{'selected-filter':queryLabel==='Beach'}">
-          <div class="filter-img-container">
-            <img src="../assets/img/filter-imgs/beach.jpg" />
-            <div class="filter-img-txt">
-              Beach
-            </div>
-          </div>
-        </section>
-      </section>
-      <section class="category-filter-container">
-        <section @click="selectLabel($event)" class="filter-img-layout" :class="{'selected-filter':queryLabel==='Amazing pools'}">
-          <div class="filter-img-container">
-            <img src="../assets/img/filter-imgs/amazing-pools.jpg" />
-            <div class="filter-img-txt">
-              Amazing pools
-            </div>
-          </div>
-        </section>
-      </section>
-      <section class="category-filter-container">
-        <section @click="selectLabel($event)" class="filter-img-layout" :class="{'selected-filter':queryLabel==='OMG!'}">
-          <div class="filter-img-container">
-            <img src="../assets/img/filter-imgs/omg.jpg" />
-            <div class="filter-img-txt">
-              OMG!
-            </div>
-          </div>
-        </section>
-      </section>
-      <section class="category-filter-container">
-        <section @click="selectLabel($event)" class="filter-img-layout" :class="{'selected-filter':queryLabel==='National parks'}">
-          <div class="filter-img-container">
-            <img src="../assets/img/filter-imgs/national-parks.jpg" />
-            <div class="filter-img-txt">
-              National parks
-            </div>
-          </div>
-        </section>
-      </section>
-      <section class="category-filter-container">
-        <section @click="selectLabel($event)" class="filter-img-layout" :class="{'selected-filter':queryLabel==='Cabins'}">
-          <div class="filter-img-container">
-            <img src="../assets/img/filter-imgs/cabins.jpg" />
-            <div class="filter-img-txt">
-              Cabins
-            </div>
-          </div>
-        </section>
-      </section>
-      <section class="category-filter-container">
-        <section @click="selectLabel($event)" class="filter-img-layout" :class="{'selected-filter':queryLabel==='Design'}">
-          <div class="filter-img-container">
-            <img src="../assets/img/filter-imgs/design.jpg" />
-            <div class="filter-img-txt">
-              Design
-            </div>
-          </div>
-        </section>
-      </section>
-      <section class="category-filter-container">
-        <section @click="selectLabel($event)" class="filter-img-layout" :class="{'selected-filter':queryLabel==='Camping'}">
-          <div class="filter-img-container">
-            <img src="../assets/img/filter-imgs/campings.jpg" />
-            <div class="filter-img-txt">
-              Camping
-            </div>
-          </div>
-        </section>
-      </section>
-      <section class="category-filter-container">
-        <section @click="selectLabel($event)" class="filter-img-layout" :class="{'selected-filter':queryLabel==='Amazing views'}">
-          <div class="filter-img-container">
-            <img src="../assets/img/filter-imgs/amazing-views.jpg" />
-            <div class="filter-img-txt">
-              Amazing views
-            </div>
-          </div>
-        </section>
-      </section>
-      <section class="category-filter-container">
-        <section @click="selectLabel($event)" class="filter-img-layout" :class="{'selected-filter':queryLabel==='Desert'}">
-          <div class="filter-img-container">
-            <img src="../assets/img/filter-imgs/desert.jpg" />
-            <div class="filter-img-txt">
-              Desert
-            </div>
-          </div>
-        </section>
-      </section>
-      <section class="category-filter-container">
-        <section @click="selectLabel($event)" class="filter-img-layout" :class="{'selected-filter':queryLabel==='Arctic'}">
-          <div class="filter-img-container">
-            <img src="../assets/img/filter-imgs/arctic.jpg" />
-            <div class="filter-img-txt">
-              Arctic
-            </div>
-          </div>
-        </section>
-      </section>
-      <section class="category-filter-container">
-        <section @click="selectLabel($event)" class="filter-img-layout" :class="{'selected-filter':queryLabel==='Tiny homes'}">
-          <div class="filter-img-container">
-            <img src="../assets/img/filter-imgs/tiny-homes.jpg" />
-            <div class="filter-img-txt">
-              Tiny homes
-            </div>
-          </div>
-        </section>
-      </section>
-      <section class="category-filter-container">
-        <section @click="selectLabel($event)" class="filter-img-layout" :class="{'selected-filter':queryLabel==='Lakefront'}">
-          <div class="filter-img-container">
-            <img src="../assets/img/filter-imgs/lakefront.jpg" />
-            <div class="filter-img-txt">
-              Lakefront
-            </div>
-          </div>
-        </section>
-      </section>
-      <section class="category-filter-container">
-        <section @click="selectLabel($event)" class="filter-img-layout" :class="{'selected-filter':queryLabel==='Surfing'}">
-          <div class="filter-img-container">
-            <img src="../assets/img/filter-imgs/surfing.jpg" />
-            <div class="filter-img-txt">
-              Surfing
-            </div>
-          </div>
-        </section>
-      </section>
-      <section class="category-filter-container">
-        <section @click="selectLabel($event)" class="filter-img-layout" :class="{'selected-filter':queryLabel==='Tropical'}">
-          <div class="filter-img-container">
-            <img src="../assets/img/filter-imgs/tropical.jpg" />
-            <div class="filter-img-txt">
-              Tropical
-            </div>
-          </div>
-        </section>
-      </section>
+
     </section>
   </section>
 </template>
 
 <script>
+
 export default {
   data() {
     return {
       isActive: true,
+      labels: ["Islands", "Beach", "Amazing pools", "OMG!", "National parks", "Cabins", "Design"
+        , "Camping", "Amazing views", "Desert", "Arctic", "Tiny homes", "Lakefront", "Surfing", "Tropical"],
       label: '',
     }
   },
   components: {},
   emits: ['filter'],
   methods: {
-    selectLabel(ev=false,idx=false) {
-      if(ev){
+    selectLabel(ev = false, idx = false) {
+      if (ev) {
 
         var elElement
         if (ev.path[0].tagName !== 'SECTION') {
@@ -178,25 +43,30 @@ export default {
           else elElement = ev.path[2]
         }
         else elElement = ev.target
-  
+
         var elActiveFilter = document.querySelector('.selected-filter')
         if (elActiveFilter !== elElement && elActiveFilter) {
           elActiveFilter.classList.remove('selected-filter')
         }
         elElement.classList.toggle('selected-filter')
         var filter = elElement.outerText
-        if(filter===this.queryLabel){
-           this.$emit('filter', {label:'remove'})
-        }else this.$emit('filter', {label:filter})
+        if (filter === this.queryLabel) {
+          this.$emit('filter', { label: 'remove' })
+        } else this.$emit('filter', { label: filter })
       }
-      else{
+      else {
         this.$emit()
       }
-    }
+    },
+    getImgUrl(category) {
+      if (category === "OMG!") category = 'omg'
+      category = category.replace(/\s/g, "-")
+      return new URL('../assets/img/filter-imgs/' + category.toLowerCase() + '.jpg', import.meta.url).href
+    },
   },
-  computed:{
-    queryLabel(){
-      if(this.$route.query?.label) return this.$route.query.label
+  computed: {
+    queryLabel() {
+      if (this.$route.query?.label) return this.$route.query.label
       else ''
     }
   }

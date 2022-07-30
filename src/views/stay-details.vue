@@ -226,7 +226,6 @@ export default {
           type: 'getStayById',
           stayId,
         })
-        this.stay = this.stay
         this.isFav = this.$store.getters.wishListById(this.stay._id)
       } catch (err) {
         console.log(err);
