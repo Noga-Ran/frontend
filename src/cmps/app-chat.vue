@@ -25,8 +25,8 @@
       </section>
       <section class="user-chat">
         <header>
-          <h1>{{ userName }}</h1>
-          <p>Response time: 1 hour</p>
+          <h1>{{userName}}</h1>
+          <p v-if="userMsgs[0]?.tripDetails?.hostResponseTime">Response time: {{userMsgs[0].tripDetails.hostResponseTime}}</p>
         </header>
         <div v-if="userMsgs.length">
           <section>
@@ -34,6 +34,8 @@
               <p>{{ msg.from }}</p>
               <p>{{ msg.at }}</p>
               <p>{{ msg.txt }}</p>
+            <p>{{msg?.tripDetails?.hostId}}</p>
+              <!-- <p>{{msg.tripDetails}}</p> -->
             </section>
           </section>
           <form @submit.prevent="sendMsg">
@@ -56,11 +58,11 @@
           </form>
         </div>
       </section>
-      <section class="user-stay">
+      <!-- <section class="user-stay">
         <header>
           <h1>Details</h1>
         </header>
-      </section>
+      </section> -->
     </div>
   </div>
 </template>
@@ -73,11 +75,12 @@ import appHeader from '../cmps/app-header.vue'
 export default {
   data() {
     return {
-      msg: { from: 'Guest', txt: '', at: '' },
+      msg: { from: 'Guest', txt: '', at: '',to:'',fromId:'',toId:''},
       userChats: [],
       msgs: [],
       userMsgs: [],
       userName: '',
+      chatId:''
     }
   },
   created() {
@@ -94,7 +97,8 @@ export default {
       this.msgs = user?.msgs || []
       if (this.msgs.length) {
         this.msgs.forEach(msg => {
-          if (!this.userChats.includes(msg.from)) this.userChats.push(msg.from)
+          console.log(msg.to,msg.from);
+          if (!this.userChats.includes(msg.from) && msg.from!==user.fullname) this.userChats.push(msg.from)
         })
       }
       return user
@@ -109,25 +113,52 @@ export default {
       } else {
         userCopy.msgs = [msg]
       }
+      if (userCopy.msgs.length) {
+        userCopy.msgs.forEach(msg => {
+          console.log(msg);
+          if (!this.userChats.includes(msg.from) && msg.from!==this.user.fullname) this.userChats.push(msg.from)
+        })
+      }
+
       this.$store.dispatch({ type: 'saveUser', user: userCopy })
       if (this.userName) {
         this.setChat(this.userName, userCopy.msgs)
       }
     },
     sendMsg() {
-      const from = (this.user && this.user.fullname) || 'Guest'
+      const from = this.user.fullname
+      this.msg.to = this.userName
       this.msg.from = from
       this.msg.at = Date.now()
+      this.msg.fromId = this.user._id
+      this.msg.toId= this.chatId
+      socketService.emit('chat topic',this.chatId)
       socketService.emit('chat newMsg', this.msg)
-      this.msg = { from, txt: '', at: '' }
+
+      socketService.emit('chat topic',this.user_id)
+      socketService.emit('chat newMsg', this.msg)
+
+      this.msg = { from: 'Guest', txt: '', at: '',to:'',fromId:'',toId:''}
     },
     changeTopic() {
       socketService.emit('chat topic', this.topic)
     },
     setChat(user, msgs = null) {
       this.userName = user
-      if (msgs) this.userMsgs = msgs.filter(msg => msg.from === user)
-      else this.userMsgs = this.msgs.filter(msg => msg.from === user)
+      if (msgs){
+        this.userMsgs = msgs.filter(msg => msg.from === user || msg.to === user)
+      }
+      else {
+        this.userMsgs = this.msgs.filter(msg => msg.from === user || msg.to === user)
+      }
+
+      console.log(this.userMsgs,this.userName)
+      if(this.userName!=='system'){
+        this.chatId = this.userMsgs.filter(msg => msg.from === user)
+        console.log(this.chatId);
+        this.chatId = this.chatId[0]?.fromId
+        console.log(this.chatId );
+      }
     }
   },
   components: {
