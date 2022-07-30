@@ -3,7 +3,7 @@
     <section class="homepage-layout">
         <app-header @filter="setFilter" @date="setDate"/>
         <category-filter @filter="setFilter"/>
-        <stay-list @filter="setFilter"/>
+        <stay-list/>
         <app-footer :isFixed="'true'"/>
     </section>
 </template>
@@ -49,26 +49,26 @@ export default {
 
             this.setQuery(filterBy) 
         },
+ 
+
         setQuery(filterBy){
+            const query= { where:filterBy.where, checkIn:filterBy.checkIn,checkOut:filterBy.checkOut
+            ,label:filterBy.label,adults:filterBy.adults,children:filterBy.children,infants:filterBy.infants,pets:filterBy.pets }
             if(filterBy.where){
-                this.$router.push({path:`/explore/${filterBy.where}`,query: { where:filterBy.where, checkIn:filterBy.checkIn
-                ,checkOut:filterBy.checkOut ,label:filterBy.label,adults:filterBy.adults,children:filterBy.children,infants:filterBy.infants,pets:filterBy.pets}})
-            }else{
-                this.$router.push({path:`/`, query: { where:filterBy.where, checkIn:filterBy.checkIn
-                ,checkOut:filterBy.checkOut ,label:filterBy.label,adults:filterBy.adults,children:filterBy.children,infants:filterBy.infants,pets:filterBy.pets } })
+                this.$router.push({path:`/explore/${filterBy.where}`,query})
+            } else {
+                this.$router.push({path:`/`,query})
             }
-        }
-    },
-    mounted() {
-        
-        if(this.$route.query && this.$route.query.length){
+         }
+        },
+        created() {
+            if(this.$route.query && this.$route.query.length){
             var filterBy = {where: this.$route.query.where, checkIn:this.$route.query.checkIn ,checkOut:this.$route.query.checkOut , label:this.$route.query.label,
             adults:this.$route.query.adults,children:this.$route.query.children,infants:this.$route.query.infants,pets:this.$route.query.pets}
             this.$store.dispatch({ type: "setFilter", filterBy })
-        }else{
+        } else {
             this.$store.dispatch({type: 'loadStays', filter:false})
         }
-        
     }
 }
 </script>
