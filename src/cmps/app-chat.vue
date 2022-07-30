@@ -1,4 +1,5 @@
 <template>
+<pre>{{user.msgs}}</pre>
   <div v-if="user" class="messages-container">
     <app-header></app-header>
     <div class="chat-container">
@@ -84,7 +85,7 @@ export default {
     }
   },
   created() {
-    socketService.emit('chat topic', this.chatTopic)
+    // socketService.emit('chat topic', this.chatTopic)
     socketService.on('chat addMsg', this.addMsg)
   },
   // mounted() {
@@ -97,7 +98,6 @@ export default {
       this.msgs = user?.msgs || []
       if (this.msgs.length) {
         this.msgs.forEach(msg => {
-          console.log(msg.to,msg.from);
           if (!this.userChats.includes(msg.from) && msg.from!==user.fullname) this.userChats.push(msg.from)
         })
       }
@@ -107,42 +107,47 @@ export default {
   },
   methods: {
     addMsg(msg) {
-      var userCopy = JSON.parse(JSON.stringify(this.user))
-      if (userCopy?.msgs) {
-        userCopy.msgs.push(msg)
-      } else {
-        userCopy.msgs = [msg]
-      }
-      if (userCopy.msgs.length) {
+      const userCopy = JSON.parse(JSON.stringify(this.user))
+      if (userCopy?.msgs) userCopy.msgs.push(msg)
+      else userCopy.msgs = [msg]
+      // if (userCopy.msgs.length) {
         userCopy.msgs.forEach(msg => {
-          console.log(msg);
-          if (!this.userChats.includes(msg.from) && msg.from!==this.user.fullname) this.userChats.push(msg.from)
+          if (!this.userChats.includes(msg.from) && msg.from!==this.user.fullname){
+            this.userChats.push(msg.from)
+          } 
         })
-      }
+      // }
 
       this.$store.dispatch({ type: 'saveUser', user: userCopy })
-      if (this.userName) {
-        this.setChat(this.userName, userCopy.msgs)
-      }
+      // this.user
+      // if (this.userName) {
+      //   this.setChat(this.userName, userCopy.msgs)
+      // }
     },
     sendMsg() {
       const from = this.user.fullname
+
       this.msg.to = this.userName
       this.msg.from = from
       this.msg.at = Date.now()
+
       this.msg.fromId = this.user._id
       this.msg.toId= this.chatId
-      socketService.emit('chat topic',this.chatId)
+
+      // this.userMsgs.push(msg)
+
+      // socketService.emit('chat topic',this.chatId)
+      console.log('Msg!:',this.msg);
       socketService.emit('chat newMsg', this.msg)
 
-      socketService.emit('chat topic',this.user_id)
-      socketService.emit('chat newMsg', this.msg)
+      // socketService.emit('chat topic',this.user._id)
+      // socketService.emit('chat newMsg', this.msg)
 
-      this.msg = { from: 'Guest', txt: '', at: '',to:'',fromId:'',toId:''}
+      this.msg = { from: '', txt: '', at: '',to:'',fromId:'',toId:''}
     },
-    changeTopic() {
-      socketService.emit('chat topic', this.topic)
-    },
+    // changeTopic() {
+    //   socketService.emit('chat topic', this.topic)
+    // },
     setChat(user, msgs = null) {
       this.userName = user
       if (msgs){
@@ -152,12 +157,10 @@ export default {
         this.userMsgs = this.msgs.filter(msg => msg.from === user || msg.to === user)
       }
 
-      console.log(this.userMsgs,this.userName)
       if(this.userName!=='system'){
         this.chatId = this.userMsgs.filter(msg => msg.from === user)
-        console.log(this.chatId);
         this.chatId = this.chatId[0]?.fromId
-        console.log(this.chatId );
+         socketService.emit('chat topic',this.chatId)
       }
     }
   },
