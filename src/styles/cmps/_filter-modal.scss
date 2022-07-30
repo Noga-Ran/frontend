@@ -38,119 +38,123 @@
         }
     }
 }
-.header-layout{
 
-.modal-filter-choices-layout,
-.check-in-out-container {
-    display: flex;
-    height: inherit;
-    align-items: center;
-}
+.header-layout {
 
-
-.filter-seperator {
-    border-right: #dddddd 1px solid;
-    height: 32px;
-}
-
-.modal-filter-choices-layout {
-    width: 850px;
-    border: 1px solid #DDDDDD;
-    border-radius: 32px;
-    background-color: #ebebeb;
-}
-
-.filter-modal-where-container {
-    width: 328px;
-    border-radius: 32px;
-    height: 63px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-
-    p {
-        font-size: 12px;
-        margin: 0;
-        padding-left: 33px;
+    .modal-filter-choices-layout,
+    .check-in-out-container {
+        display: flex;
+        height: inherit;
+        align-items: center;
     }
 
-    input {
-        padding-left: 33px;
-        font-size: 14px;
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
+
+    .filter-seperator {
+        border-right: #dddddd 1px solid;
+        height: 32px;
     }
 
-    input:focus {
-        outline: none !important;
+    .modal-filter-choices-layout {
+        width: 850px;
+        border: 1px solid #DDDDDD;
+        border-radius: 32px;
+        background-color: #ebebeb;
+        letter-spacing: 0.6px;
     }
 
-    &:hover:not(.searchbar-selected-filter) {
-        cursor: pointer;
-        background-color: #dddddd;
-
-    }
-}
-
-.check-in-out-container {
-    .check-in-container {
-        border: 0;
-    }
-
-    &>div {
+    .filter-modal-where-container {
+        width: 328px;
+        border-radius: 32px;
+        height: 63px;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        width: 130px;
-        height: 63px;
-        align-items: center;
+
+        p {
+            font-size: 12px;
+            margin: 0;
+            padding-left: 33px;
+        }
 
         input {
-            text-align: center;
-        }
-    }
-
-    p {
-        width: max-content;
-    }
-
-    p,
-    span {
-        font-size: 12px;
-        margin: 0;
-    }
-
-    span {
-        width: max-content;
-        display: flex;
-    }
-
-    .check-in-container,
-    .check-out-container {
-        border-radius: 32px;
-
-        &:hover {
-            background-color: #dddddd;
+            padding-left: 33px;
+            font-size: 14px;
+            background-color: transparent;
+            border: none;
             cursor: pointer;
         }
+
+        input:focus {
+            outline: none !important;
+        }
+
+        &:hover:not(.searchbar-selected-filter) {
+            cursor: pointer;
+            background-color: #dddddd;
+
+        }
     }
 
-    input {
-        border: none;
-        background-color: transparent;
-        padding: 0;
-        color: #717171;
-        font-size: 14px;
-        cursor: pointer;
-    }
+    .check-in-out-container {
+        .check-in-container {
+            border: 0;
+        }
 
-    .dp__clear_icon {
-        top: 30%;
-        left: 85%;
-    }
+        &>div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 110px;
+            height: 61px;
+            align-items: center;
+            padding-top: 2px;
+            padding-right: 20px;
 
-}
+            input {
+                text-align: center;
+            }
+        }
+
+        p {
+            width: 63px;
+        }
+
+        p,
+        span {
+            font-size: 12px;
+            margin: 0;
+        }
+
+        span {
+            width: max-content;
+            display: flex;
+        }
+
+        .check-in-container,
+        .check-out-container {
+            border-radius: 32px;
+
+            &:hover {
+                background-color: #dddddd;
+                cursor: pointer;
+            }
+        }
+
+        input {
+            border: none;
+            background-color: transparent;
+            padding: 0;
+            color: #717171;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .dp__clear_icon {
+            top: 30%;
+            left: 85%;
+        }
+
+    }
 }
 
 .filter-who-container {
@@ -182,7 +186,7 @@
         cursor: pointer;
         display: flex;
         align-items: center;
-        justify-content: center;
+        padding-left: 13px;
         border: none;
         background-color: #ff385c;
         color: white;
@@ -192,7 +196,7 @@
     }
 
     p {
-        font-size: 16px;
+        font-size: 15.8px;
         padding-left: 8px;
     }
 }

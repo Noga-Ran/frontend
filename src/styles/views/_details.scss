@@ -5,7 +5,10 @@
     margin: 0;
   }
 }
+html{
+  scroll-behavior: smooth;
 
+}
 .stay-info {
   display: grid;
   grid-template-columns: 2.77fr 2fr;
