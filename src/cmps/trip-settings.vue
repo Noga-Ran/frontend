@@ -157,7 +157,9 @@ export default {
   },
   created() {
     this.loggedInUser = userService.getLoggedinUser()
-    console.log(this.loggedInUser);
+    if(this.loggedInUser){
+      this.$store.dispatch({type:'setUser', user:this.loggedInUser})
+    }
     this.id = this.$route.params.id
     // this.stay = this.$store.getters.stayById(this.id)
     this.stay = JSON.parse(JSON.stringify(this.currStay))
@@ -235,6 +237,7 @@ export default {
       // this.showModal = true
       // socketService.emit('chat topic', this.stay.host._id)
       // socketService.emit('chat newMsg', tripDetails)
+      this.$store.dispatch({ type: 'addTrip', trip: tripDetails })
       this.$store.dispatch({ type: 'addTrip', trip: tripDetails })
       // console.log('msg', msg);
     },

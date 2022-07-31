@@ -9,7 +9,7 @@ export default {
     RouterView
   },
   created() {
-    // socketService.setup()
+
   },
   
 }
