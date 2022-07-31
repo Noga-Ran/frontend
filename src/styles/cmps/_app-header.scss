@@ -249,17 +249,26 @@
 }
 
 .user-menu {
-    border-radius: 5px;
-    width: 100px;
+    font-family: circular-light;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
+    top: 70px;
+    right: 80px;
+    border-radius: 10px;
+    width: 242px;
+    padding: 10px 0;
     background-color: white;
-    box-shadow: 0 2px 4px rgb(0 0 0 / 18%);
     position: fixed;
-    padding: 10px;
     cursor: pointer;
 
     p {
-        padding: 0;
+        padding: 10px 20px;
         margin: 0;
+        height: 25px;
+        display: flex;
+        align-items: center;
+        &:hover{
+            background-color: #faeaea66;
+        }
     }
 }
 
