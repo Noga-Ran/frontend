@@ -125,7 +125,6 @@
   </div>
 </template>
 <script>
-
 // import { ElNotification } from 'element-plus'
 import guestsFilter from './filter-modal-cmps/guests-filter-modal.vue'
 // import { socketService } from '../services/socket.service'
@@ -193,8 +192,7 @@ export default {
     },
     getDate(date) {
       var date = new Date(date)
-      date = ('' + date).substring(4, 15)
-      return date
+      return date.toLocaleDateString('en-GB')
     },
     saveTrip() {
       this.showOrderSumModal = true

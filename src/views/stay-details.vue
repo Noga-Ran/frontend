@@ -321,9 +321,9 @@ export default {
       isMobile: false
     }
   },
-  created() {
+  async created() {
     this.id = this.$route.params.id
-    this.getStayById(this.id)
+    await this.getStayById(this.id)
     this.displayWindowSize()
     window.addEventListener("resize", this.displayWindowSize);
   },
@@ -423,8 +423,8 @@ export default {
         location,
         value } = this.stay.reviewScores
       var average = (accuracy + checkin + cleanliness + communication + location + value) / 6
-      this.averageRating = average / 2
-      return this.averageRating.toFixed(1)
+      var averageRating = average / 2
+      return averageRating.toFixed(1)
     },
   },
   unmounted() { },

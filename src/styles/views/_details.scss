@@ -294,11 +294,11 @@ html {
 
   .header-reservation-cont {
     display: grid;
-    grid-template-columns: repeat(2, 107px);
+    grid-template-columns: 1fr 107px;
     font-size: 18px !important;
     align-items: center;
     letter-spacing: -0.28px;
-    column-gap: 8px;
+    column-gap: 10px;
 
     div {
       display: flex;
@@ -331,6 +331,7 @@ html {
 
   &>div:last-of-type {
     margin-top: 6px;
+
     svg {
       height: 10px !important;
       width: 10px !important;
