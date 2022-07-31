@@ -10,6 +10,7 @@ export default {
       return wishList
     },
     getUser({ loggedinUser }) {
+      console.log(loggedinUser);
       return loggedinUser
     },
     wishListById: (state) => (stayId) => {
@@ -22,7 +23,7 @@ export default {
   },
   mutations: {
     setWishList(state, {user}){
-        state.wishList = user.wishlist
+        state.wishList = user?.wishlist || []
     },
     // addWishStay(state, {stayId}){
     //     state.wishList.push(stayId)
@@ -45,7 +46,6 @@ export default {
         commit({ type: 'setWishList', user })
       },
       async removeWishStay({commit,state},{stayId}){
-        console.log(stayId);
         var user = await userService.removeWish(stayId,state.loggedinUser)
         commit({ type: 'setWishList', user })
       },
@@ -63,8 +63,7 @@ export default {
           commit({ type: 'setUser', user });
         } catch (err) {
           console.log(err);
-        }
-        
+        }       
       },
       async logout({ commit }) {
         try {
@@ -75,7 +74,6 @@ export default {
         }
       },
       async saveUser({commit},{user}){
-        console.log(user);
         try{
           await userService.save(user)
           commit({ type: 'setUser', user });

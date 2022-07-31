@@ -44,7 +44,6 @@ async function login(cred) {
     try{
         const user =  await httpService.post(ENDPOINT + '/login', cred)
         if (user) {
-            userService.login(user._id)
             return saveLocalUser(user)
         }
         else{
