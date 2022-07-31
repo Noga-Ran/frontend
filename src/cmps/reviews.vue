@@ -29,9 +29,10 @@
           <!-- <div>{{ review.txt }}</div> -->
           <div>{{ formatedReviewTxt(review.txt) }}</div>
           <div class="show-more-review-container" v-if="this.isLongTxt">
-            <v-button class="show-more-review-btn" @click="showReviewsModal = true">
+      <!-- v-button -->
+            <button class="show-more-review-btn" @click="showReviewsModal = true">
               Show more
-            </v-button>
+            </button>
             <span>></span>
           </div>
         </div>
@@ -84,9 +85,10 @@
           </div>
         </section>
       </vue-final-modal>
-      <v-button class="show-reviews-btn" @click="showReviewsModal = true">
+      <!-- v-button -->
+      <button class="show-reviews-btn" @click="showReviewsModal = true">
         Show all {{ stay.reviews.length }} reviews
-      </v-button>
+      </button>
     </div>
   </section>
 </template>

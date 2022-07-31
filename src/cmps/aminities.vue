@@ -57,6 +57,7 @@
           </div>
         </section>
       </vue-final-modal>
+      <!-- v-button -->
       <button class="show-amenities-btn" @click="showAmenitiesModal = true">
         Show all {{ stayAmenities.length }} amenities
       </button>
