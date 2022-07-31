@@ -44,8 +44,8 @@ export default {
             var filterBy = Object.assign({}, this.$store.getters.filterBy)
             filterBy.checkIn = date.start
             filterBy.checkOut = date.end
-            console.log('dates', filterBy);
-            this.$store.dispatch({ type: "setFilter", filterBy })
+            // console.log('dates', filterBy);
+            // this.$store.dispatch({ type: "setFilter", filterBy })
 
             this.setQuery(filterBy)
         },

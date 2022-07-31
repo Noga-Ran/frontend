@@ -2,9 +2,9 @@
   <app-header @filter="setFilter" @date="setDate"></app-header>
   <div class="explore-filters-conatiner">
     <p>{{ staysAmount }} stays</p>
-    <filter-btn />
+    <filter-btn @setMultyFilter="setFilters"/>
   </div>
-  <stay-list @filter="setFilter"></stay-list>
+  <stay-list></stay-list>
 </template>
 
 <script>
@@ -52,8 +52,8 @@ export default {
       var filterBy = Object.assign({}, this.$store.getters.filterBy)
       filterBy.checkIn = date.start
       filterBy.checkOut = date.end
-      console.log(filterBy);
-      this.$store.dispatch({ type: "setFilter", filterBy })
+      // console.log(filterBy);
+      // this.$store.dispatch({ type: "setFilter", filterBy })
 
       this.setQuery(filterBy)
     },
@@ -63,10 +63,13 @@ export default {
         , label: filterBy.label, adults: filterBy.adults, children: filterBy.children, infants: filterBy.infants, pets: filterBy.pets
       }
       if (filterBy.where) {
-        this.$router.push({ path: `/explore/${filterBy.where}`, query })
+        this.$router.push({query })
       } else {
         this.$router.push({ path: `/`, query })
       }
+    },
+    setFilters(multiFilters){
+      console.log(multiFilters)
     }
   },
   components: {

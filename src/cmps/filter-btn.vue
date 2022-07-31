@@ -27,12 +27,12 @@
         <div class="price-inputs">
             <span class="input-price-container">
                 <div>min price</div>
-                <div>$ <input class="price-input" type="number" :v-model="multyFilterBy.minPrice+0" min="0" :max="(+multyFilterBy.maxPrice)-1"></div>
+                <div>$ <input class="price-input" type="number" v-model.number="multyFilterBy.minPrice" min="0"></div>
             </span>
             <span>-</span>
              <span class="input-price-container">
                 <div>max price</div>
-                <div>$ <input class="price-input" type="number" :v-model="multyFilterBy.maxPrice+0" :min="(+multyFilterBy.minPrice)+1"></div>
+                <div>$ <input class="price-input" type="number" v-model.number="multyFilterBy.maxPrice" :min="multyFilterBy.minPrice+1"></div>
             </span>
             </div>
             <h1 class="place-type-header">Type of place</h1>
@@ -123,18 +123,18 @@ export default {
     },
     methods: {
         sendMultyFilter(){
-          if(this.multyFilterBy.minPrice>this.multyFilterBy.maxPrice) {
-            let minPrice = this.multyFilterBy.minPrice
-            this.multyFilterBy.minPrice = this.multyFilterBy.maxPrice
+          if(+this.multyFilterBy.minPrice>+this.multyFilterBy.maxPrice) {
+            let minPrice = +this.multyFilterBy.minPrice
+            this.multyFilterBy.minPrice = +this.multyFilterBy.maxPrice
             this.multyFilterBy.maxPrice = minPrice
           }
             console.log('multyFilterBy', this.multyFilterBy)
-            // this.$emit('setMultyFilter', this.multyFilterBy)
+            this.showFilterModal = false
+            this.$emit('setMultyFilter', this.multyFilterBy)
         },
         clearFilter(){
             this.multyFilterBy = this.getEmptyFilter()
         },
-        
         getEmptyFilter(){
             return {
             minPrice: 10,
@@ -151,7 +151,7 @@ export default {
              washer: false,
              freeParking: false,
             }
-        }
+        },
     },
     computed: {},
     created() {},
