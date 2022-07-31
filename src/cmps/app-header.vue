@@ -48,7 +48,6 @@ export default {
             isSearch: false,
             showMenu: false,
             isDetails: false,
-            user:null,
         }
     },
     created() {
@@ -73,7 +72,7 @@ export default {
             this.isSearch = isSearching
         },
         goTo(link) {
-            window.open(`/#/${link}`, '_blank')
+            this.$router.push(`/${link}`)
         },
         wishList() {
             return this.$store.getters.wishList
@@ -90,12 +89,12 @@ export default {
         }
     },
     computed:{
+        user(){ return this.$store.getters.getUser}
     },
     components: {
         filterCmp
     },
     created(){
-        this.user = this.$store.getters.getUser
     }
 }
 </script>

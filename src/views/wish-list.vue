@@ -99,9 +99,9 @@ export default {
         },
         showDetails(stayId) {
             if (this.$route.query && this.$route.query?.adults) {
-                window.open(`/#/stay/${stayId}?where=${this.$route.query.where || ''}&checkIn=${this.$route.query.checkIn || ''}&checkOut=${this.$route.query.checkOut || ''}&label=${this.$route.query.label || ''}&adults=${this.$route.query.adults}&children=${this.$route.query.children}&infants=${this.$route.query.infants}&pets=${this.$route.query.pets}`, '_blank')
+                this.$router.push(`${stayId}?where=${this.$route.query.where || ''}&checkIn=${this.$route.query.checkIn || ''}&checkOut=${this.$route.query.checkOut || ''}&label=${this.$route.query.label || ''}&adults=${this.$route.query.adults}&children=${this.$route.query.children}&infants=${this.$route.query.infants}&pets=${this.$route.query.pets}`)
             } else {
-                window.open(`/#/stay/${stayId}`, '_blank')
+                this.$router.push(`stay/${stayId}`)
             }
         },
         checkMulti(stayParam, param) {
