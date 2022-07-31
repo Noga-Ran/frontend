@@ -62,6 +62,19 @@ actions: {
     } catch (err) {
       console.log(err)
     }
+  },
+  clearFilter({commit}){
+    const filterBy = {
+    where: '',
+    label: '',
+    checkIn: '',
+    checkOut: '',
+    adults: 0,
+    children: 0,
+    infants: 0,
+    pets: 0,
+  }
+  commit({ type: 'setFilter', filterBy })
   }
 },
 }

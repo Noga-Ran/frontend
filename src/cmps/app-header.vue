@@ -1,5 +1,6 @@
 
 <template>
+<pre>{{pre}}</pre>
     <section class="header-layout" :class="{ 'position-unset': isDetails }">
         <section :class="{ 'header-container-alt': isSearch, 'header-container': !isSearch }" class="details-padding">
             <div class="logo-container" :class="{ 'grid-area-logo': isSearch }" @click.prevent="redirect">
@@ -21,7 +22,7 @@
                             <img class="navburger-svg" src="../assets/img/navburger.svg" alt="">
                         </section>
                         <section class="header-profile-img">
-                            <img src="../assets/img/demo-profile-img.svg" alt="">
+                            <img :src="getImg()" alt="">
                         </section>
                     </div>
                     <section class="user-menu" v-if="showMenu">
@@ -64,12 +65,9 @@ export default {
         setDate(date) {
             this.$emit('date', date)
         },
-        redirect(page) {
-            if (page === "host") {
-                this.$router.push(`/host`)
-            } else {
-                this.$router.push(`/`)
-            }
+        redirect() {
+            this.$router.push({path:`/`})
+            this.$store.dispatch({type:'clearFilter'})
         },
         setSearch(isSearching) {
             this.isSearch = isSearching
@@ -84,6 +82,12 @@ export default {
             this.$store.dispatch({type:'logout'})
             this.user = false
         },
+        getImg(){
+            if(this.user && this.user?.imgUrl) {
+                return this.user.imgUrl
+            }
+            else return 'https://res.cloudinary.com/nogacloud/image/upload/v1659275569/other/demo-profile-img.svg'
+        }
     },
     computed:{
     },

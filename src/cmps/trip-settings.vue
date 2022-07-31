@@ -170,12 +170,6 @@ export default {
       : (Date.now() + 518400000)
   },
   methods: {
-    // open1(msg) {
-    //   ElNotification({
-    //     title: 'congratulation!',
-    //     message: h('i', { style: 'color: #dd0f63' }, msg),
-    //   })
-    // },
     getImgUrl(idx) {
       const { imgUrls } = this.stay
       return new URL('../assets/img/stays/' + imgUrls[idx], import.meta.url)
@@ -191,7 +185,8 @@ export default {
     },
 
     getPrice(cleaningFee = 0) {
-      return (this.stay.price * this.stayDayAmount + cleaningFee).toFixed(0)
+      var price=+(this.stay.price * this.stayDayAmount + cleaningFee).toFixed(0)
+      return price.toLocaleString()
     },
     getDate(date) {
       var date = new Date(date)
