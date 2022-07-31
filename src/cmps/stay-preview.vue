@@ -44,7 +44,7 @@
             </div>
             <div class="preview-distance">{{ this.distanceFromStay }} kilometers away</div>
             <div class="preview-available-dates">{{ this.getRandomDates() }}</div>
-            <div class="preview-price"><span>${{ this.currStay.price }}</span> night</div>
+            <div class="preview-price"><span>${{ this.currStay.price.toLocaleString() }}</span> night</div>
         </section>
         <section v-if="this.isLoad && this.isExplore" class="explore-preview-data">
             <div class="explore-location-rating">
@@ -65,7 +65,7 @@
             <span class="explore-light-txt">{{ currStay.beds }} beds</span>
             <div class="preview-chosen-dates explore-light-txt">{{ this.getRandomDates() }}</div>
             <div class="explore-price">
-                <div class="explore-price-num"><span>${{ this.currStay.price }}</span> night </div>
+                <div class="explore-price-num"><span>${{ this.currStay.price.toLocaleString() }}</span> night </div>
                 <pre> &middot </pre>
                 <div class="explore-total-price explore-light-txt"> $1,255 total</div>
             </div>
@@ -152,10 +152,13 @@ export default {
             }
         },
         getRandomDates() {
-            return 'Aug  ' + 1 + ' - Aug ' + this.getRandomDay(7)
+            var checkInPrev=this.getRandomDay(3, 16)
+            var checkOutPrev=this.getRandomDay(17, 29)
+
+            return 'Aug  ' + this.getRandomDay(3, 16)  + ' - Aug ' + this.getRandomDay(17, 29)
+            // return 'Aug  ' + this.getRandomDay(3, 16)  + ' - Aug ' + this.getRandomDay(17, 29)
         },
-        getRandomDay(min) {
-            var max = 29
+        getRandomDay(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min
         },
         calculateDistance() {

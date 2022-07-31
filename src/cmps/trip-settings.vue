@@ -125,7 +125,7 @@
   </div>
 </template>
 <script>
-import { h } from 'vue'
+
 // import { ElNotification } from 'element-plus'
 import guestsFilter from './filter-modal-cmps/guests-filter-modal.vue'
 // import { socketService } from '../services/socket.service'
@@ -192,7 +192,8 @@ export default {
     },
 
     getPrice(cleaningFee = 0) {
-      return (this.stay.price * this.stayDayAmount + cleaningFee).toFixed(0)
+      var price=+(this.stay.price * this.stayDayAmount + cleaningFee).toFixed(0)
+      return price.toLocaleString()
     },
     getDate(date) {
       var date = new Date(date)
