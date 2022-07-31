@@ -128,7 +128,7 @@
                     </path>
                   </svg>
                   <div class="bedroom-num">bedroom 1</div>
-                  <div class="bedroom-type">king size </div>
+                  <div class="bedroom-type"> 2 king size beds </div>
                 </div>
               </div>
               <div class="bed-container">
@@ -145,7 +145,7 @@
                     </path>
                   </svg>
                   <div class="bedroom-num">bedroom 2</div>
-                  <div class="bedroom-type">king size </div>
+                  <div class="bedroom-type"> 2 king size beds </div>
                 </div>
               </div>
               <div class="bed-container">
@@ -162,7 +162,7 @@
                     </path>
                   </svg>
                   <div class="bedroom-num">bedroom 3</div>
-                  <div class="bedroom-type">king size </div>
+                  <div class="bedroom-type"> 2 king size beds </div>
                 </div>
               </div>
             </div>
@@ -246,7 +246,7 @@
                   </path>
                 </svg>
                 <div class="bedroom-num">Bedroom {{ idx + 1 }}</div>
-                <div class="bedroom-type">king size </div>
+                <div class="bedroom-type"> 2 king size beds </div>
               </div>
             </div>
           </div>

@@ -152,7 +152,7 @@ export default {
             }
         },
         getRandomDates() {
-            return 'Jul ' + this.getRandomDay(24) + ' - Aug ' + this.getRandomDay(2)
+            return 'Aug  ' + 1 + ' - Aug ' + this.getRandomDay(7)
         },
         getRandomDay(min) {
             var max = 29

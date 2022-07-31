@@ -3,7 +3,7 @@
 <app-header></app-header>
     <section class="host-page-layout">
         <section class="host-layout-top">
-            <dash-boards />
+            <!-- <dash-boards /> -->
         </section>
         <section class="host-layout-bottom">
             <orders-table :orders="orders" />

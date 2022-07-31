@@ -1,5 +1,449 @@
 [
 	{
+		"name": "Brothers Hotel Deluxe",
+		"summary": "O apartamento fica perto de arte e cultura e dos mais belos monumentos da cidade. Belos jardins e paisagens da cidade e do rio Douro ficam perto e podem ser apreciadas.  Existem restaurantes típicos e de comida internacional ao redor do apartamento.   O espaço fica numa rua típica da cidade, cheia da sua magia e magnetismo e é muito pratico e confortável. O espaço é excelente para quem pretende visitar e conhecer a zona histórica e turística do Porto. Transportes públicos ficam próximos.",
+		"interaction": "There are activities programs and concierge activities booking services at this resort.",
+		"houseRules": "No smoking; No Pets; This resort's rules apply. Please call the resort directly to verify details.",
+		"propertyType": "Room in hotel",
+		"roomType": "Room",
+		"bedType": "king size",
+		"cancellationPolicy": "strict_14_with_grace_period",
+		"capacity": 2,
+		"bedrooms": 1,
+		"beds": 1,
+		"numOfReviews": 9,
+		"amenities": [
+			"TV",
+			"Wifi",
+			"Kitchen",
+			"Washer",
+			"Essentials",
+			"Shampoo",
+			"Hangers",
+			"Iron",
+			"Stove",
+			"Refrigerator",
+			"Crib",
+			"Dishwasher",
+			"Oven",
+			"Microwave"
+		],
+		"host": {
+			"_id": "622f3403e36c59e6164faf93",
+			"fullname": "Patty And Beckett",
+			"location": "Eureka, California, United States",
+			"about": "Adventurous couple loves to travel :)",
+			"responseTime": "within an hour",
+			"thumbnailUrl": "https://a0.muscache.com/im/pictures/542dba0c-eb1b-4ab3-85f3-94d3cc8f87a4.jpg?aki_policy=profile_small",
+			"pictureUrl": "https://a0.muscache.com/im/pictures/542dba0c-eb1b-4ab3-85f3-94d3cc8f87a4.jpg?aki_policy=profile_x_medium",
+			"isSuperhost": true,
+			"id": "36133410"
+		},
+		"address": {
+			"street": "Egeo,Greece",
+			"country": "Greece",
+			"location": {
+				"lat": 38.250546,
+				"lan": 22.081095
+			},
+			"countryCode": "GR",
+			"city": "Egeo"
+		},
+		"id": "12223067",
+		"bathrooms": 1,
+		"price": 104,
+		"securityDeposit": 30,
+		"cleaningFee": 40,
+		"extraPeople": 1,
+		"reviewScores": {
+			"accuracy": 10,
+			"cleanliness": 10,
+			"checkin": 10,
+			"communication": 10,
+			"location": 10,
+			"value": 10,
+			"rating": 98
+		},
+		"reviews": [
+			{
+				"at": "2016-06-12T04:00:00.000Z",
+				"by": {
+					"_id": "622f3407e36c59e6164fc004",
+					"fullname": "Kiesha",
+					"imgUrl": "https://robohash.org/10711825?set=set1",
+					"id": "10711825"
+				},
+				"txt": "I had a great experience working with Patty and Peter.  Both were very attentive in sorting out the booking details and following up directly when I had questions.  I rented a 2 bedroom unit at the Westin Villas  in Maui and both the unit and property was absolutely amazing.  I think we had the best unit on the resort complete with 2 outdoor patios with direct access  to  the  beach.  I would HIGHLY recommend renting with Patty and Peter."
+			},
+			{
+				"at": "2016-07-28T04:00:00.000Z",
+				"by": {
+					"_id": "622f3403e36c59e6164fb204",
+					"fullname": "Chris",
+					"imgUrl": "https://robohash.org/70072865?set=set1",
+					"id": "70072865"
+				},
+				"txt": "Peter quickly responded to any questions I had before, and during the trip. Will use again, highly recommend. "
+			},
+			{
+				"at": "2016-09-11T04:00:00.000Z",
+				"by": {
+					"_id": "622f3405e36c59e6164fb703",
+					"fullname": "Kim",
+					"imgUrl": "https://robohash.org/71179725?set=set1",
+					"id": "71179725"
+				},
+				"txt": "We had the perfect location for a room, first floor right in front of the pool. The resort is beautiful, and the staff is so friendly! I enjoyed it so much, we talked about buying a timeshare ourselves."
+			},
+			{
+				"at": "2017-01-07T05:00:00.000Z",
+				"by": {
+					"_id": "622f3404e36c59e6164fb37f",
+					"fullname": "Tracy",
+					"imgUrl": "https://robohash.org/65593239?set=set1",
+					"id": "65593239"
+				},
+				"txt": "Beautiful location. Patty & Peter were super helpful and easy to work with!"
+			},
+			{
+				"at": "2017-04-07T04:00:00.000Z",
+				"by": {
+					"_id": "622f3403e36c59e6164fb105",
+					"fullname": "Duyen",
+					"imgUrl": "https://robohash.org/26215688?set=set1",
+					"id": "26215688"
+				},
+				"txt": "Great spot for the kids and family and close to beach and everything at the resort. We will definitely be back."
+			},
+			{
+				"at": "2017-05-09T04:00:00.000Z",
+				"by": {
+					"_id": "622f3402e36c59e6164fabbe",
+					"fullname": "Binh",
+					"imgUrl": "https://robohash.org/117390236?set=set1",
+					"id": "117390236"
+				},
+				"txt": "The unit and the Westin offer variety of amenities you can possibly ask for. Sofa beds are very comfortable to sleep in. But there is charge for ocean view upgrade. Overall, I highly recommend to book with Patty and Peter. "
+			},
+			{
+				"at": "2018-02-24T05:00:00.000Z",
+				"by": {
+					"_id": "622f3404e36c59e6164fb4af",
+					"fullname": "Samy",
+					"imgUrl": "https://robohash.org/15143517?set=set1",
+					"id": "15143517"
+				},
+				"txt": "We spent a great week at Patty and Peter's place. The place was exactly as shown in the pictures, very comfortable, nice view, with all amenities. The resort is great with several pools, a long beach, many restaurants, and of course a lot of great activities all around."
+			},
+			{
+				"at": "2018-06-16T04:00:00.000Z",
+				"by": {
+					"_id": "622f3405e36c59e6164fb87b",
+					"fullname": "Breanne",
+					"imgUrl": "https://robohash.org/78173091?set=set1",
+					"id": "78173091"
+				},
+				"txt": "This place was perfect for my family. We had plenty of room to spread out and the service could not have been any better"
+			},
+			{
+				"at": "2018-06-29T04:00:00.000Z",
+				"by": {
+					"_id": "622f3405e36c59e6164fb713",
+					"fullname": "Kimberly",
+					"imgUrl": "https://robohash.org/100535039?set=set1",
+					"id": "100535039"
+				},
+				"txt": "We love Westin Kaanapalli"
+			}
+		],
+		"_id": "622f337a75c8d37e498aaaf8",
+		"imgUrls": [
+			"425.jpeg",
+			"426.jpeg",
+			"427.jpeg",
+			"428.jpeg",
+			"429.jpeg"
+		],
+		"label": "Amazing views"
+	},
+	{
+		"name": "Villa Saint Antoine",
+		"summary": "Villa Saint Antoine is a fabulous modern home on the Greek island of Crete, about eight kilometers northeast of Chania. Enjoying a hillside vantage with sweeping views of Souda Bay, the three-story masterwork offers a graceful fusion of indoor and outdoor living, including a wrap-around terrace with infinity swimming pool and alfresco dining. A variety of high-end amenities will meet your desires and needs, including a sauna, exercise room, home office, excellent media features, and a gourmet kitchen. Five comfortable bedrooms with ensuite bathrooms offer ideal accommodations for families and groups of friends up to ten in size.",
+		"interaction": "Guests stay in a separate,  private apartment and we make every effort to not disturb you unless absolutely necessary. We live above the apartment and will be happy to accommodate any reasonable requests",
+		"houseRules": "A/C may be used only when you are at home.  Please respect our delicate old pipes (no grease down the drain, etc.).  No smoking on premises. Guests are expected to wash take out their trash and recycling as needed. Guests are expected to wash and put away dishes prior to check-out (apartment has a dishwasher, soap packets are under the sink) Longer term guests may wish to launder the sheets and towels during their stay. This service is not provided. (There are two sets of bed linens provided and two sets of towels for each adult guest.) Owners may occasionally need to go through the apartment to access the basement. We shall endeavor to give advance notice of this and find a mutually convenient time.  $50 fee if keys are lost or not returned.",
+		"propertyType": "Villa",
+		"roomType": "Villa",
+		"bedType": "king size",
+		"cancellationPolicy": "strict_14_with_grace_period",
+		"capacity": 10,
+		"bedrooms": 5,
+		"beds": 5,
+		"numOfReviews": 42,
+		"amenities": [
+			"TV",
+			"Wifi",
+			"Kitchen",
+			"Washer",
+			"Essentials",
+			"Shampoo",
+			"Hangers",
+			"Iron",
+			"Stove",
+			"Refrigerator",
+			"Crib",
+			"Dishwasher",
+			"Oven",
+			"Microwave"
+		],
+		"host": {
+			"_id": "622f3402e36c59e6164fac46",
+			"fullname": "Shaila & Alex",
+			"location": "New York, New York, United States",
+			"about": "I'm a journalist from Texas and my husband is an artist from the Ukraine by way of Kansas City. We recently welcomed our son into the world. (Don't worry, he sleeps all night.)  We love exploring New York, especially Brooklyn, from the Brooklyn Flea to tiny taco joints to the Botanic Gardens to performance art in Bushwick storefronts (really). We've both spent a lot of time in the South, so hospitality is second nature to us. ",
+			"responseTime": "within an hour",
+			"thumbnailUrl": "https://a0.muscache.com/im/users/6334250/profile_pic/1368287493/original.jpg?aki_policy=profile_small",
+			"pictureUrl": "https://a0.muscache.com/im/users/6334250/profile_pic/1368287493/original.jpg?aki_policy=profile_x_medium",
+			"isSuperhost": true,
+			"id": "6334250"
+		},
+		"address": {
+			"street": "Chania,Greece",
+			"country": "Greece",
+			"location": {
+				"lat": 35.5138398,
+				"lan": 24.0180467
+			},
+			"countryCode": "GR",
+			"city": "Chania"
+		},
+		"id": "1155885",
+		"bathrooms": 8,
+		"price": 1199,
+		"securityDeposit": 250,
+		"cleaningFee": 180,
+		"extraPeople": 10,
+		"reviewScores": {
+			"accuracy": 10,
+			"cleanliness": 10,
+			"checkin": 10,
+			"communication": 10,
+			"location": 9,
+			"value": 10,
+			"rating": 93
+		},
+		"reviews": [
+			{
+				"at": "2013-05-27T04:00:00.000Z",
+				"by": {
+					"_id": "622f3407e36c59e6164fbfd2",
+					"fullname": "Nicolas",
+					"imgUrl": "https://robohash.org/4523027?set=set1",
+					"id": "4523027"
+				},
+				"txt": "Shaila's place is amazing! It's new, it's clean and it's big! And Shaila is very accommodating, we found everything we needed (cooking, coffee) and more. Given that we were the first guests she hosted through airbnb I can say that she did an amazing job! \r\n"
+			},
+			{
+				"at": "2013-06-04T04:00:00.000Z",
+				"by": {
+					"_id": "622f3403e36c59e6164fb048",
+					"fullname": "Jeff",
+					"imgUrl": "https://robohash.org/6443424?set=set1",
+					"id": "6443424"
+				},
+				"txt": "Great, quiet place to stay. It is great having Shaila just upstairs to answer any questions, and especially to give great tips on places to go. "
+			},
+			{
+				"at": "2013-06-13T04:00:00.000Z",
+				"by": {
+					"_id": "622f3406e36c59e6164fba55",
+					"fullname": "Carla",
+					"imgUrl": "https://robohash.org/6121036?set=set1",
+					"id": "6121036"
+				},
+				"txt": "Shaila and Alex are wonderful hosts really, they helped us every time we needed with directions, the internet, the supermarket, the post office !!! (thank you guys !!!).The place and the neighbord are great, 8 blocks far from the apartment you have the subway and 30 min. later you are in the island, we moved early in the morning, late at night (sometimes we came back at 2am) and everything turned out great.Definetly I would come back to their apartment, It's bigger than ours in Argentina !!! I look forward to stay there again and, next time, go out with you guys and have a beer or anything.\r\nBye !!! - Guido and Carla - "
+			},
+			{
+				"at": "2013-06-20T04:00:00.000Z",
+				"by": {
+					"_id": "622f3407e36c59e6164fbf76",
+					"fullname": "Dan",
+					"imgUrl": "https://robohash.org/6460525?set=set1",
+					"id": "6460525"
+				},
+				"txt": "Shaila and Alex were incredibly accommodating and me and my girlfriend enjoyed our stay thoroughly. Highly recommended. The place was very private and homely. I didn't really know anything about New York and was nervous about staying in bed stuy but it was safe and friendly everywhere I went. Very easy to get to the airport and manhattan by train."
+			},
+			{
+				"at": "2013-06-25T04:00:00.000Z",
+				"by": {
+					"_id": "622f3407e36c59e6164fbe9d",
+					"fullname": "Ariane",
+					"imgUrl": "https://robohash.org/6825718?set=set1",
+					"id": "6825718"
+				},
+				"txt": "Great place to stay in Brooklyn! Alex gave us a really useful list of nice restaurants and coffee places near the place (We are very happy to have discovered, the restaurant \"Saraghina\", thanks to Alex's map!).  The apartment is vast, furnished with taste and very convenient. We highly recommend!"
+			},
+			{
+				"at": "2013-07-03T04:00:00.000Z",
+				"by": {
+					"_id": "622f3402e36c59e6164fad91",
+					"fullname": "Ilka",
+					"imgUrl": "https://robohash.org/5823882?set=set1",
+					"id": "5823882"
+				},
+				"txt": "I can recommend to everyone to come to this beautiful apartment, Shaila and Alex are great hosts and the neighbourhood is very friendly everywhere we go.\r\nIt really felt like home."
+			},
+			{
+				"at": "2013-07-12T04:00:00.000Z",
+				"by": {
+					"_id": "622f3401e36c59e6164fab81",
+					"fullname": "Kristy",
+					"imgUrl": "https://robohash.org/5729991?set=set1",
+					"id": "5729991"
+				},
+				"txt": "My sister and I loved staying here! The apartment is very spacious and recently renovated so it looks amazing. The kitchen has everything you need with Alex and Shalia stocking it with a few basics. The neighbourhood is a little shabby, especially compared to the home we stayed in. We were told by some people in Manhattan that the neighbour of Bed-Stuy used to be very dangerous and just to be careful walking around at night. Walking from the subway after dark was a little daunting but we remained safe. We did catch a cab a few times from Manhattan as it was very late. Overall, it was a positive experience with Alex and Shalia being very helpful, even going out of their way to let us store our luggage at Shalia's work the day we were to fly out. They were great hosts."
+			},
+			{
+				"at": "2013-07-24T04:00:00.000Z",
+				"by": {
+					"_id": "622f3405e36c59e6164fb785",
+					"fullname": "Barbara",
+					"imgUrl": "https://robohash.org/6063814?set=set1",
+					"id": "6063814"
+				},
+				"txt": "We just met Alex when we checked in, but anyhow he had been a very friendly and helpful host. He was reachable anytime and answered my mails prompt.\r\nThe apartment was great! It was really beautiful and big. It has a perfectly equipped kitchen and there are also a few basics for breakfast and cooking. The bed is very comfortable. It is not that soundproofed as we are accustomed to (the steps from upstairs waked me every day - my son slept well, he did not hear it), but I think that is normal for american houses. But apart from this it is very quiet.\r\nThe neighbourhood is great! It is very authentic, people are friendly and helpful if required, no problems even late at night. We loved staying there!\r\nIn any case: apartment, host and neighbourhood are high recommended! If we are in New York again, we certainly return to this place!"
+			},
+			{
+				"at": "2013-07-29T04:00:00.000Z",
+				"by": {
+					"_id": "622f3404e36c59e6164fb515",
+					"fullname": "Gloria",
+					"imgUrl": "https://robohash.org/97251?set=set1",
+					"id": "97251"
+				},
+				"txt": "Hello! \n\nWe just spent 5 days in the big apple and we drove in to this Brooklyn location.  The host where incredibly attentive and just wonderful, the apartment spotless, hip & modern and really comfortable. \n\nDo not be intimidated by the transitioning neighborhood as we encountered that many residents are very friendly and helpful (directions) and this particular street has a real interest in making a real change hence empowering their community.\n\nThe subway is a little ways (12 to 15 min.) walk. We would use our vehicle to drive to the subway station (there are two corresponding)  and park nearby to facilitate the to and from.  If you need quick access to the subway at all hours of the day and night this may not be the place for you.\n\nThe apt. is an excellent value  for the money (as per  many  manhattan locations offer around  the same nightly  $$ rate but have to share their apt ).\n\n\n\n"
+			},
+			{
+				"at": "2013-09-07T04:00:00.000Z",
+				"by": {
+					"_id": "622f3403e36c59e6164fb079",
+					"fullname": "Javier",
+					"imgUrl": "https://robohash.org/7055720?set=set1",
+					"id": "7055720"
+				},
+				"txt": "We really had a wonderful time in NYC thanks to Alex’s house. It’s just as big, beautiful and clean as it seems in the pictures. Alex has an incredible apartment in the basement that makes you feel like home after being out all day knowing the big city. All the furniture and the kitchen appliances are new.\r\n\r\nThe location is perfect for visiting Brooklyn and Manhattan (only 15-20 to Brooklyn Bridge and South Manhattan or 25-30 min to Times Square in the underground).\r\n\r\nAlso, Alex gave us some good advices the first day for having all we needed in the neighbourhood. Don’t miss Saraghina’s brunch (10 minutes walking from the house)! He even let us to keep our luggage in the house until we left to the airport in the evening on our last day in the city."
+			},
+			{
+				"at": "2013-10-09T04:00:00.000Z",
+				"by": {
+					"_id": "622f3402e36c59e6164fabc4",
+					"fullname": "Ivan",
+					"imgUrl": "https://robohash.org/8866660?set=set1",
+					"id": "8866660"
+				},
+				"txt": "The appartment was really clean, pretty spacious and kitchen was very well equipped! Its totally in line with all the information posted. \r\n\r\nAlex was very nice host, even allowed us to keep the luggage  after check out as we had a flight in the evening. Thank you once again for that! \r\n\r\nThe neighboorhood itself was safe, we had no issues at all, however I`d prefer staying   in Brooklyn districts closer to Manhattan area next time as  we were travelling to Midtown up to 1h. Being a citizen of the huge city too (Moscow, Russia) , underground is not our favorite place to be  :) \r\n\r\nOverall , it was a great stay. \r\n\r\n\r\n\r\n"
+			},
+			{
+				"at": "2013-11-01T04:00:00.000Z",
+				"by": {
+					"_id": "622f3402e36c59e6164fada2",
+					"fullname": "India",
+					"imgUrl": "https://robohash.org/228580?set=set1",
+					"id": "228580"
+				},
+				"txt": "Communication with Alex was spot on.  He happily answered any questions and made it easy for me to arrive late at night and went above and beyond to help me have a good stay. \r\nThe apartment has been tastefully refurbished.  Extremely clean, and with all you could need for cooking.  The bed is so comfy.  The apartment is peaceful at night and I slept so well.   Some noise travels from Alex' apartment upstairs but it is only a little during the day.\r\nThe area is a bit out of the main hub of Williamsburg and Bushwick but everything is easily accessible with a short walk or the subway about 8 mins walk away.\r\nAlex left me a list of great stores, cafes and restaurants in the immediate area.  \r\nSome people may be concerned about the area at face value as it is a white minority but I felt safe at all times.  People seemed friendly.\r\n\r\n"
+			},
+			{
+				"at": "2013-11-10T05:00:00.000Z",
+				"by": {
+					"_id": "622f3406e36c59e6164fb9f9",
+					"fullname": "Pamela",
+					"imgUrl": "https://robohash.org/8145538?set=set1",
+					"id": "8145538"
+				},
+				"txt": "Was an amazing stay, we charm your apartment and were very friendly. Thank you for all your attentions."
+			},
+			{
+				"at": "2013-11-14T05:00:00.000Z",
+				"by": {
+					"_id": "622f3402e36c59e6164fae8c",
+					"fullname": "Lindsay",
+					"imgUrl": "https://robohash.org/979464?set=set1",
+					"id": "979464"
+				},
+				"txt": "Shaila and Alex are wonderful hosts - very accommodating, friendly, and easy to communicate with. We found it fairly easy to get around the city from Bed-Stuy, even with the weekend subway schedule. The apartment is lovely, bright, and very clean, and overall it was a pleasure to stay for a few nights. It's been recently renovated and thoughtfully decorated - we felt quite comfortable during our stay and appreciated the art and other nice touches throughout. I'd highly recommend staying with Shaila and Alex."
+			},
+			{
+				"at": "2013-12-01T05:00:00.000Z",
+				"by": {
+					"_id": "622f3407e36c59e6164fbf31",
+					"fullname": "Nadia",
+					"imgUrl": "https://robohash.org/1133198?set=set1",
+					"id": "1133198"
+				},
+				"txt": "Great apartment, really spacious & has a lovely homely feel to it. Alex & Shaila were very helpful & welcoming, bed was really comfortable, good transport links, only a 20 min subway ride into manhattan, the area is really nice & quiet, unlike manhattan.\r\n\r\nThanks Alex & Shaila for having us ! Enjoy the Gin !! "
+			},
+			{
+				"at": "2014-01-04T05:00:00.000Z",
+				"by": {
+					"_id": "622f3407e36c59e6164fbdab",
+					"fullname": "Barbara",
+					"imgUrl": "https://robohash.org/8310069?set=set1",
+					"id": "8310069"
+				},
+				"txt": "The apartment is spacious and well furnished, the kitchen very well equipped and the bed very confortable. Sheila and alex were friendly and the comunication with them was easy.the neighborhood is very nice with typical town house, and very quite. Also the people Who lives there was very kind and helped us on many occasion. \nDefinitely raccommend you to spend your holidays in NY in the lovely apartment of sheila&alex! "
+			},
+			{
+				"at": "2014-03-11T04:00:00.000Z",
+				"by": {
+					"_id": "622f3404e36c59e6164fb2c1",
+					"fullname": "Chris",
+					"imgUrl": "https://robohash.org/9935301?set=set1",
+					"id": "9935301"
+				},
+				"txt": "We had a great time staying with Alex & Shaila. The apartment is just as depicted in the photos. Lots of space and very comfortable.  The house is located really close to buses and subway which was very convenient. The neighbourhood is fine with a couple of nice places to eat nearby.\r\n\r\nShaila and alex were really friendly and easy to communicate with if needed.  \r\n\r\nWe stayed for 2 months and would recommend it to others who are looking for a place in Brooklyn."
+			},
+			{
+				"at": "2014-03-26T04:00:00.000Z",
+				"by": {
+					"_id": "622f3405e36c59e6164fb8fc",
+					"fullname": "Melody",
+					"imgUrl": "https://robohash.org/11278447?set=set1",
+					"id": "11278447"
+				},
+				"txt": "Upon arriving, Alex was very helpful giving directions to the location. , he gave us a brief overview of everything, and let us settle in. It was a very cozy place to come back to after long days out exploring New York. The subways are very close. We preferred heading up to broadway to catch our trains (Depending where we were going) only because it was much more pleasant on sunny days to be above grounds if we could. It was great to have all amenities available, and at such a reasonable price.The only thing I will mention is that if you do plan on sleeping in- it might not happen as they do have a newborn who you can sometimes hear in the morning if you are a light sleeper.\r\nOverall,  I would recommend you stay at Alex & Shailas airbnb! It was a great and pleasant environment."
+			},
+			{
+				"at": "2014-04-10T04:00:00.000Z",
+				"by": {
+					"_id": "622f3404e36c59e6164fb41e",
+					"fullname": "Carlos",
+					"imgUrl": "https://robohash.org/13281573?set=set1",
+					"id": "13281573"
+				},
+				"txt": "We felt very happy those days at the home of Alex and Shaila. It is a very warm and comfortable place, it was like being at home."
+			},
+			{
+				"at": "2014-04-21T04:00:00.000Z",
+				"by": {
+					"_id": "622f3403e36c59e6164fb087",
+					"fullname": "Sergei",
+					"imgUrl": "https://robohash.org/13487808?set=set1",
+					"id": "13487808"
+				},
+				"txt": "Great host. Very clean, nice place and friendly people. Thanks again!"
+			}
+		],
+		"_id": "622f337a75c7d46e498aaafb",
+		"imgUrls": [
+			"420.jpeg",
+			"421.jpeg",
+			"422.jpeg",
+			"423.jpeg",
+			"424.jpeg"
+		],
+		"label": "Amazing views"
+	},
+	{
 		"name": "Thalassa Residence",
 		"summary": "O apartamento fica perto de arte e cultura e dos mais belos monumentos da cidade. Belos jardins e paisagens da cidade e do rio Douro ficam perto e podem ser apreciadas.  Existem restaurantes típicos e de comida internacional ao redor do apartamento.   O espaço fica numa rua típica da cidade, cheia da sua magia e magnetismo e é muito pratico e confortável. O espaço é excelente para quem pretende visitar e conhecer a zona histórica e turística do Porto. Transportes públicos ficam próximos.",
 		"interaction": "There are activities programs and concierge activities booking services at this resort.",
