@@ -57,9 +57,9 @@
         <div class="btn-container show-order-sum-btn" :disabled="showWho" @click="saveTrip">
          <div class="cell" v-for="currCell in 100" :key="currCell"></div>
           <div class="content">
-            <v-button class="action-btn">
+            <button class="action-btn">
               <span class="word-btn">Reserve</span>
-            </v-button>
+            </button>
           </div>
         </div>
       </section>
@@ -170,12 +170,6 @@ export default {
       : (Date.now() + 518400000)
   },
   methods: {
-    // open1(msg) {
-    //   ElNotification({
-    //     title: 'congratulation!',
-    //     message: h('i', { style: 'color: #dd0f63' }, msg),
-    //   })
-    // },
     getImgUrl(idx) {
       const { imgUrls } = this.stay
       return new URL('../assets/img/stays/' + imgUrls[idx], import.meta.url)
