@@ -25,8 +25,10 @@
                         </section>
                     </div>
                     <section class="user-menu" v-if="showMenu">
-                        <p @click.stop="goToChat">Messages</p>
-                        <p @click.stop="goToWishList">Wish List</p>
+                        <p @click.stop="goTo('chat')">Messages</p>
+                        <p @click.stop="goTo('wishList')">Wish List</p>
+                        <p v-if="!user" @click.stop="goTo('login')">Login</p>
+                        <p v-else @click.stop="logOut">Log Out</p>
                     </section>
                 </section>
             </div>
@@ -44,7 +46,8 @@ export default {
         return {
             isSearch: false,
             showMenu: false,
-            isDetails: false
+            isDetails: false,
+            user:null,
         }
     },
     created() {
@@ -71,18 +74,24 @@ export default {
         setSearch(isSearching) {
             this.isSearch = isSearching
         },
-        goToWishList() {
-            window.open(`/#/wishList`, '_blank')
+        goTo(link) {
+            window.open(`/#/${link}`, '_blank')
         },
         wishList() {
             return this.$store.getters.wishList
         },
-        goToChat() {
-            window.open(`/#/chat`, '_blank')
-        }
+        logOut(){
+            this.$store.dispatch({type:'logout'})
+            this.user = false
+        },
+    },
+    computed:{
     },
     components: {
         filterCmp
     },
+    created(){
+        this.user = this.$store.getters.getUser
+    }
 }
 </script>

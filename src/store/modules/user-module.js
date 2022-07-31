@@ -40,16 +40,6 @@ export default {
       var user = await userService.addWish(stayId,state.loggedinUser)
         return user.wishlist
       },
-      // async getWishById(state,{stayId}){
-      //   try {
-      //     console.log(state.loggedinUser);
-      //     var user = await userService.getById(state.loggedinUser._id)
-      //     if (user.wishlist.some(wish===stayId)) return true
-      //     else return false
-      //   } catch (err) {
-      //     console.log(err)
-      //   }
-      // },
       async addWishStay({commit,state}, { stayId }) {
         var user = await userService.addWish(stayId,state.loggedinUser)
         commit({ type: 'setWishList', user })
@@ -63,7 +53,6 @@ export default {
         try {
           const user = await userService.login(cred);
           commit({ type: 'setUser', user });
-          commit({ type: 'setWishList', user });
         } catch (err) {
           console.log(err);
         }
