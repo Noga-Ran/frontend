@@ -37,7 +37,7 @@
                     }}</div>
                 </td>
                 <td class="tac">
-                    <div class="td-content-container">{{ this.getNightsCount(order) }}</div>
+                    <div class="td-content-container">{{ getNightsCount(order) }}</div>
                 </td>
                 <td class="tac">
                     <div class="td-content-container">{{ order.guests }}</div>
@@ -46,7 +46,7 @@
                     <div class="td-content-container"> $ {{ order.stay.price }}</div>
                 </td>
                 <td class="money-class tac">
-                    <div class="td-content-container"> $ {{ (+order.totalPrice).toFixed(0)}}</div>
+                    <div class="td-content-container"> $ {{ order.totalPrice }}</div>
                 </td>
                 <td>
                     <div class="td-content-container">{{ order.status }}</div>
@@ -71,7 +71,7 @@ export default {
     methods: {
         getDate(num, isDdMm = false) {
             if (isDdMm) {
-                return num.slice(0, 6)
+                return num.slice(0, 5)
             }
             return new Date(num).toLocaleDateString('en-GB')
         },
@@ -89,11 +89,14 @@ export default {
             return order.stay.name
         },
         getNightsCount(order) {
-            const date1 = new Date(order.startDate);
-            const date2 = new Date(order.endDate);
-            const diffTime = Math.abs(date2 - date1);
-            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-            return diffDays
+            // const date1 = new Date(order.startDate)
+            // const date2 = new Date(order.endDate)
+            // const diffTime = Math.abs(date2 - date1)
+            // const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+        //    לתקן
+           const diffDays = + order.endDate.slice(0,2) - +order.startDate.slice(0,2)
+           return diffDays
+           
         }
     },
     computed: {
