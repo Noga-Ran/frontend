@@ -266,7 +266,8 @@
         height: 25px;
         display: flex;
         align-items: center;
-        &:hover{
+
+        &:hover {
             background-color: #faeaea66;
         }
     }
@@ -311,11 +312,13 @@
         height: 24px;
         width: 1px;
     }
-    .details-search-txt{
+
+    .details-search-txt {
         margin-left: 24px;
         font-size: 14.5px;
     }
-    .details-red-search{
+
+    .details-red-search {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -324,9 +327,61 @@
         background-color: #ff385c;
         border-radius: 50%;
         margin: 7px 7px 7px 0;
-    
+
         svg {
             color: #ffffff;
         }
+    }
+}
+
+.header-layout {
+
+    .modal-vue,
+    .modal {
+        left: 360px;
+    }
+
+    .search-region {
+        padding-right: 12px !important;
+        padding-bottom: 23px !important;
+        &>p {
+            padding: 0 !important;
+            margin: 12px 0px 31px 0px !important;
+        }
+    }
+
+    .imgs-container {
+        .modal-img{
+            width: 122px !important;
+            height: 122px !important;
+        }
+        column-gap: 9px;
+        display: grid;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 33px;
+
+        p {
+            color: #222222;
+            font-size: 13px;
+            line-height: 15px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            margin: 1px 0px 0px 6px !important;
+            text-transform: capitalize;
+        }
+    }
+
+    .modal img {
+        width: 123px !important;
+        height: 124px !important;
+        background-color: transparent !important;
+        top: -1px !important;
+        left: -1px !important;
+        border-style: solid !important;
+        border-radius: 14px;
     }
 }

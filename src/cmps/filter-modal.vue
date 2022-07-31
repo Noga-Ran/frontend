@@ -13,7 +13,7 @@
                     <div class="modal" v-if="showModal">
                         <button class="close" @click="showModal = false">x</button>
                         <div class="searchs">
-                            <div class="recent-search">
+                            <!-- <div class="recent-search">
                                 <div class="recents-header">Recent searches</div><br>
                                 <span>
                                     <div class="recent-svg"><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
@@ -55,7 +55,7 @@
                                         </svg></div>
                                     <div>hong kong</div>
                                 </span>
-                            </div>
+                            </div> -->
                             <div class="search-region">
                                 <p>Search by region</p>
                                 <div class="imgs-container">
