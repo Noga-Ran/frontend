@@ -328,14 +328,14 @@ export default {
     window.addEventListener("resize", this.displayWindowSize);
   },
   mounted() {
-    this.tripSettingObserver = new IntersectionObserver(this.onTripSettingObserved, {
-      rootMargin: "-275px 0px 0px",
-    })
-    this.tripSettingObserver.observe(this.$refs.orderSec);
-    this.detailsPageTopObserver = new IntersectionObserver(this.onGalleryObserved, {
-      rootMargin: "-10px 0px 0px",
-    })
-    this.detailsPageTopObserver.observe(this.$refs.detailsPageTop);
+    // this.tripSettingObserver = new IntersectionObserver(this.onTripSettingObserved, {
+    //   rootMargin: "-275px 0px 0px",
+    // })
+    // this.tripSettingObserver.observe(this.$refs.orderSec);
+    // this.detailsPageTopObserver = new IntersectionObserver(this.onGalleryObserved, {
+    //   rootMargin: "-10px 0px 0px",
+    // })
+    // this.detailsPageTopObserver.observe(this.$refs.detailsPageTop);
   },
   methods: {
     async getStayById(stayId) {
