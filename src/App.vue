@@ -1,7 +1,7 @@
 <script >
 import { RouterLink, RouterView } from 'vue-router'
 import { userService } from './services/user-service'
-import { socketService } from './services/socket.service'
+// import { socketService } from './services/socket.service'
 
 export default {
   components: {

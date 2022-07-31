@@ -69,7 +69,7 @@
 </template>
 
 <script>
-import { socketService, SOCKET_EMIT_SEND_MSG, SOCKET_EVENT_ADD_MSG, SOCKET_EMIT_SET_TOPIC } from '../services/socket.service'
+// import { socketService, SOCKET_EMIT_SEND_MSG, SOCKET_EVENT_ADD_MSG, SOCKET_EMIT_SET_TOPIC } from '../services/socket.service'
 import { userService } from '../services/user-service'
 import appHeader from '../cmps/app-header.vue'
 
@@ -86,7 +86,7 @@ export default {
   },
   created() {
     // socketService.emit('chat topic', this.chatTopic)
-    socketService.on('chat addMsg', this.addMsg)
+    // socketService.on('chat addMsg', this.addMsg)
   },
   // mounted() {
   //   socketService.emit('chat topic', this.chatTopic)
@@ -137,7 +137,6 @@ export default {
       // this.userMsgs.push(msg)
 
       // socketService.emit('chat topic',this.chatId)
-      console.log('Msg!:',this.msg);
       socketService.emit('chat newMsg', this.msg)
 
       // socketService.emit('chat topic',this.user._id)

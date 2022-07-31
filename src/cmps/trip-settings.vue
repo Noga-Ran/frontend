@@ -127,7 +127,7 @@
 import { h } from 'vue'
 // import { ElNotification } from 'element-plus'
 import guestsFilter from './filter-modal-cmps/guests-filter-modal.vue'
-import { socketService } from '../services/socket.service'
+// import { socketService } from '../services/socket.service'
 import { userService } from '../services/user-service'
 import { $vfm, VueFinalModal, ModalsContainer } from 'vue-final-modal'
 
