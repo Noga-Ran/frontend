@@ -5,10 +5,12 @@
     margin: 0;
   }
 }
-html{
+
+html {
   scroll-behavior: smooth;
 
 }
+
 .stay-info {
   display: grid;
   grid-template-columns: 2.77fr 2fr;
@@ -296,6 +298,7 @@ html{
     font-size: 18px !important;
     align-items: center;
     letter-spacing: -0.28px;
+    column-gap: 8px;
 
     div {
       display: flex;
@@ -309,6 +312,7 @@ html{
 
 
     .header-reserve-btn {
+      cursor: pointer;
       display: flex;
       justify-content: center;
       color: white;
@@ -318,5 +322,30 @@ html{
       font-size: 17.5px !important;
       font-family: circular;
     }
+  }
+}
+
+.alt-head-reserve-info {
+  display: grid !important;
+  grid-template-columns: 1fr;
+
+  &>div:last-of-type {
+    margin-top: 6px;
+    svg {
+      height: 10px !important;
+      width: 10px !important;
+    }
+
+    span {
+      font-family: circular !important;
+      font-size: 12px !important;
+    }
+  }
+
+  .header-reviews {
+    font-family: circular-light !important;
+    text-decoration: underline;
+    color: #717171;
+    letter-spacing: 0.3px;
   }
 }

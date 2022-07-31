@@ -50,22 +50,20 @@ export default {
             this.setQuery(filterBy)
         },
 
-
         setQuery(filterBy) {
-            const query = {
-                where: filterBy.where, checkIn: filterBy.checkIn, checkOut: filterBy.checkOut
-                , label: filterBy.label, adults: filterBy.adults, children: filterBy.children, infants: filterBy.infants, pets: filterBy.pets
-            }
-            if (filterBy.where) {
-                this.$router.push({ path: `/explore/${filterBy.where}`, query })
+            // const { where,checkIn,checkOut,label,adults,children,infants,pets } = filterBy
+            const query = filterBy
+            if (where) {
+                this.$router.push({ path: `/explore/${where}`, query })
             } else {
-                this.$router.push({ path: `/`, query })
+                this.$router.push({ query })
             }
         }
     },
+    
     created() {
-        if (this.$route.query && this.$route.query.length) {
-            var filterBy = {
+        if (this.$route.query) {
+            const filterBy = {
                 where: this.$route.query.where, checkIn: this.$route.query.checkIn, checkOut: this.$route.query.checkOut, label: this.$route.query.label,
                 adults: this.$route.query.adults, children: this.$route.query.children, infants: this.$route.query.infants, pets: this.$route.query.pets
             }
