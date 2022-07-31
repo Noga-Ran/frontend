@@ -64,12 +64,9 @@ export default {
         setDate(date) {
             this.$emit('date', date)
         },
-        redirect(page) {
-            if (page === "host") {
-                this.$router.push(`/host`)
-            } else {
-                this.$router.push(`/`)
-            }
+        redirect() {
+            this.$router.push({path:`/`})
+            this.$store.dispatch({type:'clearFilter'})
         },
         setSearch(isSearching) {
             this.isSearch = isSearching
