@@ -67,7 +67,7 @@
             <div class="explore-price">
                 <div class="explore-price-num"><span>${{ this.currStay.price.toLocaleString() }}</span> night </div>
                 <pre> &middot </pre>
-                <div class="explore-total-price explore-light-txt"> $1,255 total</div>
+                <div class="explore-total-price explore-light-txt"> ${{ this.totalPrice }} total</div>
             </div>
         </section>
     </section>
@@ -85,6 +85,8 @@ export default {
             distanceFromStay: null,
             isFav: false,
             isExplore: false,
+            nights: 0,
+            totalPrice:0,
         }
     },
     computed: {
@@ -154,8 +156,9 @@ export default {
         getRandomDates() {
             var checkInPrev=this.getRandomDay(3, 16)
             var checkOutPrev=this.getRandomDay(17, 29)
-
-            return 'Aug  ' + this.getRandomDay(3, 16)  + ' - Aug ' + this.getRandomDay(17, 29)
+            this.nights= checkOutPrev- checkInPrev
+            this.totalPrice= (this.currStay.price* this.nights).toLocaleString()
+            return 'Aug  ' + checkInPrev  + ' - Aug ' + checkOutPrev
             // return 'Aug  ' + this.getRandomDay(3, 16)  + ' - Aug ' + this.getRandomDay(17, 29)
         },
         getRandomDay(min, max) {
