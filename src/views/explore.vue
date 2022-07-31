@@ -2,9 +2,9 @@
   <app-header @filter="setFilter" @date="setDate"></app-header>
   <div class="explore-filters-conatiner">
     <p>{{ staysAmount }} stays</p>
-    <filter-btn />
+    <filter-btn @setMultyFilter="setFilter" />
   </div>
-  <stay-list @filter="setFilter"></stay-list>
+  <stay-list></stay-list>
 </template>
 
 <script>
@@ -21,11 +21,8 @@ export default {
   created() {
     this.city = this.$route.params.where
     if (this.$route.query && this.$route.query.length) {
-      var filterBy = {
-        where: this.$route.query.where, checkIn: this.$route.query.checkIn, checkOut: this.$route.query.checkOut, label: this.$route.query.label,
-        adults: this.$route.query.adults, children: this.$route.query.children, infants: this.$route.query.infants, pets: this.$route.query.pets
-      }
-      this.$store.dispatch({ type: "setFilter", filterBy })
+      const { where, checkIn, checkOut, label, adults, children, infants, pets } = this.$route.query
+      this.$store.dispatch({ type: "setFilter", filterBy: { where, checkIn, checkOut, label, adults, children, infants, pets } })
     }
   },
   methods: {
@@ -38,7 +35,11 @@ export default {
         } else {
           filterBy.label = filter.label
         }
-      } else {
+      }
+      else if (filter.minPrice) {
+        filterBy = Object.assign(filterBy,filter)
+      }
+      else {
         filterBy.where = filter.where || ''
         filterBy.adults = who.adults || 0
         filterBy.children = who.children || 0
@@ -52,8 +53,8 @@ export default {
       var filterBy = Object.assign({}, this.$store.getters.filterBy)
       filterBy.checkIn = date.start
       filterBy.checkOut = date.end
-      console.log(filterBy);
-      this.$store.dispatch({ type: "setFilter", filterBy })
+      // console.log(filterBy);
+      // this.$store.dispatch({ type: "setFilter", filterBy })
 
       this.setQuery(filterBy)
     },
@@ -63,11 +64,11 @@ export default {
         , label: filterBy.label, adults: filterBy.adults, children: filterBy.children, infants: filterBy.infants, pets: filterBy.pets
       }
       if (filterBy.where) {
-        this.$router.push({ path: `/explore/${filterBy.where}`, query })
+        this.$router.push({ query })
       } else {
         this.$router.push({ path: `/`, query })
       }
-    }
+    },
   },
   components: {
     appHeader,
@@ -76,7 +77,6 @@ export default {
   },
   computed: {
     staysAmount() { return this.$store.getters.amountOfStays }
-  },
-  unmounted() { },
+  }
 }
 </script>
