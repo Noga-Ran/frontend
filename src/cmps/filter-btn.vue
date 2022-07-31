@@ -123,13 +123,12 @@ export default {
     },
     methods: {
         sendMultyFilter(){
-          if(+this.multyFilterBy.minPrice>+this.multyFilterBy.maxPrice) {
+          if(this.multyFilterBy.minPrice>this.multyFilterBy.maxPrice) {
             let minPrice = +this.multyFilterBy.minPrice
             this.multyFilterBy.minPrice = +this.multyFilterBy.maxPrice
             this.multyFilterBy.maxPrice = minPrice
           }
-            console.log('multyFilterBy', this.multyFilterBy)
-            this.showFilterModal = false
+            this.showFilterModal = !this.showFilterModal
             this.$emit('setMultyFilter', this.multyFilterBy)
         },
         clearFilter(){
