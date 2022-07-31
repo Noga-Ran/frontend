@@ -237,8 +237,8 @@ export default {
       // this.open1('Your trip was successfully reserved')
 
       // this.showModal = true
-      socketService.emit('chat topic', this.stay.host._id)
-      socketService.emit('chat newMsg', tripDetails)
+      // socketService.emit('chat topic', this.stay.host._id)
+      // socketService.emit('chat newMsg', tripDetails)
       this.$store.dispatch({ type: 'addTrip', trip: tripDetails })
       // console.log('msg', msg);
     },
