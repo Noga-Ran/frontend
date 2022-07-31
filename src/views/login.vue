@@ -1,5 +1,6 @@
 <template>
-  <form @submit.prevent="login" class="login-container form-page">
+<app-header></app-header>
+<form @submit.prevent="login" class="login-container form-page">
     <div class="login-card flex column space-between">
       <div class="login-fields flex column space-between grow-1">
         <h3>login</h3>
@@ -17,6 +18,9 @@
 </template>
 
 <script>
+import appHeader from '../cmps/app-header.vue'
+import appFooter from '../cmps/app-footer.vue'
+
   export default {
     name: 'login-page',
     data() {
@@ -37,6 +41,10 @@
     mounted() {
       this.$refs.username.focus();
     },
+    components:{
+      appHeader,
+      appFooter
+    }
   };
 </script>
 

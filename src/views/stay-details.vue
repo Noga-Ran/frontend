@@ -109,7 +109,7 @@
               {{ stay.capacity }} guests &middot {{ stay.bedrooms }} bedrooms
               &middot {{ stay.beds }} beds &middot {{ stay.bathrooms }} baths
             </div>
-            <img class="host-img-profile" src="../assets/img/jj.jpg" alt="" />
+            <img class="host-img-profile" :src="getRandomImg()" alt="" />
           </div>
           <section class="stay-beds">
             <div class="beds-heading">Where you'll sleep</div>
@@ -405,6 +405,12 @@ export default {
         this.isMobile = true
       }
       else this.isMobile = false
+    },
+    getRandomImg(){
+      let randomNum = Math.floor(Math.random() * (99 - 1) + 1)
+      var gender = ['men', 'women']
+      let randomGender = Math.floor(Math.random() * 2)
+      return `https://randomuser.me/api/portraits/${gender[randomGender]}/${randomNum}.jpg`
     }
   },
   computed: {

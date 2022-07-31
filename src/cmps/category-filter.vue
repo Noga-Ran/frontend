@@ -59,8 +59,9 @@ export default {
     },
     getImgUrl(category) {
       if (category === "OMG!") category = 'omg'
+      category = category.toLowerCase()
       category = category.replace(/\s/g, "-")
-      return new URL('../assets/img/filter-imgs/' + category.toLowerCase() + '.jpg', import.meta.url).href
+      return new URL('https://res.cloudinary.com/nogacloud/image/upload/v1659275431/filter-imgs/' + category.toLowerCase() + '.png', import.meta.url).href
     },
   },
   computed: {
