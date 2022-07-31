@@ -281,9 +281,10 @@
               <div>{{ formatedReviewTxt(stay.reviews[0].txt) }}</div>
             </div>
           </div>
-          <v-button class="show-reviews-btn" @click="showReviewsModal = true">
+          <!-- v-button -->
+          <button class="show-reviews-btn" @click="showReviewsModal = true">
             Show all {{ stay.reviews.length }} reviews
-          </v-button>
+          </button>
         </div>
       </section>
     </section>
@@ -406,7 +407,7 @@ export default {
       }
       else this.isMobile = false
     },
-    getRandomImg(){
+    getRandomImg() {
       let randomNum = Math.floor(Math.random() * (99 - 1) + 1)
       var gender = ['men', 'women']
       let randomGender = Math.floor(Math.random() * 2)
