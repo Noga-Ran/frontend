@@ -35,7 +35,7 @@ import appFooter from '../cmps/app-footer.vue'
       async login() {
         await this.$store.dispatch({type: 'login', cred: this.cred});
         // socketService.emit("set-user-socket", this.$store.getters.getUser._id)
-        // this.$router.push('/');
+        this.$router.push('/')
       },
     },
     mounted() {

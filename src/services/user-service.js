@@ -44,7 +44,7 @@ async function login(cred) {
     try{
         const user =  await httpService.post(ENDPOINT + '/login', cred)
         if (user) {
-            socketService.login(user._id)
+            userService.login(user._id)
             return saveLocalUser(user)
         }
         else{
@@ -57,7 +57,7 @@ async function login(cred) {
 }
 async function signup(cred) {
     const user = await httpService.post(ENDPOINT + '/signup', cred)
-    socketService.login(user._id)
+    userService.login(user._id)
     return saveLocalUser(user)
 }
 async function logout() {

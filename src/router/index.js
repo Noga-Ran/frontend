@@ -4,7 +4,7 @@ import hostPage from '../views/host-page.vue'
 import stayDetails from '../views/stay-details.vue'
 import wishList from '../views/wish-list.vue'
 import explore from '../views/explore.vue'
-import appChat from '../cmps/app-chat.vue'
+// import appChat from '../cmps/app-chat.vue'
 import login from '../views/login.vue'
 import signUp from '../views/sign-up.vue'
 
@@ -38,11 +38,11 @@ const router = createRouter({
       name: 'explore',
       component: explore,
     },
-    {
-    path: '/chat',
-    name: 'appChat',
-    component: appChat
-    },
+    // {
+    // path: '/chat',
+    // name: 'appChat',
+    // component: appChat
+    // },
     {
     path: '/login',
     name: 'login',
