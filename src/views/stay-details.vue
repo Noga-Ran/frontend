@@ -358,8 +358,7 @@ export default {
     },
     getImgUrl(idx) {
       const { imgUrls } = this.stay
-      return new URL('../assets/img/stays/' + imgUrls[idx], import.meta.url)
-        .href
+      return new URL('https://res.cloudinary.com/nogacloud/image/upload/v1659271395/stays/' + imgUrls[idx], import.meta.url)
     },
     toggleFavorite() {
       this.isFav = !this.isFav
