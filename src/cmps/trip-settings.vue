@@ -88,37 +88,39 @@
     </section>
   </section>
 
-
   <div class="order-sum-modal">
     <vue-final-modal v-model="showOrderSumModal" classes="modal-container" content-class="modal-content">
       <section class="modal-container">
         <div class="order-sum-container">
-          <button class="modal__close" @click="showOrderSumModal = false">
-            X
-          </button>
-          <h2 class="order-sum-title">
+          <h1 class="reserve-sum-title">One last step</h1>
+          <div>Dear guest, <br>
+          In order to complete your reservation, please confirm your trip details.
+          </div>
+          <div class="bold">Reservation Details</div>
+          <div><span class="bold">Dates:</span> {{ getDate(checkIn) }} - {{ getDate(checkOut) }}</div>
+          <div><span class="bold">Guests:</span> {{this.query.adults}} adults {{this.query.children }} children </div>  
 
-            Your order has been reserved
-          </h2>
-          <div class="bold">Order Details</div>
-          <div> <span class="bold">Name of stay:</span> {{ stay.name }}</div>
-          <div><span class="bold">Location: </span> {{ stay.address.city }}, {{ stay.address.country }}</div>
-          <div><span class="bold">Dates:</span> {{ getDate(checkIn) }} - {{ getDate(checkOut) }}, {{ stayDayAmount }}
-            nights</div>
-          <div><span class="bold">Number of guests:</span> {{ guests }} </div>
-          <div><span class="bold">Total price:</span> ${{ getPrice(stay.cleaningFee) }}</div>
-          <div class="btn-container" @click="showOrderSumModal = false">
+          <div>Price Details</div>
+          <div>${{ stay.price }} X {{  getStayLen() }} nights <span>${{ getPrice() }}</span></div>
+          <div>Service fee <span> ${{ stay.cleaningFee }}</span>
+          <div><span class="bold">Total</span> ${{ getPrice(stay.cleaningFee) }}</div>
+          </div>
+          <div>
+            <button @click="showOrderSumModal = false">Back</button>
+          <div class="btn-container">
             <div class="cell" v-for="currCell in 100" :key="currCell + 'second'"></div>
             <div class="content">
               <button class="action-btn">
-                <span class="word-btn">Contact my host</span>
+                <span class="word-btn">Confirm</span>
               </button>
             </div>
           </div>
         </div>
+        </div>
         <div>
           <img class="order-img" :src="getImgUrl(0)" alt="" />
-          <h2 class="enjoy-greeting">Enjoy your holiday!</h2>
+          <div class="bold">{{ stay.name }}</div>
+          <div class="bold">{{ stay.address.city }}, {{ stay.address.country }}</div>
         </div>
       </section>
     </vue-final-modal>
