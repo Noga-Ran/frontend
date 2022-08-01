@@ -91,22 +91,32 @@
   <div class="order-sum-modal">
     <vue-final-modal v-model="showOrderSumModal" classes="modal-container" content-class="modal-content">
       <section class="modal-container">
-        <div class="order-sum-container">
+        <div class="order-sum-top">
           <h1 class="reserve-sum-title">One last step</h1>
           <div>Dear guest, <br>
-          In order to complete your reservation, please confirm your trip details.
+            In order to complete your reservation, please confirm your trip details.
           </div>
+        </div>
+        <div class="order-sum-container">
           <div class="bold">Reservation Details</div>
-          <div><span class="bold">Dates:</span> {{ getDate(checkIn) }} - {{ getDate(checkOut) }}</div>
-          <div><span class="bold">Guests:</span> {{this.query.adults}} adults {{this.query.children }} children </div>  
-
-          <div>Price Details</div>
-          <div>${{ stay.price }} X {{  getStayLen() }} nights <span>${{ getPrice() }}</span></div>
-          <div>Service fee <span> ${{ stay.cleaningFee }}</span>
-          <div><span class="bold">Total</span> ${{ getPrice(stay.cleaningFee) }}</div>
+          <div><span class="bold">Trip Dates: <br> </span> {{ getDate(checkIn).slice(0,6) + '22' }} - {{ getDate(checkOut).slice(0,6) + '22' }}</div>
+          <div><span class="bold">Guests: <br></span> {{ this.query.adults }} adults {{ this.query.children }} children
           </div>
-          <div>
-            <button @click="showOrderSumModal = false">Back</button>
+          <div class="seperate-line"></div>
+          <div>Price Details</div>
+          <div>${{ stay.price }} X {{ getStayLen() }} nights <span>${{ getPrice() }}</span></div>
+          <div>Service fee <span> ${{ stay.cleaningFee }}</span>
+          </div>
+          <div class="seperate-line"></div>
+          <div><span class="">Total</span> ${{ getPrice(stay.cleaningFee) }}</div>
+        </div>
+        <div class="order-de">
+          <img class="order-img" :src="getImgUrl(0)" alt="" />
+          <div class="bold">{{ stay.name }}</div>
+          <div class="bold">{{ stay.address.city }}, {{ stay.address.country }}</div>
+        </div>
+        <div class="order-sum-btns">
+          <button @click="showOrderSumModal = false">Back</button>
           <div class="btn-container">
             <div class="cell" v-for="currCell in 100" :key="currCell + 'second'"></div>
             <div class="content">
@@ -115,12 +125,6 @@
               </button>
             </div>
           </div>
-        </div>
-        </div>
-        <div>
-          <img class="order-img" :src="getImgUrl(0)" alt="" />
-          <div class="bold">{{ stay.name }}</div>
-          <div class="bold">{{ stay.address.city }}, {{ stay.address.country }}</div>
         </div>
       </section>
     </vue-final-modal>
@@ -158,8 +162,8 @@ export default {
   },
   created() {
     this.loggedInUser = userService.getLoggedinUser()
-    if(this.loggedInUser){
-      this.$store.dispatch({type:'setUser', user:this.loggedInUser})
+    if (this.loggedInUser) {
+      this.$store.dispatch({ type: 'setUser', user: this.loggedInUser })
     }
     this.id = this.$route.params.id
     // this.stay = this.$store.getters.stayById(this.id)
@@ -189,7 +193,7 @@ export default {
     },
 
     getPrice(cleaningFee = 0) {
-      var price=+(this.stay.price * this.stayDayAmount + cleaningFee).toFixed(0)
+      var price = +(this.stay.price * this.stayDayAmount + cleaningFee).toFixed(0)
       return price.toLocaleString()
     },
     getDate(date) {
@@ -237,7 +241,6 @@ export default {
       // this.showModal = true
       // socketService.emit('chat topic', this.stay.host._id)
       // socketService.emit('chat newMsg', tripDetails)
-      this.$store.dispatch({ type: 'addTrip', trip: tripDetails })
       this.$store.dispatch({ type: 'addTrip', trip: tripDetails })
       // console.log('msg', msg);
     },
