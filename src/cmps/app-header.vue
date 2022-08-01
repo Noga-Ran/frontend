@@ -2,7 +2,7 @@
 <template>
     <section class="header-layout" :class="{ 'position-unset': isDetails }">
         <section :class="{ 'header-container-alt': isSearch, 'header-container': !isSearch }" class="details-padding">
-            <div class="logo-container" :class="{ 'grid-area-logo': isSearch }" @click.prevent="redirect">
+            <div class="logo-container" :class="{ 'grid-area-logo': isSearch }" @click.prevent="redirect('')">
                 <img src="../../public/favicon.png" alt="">
                 <p>skybnb</p>
             </div>
@@ -63,8 +63,8 @@ export default {
         setDate(date) {
             this.$emit('date', date)
         },
-        redirect() {
-            this.$router.push({path:`/`})
+        redirect(page) {
+            this.$router.push({path:`/${page}`})
             this.$store.dispatch({type:'clearFilter'})
         },
         setSearch(isSearching) {
