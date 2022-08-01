@@ -50,8 +50,8 @@
               <span v-if="(guests > 1)">{{ guests }} guests</span>
               <span v-else> 1 guest</span>
             </div>
-            <svg class="toggle-modal-svg" v-if="!showWho" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-              role="presentation" focusable="false"
+            <svg class="toggle-modal-svg" v-if="!showWho" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true" role="presentation" focusable="false"
               style="display: block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 4; overflow: visible;">
               <g fill="none">
                 <path
@@ -59,8 +59,8 @@
                 </path>
               </g>
             </svg>
-            <svg class="toggle-modal-svg" v-else viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
-              focusable="false"
+            <svg class="toggle-modal-svg" v-else viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true" role="presentation" focusable="false"
               style="display: block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 4; overflow: visible;">
               <g fill="none">
                 <path
@@ -72,7 +72,7 @@
           </div>
         </div>
 
-        <div class="btn-container show-order-sum-btn" :disabled="showWho" @click="saveTrip">
+        <div class="btn-container show-order-sum-btn" :disabled="showWho" @click="showOrderSumModal = true">
           <div class="cell" v-for="currCell in 100" :key="currCell"></div>
           <div class="content">
             <!-- v-button -->
@@ -120,7 +120,7 @@
           <div><span class="bold">Trip Dates: <br> </span> {{ getDate(checkIn).slice(0, 6) + '22' }} - {{
               getDate(checkOut).slice(0, 6) + '22'
           }}</div>
-          <div><span class="bold">Guests: <br></span> {{ this.query.adults }} adults {{ this.query.children }} children
+          <div><span class="bold">Guests: <br></span> {{ this.query.adults }} adults, {{ this.query.children }} children
           </div>
           <div class="seperate-line"></div>
           <div>Price Details</div>
@@ -137,7 +137,7 @@
         </div>
         <div class="order-sum-btns">
           <button @click="showOrderSumModal = false">Back</button>
-          <div class="btn-container">
+          <div class="btn-container" @click="saveTrip; redirect('user')">
             <div class="cell" v-for="currCell in 100" :key="currCell + 'second'"></div>
             <div class="content">
               <button class="action-btn">
@@ -221,7 +221,6 @@ export default {
       return date.toLocaleDateString('en-GB')
     },
     saveTrip() {
-      this.showOrderSumModal = true
       var tripDetails = {
         hostId: this.stay.host._id,
         hostName: this.stay.host.fullname,
@@ -231,6 +230,8 @@ export default {
           name: this.stay.name,
           price: this.stay.price
         },
+        stayAmount: this.stayDayAmount,
+        imgUrl: this.stay.imgUrls[0],
         startDate: this.getDate(this.checkIn),
         endDate: this.getDate(this.checkOut),
         createdAt: Date.now(),
@@ -242,27 +243,8 @@ export default {
         guests: this.guests,
         status: "pending"
       }
-
-      // const msg = { from: 'system', txt: 'your order was reserved', at: Date.now(), to: this.loggedInUser.fullname, toId: this.loggedInUser._id }
-      // // msg: { from: 'Guest', txt: '', at: '',to:'',fromId:'',toId:''},
-
-      // socketService.emit('chat topic', this.stay.host._id)
-      // socketService.emit('chat newMsg', { from: 'system', txt: 'a stay of yours was reserved', at: Date.now(), tripDetails, to: this.stay.host.fullname, toId: this.stay.host._id })
-
-      // var chatTopic = this.loggedInUser._id
-      // socketService.emit('chat topic', chatTopic)
-      // socketService.emit('chat newMsg', msg)
-      // socketService.emit('chat newMsg',
-      //   { from: this.stay.host.fullname, fromId: tripDetails.hostId, to: this.loggedInUser.fullname, toId: this.loggedInUser._id, txt: 'Contact me about anything!', at: Date.now(), tripDetails })
-
-      // console.log('tripDetails: ', tripDetails)
-      // this.open1('Your trip was successfully reserved')
-
-      // this.showModal = true
-      // socketService.emit('chat topic', this.stay.host._id)
-      // socketService.emit('chat newMsg', tripDetails)
       this.$store.dispatch({ type: 'addTrip', trip: tripDetails })
-      // console.log('msg', msg);
+      this.$router.push({ path: `/` })
     },
     setActive(elElement) {
       var elActiveArea = document.querySelector('.searchbar-selected-filter')
@@ -303,6 +285,9 @@ export default {
       var average = (accuracy + checkin + cleanliness + communication + location + value) / 6
       this.averageRating = average / 2
       return this.averageRating.toFixed(1)
+    },
+    redirect(page) {
+      this.$router.push({ path: `/${page}` })
     },
   },
   computed: {
