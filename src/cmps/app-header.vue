@@ -3,7 +3,7 @@
     <section class="header-layout" :class="{ 'position-unset': isDetails }">
         <section :class="{ 'header-container-alt': isSearch, 'header-container': !isSearch }" class="details-padding">
             <div class="logo-container" :class="{ 'grid-area-logo': isSearch }" @click.prevent="redirect('')">
-                <img src="../../public/favicon.png" alt="">
+                <img src="https://res.cloudinary.com/nogacloud/image/upload/v1659367634/other/favicon.png" alt="">
                 <p>skybnb</p>
             </div>
             <filter-cmp @closeHeader="closeHeader" @search="setSearch" @filter="setFilter" @date="setDate"
@@ -13,12 +13,12 @@
                     Become a Host
                 </div>
                 <div>
-                    <img class="globe-img" src="../assets/img/globe.svg" alt="">
+                    <img class="globe-img" src="https://res.cloudinary.com/nogacloud/image/upload/v1659275571/other/globe.svg" alt="">
                 </div>
                 <section @click.prevent="showMenu = !showMenu">
                     <div class="header-user-options">
                         <section>
-                            <img class="navburger-svg" src="../assets/img/navburger.svg" alt="">
+                            <img class="navburger-svg" src="https://res.cloudinary.com/nogacloud/image/upload/v1659275569/other/navburger.svg" alt="">
                         </section>
                         <section class="header-profile-img">
                             <img :src="getImg()" alt="">
