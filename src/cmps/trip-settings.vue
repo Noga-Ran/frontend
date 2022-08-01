@@ -236,7 +236,6 @@ export default {
       // socketService.emit('chat topic', this.stay.host._id)
       // socketService.emit('chat newMsg', tripDetails)
       this.$store.dispatch({ type: 'addTrip', trip: tripDetails })
-      this.$store.dispatch({ type: 'addTrip', trip: tripDetails })
       // console.log('msg', msg);
     },
     setActive(elElement) {

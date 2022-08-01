@@ -1,6 +1,5 @@
 
 <template>
-<pre>{{pre}}</pre>
     <section class="header-layout" :class="{ 'position-unset': isDetails }">
         <section :class="{ 'header-container-alt': isSearch, 'header-container': !isSearch }" class="details-padding">
             <div class="logo-container" :class="{ 'grid-area-logo': isSearch }" @click.prevent="redirect">
@@ -93,8 +92,6 @@ export default {
     },
     components: {
         filterCmp
-    },
-    created(){
     }
 }
 </script>
