@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section class="host-page-container">
         <app-header-vue />
         <section class="host-page-layout" v-if="!this.isFullList">
         <h1>My Orders</h1>
@@ -7,9 +7,9 @@
             <section v-if="isLoggedIn" class="host-layout-bottom">
                 <orders-short :orders="orders"/>
             </section>
-            <section v-if="isLoggedIn" class="host-layout-top">
-                <dash-boards />
-            </section>
+            <!-- <section v-if="isLoggedIn" class="host-layout-top"> -->
+                <!-- <dash-boards /> -->
+            <!-- </section> -->
         </section>
         </section>
         <!-- <section v-else>

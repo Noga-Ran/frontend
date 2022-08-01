@@ -1,5 +1,5 @@
 <template>
-    <div class="short-list-heading"><div>Latest pending orders</div><div @click="toggleList">{{listOption}}</div></div>
+    <div class="short-list-heading"><div>Latest orders</div><div @click="toggleList">{{listOption}}</div></div>
     <div class="host-short-list " v-for="order in orders.slice(0, this.cut)" :key="order._id">
         <img :src="order.buyer.buyerImg" />
         <div class="host-short-details">

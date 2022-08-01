@@ -48,3 +48,32 @@
   }
 
 }
+
+@media screen and (max-width:770px) {
+  .header-filter-layout {
+    padding: 0;
+    padding-right: 25px !important;
+  }
+
+  .logo-container p {
+    display: none;
+  }
+
+  .become-a-host {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width:770px) {
+  .trip-container {
+    img {
+      width: 30%;
+    }
+  }
+
+  .trips-table-layout p:last-of-type {
+    display: flex;
+    justify-content: end;
+    width: 138% !important;
+  }
+}
