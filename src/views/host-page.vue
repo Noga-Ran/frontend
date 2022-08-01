@@ -49,6 +49,7 @@ export default {
                 this.isLoggedIn = await true
                 this.orders = JSON.parse(JSON.stringify(this.orders))
                 this.orders = this.orders.filter(order => order.hostId === this.user._id)
+                this.orders = this.orders.sort((objA, objB) =>  Number(objB.createdAt) - Number(objA.createdAt))
             }
         }
     },
