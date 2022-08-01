@@ -72,7 +72,7 @@ export default {
         toggleList(){
             if(this.listOption === 'Show More') {
                 this.listOption = 'Show Less'
-                this.cut = this.orders.length-1
+                this.cut = this.orders.length
             }
             else {
                 this.cut = 3

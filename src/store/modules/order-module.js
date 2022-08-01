@@ -22,8 +22,8 @@ export default {
       var orders = await tripService.query()
       commit({ type: 'setOrders', orders })
     },
-    async saveOrder({commit,state},{order}){
-      await tripService.save(order)
+    async addTrip({commit,state},{trip}){
+      await tripService.save(trip)
     }
   },
 }
