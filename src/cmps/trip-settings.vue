@@ -100,7 +100,7 @@
         <div class="order-sum-container">
           <div class="bold">Reservation Details</div>
           <div><span class="bold">Trip Dates: <br> </span> {{ getDate(checkIn).slice(0,6) + '22' }} - {{ getDate(checkOut).slice(0,6) + '22' }}</div>
-          <div><span class="bold">Guests: <br></span> {{ this.query.adults }} adults {{ this.query.children }} children
+          <div><span class="bold">Guests: <br></span> {{ this.query.adults }} adults, {{ this.query.children }} children
           </div>
           <div class="seperate-line"></div>
           <div>Price Details</div>
@@ -117,7 +117,7 @@
         </div>
         <div class="order-sum-btns">
           <button @click="showOrderSumModal = false">Back</button>
-          <div class="btn-container" @click="saveTrip">
+          <div class="btn-container" @click="saveTrip; redirect('user')">
             <div class="cell" v-for="currCell in 100" :key="currCell + 'second'"></div>
             <div class="content">
               <button class="action-btn">
@@ -266,6 +266,9 @@ export default {
       this.averageRating = average / 2
       return this.averageRating.toFixed(1)
     },
+     redirect(page) {
+            this.$router.push({path:`/${page}`})
+        },
   },
   computed: {
   },
