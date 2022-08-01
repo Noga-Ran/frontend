@@ -245,7 +245,7 @@ export default {
         status: "pending"
       }
       this.$store.dispatch({ type: 'addTrip', trip: tripDetails })
-       this.$router.push({ path: `/` })
+       this.$router.push({ path: `/user` })
     },
     setActive(elElement) {
       var elActiveArea = document.querySelector('.searchbar-selected-filter')
