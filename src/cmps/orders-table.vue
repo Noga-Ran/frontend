@@ -10,7 +10,6 @@
                 <th>booked by</th>
                 <th>nights</th>
                 <th>guests</th>
-                <th>ppn</th>
                 <th>total</th>
                 <th>status</th>
                 <th>actions</th>
@@ -39,9 +38,6 @@
                 </td>
                 <td class="tac">
                     <div class="td-content-container">{{ order.guests }}</div>
-                </td>
-                <td class="money-class tac">
-                    <div class="td-content-container"> $ {{ order.stay.price }}</div>
                 </td>
                 <td class="money-class tac">
                     <div class="td-content-container"> $ {{ order.totalPrice }}</div>

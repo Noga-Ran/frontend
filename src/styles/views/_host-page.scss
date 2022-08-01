@@ -27,8 +27,9 @@
     section {
         display: flex;
         justify-content: center;
-     &:last-of-type{
-         align-items: center;
+
+        &:last-of-type {
+            align-items: center;
         }
     }
 }
@@ -145,13 +146,14 @@
             border-radius: 50%;
 
             &:first-of-type {
-                background-color: #9efdb9ea;
-                outline: 0.5px solid transparent;
                 cursor: pointer;
                 transition: 0.3s;
+                border: 1px solid black;
+                background-color: #df1461;
+                color: white !important;
 
                 &:hover {
-                    outline: 0.5px solid black;
+                    background-color: #cb195e;
                 }
             }
 

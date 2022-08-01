@@ -1,16 +1,18 @@
 <template>
-    <div class="orders-table-layout" v-for="order in orders" :key="7 + order">
-        <!-- {{ this.getStayName(order) }}
-        <div class="">{{ getDate(order.createdAt) }} </div>
-        <div class="">{{ order.buyer.fullname }}</div>
-        <div class="">{{ getDate(order.startDate, true) }} - {{ getDate(order.endDate, true)
-        }}</div>
-        <div class="">{{ getNightsCount(order) }}</div>
-        <div class="">{{ order.guests }}</div>
-        <div class=""> $ {{ order.stay.price }}</div>
-        <div class=""> $ {{ order.totalPrice }}</div>
-        <div class="">{{ order.status }}</div> -->
-        {{ order }}
+    <div class="short-list-heading"><div>Latest pending orders</div><div>Show more</div></div>
+    <div class="host-short-list " v-for="order in orders.slice(0, 3)" :key="7 + order">
+        <img :src="order.buyer.buyerImg" />
+        <div class="host-short-details">
+            <div class="bold">{{ order.buyer.fullname }}</div>
+            <div>{{ this.getStayName(order) }}</div>
+            <div class="">{{ getDate(order.startDate, true) }} - {{ getDate(order.endDate, true)
+            }}</div>
+            <div class="bold"> ${{ order.totalPrice }}</div>
+        </div>
+        <div class="short-list-btns">
+            <div class="host-order-accept host-orderd-accept">Approve</div>
+            <div class="host-order-reject">Reject</div>
+        </div>
     </div>
 </template>
 <script>
@@ -29,7 +31,7 @@ export default {
     methods: {
         getDate(num, isDdMm = false) {
             if (isDdMm) {
-                return num.slice(0, 5)
+                return num.slice(0, 6) + "22"
             }
             return new Date(num).toLocaleDateString('en-GB')
         },
@@ -40,10 +42,9 @@ export default {
             })
         },
         getStayName(order) {
-            console.log('order: ', order)
-            if (order.stay.name.length > 17) {
+            if (order.stay.name.length > 26) {
                 var shortenName = JSON.parse(JSON.stringify(order.stay.name))
-                return (shortenName.slice(0, 12) + "...")
+                return (shortenName.slice(0, 21) + "...")
             }
             return order.stay.name
         },

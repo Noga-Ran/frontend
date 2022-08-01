@@ -478,13 +478,14 @@
 }
 
 .order-de {
+  box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+  border: 0.7px solid rgb(221, 221, 221);
   font-style: 14px;
   margin-left: 70px;
   width: min-content;
   grid-column: 2;
   grid-row: 2;
   height: fit-content;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 10px;
   border-radius: 8px;
   // margin-top: 14px;
