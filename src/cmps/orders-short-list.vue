@@ -29,7 +29,7 @@ export default {
     data() {
         return {
             listOption: 'Show More',
-            cut: 3
+            cut: 4
         };
     },
     created() {
