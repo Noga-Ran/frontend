@@ -1,24 +1,26 @@
 <template>
     <div class="orders-table-layout">
-        <h3> Your Orders <img src="../assets/img/order-list-header.svg"></h3>
+        <h3> Your Orders </h3>
+        <!-- <img src="../assets/img/order-list-header.svg"></img> -->
         <table class="orders-table-container">
             <tr>
-                <th></th>
-                <th>Stay Name</th>
-                <th>Booked At</th>
-                <th>Booked By</th>
-                <th>Booked for</th>
-                <th>Nights</th>
-                <th>Guests</th>
-                <th>PPN</th>
-                <th>Total</th>
-                <th>Status</th>
+                <th>booked for</th>
+                <th>stay name</th>
+                <th>booked at</th>
+                <th>booked by</th>
+                <th>nights</th>
+                <th>guests</th>
+                <th>ppn</th>
+                <th>total</th>
+                <th>status</th>
+                <th>actions</th>
             </tr>
             <tr v-for="order in orders" :key="order.id">
-                <div class="order-actions">
-                    <img src="../assets/img/tick.svg" alt="">
-                    <img src="../assets/img/x.svg" alt="">
-                </div>
+                <td>
+                    <div class="td-content-container">{{ getDate(order.startDate, true) }} - {{ getDate(order.endDate,
+                            true)
+                    }}</div>
+                </td>
                 <td class="host-page-stay-name">
                     <div class="td-content-container">
 
@@ -31,11 +33,7 @@
                 <td class="tac">
                     <div class="td-content-container">{{ order.buyer.fullname }}</div>
                 </td>
-                <td>
-                    <div class="td-content-container">{{ getDate(order.startDate, true) }} - {{ getDate(order.endDate,
-                            true)
-                    }}</div>
-                </td>
+
                 <td class="tac">
                     <div class="td-content-container">{{ getNightsCount(order) }}</div>
                 </td>
@@ -51,6 +49,10 @@
                 <td>
                     <div class="td-content-container">{{ order.status }}</div>
                 </td>
+                <div class="order-actions">
+                    <img src="../assets/img/tick.svg" alt="">
+                    <img src="../assets/img/x.svg" alt="">
+                </div>
             </tr>
         </table>
     </div>
@@ -93,10 +95,10 @@ export default {
             // const date2 = new Date(order.endDate)
             // const diffTime = Math.abs(date2 - date1)
             // const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
-        //    לתקן
-           const diffDays = + order.endDate.slice(0,2) - +order.startDate.slice(0,2)
-           return diffDays
-           
+            //    לתקן
+            const diffDays = + order.endDate.slice(0, 2) - +order.startDate.slice(0, 2)
+            return diffDays
+
         }
     },
     computed: {
