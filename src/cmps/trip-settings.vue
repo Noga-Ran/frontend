@@ -137,7 +137,7 @@
         </div>
         <div class="order-sum-btns">
           <button @click="showOrderSumModal = false">Back</button>
-          <div class="btn-container" @click="saveTrip; redirect('user')">
+          <div class="btn-container" @click="saveTrip">
             <div class="cell" v-for="currCell in 100" :key="currCell + 'second'"></div>
             <div class="content">
               <button class="action-btn">
@@ -237,14 +237,15 @@ export default {
         createdAt: Date.now(),
         buyer: {
           _id: this.loggedInUser._id || Date.now(),
-          fullname: this.loggedInUser.fullname || 'guest'
+          fullname: this.loggedInUser.fullname || 'guest',
+          buyerImg: this.loggedInUser.imgUrl || 'https://res.cloudinary.com/nogacloud/image/upload/v1659275569/other/demo-profile-img.svg',
         },
         totalPrice: this.getPrice(this.stay.cleaningFee),
         guests: this.guests,
         status: "pending"
       }
       this.$store.dispatch({ type: 'addTrip', trip: tripDetails })
-      this.$router.push({ path: `/` })
+       this.$router.push({ path: `/` })
     },
     setActive(elElement) {
       var elActiveArea = document.querySelector('.searchbar-selected-filter')
@@ -286,9 +287,9 @@ export default {
       this.averageRating = average / 2
       return this.averageRating.toFixed(1)
     },
-    redirect(page) {
-      this.$router.push({ path: `/${page}` })
-    },
+    // redirect(page) {
+    //   this.$router.push({ path: `/${page}` })
+    // },
   },
   computed: {
   },

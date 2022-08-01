@@ -1,7 +1,16 @@
 <template>
-    <div class="orders-table-layout">
-        <h3>Trips <img src="https://res.cloudinary.com/nogacloud/image/upload/v1659338315/other/travel.svg"></h3>
-        <table class="orders-table-container">
+    <div class="trips-table-layout">
+        <h3>Trips <img src="https://www.svgrepo.com/show/233635/suitcase.svg"></h3>
+        <div class="trips-container" v-for="order in orders" :key="order._id">
+            <section class="trip-container">
+                <img :src="getImg(order.imgUrl)" alt="">
+                <section class="trip-details">
+                    <p>details</p>
+                    <p>more details</p>
+                </section>
+            </section>
+        </div>
+        <!-- <table class="orders-table-container">
             <tr>
                 <th>Stay Name</th>
                 <th>Booked At</th>
@@ -37,7 +46,7 @@
                     <div class="td-content-container">{{ order.status }}</div>
                 </td>
             </tr>
-        </table>
+        </table> -->
     </div>
 </template>
 <script>
@@ -75,7 +84,10 @@ export default {
             const diffTime = Math.abs(date2 - date1);
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
             return diffDays
-        }
+        },
+        getImg(imgName) {
+            return new URL('../assets/img/stays/' + imgName, import.meta.url).href
+        },
     },
     computed: {
     },
