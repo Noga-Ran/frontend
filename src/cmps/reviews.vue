@@ -28,7 +28,8 @@
         <div class="reviews-txt-container">
           <!-- <div>{{ review.txt }}</div> -->
           <div>{{ formatedReviewTxt(review.txt) }}</div>
-          <div class="show-more-review-container" v-if="this.isLongTxt">
+          <!-- <div class="show-more-review-container" v-if="this.isLongTxt"> -->
+          <div class="show-more-review-container" v-if="review.txt.length>156">
       <!-- v-button -->
             <button class="show-more-review-btn" @click="showReviewsModal = true">
               Show more
