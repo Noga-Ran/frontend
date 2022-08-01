@@ -19,7 +19,7 @@ export default {
     loadTrips(state, { trips }) {
       state.trips = trips
     },
-    addTrip(state, { trip }) {
+    addToTrips(state, { trip }) {
       console.log('trip', trip)
       state.trips.push(trip)
     },
@@ -34,7 +34,7 @@ export default {
     },
     async addTrip({ commit }, { trip }) {
       await tripService.save(trip)
-      commit({ type: 'addTrip', trip })
+      commit({ type: 'addToTrips', trip })
     },
     async removeTrip({ commit }, { tripId }) {
       await tripService.remove(tripId)
