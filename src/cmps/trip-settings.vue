@@ -99,7 +99,7 @@
         </div>
         <div class="order-sum-container">
           <div class="bold">Reservation Details</div>
-          <div><span class="bold">Trip Dates: <br> </span> {{ getDate(checkIn) }} - {{ getDate(checkOut) }}</div>
+          <div><span class="bold">Trip Dates: <br> </span> {{ getDate(checkIn).slice(0,6) + '22' }} - {{ getDate(checkOut).slice(0,6) + '22' }}</div>
           <div><span class="bold">Guests: <br></span> {{ this.query.adults }} adults {{ this.query.children }} children
           </div>
           <div class="seperate-line"></div>
@@ -108,7 +108,7 @@
           <div>Service fee <span> ${{ stay.cleaningFee }}</span>
           </div>
           <div class="seperate-line"></div>
-          <div><span class="bold">Total</span> ${{ getPrice(stay.cleaningFee) }}</div>
+          <div><span class="">Total</span> ${{ getPrice(stay.cleaningFee) }}</div>
         </div>
         <div class="order-de">
           <img class="order-img" :src="getImgUrl(0)" alt="" />
