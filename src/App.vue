@@ -9,7 +9,10 @@ export default {
     RouterView
   },
   created() {
-
+    this.loggedInUser = userService.getLoggedinUser()
+    if (this.loggedInUser) {
+      this.$store.dispatch({ type: 'setUser', user: this.loggedInUser })
+    }
   },
   
 }

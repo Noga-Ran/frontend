@@ -154,8 +154,8 @@ export default {
             }
         },
         getRandomDates() {
-            var checkInPrev=this.getRandomDay(3, 16)
-            var checkOutPrev=this.getRandomDay(17, 29)
+            var checkInPrev= 3
+            var checkOutPrev=this.getRandomDay(5, 29)
             this.nights= checkOutPrev- checkInPrev
             this.totalPrice= (this.currStay.price* this.nights).toLocaleString()
             return 'Aug  ' + checkInPrev  + ' - Aug ' + checkOutPrev

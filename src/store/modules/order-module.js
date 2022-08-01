@@ -18,9 +18,12 @@ export default {
     },
   },
   actions: {
-    async loadOrders({ commit, state },) {
+    async loadOrders({ commit, state }) {
       var orders = await tripService.query()
       commit({ type: 'setOrders', orders })
     },
+    async saveOrder({commit,state},{order}){
+      await tripService.save(order)
+    }
   },
 }

@@ -8,8 +8,7 @@ export const tripService = {
     query,
     getById,
     remove,
-    // save,
-    update,
+    save,
 }
 
 async function query() {
@@ -20,7 +19,7 @@ async function remove(tripId){
     return await httpService.delete(ENDPOINT+'/'+tripId)
 }
 
-async function update(trip){
+async function save(trip){
     var trip = JSON.parse(JSON.stringify(trip));
   if (trip._id) {
     return await httpService.put(`${ENDPOINT}/${trip._id}`, trip);

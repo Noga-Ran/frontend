@@ -9,7 +9,7 @@
             <filter-cmp @closeHeader="closeHeader" @search="setSearch" @filter="setFilter" @date="setDate"
                 :isSearch="isSearch" :isDetails="isDetails" />
             <div class="header-tools-container" :class="{ 'grid-area-user': isSearch }">
-                <div class="become-a-host" @click="redirect('host')">
+                <div class="become-a-host" @click="goTo('host')">
                     Become a Host
                 </div>
                 <div>
@@ -25,7 +25,6 @@
                         </section>
                     </div>
                     <section class="user-menu" v-if="showMenu">
-                        <p @click.stop="goTo('chat')">Messages</p>
                         <p @click.stop="goTo('wishList')">Wish List</p>
                         <p @click.stop="goTo('user')">Trips</p>
                         <p v-if="!user" @click.stop="goTo('login')">Login</p>
@@ -71,8 +70,8 @@ export default {
         setSearch(isSearching) {
             this.isSearch = isSearching
         },
-        goTo(link) {
-            this.$router.push(`/${link}`)
+        goTo(page) {
+            this.$router.push(`/${page}`)
         },
         wishList() {
             return this.$store.getters.wishList

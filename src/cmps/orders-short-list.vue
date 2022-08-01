@@ -1,6 +1,6 @@
 <template>
-    <div class="short-list-heading"><div>Latest pending orders</div><div>Show more</div></div>
-    <div class="host-short-list " v-for="order in orders.slice(0, 3)" :key="7 + order">
+    <div class="short-list-heading"><div>Latest pending orders</div><div @click="toggleList">{{listOption}}</div></div>
+    <div class="host-short-list " v-for="order in orders.slice(0, this.cut)" :key="order._id">
         <img :src="order.buyer.buyerImg" />
         <div class="host-short-details">
             <div class="bold">{{ order.buyer.fullname }}</div>
@@ -9,9 +9,12 @@
             }}</div>
             <div class="bold"> ${{ order.totalPrice }}</div>
         </div>
-        <div class="short-list-btns">
-            <div class="host-order-accept host-orderd-accept">Approve</div>
+        <div class="short-list-btns" v-if="(order.status)==='pending'">
+            <div class="host-order-accept host-orderd-accept" @click="aprroveOrder(order)">Approve</div>
             <div class="host-order-reject">Reject</div>
+        </div>
+        <div v-else class="accept-list-btns">
+            <div class="order-approved">Approved!</div>
         </div>
     </div>
 </template>
@@ -24,6 +27,8 @@ export default {
     },
     data() {
         return {
+            listOption: 'Show More',
+            cut: 3
         };
     },
     created() {
@@ -63,6 +68,20 @@ export default {
             var gender = ['men', 'women']
             let randomGender = Math.floor(Math.random() * 2)
             return `https://randomuser.me/api/portraits/${gender[randomGender]}/${randomNum}.jpg`
+        },
+        toggleList(){
+            if(this.listOption === 'Show More') {
+                this.listOption = 'Show Less'
+                this.cut = this.orders.length-1
+            }
+            else {
+                this.cut = 3
+                this.listOption = 'Show More'
+            } 
+        },
+        aprroveOrder(order){
+            order.status = 'approved'
+            this.$store.dispatch({type:'saveOrder',order})
         }
     },
     computed: {

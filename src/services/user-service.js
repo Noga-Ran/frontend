@@ -74,7 +74,6 @@ function saveLocalUser(user) {
     return user
 }
 
-
 async function getById(stayId){
     var user = httpService.get(USERENDPOINT+'/'+stayId)
     console.log(user)
