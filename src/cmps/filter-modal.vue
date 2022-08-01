@@ -13,55 +13,12 @@
                     <div class="modal" v-if="showModal">
                         <button class="close" @click="showModal = false">x</button>
                         <div class="searchs">
-                            <!-- <div class="recent-search">
-                                <div class="recents-header">Recent searches</div><br>
-                                <span>
-                                    <div class="recent-svg"><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
-                                            aria-hidden="true" role="presentation" focusable="false"
-                                            style="display: block; height: 22px; width: 22px; fill: currentcolor;">
-                                            <path
-                                                d="m15.9999.3335c8.6524795 0 15.6667 7.01422051 15.6667 15.6667 0 8.6524795-7.0142205 15.6667-15.6667 15.6667-8.65247949 0-15.6667-7.0142205-15.6667-15.6667 0-8.65247949 7.01422051-15.6667 15.6667-15.6667zm0 2c-7.54790999 0-13.6667 6.11879001-13.6667 13.6667 0 7.54791 6.11879001 13.6667 13.6667 13.6667 7.54791 0 13.6667-6.11879 13.6667-13.6667 0-7.54790999-6.11879-13.6667-13.6667-13.6667zm1.0001 3v10.0895l8.7375978 5.0444733-.9999956 1.7320534-9.7376022-5.6219748v-11.2440519z">
-                                            </path>
-                                        </svg></div>
-                                    <div>New York</div>
-                                </span>
-                                <span>
-                                    <div class="recent-svg"><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
-                                            aria-hidden="true" role="presentation" focusable="false"
-                                            style="display: block; height: 22px; width: 22px; fill: currentcolor;">
-                                            <path
-                                                d="m15.9999.3335c8.6524795 0 15.6667 7.01422051 15.6667 15.6667 0 8.6524795-7.0142205 15.6667-15.6667 15.6667-8.65247949 0-15.6667-7.0142205-15.6667-15.6667 0-8.65247949 7.01422051-15.6667 15.6667-15.6667zm0 2c-7.54790999 0-13.6667 6.11879001-13.6667 13.6667 0 7.54791 6.11879001 13.6667 13.6667 13.6667 7.54791 0 13.6667-6.11879 13.6667-13.6667 0-7.54790999-6.11879-13.6667-13.6667-13.6667zm1.0001 3v10.0895l8.7375978 5.0444733-.9999956 1.7320534-9.7376022-5.6219748v-11.2440519z">
-                                            </path>
-                                        </svg></div>
-                                    <div>Spain</div>
-                                </span>
-                                <span>
-                                    <div class="recent-svg"><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
-                                            aria-hidden="true" role="presentation" focusable="false"
-                                            style="display: block; height: 22px; width: 22px; fill: currentcolor;">
-                                            <path
-                                                d="m15.9999.3335c8.6524795 0 15.6667 7.01422051 15.6667 15.6667 0 8.6524795-7.0142205 15.6667-15.6667 15.6667-8.65247949 0-15.6667-7.0142205-15.6667-15.6667 0-8.65247949 7.01422051-15.6667 15.6667-15.6667zm0 2c-7.54790999 0-13.6667 6.11879001-13.6667 13.6667 0 7.54791 6.11879001 13.6667 13.6667 13.6667 7.54791 0 13.6667-6.11879 13.6667-13.6667 0-7.54790999-6.11879-13.6667-13.6667-13.6667zm1.0001 3v10.0895l8.7375978 5.0444733-.9999956 1.7320534-9.7376022-5.6219748v-11.2440519z">
-                                            </path>
-                                        </svg></div>
-                                    <div>Us</div>
-                                </span>
-                                <span>
-                                    <div class="recent-svg"><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
-                                            aria-hidden="true" role="presentation" focusable="false"
-                                            style="display: block; height: 22px; width: 22px; fill: currentcolor;">
-                                            <path
-                                                d="m15.9999.3335c8.6524795 0 15.6667 7.01422051 15.6667 15.6667 0 8.6524795-7.0142205 15.6667-15.6667 15.6667-8.65247949 0-15.6667-7.0142205-15.6667-15.6667 0-8.65247949 7.01422051-15.6667 15.6667-15.6667zm0 2c-7.54790999 0-13.6667 6.11879001-13.6667 13.6667 0 7.54791 6.11879001 13.6667 13.6667 13.6667 7.54791 0 13.6667-6.11879 13.6667-13.6667 0-7.54790999-6.11879-13.6667-13.6667-13.6667zm1.0001 3v10.0895l8.7375978 5.0444733-.9999956 1.7320534-9.7376022-5.6219748v-11.2440519z">
-                                            </path>
-                                        </svg></div>
-                                    <div>hong kong</div>
-                                </span>
-                            </div> -->
                             <div class="search-region">
                                 <p>Search by region</p>
                                 <div class="imgs-container">
                                     <div v-for="(label, idx) in countryLabels" :key="label" @click="setWhere(label)">
                                         <img v-if="label != 'Im flexiable'" :src="getImgUrl(label)" alt="" />
-                                        <img v-else src="../assets/img/countries/world.png" alt="" />
+                                        <img v-else src="https://res.cloudinary.com/nogacloud/image/upload/v1659290575/countries/world.jpg" alt="" />
                                         <p>{{ label }}</p>
                                     </div>
                                 </div>
@@ -182,7 +139,8 @@ export default {
         },
         getImgUrl(country) {
             // const { imgUrls } = this.stay
-            return new URL('../assets/img/countries/' + country + '.png', import.meta.url).href
+            country = country.replace(' ','_')
+            return new URL('https://res.cloudinary.com/nogacloud/image/upload/v1659292790/countries/' + country, import.meta.url).href
         },
         setWhere(country) {
             if (country !== 'Im flexiable') {
