@@ -200,7 +200,7 @@ export default {
   methods: {
     getImgUrl(idx) {
       const { imgUrls } = this.stay
-      return new URL('../assets/img/stays/' + imgUrls[idx], import.meta.url)
+      return new URL('https://res.cloudinary.com/nogacloud/image/upload/v1659274509/stays/' + imgUrls[idx], import.meta.url)
         .href
     },
 
