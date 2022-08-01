@@ -93,7 +93,7 @@ export default {
             return diffDays
         },
         getImg(imgName) {
-            return new URL('../assets/img/stays/' + imgName, import.meta.url).href
+            return new URL('https://res.cloudinary.com/nogacloud/image/upload/v1659274509/stays/' + imgName, import.meta.url).href
         },
     },
     computed: {

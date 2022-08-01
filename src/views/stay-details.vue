@@ -283,7 +283,7 @@
           </div>
           <!-- v-button -->
           <button class="show-reviews-btn" @click="showReviewsModal = true">
-            Show all {{ stay.reviews.length }} reviews
+            Show all 120 reviews
           </button>
         </div>
       </section>
