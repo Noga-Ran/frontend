@@ -1,13 +1,20 @@
 <template>
+    <h3>My Trips<img src="https://www.svgrepo.com/show/233635/suitcase.svg"></h3>
     <div class="trips-table-layout">
-        <h3>Trips <img src="https://www.svgrepo.com/show/233635/suitcase.svg"></h3>
-        <div class="trips-container" v-for="order in orders" :key="order._id">
-            <section class="trip-container">
-                <img :src="getImg(order.imgUrl)" alt="">
-                <section class="trip-details">
-                    <p>details</p>
-                    <p>more details</p>
-                </section>
+        <div class="trip-container" v-for="order in orders" :key="order._id">
+            <img :src="getImg(order.imgUrl)" alt="">
+            <section class="user-trip-details">
+                <p>{{ order.stay.name }}</p>
+                <!-- <p>{{ order.startDate }} - {{ order.endDate }},<span v-if="order.stayAmount > 1"> {{
+                        order.stayAmount
+                }} &nbsp;nights</span><span v-else> {{ order.stayAmount }},&nbsp;night</span></p> -->
+                <p v-if="order.stayAmount > 1">{{ order.startDate }} - {{ order.endDate }}, <span>{{order.stayAmount}} nights</span></p>
+                <p v-else>{{ order.startDate }} - {{ order.endDate }}, <span>{{order.stayAmount}} night</span></p>
+                <p v-if="order.guests > 1">{{ order.guests }} guests</p>
+                <p v-else>{{ order.guests }} guest</p>
+                <p><span>Total</span>: ${{ order.totalPrice }}</p>
+                <p><span>Status:&nbsp;</span><span :class="{ 'trip-pending': order.status === 'pending' }">{{ order.status }}</span>
+                </p>
             </section>
         </div>
         <!-- <table class="orders-table-container">
@@ -58,7 +65,7 @@ export default {
     },
     data() {
         return {
-            stay:null
+            stay: null
         };
     },
     created() {
@@ -78,7 +85,7 @@ export default {
             return order.stay.name
         },
         getNightsCount(order) {
-            console.log(typeof(order.startDate),typeof(order.endDate))
+            console.log(typeof (order.startDate), typeof (order.endDate))
             const date1 = new Date(order.startDate);
             const date2 = new Date(order.endDate);
             const diffTime = Math.abs(date2 - date1);
