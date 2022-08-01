@@ -7,6 +7,7 @@
         </section>
         <section class="host-layout-bottom">
             <orders-table :orders="orders" />
+            <orders-short :orders="orders" />
         </section>
     </section>
 </template>
@@ -15,12 +16,14 @@
 import appHeader from '../cmps/app-header.vue'
 import dashBoards from '../cmps/dashboards.vue'
 import ordersTable from '../cmps/orders-table.vue'
+import ordersShort from '../cmps/orders-short-list.vue'
 
 export default {
     components: {
         appHeader,
         dashBoards,
         ordersTable,
+        ordersShort
     },
     data() {
         return {
