@@ -83,7 +83,7 @@ export default {
         },
         aprroveOrder(order){
             order.status = 'approved'
-            this.$store.dispatch({type:'saveOrder',order})
+            this.$store.dispatch({type:'addTrip',trip:order})
         }
     },
     computed: {

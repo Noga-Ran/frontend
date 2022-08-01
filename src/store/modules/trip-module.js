@@ -33,7 +33,7 @@ export default {
       commit({ type: 'loadTrips', trips })
     },
     async addTrip({ commit }, { trip }) {
-      await tripService.update(trip)
+      await tripService.save(trip)
       commit({ type: 'addTrip', trip })
     },
     async removeTrip({ commit }, { tripId }) {
