@@ -5,8 +5,9 @@
         <div class="host-short-details">
             <div class="bold">{{ order.buyer.fullname }}</div>
             <div>{{ this.getStayName(order) }}</div>
-            <div class="">{{ getDate(order.startDate, true) }} - {{ getDate(order.endDate, true)
-            }}</div>
+            <!-- <div>{{ getDate(order.startDate, true) }} - {{ getDate(order.endDate, true)
+            }}</div> -->
+            <div>{{order.startDate}} - {{order.endDate}}</div>
             <div class="bold"> ${{ order.totalPrice }}</div>
         </div>
         <div class="short-list-btns" v-if="(order.status)==='pending'">
@@ -36,6 +37,7 @@ export default {
     methods: {
         getDate(num, isDdMm = false) {
             if (isDdMm) {
+                console.log(num);
                 return num.slice(0, 6) + "22"
             }
             return new Date(num).toLocaleDateString('en-GB')
