@@ -63,8 +63,8 @@ export default {
         setDate(date) {
             this.$emit('date', date)
         },
-        redirect() {
-            this.$router.push({path:`/`})
+        redirect(page) {
+            this.$router.push({path:`/${page}`})
             this.$store.dispatch({type:'clearFilter'})
         },
         setSearch(isSearching) {
