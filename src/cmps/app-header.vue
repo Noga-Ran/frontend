@@ -2,7 +2,7 @@
 <template>
     <section class="header-layout" :class="{ 'position-unset': isDetails }">
         <section :class="{ 'header-container-alt': isSearch, 'header-container': !isSearch }" class="details-padding">
-            <div class="logo-container" :class="{ 'grid-area-logo': isSearch }" @click.prevent="redirect">
+            <div class="logo-container" :class="{ 'grid-area-logo': isSearch }" @click.prevent="redirect('')">
                 <img src="../../public/favicon.png" alt="">
                 <p>skybnb</p>
             </div>
