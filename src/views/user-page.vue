@@ -1,9 +1,9 @@
 <template>
 <app-header></app-header>
-    <section class="host-page-layout">
-        <section class="host-layout-top">
+    <section class="user-page-layout">
+        <section class="user-layout-top">
         </section>
-        <section class="host-layout-bottom">
+        <section class="user-layout-bottom">
             <trips-table :orders="orders"/>
         </section>
     </section>
@@ -31,7 +31,10 @@ export default {
             this.orders = await this.$store.getters.getOrders
             this.user = await this.$store.getters.getUser
             if (this.user) {
+              this.orders = this.orders.filter(order => order.buyer._id === this.user._id )
                 this.isLoggedIn = await true
+            }else{
+              this.orders = null
             }
         }
     },
