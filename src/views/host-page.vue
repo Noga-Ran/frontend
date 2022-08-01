@@ -3,14 +3,13 @@
     <section class="host-page-layout" v-if="!this.isFullList">
         <section class="host-layout-bottom">
             <orders-short :orders="orders" />
-            <orders-table :orders="orders" />
-        
         </section> 
         <section class="host-layout-top">
             <dash-boards />
         </section>
     </section>
     <section v-else>
+        <orders-table :orders="orders" />
     </section>
 
 </template>
