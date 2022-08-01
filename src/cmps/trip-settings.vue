@@ -44,17 +44,35 @@
             </h2>
           </div>
 
-          <div class="trip-guests">
+          <div class="trip-guests" @click="showWho = !showWho">
             <h1>guests</h1>
-            <div class="filter-who-container" @click.self="showWho = !showWho">
-              <span v-if="(guests > 1)" @click.self="showWho = !showWho">{{ guests }} guests</span>
-              <span v-else @click.self="showWho = !showWho"> 1 guest</span>
+            <div class="filter-who-container">
+              <span v-if="(guests > 1)">{{ guests }} guests</span>
+              <span v-else> 1 guest</span>
             </div>
+            <svg class="toggle-modal-svg" v-if="!showWho" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true" role="presentation" focusable="false"
+              style="display: block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 4; overflow: visible;">
+              <g fill="none">
+                <path
+                  d="m28 12-11.2928932 11.2928932c-.3905243.3905243-1.0236893.3905243-1.4142136 0l-11.2928932-11.2928932">
+                </path>
+              </g>
+            </svg>
+            <svg class="toggle-modal-svg" v-else viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true" role="presentation" focusable="false"
+              style="display: block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 4; overflow: visible;">
+              <g fill="none">
+                <path
+                  d="m4 20 11.2928932-11.29289322c.3905243-.39052429 1.0236893-.39052429 1.4142136 0l11.2928932 11.29289322">
+                </path>
+              </g>
+            </svg>
             <guests-filter @guest="updateGuests" v-if="showWho" :max="currStay.capacity" />
           </div>
         </div>
 
-        <div class="btn-container show-order-sum-btn" :disabled="showWho"  @click="showOrderSumModal = true">
+        <div class="btn-container show-order-sum-btn" :disabled="showWho" @click="showOrderSumModal = true">
           <div class="cell" v-for="currCell in 100" :key="currCell"></div>
           <div class="content">
             <!-- v-button -->
@@ -99,8 +117,10 @@
         </div>
         <div class="order-sum-container">
           <div class="bold">Reservation Details</div>
-          <div><span class="bold">Trip Dates: <br> </span> {{ getDate(checkIn).slice(0,6) + '22' }} - {{ getDate(checkOut).slice(0,6) + '22' }}</div>
-          <div><span class="bold">Guests: <br></span> {{ this.query.adults }} adults {{ this.query.children }} children
+          <div><span class="bold">Trip Dates: <br> </span> {{ getDate(checkIn).slice(0, 6) + '22' }} - {{
+              getDate(checkOut).slice(0, 6) + '22'
+          }}</div>
+          <div><span class="bold">Guests: <br></span> {{ this.query.adults }} adults, {{ this.query.children }} children
           </div>
           <div class="seperate-line"></div>
           <div>Price Details</div>
@@ -117,7 +137,7 @@
         </div>
         <div class="order-sum-btns">
           <button @click="showOrderSumModal = false">Back</button>
-          <div class="btn-container" @click="saveTrip">
+          <div class="btn-container" @click="saveTrip; redirect('user')">
             <div class="cell" v-for="currCell in 100" :key="currCell + 'second'"></div>
             <div class="content">
               <button class="action-btn">
@@ -224,7 +244,7 @@ export default {
         status: "pending"
       }
       this.$store.dispatch({ type: 'addTrip', trip: tripDetails })
-      this.$router.push({path:`/`})
+      this.$router.push({ path: `/` })
     },
     setActive(elElement) {
       var elActiveArea = document.querySelector('.searchbar-selected-filter')
@@ -265,6 +285,9 @@ export default {
       var average = (accuracy + checkin + cleanliness + communication + location + value) / 6
       this.averageRating = average / 2
       return this.averageRating.toFixed(1)
+    },
+    redirect(page) {
+      this.$router.push({ path: `/${page}` })
     },
   },
   computed: {

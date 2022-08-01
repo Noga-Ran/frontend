@@ -9,6 +9,37 @@
   margin-top: 48px;
   z-index: 1;
 
+  .trip-details {
+
+    p,
+    input {
+      cursor: pointer;
+    }
+  }
+
+  .trip-guests {
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    &>*:nth-child(2) {
+      grid-row: 2;
+    }
+
+    h1 {
+      margin-top: 10px;
+      margin-bottom: -10px;
+    }
+
+    .toggle-modal-svg {
+      grid-column: 2;
+      grid-row: 2;
+      margin-left: auto;
+      margin-right: 30px;
+      margin-top: -5px;
+    }
+  }
+
   h1,
   h2 {
     margin: 0;
@@ -24,13 +55,26 @@
   }
 
   .guests-modal {
+    height: 290px;
     z-index: 10;
     position: absolute !important;
-    top: 11.3em !important;
+    top: 11.2em !important;
     right: 24px !important;
-    width: 230px !important;
-    border-radius: 4px !important;
-    box-shadow: rgb(0 0 0 / 15%) 0px 2px 6px, rgb(0 0 0 / 7%) 0px 0px 0px 1px !important;
+    width: 278px !important;
+    border-radius: 5px !important;
+    padding: 20px !important;
+    box-shadow: rgb(0 0 0 / 15%) 0px 2px 6px,
+      rgb(0 0 0 / 7%) 0px 0px 0px 1px !important;
+
+    .guests-modal-guest-type {
+      margin-bottom: 5px;
+    }
+
+    .modal-g-container {
+      display: flex;
+      height: 100%;
+      justify-content: space-between;
+    }
 
     .modal-g-container div div span:first-of-type {
       font-size: 16px;
@@ -46,6 +90,11 @@
     .modal-g-container div:last-child {
       display: inline-flex !important;
       align-items: center;
+    }
+
+    .modal-g-container>div {
+      padding: 0 !important;
+      border: 0;
     }
   }
 }
