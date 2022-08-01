@@ -81,7 +81,7 @@ export default {
     methods: {
         getImgUrl(stay, item) {
             const { imgUrls } = stay
-            return new URL('../assets/img/stays/' + imgUrls[item - 1], import.meta.url).href
+            return new URL('https://res.cloudinary.com/nogacloud/image/upload/v1659274509/stays/' + imgUrls[item - 1], import.meta.url).href
         },
         getRating(stay) {
             const { rating } = stay.reviewScores
