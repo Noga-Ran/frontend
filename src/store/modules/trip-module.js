@@ -32,10 +32,10 @@ export default {
       var trips = await tripService.query()
       commit({ type: 'loadTrips', trips })
     },
-    // async addTrip({ commit }, { trip }) {
-    //   await tripService.save(trip)
-    //   commit({ type: 'addToTrips', trip })
-    // },
+    async addTrip({ commit }, { trip }) {
+      await tripService.save(trip)
+      commit({ type: 'addToTrips', trip })
+    },
     async removeTrip({ commit }, { tripId }) {
       await tripService.remove(tripId)
       commit({ type: 'removeTrip', tripId })
