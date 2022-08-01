@@ -237,7 +237,8 @@ export default {
         createdAt: Date.now(),
         buyer: {
           _id: this.loggedInUser._id || Date.now(),
-          fullname: this.loggedInUser.fullname || 'guest'
+          fullname: this.loggedInUser.fullname || 'guest',
+          img: this.loggedInUser?.imgUrl || 'https://res.cloudinary.com/nogacloud/image/upload/v1659275569/other/demo-profile-img.svg'
         },
         totalPrice: this.getPrice(this.stay.cleaningFee),
         guests: this.guests,
