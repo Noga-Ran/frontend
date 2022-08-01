@@ -1,13 +1,13 @@
 
 <template>
-<app-header></app-header>
+    <app-header></app-header>
     <section class="host-page-layout">
-        <section class="host-layout-top">
-            <!-- <dash-boards /> -->
-        </section>
         <section class="host-layout-bottom">
-            <orders-table :orders="orders" />
             <orders-short :orders="orders" />
+            <orders-table :orders="orders" />
+        </section>
+        <section class="host-layout-top">
+            <dash-boards />
         </section>
     </section>
 </template>
