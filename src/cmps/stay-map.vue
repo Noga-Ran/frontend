@@ -7,16 +7,29 @@
       class="mobile-map-cont">
       <GMapCluster :zoomOnClick="true">
         <GMapMarker :key="m" v-for="(m, index) in markers" :position="m.position" :clickable="true" :draggable="true"
-          @click="center = m.position" />
-        <!-- :icon="getImgUrl()" -->
+          @click="center = m.position" 
+          :icon= '{
+            url: "https://res.cloudinary.com/nogacloud/image/upload/v1659275599/other/map-icon.svg",
+             scaledSize: {width: 20, height: 20},
+          }'
+            />
+          
+       
       </GMapCluster>
     </GMapMap>
     <GMapMap v-else :center="center" :options="options" :zoom="7" map-type-id="roadmap" style="height: 29vh;border-radius: 10px;"
       class="mobile-map-cont">
       <GMapCluster :zoomOnClick="true">
         <GMapMarker :key="m" v-for="(m, index) in markers" :position="m.position" :clickable="true" :draggable="true"
-          @click="center = m.position" />
-        <!-- :icon="getImgUrl()" -->
+          @click="center = m.position" 
+          :icon= '{
+            url: "https://res.cloudinary.com/nogacloud/image/upload/v1659275599/other/map-icon.svg",
+             scaledSize: {width: 20, height: 20},
+          }'
+          />
+         
+         <!-- :icon="getImgUrl()" -->
+        <!-- :icon= '{url:"getImgUrl()"}' -->
       </GMapCluster>
     </GMapMap>
   </section>

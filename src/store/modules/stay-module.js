@@ -18,11 +18,11 @@ export default {
     stays({ stays }) {
       return stays
     },
-    // stayById: (state) => async(stayId) => {
-    //   // var stay = state.stays.filter((stay) => stay._id === stayId)
-    //   var stay = await stayService.getById(stayId)
-    //   return stay
-    // },
+    stayById: (state) => (stayId) => {
+      // var stay = state.stays.filter((stay) => stay._id === stayId)
+      const stay = state.stays.filter(stay => stay._id === stayId)
+      return stay
+    },
     filterBy({ filterBy }) {
       return filterBy
     },
