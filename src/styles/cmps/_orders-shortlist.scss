@@ -96,12 +96,12 @@
     align-items: center;
     justify-content: space-between;
     width: 170px;
-    margin-right: 15px;
+    margin-right: -6px;
     justify-content: flex-end;
 
     .order-approved {
-        background-color: green;
-        color: white !important;
+        background-color: none;
+        color: green!important;
         min-width: 50px;
         cursor: pointer;
         display: flex;

@@ -2,16 +2,19 @@
     <section>
         <app-header-vue />
         <section class="host-page-layout" v-if="!this.isFullList">
-            <section class="host-layout-bottom">
+        <h1>My Orders</h1>
+        <section class="host-dashboard">
+            <section v-if="isLoggedIn" class="host-layout-bottom">
                 <orders-short :orders="orders"/>
             </section>
-            <section class="host-layout-top">
+            <section v-if="isLoggedIn" class="host-layout-top">
                 <dash-boards />
             </section>
         </section>
-        <section v-else>
-            <orders-table :orders="orders" />
         </section>
+        <!-- <section v-else>
+            <orders-table :orders="orders" />
+        </section> -->
     </section>
 
 </template>

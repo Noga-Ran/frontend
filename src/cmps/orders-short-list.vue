@@ -14,7 +14,7 @@
             <div class="host-order-reject">Reject</div>
         </div>
         <div v-else class="accept-list-btns">
-            <div class="order-approved">Approved!</div>
+            <div class="order-approved">Approved</div>
         </div>
     </div>
 </template>

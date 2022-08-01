@@ -1,12 +1,12 @@
 <template>
-  <section class="dashboard-layout">
-    <section class="dashboard-line">
+  <!-- <section class="dashboard-layout"> -->
+    <!-- <section class="dashboard-line">
       <Line :chartData="lineChartData" :chart-options="ogptions" :width="width" :height="height" />
-    </section>
+    </section> -->
     <section class="dashboard-doughnut">
       <DoughnutChart :chartData="doughnutData" />
     </section>
-  </section>
+  <!-- </section> -->
 </template>
 
 <script>
