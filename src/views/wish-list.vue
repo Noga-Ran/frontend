@@ -88,7 +88,7 @@ export default {
             return (rating / 20).toFixed(1)
         },
         getNumRev(stay) {
-            var length = stay.reviews.length
+            var length = stay.numOfReviews
             if (length === 0 || !length) return 'New'
             if (length === 1) return '1 review'
             return length + ' reviews'

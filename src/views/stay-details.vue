@@ -283,7 +283,7 @@
           </div>
           <!-- v-button -->
           <button class="show-reviews-btn" @click="showReviewsModal = true">
-            Show all {{ stay.reviews.length }} reviews
+            Show all {{ stay.numOfReviews }} reviews
           </button>
         </div>
       </section>
@@ -326,8 +326,7 @@ export default {
     await this.getStayById(this.id)
     this.displayWindowSize()
     window.addEventListener("resize", this.displayWindowSize);
-  },
-  mounted() {
+    // זה היה בmounted
     this.tripSettingObserver = new IntersectionObserver(this.onTripSettingObserved, {
       rootMargin: "-275px 0px 0px",
     })
@@ -336,6 +335,8 @@ export default {
       rootMargin: "-10px 0px 0px",
     })
     this.detailsPageTopObserver.observe(this.$refs.detailsPageTop);
+  },
+  mounted() {
   },
   methods: {
     async getStayById(stayId) {
