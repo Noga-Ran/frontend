@@ -27,6 +27,7 @@
                     <section class="user-menu" v-if="showMenu">
                         <p @click.stop="goTo('wishList')">Wish List</p>
                         <p @click.stop="goTo('user')">Trips</p>
+                        <p @click.stop="goTo('host')">Orders</p>
                         <p v-if="!user" @click.stop="goTo('login')">Login</p>
                         <p v-else @click.stop="logOut">Log Out</p>
                     </section>
