@@ -22,7 +22,7 @@
               <span class="rating-average"> {{ getRating }} </span>
             </span>
             <span>&nbsp &middot &nbsp </span>
-            <span class="review-count header-reviews">{{ stay.numOfReviews }} reviews </span>
+            <span @click="scrollMeTo('Reviews')" class="review-count header-reviews">{{ stay.numOfReviews }} reviews </span>
           </div>
         </div>
         <div class="header-reserve-btn" @click="scrollMeTo('orderSec')">Reserve</div>

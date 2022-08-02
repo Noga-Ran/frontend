@@ -116,7 +116,7 @@ html {
       outline: 0px solid #f7f7f7;
     }
 
-    &>span:hover {
+    &>span:hover:not(.rating-average) {
       border-radius: 5px;
       cursor: pointer;
       outline: 8px solid #f7f7f7;
