@@ -2,7 +2,7 @@
     <app-header></app-header>
     <div v-if="wishList && displayWishStays.length" class="wish-list-container">
         <h1>Wishlist</h1>
-        <div class="wish-container" v-for="stay in displayWishStays" :key="stay._id" @click.prevent="showDetails(stay._id)">
+        <div class="wish-container" v-for="stay in displayWishStays" :key="stay._id">
             <section>
                 <el-carousel trigger="click" :autoplay="false" height="150px">
                     <el-carousel-item v-for="item in 5" :key="item">
@@ -81,7 +81,7 @@ export default {
     methods: {
         getImgUrl(stay, item) {
             const { imgUrls } = stay
-            return new URL('https://res.cloudinary.com/nogacloud/image/upload/v1659274509/stays/' + imgUrls[item - 1], import.meta.url).href
+            return new URL('../assets/img/stays/' + imgUrls[item - 1], import.meta.url).href
         },
         getRating(stay) {
             const { rating } = stay.reviewScores
@@ -99,9 +99,9 @@ export default {
         },
         showDetails(stayId) {
             if (this.$route.query && this.$route.query?.adults) {
-                this.$router.push(`${stayId}?where=${this.$route.query.where || ''}&checkIn=${this.$route.query.checkIn || ''}&checkOut=${this.$route.query.checkOut || ''}&label=${this.$route.query.label || ''}&adults=${this.$route.query.adults}&children=${this.$route.query.children}&infants=${this.$route.query.infants}&pets=${this.$route.query.pets}`)
+                window.open(`/#/stay/${stayId}?where=${this.$route.query.where || ''}&checkIn=${this.$route.query.checkIn || ''}&checkOut=${this.$route.query.checkOut || ''}&label=${this.$route.query.label || ''}&adults=${this.$route.query.adults}&children=${this.$route.query.children}&infants=${this.$route.query.infants}&pets=${this.$route.query.pets}`, '_blank')
             } else {
-                this.$router.push(`stay/${stayId}`)
+                window.open(`/#/stay/${stayId}`, '_blank')
             }
         },
         checkMulti(stayParam, param) {
