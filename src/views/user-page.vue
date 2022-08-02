@@ -1,8 +1,6 @@
 <template>
 <app-header></app-header>
     <section class="user-page-layout">
-        <section class="user-layout-top">
-        </section>
         <section class="user-layout-bottom">
             <trips-table :orders="orders"/>
         </section>

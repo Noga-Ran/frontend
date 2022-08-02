@@ -10,6 +10,7 @@
     justify-content: center;
     flex-direction: column;
     margin: 2em 0;
+    width: 100%;
 
     h3 {
         display: flex;
@@ -27,18 +28,14 @@
 
 .trips-table-layout {
     border-radius: 15px;
-    // display: grid;
     flex-direction: column;
     width: 100%;
     font-family: "circular-light";
-    gap: 1em;
-    grid-template-columns: repeat(2, 50%);
 
     .trip-container {
-        width: 97%;
         display: flex;
         border-radius: 24px;
-        padding: 1em 0 1em 1em;
+        padding: 1em 1em 1em 1em;
         box-shadow: rgb(0 0 0 / 15%) 0px 6px 16px;
         border: 0.7px solid rgb(221, 221, 221);
 
@@ -51,6 +48,8 @@
     img {
         border-radius: 24px;
         width: 40%;
+        aspect-ratio: 20/15;
+        max-width: 300px;
     }
 
     p {
@@ -60,7 +59,21 @@
         text-overflow: ellipsis;
         margin: 5px 0 5px 0;
 
-        &:first-of-type {
+        
+    }
+
+    .user-trip-details {
+        display: flex;
+        flex-direction: column;
+        margin-left: 1em;
+        width: 100%;
+        justify-content: space-around;
+
+        span:first-of-type {
+            font-weight: bold;
+        }
+
+        &>p:first-of-type {
             font-family: circular-light;
             font-weight: 700;
             word-break: break-all;
@@ -70,20 +83,14 @@
             color: #222222;
         }
 
-        &:last-of-type {
-            margin-top: auto;
+        section{
+            display: flex;
         }
-    }
 
-    .user-trip-details {
-        display: flex;
-        flex-direction: column;
-        margin-left: 1em;
-        padding-left: 1em;
-        width: 46%;
-
-        span:first-of-type{
-            font-weight: bold;
+        section p:last-of-type {
+            margin-top: auto;
+            display: flex;
+            justify-content: end;
         }
     }
 
@@ -92,7 +99,7 @@
         text-transform: capitalize;
     }
 
-    .trip-approved{
+    .trip-approved {
         color: green;
         text-transform: capitalize;
     }

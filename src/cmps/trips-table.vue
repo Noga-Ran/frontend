@@ -12,9 +12,11 @@
                 <p v-else>{{ order.startDate }} - {{ order.endDate }}, <span>{{order.stayAmount}} night</span></p>
                 <p v-if="order.guests > 1">{{ order.guests }} guests</p>
                 <p v-else>{{ order.guests }} guest</p>
-                <p><span>Total</span>: ${{ order.totalPrice }}</p>
-                <p><span>Status:&nbsp;</span><span :class="{ 'trip-pending': (order.status === 'pending'),'trip-approved':(order.status==='approved')}">{{ order.status }}</span>
-                </p>
+                <section>    
+                    <p><span>Total</span>: ${{ order.totalPrice }}</p>
+                    <p><span>Status:&nbsp;</span><span :class="{ 'trip-pending': (order.status === 'pending'),'trip-approved':(order.status==='approved')}">{{ order.status }}</span>
+                    </p>
+                </section>
             </section>
         </div>
         <!-- <table class="orders-table-container">
