@@ -57,7 +57,8 @@
                             fill-rule="evenodd"></path>
                     </svg>
                     <div class="rating-num-explore">
-                        {{ this.getRating() }} ({{ currStay.reviews.length }})
+                        {{ this.getRating() }} ({{ currStay.numOfReviews }})
+                        <!-- {{ this.getRating() }} ({{ currStay.reviews.length }}) -->
                     </div>
                 </div>
             </div>
