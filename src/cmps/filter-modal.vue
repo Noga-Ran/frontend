@@ -34,7 +34,6 @@
                 <div class="check-in-container" role="button"
                     @click="showModal = false; setActive($event.currentTarget)">
                     <p>Check in</p>
-                    <!-- <span>Add dates</span> -->
                     <el-calender></el-calender>
                     <Datepicker :full-month-name="true" @click="showWho = false" v-if="!show" @blur="setDate('start')"
                         hideInputIcon :autoPosition="false" :enableTimePicker="false" v-model="startDate" range
@@ -92,7 +91,7 @@ export default {
             show: false,
             showWho: false,
             showModal: false,
-            countryLabels: ['Im flexiable', 'australia', 'brazil', 'canada', 'spain', 'united states'],
+            countryLabels: ['Im flexiable', 'greece', 'brazil', 'canada', 'spain', 'united states'],
             guestsAmount: 'Add guests'
         }
     },
