@@ -94,7 +94,7 @@ export default {
             return length + ' reviews'
         },
         removeStay(stayId) {
-             this.displayWishStays = this.displayWishStays.filter(wish => wish._id !== stayId)
+            this.displayWishStays = this.displayWishStays.filter(wish => wish._id !== stayId)
             this.$store.dispatch({ type: "removeWishStay", stayId })
         },
         showDetails(stayId) {
@@ -128,13 +128,13 @@ export default {
         }
     },
     created() {
-        var filterBy = this.$store.getters.filterBy
-        this.$router.push({
-            path: `/wishList/${filterBy.where}`, query: {
-                where: filterBy.where, checkIn: filterBy.checkIn
-                , checkOut: filterBy.checkOut, label: filterBy.label, adults: filterBy.adults, children: filterBy.children, infants: filterBy.infants, pets: filterBy.pets
-            }
-        })
+        // var filterBy = this.$store.getters.filterBy
+        // this.$router.push({
+        //     path: `/wishList/${filterBy.where}`, query: {
+        //         where: filterBy.where, checkIn: filterBy.checkIn
+        //         , checkOut: filterBy.checkOut, label: filterBy.label, adults: filterBy.adults, children: filterBy.children, infants: filterBy.infants, pets: filterBy.pets
+        //     }
+        // })
     },
 }
 </script>

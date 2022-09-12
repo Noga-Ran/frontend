@@ -80,21 +80,23 @@ async function getById(stayId){
     return user
 }
 
-
 async function addWish(stayId,user){
     var copyUser= JSON.parse(JSON.stringify(user))
+    console.log(copyUser.wishlist);
+
     if(copyUser.wishlist){
         copyUser.wishlist.push(stayId)
     }else{
         copyUser.wishlist = [stayId]
     }
-    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
-    return await httpService.put(USERENDPOINT+'/'+copyUser._id,copyUser)
+    console.log(copyUser.wishlist);
+    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(copyUser))
+    return await httpService.put(`${USERENDPOINT}/${copyUser._id}`,copyUser)
 }
 
 async function removeWish(stayId,user){
     var copyUser= JSON.parse(JSON.stringify(user))
     copyUser.wishlist = copyUser.wishlist.filter(wish => wish!==stayId)
-    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
+    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(copyUser))
     return await httpService.put(`${USERENDPOINT}/${copyUser._id}`,copyUser)
 }

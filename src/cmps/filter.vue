@@ -85,7 +85,6 @@ export default {
       this.isSearch = false
       this.where = ''
       this.guests = 0
-
       this.$emit('filter', filterWhere, who)
     },
     setFilter(filter) {

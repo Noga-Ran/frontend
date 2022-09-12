@@ -75,9 +75,12 @@
 </template>
 
 <script>
+import console from 'console'
+
 export default {
     props: {
         currStay: Object,
+        wishList: Object
     },
     data() {
         return {
@@ -171,6 +174,7 @@ export default {
         }
     },
     created() {
+        this.isFav = Object.values(this.wishList).includes(this.currStay._id)
         if (this.$route?.params?.where) {
             this.isExplore = true
         }
@@ -179,9 +183,6 @@ export default {
             this.calculateDistance()
         }
         setTimeout(() => this.isLoad = true, 550)
-
-        var id = this.currStay._id
-        this.isFav = this.$store.getters.wishListById(id)
     },
 }
 </script>

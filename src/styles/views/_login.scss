@@ -1,0 +1,10 @@
+.signup-container,
+.login-container {
+    padding: 0 80px;
+
+    >div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

@@ -2,7 +2,7 @@
 <template>
     <section class="demo-list-cont">
         <section class="demo-list">
-            <stay-preview :key="currStay" v-for="(currStay,idx) in stays" :currStay="currStay"></stay-preview>
+            <stay-preview :key="currStay" v-for="(currStay,idx) in stays" :currStay="currStay" :wishList="wishListStays"></stay-preview>
         </section>
     </section>
 </template>
@@ -12,7 +12,7 @@ import stayPreview from './stay-preview.vue'
 export default {
     data() {
         return {
-            
+            wishListStays: []
         }
     },
     components: {
@@ -32,6 +32,10 @@ export default {
             var filterBy = Object.assign({}, this.$store.getters.filterBy)
             filterBy.where = this.$route.params.where
             this.$store.dispatch({ type: "setFilter", filterBy })
+        }
+       this.wishListStays= this.$store.getters.getUser
+        if(this.wishListStays) {
+            this.wishListStays = this.wishListStays.wishlist
         }
     }
 

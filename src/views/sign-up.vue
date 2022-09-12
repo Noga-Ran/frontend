@@ -1,5 +1,6 @@
 <template>
-  <form @submit.prevent="signup" class="signup-container form-page">
+  <app-header></app-header>
+  <form @submit.prevent="signup" class="signup-container form-page details-padding">
     <div class="signup-card flex column space-between">
       <div class="signup-fields flex column space-between grow-1">
         <h3>Signup</h3>
@@ -12,11 +13,14 @@
       </div>
       <button class="signup-btn">signup</button>
     </div>
-    <router-link to="/login" class="sec-btn">Already signed up?</router-link>
+    <!-- <router-link to="/login" class="sec-btn">Already signed up?</router-link> -->
   </form>
 </template>
 
 <script>
+import appHeader from '../cmps/app-header.vue'
+import appFooter from '../cmps/app-footer.vue'
+
 export default {
   name: 'signup-page',
   data() {
@@ -36,9 +40,14 @@ export default {
   },
     mounted() {
     this.$refs.fullname.focus()
-  }
+  },
+    components:{
+      appHeader,
+      appFooter
+    }
 };
 </script>
 
 <style>
+
 </style>

@@ -23,7 +23,7 @@ export default {
   },
   mutations: {
     setWishList(state, {user}){
-        state.wishList = user?.wishlist || []
+      state.wishList = user?.wishlist || []
     },
     // addWishStay(state, {stayId}){
     //     state.wishList.push(stayId)
@@ -33,21 +33,23 @@ export default {
     // },
     setUser(state, { user }) {
       state.loggedinUser = user
-      console.log('welcome',state.loggedinUser);
     }
   },
   actions: {
-    async loadWishList({ commit, state }) {
-      var user = await userService.addWish(stayId,state.loggedinUser)
-        return user.wishlist
-      },
+    // async loadWishList({ commit, state }) {
+    //   var user = await userService.addWish(stayId,state.loggedinUser)
+    //   console.log(user.wishlist);
+    //     return user.wishlist
+    //   },
       async addWishStay({commit,state}, { stayId }) {
         var user = await userService.addWish(stayId,state.loggedinUser)
         commit({ type: 'setWishList', user })
+        commit({ type: 'setUser', user })
       },
       async removeWishStay({commit,state},{stayId}){
         var user = await userService.removeWish(stayId,state.loggedinUser)
         commit({ type: 'setWishList', user })
+        commit({ type: 'setUser', user })
       },
       async login({ commit}, { cred }) {
         try {
