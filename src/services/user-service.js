@@ -76,20 +76,17 @@ function saveLocalUser(user) {
 
 async function getById(stayId){
     var user = httpService.get(USERENDPOINT+'/'+stayId)
-    console.log(user)
     return user
 }
 
 async function addWish(stayId,user){
     var copyUser= JSON.parse(JSON.stringify(user))
-    console.log(copyUser.wishlist);
 
     if(copyUser.wishlist){
         copyUser.wishlist.push(stayId)
     }else{
         copyUser.wishlist = [stayId]
     }
-    console.log(copyUser.wishlist);
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(copyUser))
     return await httpService.put(`${USERENDPOINT}/${copyUser._id}`,copyUser)
 }

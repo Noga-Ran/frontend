@@ -22,7 +22,8 @@
               <span class="rating-average"> {{ getRating }} </span>
             </span>
             <span>&nbsp &middot &nbsp </span>
-            <span @click="scrollMeTo('Reviews')" class="review-count header-reviews">{{ stay.numOfReviews }} reviews </span>
+            <span @click="scrollMeTo('Reviews')" class="review-count header-reviews">{{ stay.numOfReviews }} reviews
+            </span>
           </div>
         </div>
         <div class="header-reserve-btn" @click="scrollMeTo('orderSec')">Reserve</div>
@@ -49,7 +50,7 @@
               {{ stay.address.city }},
               {{ stay.address.country }}
             </span>
-            <span class="share-save-actions">
+            <span class="share-save-actions" @click.prevent="share()">
               <span class="share-stay">
                 <svg class="save-svg" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
                   role="presentation" focusable="false" style="
@@ -346,7 +347,12 @@ export default {
           type: 'getStayById',
           stayId,
         })
-        this.isFav = this.$store.getters.wishListById(this.stay._id)
+        
+        var wishListStays= this.$store.getters.getUser
+        if(wishListStays) {
+            wishListStays = wishListStays.wishlist
+            this.isFav =  Object.values(wishListStays).includes(this.stay._id)
+        }
       } catch (err) {
         console.log(err);
       }
@@ -413,6 +419,11 @@ export default {
       var gender = ['men', 'women']
       let randomGender = Math.floor(Math.random() * 2)
       return `https://randomuser.me/api/portraits/${gender[randomGender]}/${randomNum}.jpg`
+    },
+    share(){
+      let url = `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`;
+      let options = 'toolbar=1,status=0,resizable=1,width=626,height=436';
+      window.open(url,'sharer',options);
     }
   },
   computed: {

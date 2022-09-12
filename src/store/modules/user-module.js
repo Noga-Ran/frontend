@@ -10,7 +10,6 @@ export default {
       return wishList
     },
     getUser({ loggedinUser }) {
-      console.log(loggedinUser);
       return loggedinUser
     },
     wishListById: (state) => (stayId) => {

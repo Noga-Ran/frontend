@@ -21,6 +21,7 @@ export const stayService = {
 async function query(filterBy = {}) {
     // storageService._save(KEY,stays)
     // var filteredStays =  await storageService.query(KEY)
+    console.log('render')
     return await httpService.get(ENDPOINT,filterBy)
     // return filtering(filteredStays, filterBy)
 }

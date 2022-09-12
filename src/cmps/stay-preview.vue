@@ -174,7 +174,8 @@ export default {
         }
     },
     created() {
-        this.isFav = Object.values(this.wishList).includes(this.currStay._id)
+        if(this.wishList) this.isFav = Object.values(this.wishList).includes(this.currStay._id)
+        else this.isFav = false
         if (this.$route?.params?.where) {
             this.isExplore = true
         }
