@@ -420,10 +420,11 @@ export default {
       let randomGender = Math.floor(Math.random() * 2)
       return `https://randomuser.me/api/portraits/${gender[randomGender]}/${randomNum}.jpg`
     },
-    share(){
-      let url = `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`;
-      let options = 'toolbar=1,status=0,resizable=1,width=626,height=436';
-      window.open(url,'sharer',options);
+    async share(){
+      // let url = `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`;
+      // let options = 'toolbar=1,status=0,resizable=1,width=626,height=436';
+      // window.open(url,'sharer',options);
+      await navigator.clipboard.writeText(window.location.href)
     }
   },
   computed: {

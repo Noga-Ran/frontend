@@ -91,8 +91,8 @@ export default {
   },
   methods: {
     getImgUrl(amenitie) {
-      // var formatedAmenitie = amenitie.replaceAll(' ', '-')
-      var imgUrl = `https://res.cloudinary.com/nogacloud/image/upload/v1659275294/aminities/${amenitie}.svg`
+      var formatedAmenitie = amenitie.replaceAll(' ', '-')
+      var imgUrl = `https://res.cloudinary.com/nogacloud/image/upload/v1659275294/aminities/${formatedAmenitie}.svg`
       return new URL(imgUrl, import.meta.url).href
     },
   },
