@@ -361,7 +361,7 @@ export default {
       var element = this.$refs[refName];
       // var top = refName === 'Photos' ? element.offsetTop : element.offsetTop - 78
       var top = element.offsetTop - 78
-      console.log('top,element.offsetTop,refName: ', top, element.offsetTop, refName)
+      // console.log('top,element.offsetTop,refName: ', top, element.offsetTop, refName)
       window.scrollTo(0, top);
     },
     getImgUrl(idx) {

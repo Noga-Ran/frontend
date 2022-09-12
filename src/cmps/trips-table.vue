@@ -87,7 +87,6 @@ export default {
             return order.stay.name
         },
         getNightsCount(order) {
-            console.log(typeof (order.startDate), typeof (order.endDate))
             const date1 = new Date(order.startDate);
             const date2 = new Date(order.endDate);
             const diffTime = Math.abs(date2 - date1);

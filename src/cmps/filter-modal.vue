@@ -91,7 +91,7 @@ export default {
             show: false,
             showWho: false,
             showModal: false,
-            countryLabels: ['Im flexiable', 'greece', 'brazil', 'canada', 'spain', 'united states'],
+            countryLabels: ['Im flexiable', 'greece', 'brazil', 'united states', 'spain', 'canada'],
             guestsAmount: 'Add guests'
         }
     },

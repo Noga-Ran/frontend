@@ -13,7 +13,6 @@ export const httpService = {
     return ajax(endpoint, 'POST', data)
   },
   put(endpoint, data) {
-    console.log(endpoint);
     return ajax(endpoint, 'PUT', data)
   },
   delete(endpoint, data) {
