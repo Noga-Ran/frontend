@@ -13,6 +13,9 @@
         grid-template-columns: repeat(4, 1fr);
     }
 
+}
+@media screen and (max-width:1128px) {
+
     .stay-details-layout {
 
         .details-padding {
@@ -55,6 +58,9 @@
 }
 
 @media screen and (max-width:745px) {
+    .footer-container{
+        display: none;
+    }
     .demo-list {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -75,6 +81,10 @@
                 display: none;
             }
         }
+    }
+    .demo-list-cont,.category-filters-container{
+        margin: 0 25px;
+        padding: 0;
     }
 }
 
