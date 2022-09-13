@@ -13,7 +13,7 @@
       </div>
       <button class="signup-btn">signup</button>
     </div>
-    <!-- <router-link to="/login" class="sec-btn">Already signed up?</router-link> -->
+    <router-link to="/login" class="sec-btn">Already signed up?</router-link>
   </form>
 </template>
 
