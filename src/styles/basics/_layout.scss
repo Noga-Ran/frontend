@@ -28,17 +28,18 @@
         grid-template-columns: repeat(3, 1fr);
     }
 
-    .stay-details-layout {
-
-        .details-padding {
-            padding: 0 40px;
-
-        }
-
+    .header-container {
+        display: flex;
+        justify-content: space-between;
     }
 
     .logo-container p {
         display: none;
+    }
+
+    .header-filter-layout {
+        padding: 0;
+        padding-right: 40px;
     }
 }
 
@@ -48,6 +49,9 @@
         display: none !important;
     }
 
+    .header-filter-layout {
+        padding: 0;
+    }
 }
 
 @media screen and (max-width:745px) {
@@ -77,14 +81,6 @@
 @media screen and (max-width:550px) {
     .demo-list {
         grid-template-columns: repeat(1, 1fr);
-    }
-
-}
-
-@media screen and (max-width:770px) {
-    .header-filter-layout {
-        padding: 0;
-        padding-right: 25px !important;
     }
 
 }

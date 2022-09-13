@@ -284,7 +284,7 @@
 
 .header-tools-container div:not(.header-user-options) {
     border-radius: 22px;
-    min-width: fit-content;
+    white-space: nowrap;
 }
 
 .details-filter-layout {
