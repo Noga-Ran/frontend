@@ -1,3 +1,38 @@
+.mobile-details-layout.show-amenities-btn {
+    width: 100%;
+}
+
+.mobile-details-nav {
+    top: 2vh;
+    display: flex;
+    width: calc(100% - 50px);
+    margin: 0 25px;
+    justify-content: space-between;
+    position: fixed;
+
+    .mobile-details-reactions {
+        display: flex;
+        align-items: center;
+    }
+
+    button {
+        border-width: 0px;
+        height: 6vh;
+        width: 6vh;
+        border-radius: 50%;
+    }
+
+    .mobile-details-share {
+        margin-right: 1.5vh;
+    }
+
+    svg {
+        height: 60%;
+        width: 60%;
+        margin: auto;
+    }
+}
+
 .mobile-gallery {
     width: 100%;
     height: 35vh;
@@ -37,6 +72,7 @@
 }
 
 .mobile-stay-info {
+    padding-bottom: 16px;
     height: 15vh;
     width: 100%;
     border-bottom: 1px solid #acacacab;
@@ -88,7 +124,6 @@
     overflow: hidden;
 
     >* {
-        width: 32vw !important;
         display: flex;
         flex-direction: row;
         border: 1px solid #acacacab;
@@ -103,10 +138,13 @@
         margin-bottom: 16px;
     }
 }
-.mobile-stay-beds{
-    padding: 25px 0;
+
+.mobile-stay-beds {
+    overflow-x: scroll;
+    padding-bottom: 25px;
     border-bottom: 1px solid #acacacab;
 }
+
 .mobile-beds-heading {
     font-size: 25px;
     font-family: 'circular-bold';
@@ -184,5 +222,50 @@
         align-items: center;
         margin-top: 40px;
         border-width: 0.5px;
+    }
+}
+
+.mobile-reservation-bar {
+    display: flex;
+    align-items: center;
+    height: 12vh;
+    width: 100vw;
+    position: fixed;
+    background: white;
+    bottom: 0;
+    border-top: 1.5px solid rgb(172 172 172 / 31%);
+    ;
+
+    .mobile-reservation-cont {
+        width: inherit;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 25px;
+    }
+
+    .mobile-reserve-btn {
+        background: #df1461;
+        color: white;
+        padding: 2.25vh 6vw;
+        border-radius: 8px;
+        font-size: 20px;
+        letter-spacing: 0.18px;
+    }
+
+    .mobile-res-date {
+        font-family: circular-light;
+        font-weight: bold;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+
+    .mobile-res-price {
+        font-size: 17px;
+
+        span {
+            font-family: circular-light;
+            font-weight: normal;
+        }
     }
 }
