@@ -20,7 +20,8 @@ export default {
   },
   created() {
     this.city = this.$route.params.where
-    if (this.$route.query && this.$route.query.length) {
+    
+    if (this.$route.query && Object.keys(this.$route.query).length !== 0) {
       const { where, checkIn, checkOut, label, adults, children, infants, pets } = this.$route.query
       this.$store.dispatch({ type: "setFilter", filterBy: { where, checkIn, checkOut, label, adults, children, infants, pets } })
     }

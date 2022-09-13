@@ -87,7 +87,6 @@ export default {
       this.isSearch = false
       this.where = ''
       this.guests = 0
-      this.date = {start:'',end:''}
       this.$emit('filter', filterWhere, who, date)
     },
     setFilter(filter) {
@@ -106,7 +105,9 @@ export default {
       return this.$route.query.where || this.$route.params.where || 'Anywhere'
     },
   },
-  created() { },
+  created() {
+    if(this.$route.query?.checkIn )this.date = {start:this.$route.query.checkIn,end:this.$route.query.checkOut}
+  },
   components: {
     filterModal,
   },

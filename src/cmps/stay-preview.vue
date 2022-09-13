@@ -75,12 +75,12 @@
 </template>
 
 <script>
-import console from 'console'
 
 export default {
     props: {
         currStay: Object,
-        wishList: Object
+        wishList: Object,
+        dates: Object
     },
     data() {
         return {
@@ -158,16 +158,33 @@ export default {
             }
         },
         getRandomDates() {
-            var checkInPrev= 3
-            var checkOutPrev=this.getRandomDay(5, 29)
-            let month = new Date().toLocaleString('default', { month: 'short' })
-            this.nights= checkOutPrev- checkInPrev
-            this.totalPrice= (this.currStay.price* this.nights).toLocaleString()
-            return `${month} ${checkInPrev} - ${month} ${checkOutPrev}`
-            // return 'Aug  ' + this.getRandomDay(3, 16)  + ' - Aug ' + this.getRandomDay(17, 29)
+            if(!this.dates.start || !this.dates.end){
+                let daysInMonth = new Date(new Date().getFullYear(), new Date().getMonth(), 0).getDate()
+                var checkInPrev= new Date().getDate()
+                var checkOutPrev=this.getRandomDay(checkInPrev+1, daysInMonth)
+                let month = new Date().toLocaleString('default', { month: 'short' })
+                this.nights= checkOutPrev- checkInPrev
+                this.totalPrice= (this.currStay.price* this.nights).toLocaleString()
+                return `${month} ${checkInPrev} - ${month} ${checkOutPrev}`
+            }
+            else{
+                const formatDates =  this.getInMillis()
+                let startDate = `${new Date(formatDates.start).toLocaleString('default', { month: 'short' })} ${(new Date(formatDates.start).getDate() < 10 ? '0' : '') + new Date(formatDates.start).getDate()}`
+                let endDate = `${new Date(formatDates.end).toLocaleString('default', { month: 'short' })} ${(new Date(formatDates.end).getDate() < 10 ? '0' : '') + new Date(formatDates.end).getDate()}`
+                return `${startDate} - ${endDate}`
+            }
         },
         getRandomDay(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min
+        },
+        getInMillis(){
+            let start = this.dates.start.split('/')
+            let end = this.dates.end.split('/')
+            start =  new Date(`${start[1]}/${start[2]}/${start[0]}`).getTime()
+            end =  new Date(`${end[1]}/${end[2]}/${end[0]}`).getTime()
+            this.nights = Math.floor((end - start)/24/60/60/1000)
+            this.totalPrice= (this.currStay.price* this.nights).toLocaleString()
+            return ({start,end})
         },
         calculateDistance() {
             var distanceInKm = this.getDistanceInKm().toFixed(0)
