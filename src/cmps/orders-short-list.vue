@@ -37,7 +37,6 @@ export default {
     methods: {
         getDate(num, isDdMm = false) {
             if (isDdMm) {
-                console.log(num);
                 return num.slice(0, 6) + "22"
             }
             return new Date(num).toLocaleDateString('en-GB')

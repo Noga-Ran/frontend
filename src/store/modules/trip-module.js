@@ -20,7 +20,6 @@ export default {
       state.trips = trips
     },
     addToTrips(state, { trip }) {
-      console.log('trip', trip)
       state.trips.push(trip)
     },
     removeTrip(state, { tripId }) {
