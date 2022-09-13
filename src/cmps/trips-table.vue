@@ -8,7 +8,7 @@
                 <!-- <p>{{ order.startDate }} - {{ order.endDate }},<span v-if="order.stayAmount > 1"> {{
                         order.stayAmount
                 }} &nbsp;nights</span><span v-else> {{ order.stayAmount }},&nbsp;night</span></p> -->
-                <p v-if="order.stayAmount > 1">{{ order.startDate }} - {{ order.endDate }}, <span>{{order.stayAmount}} nights</span></p>
+                <p v-if="order.stayAmount > 1">{{ order.startDate }} - {{ order.endDate }}, <span class="order-days">{{order.stayAmount}} nights</span></p>
                 <p v-else>{{ order.startDate }} - {{ order.endDate }}, <span>{{order.stayAmount}} night</span></p>
                 <p v-if="order.guests > 1">{{ order.guests }} guests</p>
                 <p v-else>{{ order.guests }} guest</p>
@@ -19,43 +19,6 @@
                 </section>
             </section>
         </div>
-        <!-- <table class="orders-table-container">
-            <tr>
-                <th>Stay Name</th>
-                <th>Booked At</th>
-                <th>Booked for</th>
-                <th>Nights</th>
-                <th>Guests</th>
-                <th>Total</th>
-            </tr>
-            <tr v-for="order in orders" :key="order._id">
-                <td class="host-page-stay-name">
-                    <div class="td-content-container">
-                        {{ this.getStayName(order) }}
-                    </div>
-                </td>
-                <td>
-                    <div class="td-content-container">{{ getDate(order.createdAt) }} </div>
-                </td>
-                <td>
-                    <div class="td-content-container">{{ getDate(order.startDate, true) }} - {{ getDate(order.endDate,
-                            true)
-                    }}</div>
-                </td>
-                <td class="tac">
-                    <div class="td-content-container">{{ this.getNightsCount(order) }}</div>
-                </td>
-                <td class="tac">
-                    <div class="td-content-container">{{ order.guests }}</div>
-                </td>
-                <td class="money-class tac">
-                    <div class="td-content-container"> $ {{order.totalPrice}}</div>
-                </td>
-                <td>
-                    <div class="td-content-container">{{ order.status }}</div>
-                </td>
-            </tr>
-        </table> -->
     </div>
 </template>
 <script>

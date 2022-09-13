@@ -160,9 +160,10 @@ export default {
         getRandomDates() {
             var checkInPrev= 3
             var checkOutPrev=this.getRandomDay(5, 29)
+            let month = new Date().toLocaleString('default', { month: 'short' })
             this.nights= checkOutPrev- checkInPrev
             this.totalPrice= (this.currStay.price* this.nights).toLocaleString()
-            return 'Aug  ' + checkInPrev  + ' - Aug ' + checkOutPrev
+            return `${month} ${checkInPrev} - ${month} ${checkOutPrev}`
             // return 'Aug  ' + this.getRandomDay(3, 16)  + ' - Aug ' + this.getRandomDay(17, 29)
         },
         getRandomDay(min, max) {
