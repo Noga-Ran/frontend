@@ -1,7 +1,7 @@
 
 <template>
     <section class="homepage-layout">
-        <app-header @filter="setFilter" @date="setDate" />
+        <app-header @filter="setFilter" />
         <category-filter @filter="setFilter" />
         <stay-list />
         <app-footer :isFixed="'true'" />
@@ -22,7 +22,7 @@ export default {
         appFooter
     },
     methods: {
-        setFilter(filter, { who } = '') {
+        setFilter(filter, { who } = '',{date} = {start:'',end:''}) {
             var filterBy = Object.assign({}, this.$store.getters.filterBy)
             if (filter.label) {
                 if (filter.label === 'remove') {
@@ -36,21 +36,12 @@ export default {
                 filterBy.children = who?.children || 0
                 filterBy.infants = who?.infants || 0
                 filterBy.pets = who?.pets || 0
+                filterBy.checkIn = date.start
+                filterBy.checkOut = date.end
             }
             this.$store.dispatch({ type: "setFilter", filterBy })
             this.setQuery(filterBy)
         },
-        setDate(date) {
-            var filterBy = Object.assign({}, this.$store.getters.filterBy)
-            filterBy.checkIn = date.start
-            filterBy.checkOut = date.end
-            // console.log('dates', filterBy);
-            // this.$store.dispatch({ type: "setFilter", filterBy })
-
-            this.setQuery(filterBy)
-        },
-
-
         setQuery(query) {
             if (query.where) {
                 this.$router.push({ path: `/explore/${query.where}`, query })
