@@ -55,8 +55,6 @@
                 <svg class="save-svg" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
                   role="presentation" focusable="false" style="
                     fill: none;
-                    height: 16px;
-                    width: 16px;
                     stroke: currentcolor;
                     stroke-width: 2;
                     overflow: visible;
@@ -76,7 +74,7 @@
                     display: block;
                     height: 16px;
                     width: 16px;
-                    stroke-width: 2;
+                    stroke-width: 2; 
                     overflow: visible;
                   " v-bind:style="[
                     isFav
@@ -192,8 +190,35 @@
   </section>
   <section v-if="isMobile">
     <section class="mobile-details-layout">
+      <div class="mobile-details-nav">
+        <button class="mobile-details-return" @click=""><svg class="svg-icon"
+            style="width: 1.1015625em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;"
+            viewBox="0 0 1128 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M1097.855149 473.209109h-929.064612L568.332002 76.916503a44.938006 44.938006 0 1 0-63.543869-63.55752L0 518.147115l493.403474 492.993954a43.90465 43.90465 0 0 0 62.110549-62.069598L168.544825 563.071471h929.310324a29.94957 29.94957 0 0 0 30.031475-30.031475v-29.881317a29.93592 29.93592 0 0 0-30.031475-29.94957z"
+              fill="" />
+          </svg>
+        </button>
+        <div class="mobile-details-reactions">
+          <button class="mobile-details-share" @click=""><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true" role="presentation" focusable="false"
+              style="fill: none;  stroke: currentcolor; stroke-width: 1; overflow: visible;">
+              <g fill="none">
+                <path d="M27 18v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-9"></path>
+                <path d="M16 3v23V3z"></path>
+                <path d="M6 13l9.293-9.293a1 1 0 0 1 1.414 0L26 13"></path>
+              </g>
+            </svg></button>
+          <button class="mobile-details-favorite" @click=""><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true" role="presentation" focusable="false"
+              style="display: block; stroke-width: 1; overflow: visible; fill: transparent; stroke: currentcolor;">
+              <path
+                d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z">
+              </path>
+            </svg></button>
+        </div>
+      </div>
       <div class="mobile-gallery">
-        <!-- <div class="mobile-img-container" v-for="(img, idx) in stay.imgUrls" :key="img + 89"> -->
         <div class="mobile-img-container">
           <img :src="getImgUrl(0)" alt="" />
         </div>
@@ -230,6 +255,7 @@
             &middot {{ stay.beds }} beds &middot {{ stay.bathrooms }} baths
           </div>
         </div>
+        <aminities :stayAmenities="stay.amenities"></aminities>
         <section class="mobile-stay-beds">
           <div class="mobile-beds-heading">Where you'll sleep</div>
           <div class="mobile-beds-layout">
@@ -252,7 +278,6 @@
             </div>
           </div>
         </section>
-        <aminities :stayAmenities="stay.amenities"></aminities>
         <div ref="Location" class="details-map-cont">
           <stayMap :stayLocation="stay.address" :isMobile="isMobile"></stayMap>
         </div>
@@ -288,6 +313,15 @@
           </button>
         </div>
       </section>
+      <div class="mobile-reservation-bar">
+        <div class="mobile-reservation-cont">
+          <div class="mobile-reservation-details">
+            <div class="mobile-res-price">$ {{ stay.price }} <span>&nbsp;night</span></div>
+            <div class="mobile-res-date">Dec 3-8</div>
+          </div>
+          <div class="mobile-reserve-btn" @click="alert('reservation modal')">Reserve</div>
+        </div>
+      </div>
     </section>
 
   </section>
@@ -327,7 +361,6 @@ export default {
     await this.getStayById(this.id)
     this.displayWindowSize()
     window.addEventListener("resize", this.displayWindowSize);
-    // זה היה בmounted
     this.tripSettingObserver = new IntersectionObserver(this.onTripSettingObserved, {
       rootMargin: "-275px 0px 0px",
     })
@@ -347,11 +380,11 @@ export default {
           type: 'getStayById',
           stayId,
         })
-        
-        var wishListStays= this.$store.getters.getUser
-        if(wishListStays) {
-            wishListStays = wishListStays.wishlist
-            this.isFav =  Object.values(wishListStays).includes(this.stay._id)
+
+        var wishListStays = this.$store.getters.getUser
+        if (wishListStays) {
+          wishListStays = wishListStays.wishlist
+          this.isFav = Object.values(wishListStays).includes(this.stay._id)
         }
       } catch (err) {
         console.log(err);
@@ -420,7 +453,7 @@ export default {
       let randomGender = Math.floor(Math.random() * 2)
       return `https://randomuser.me/api/portraits/${gender[randomGender]}/${randomNum}.jpg`
     },
-    async share(){
+    async share() {
       // let url = `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`;
       // let options = 'toolbar=1,status=0,resizable=1,width=626,height=436';
       // window.open(url,'sharer',options);

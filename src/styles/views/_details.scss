@@ -233,6 +233,7 @@ html {
 
 .bedroom-type {
   font-size: 14px;
+  white-space: nowrap;
 }
 
 .host-img-profile {
@@ -350,11 +351,13 @@ html {
     letter-spacing: 0.3px;
   }
 }
-.stay-details-layout{
-  .overlay{
+
+.stay-details-layout {
+  .overlay {
     display: none;
   }
-  .header-container-alt{
+
+  .header-container-alt {
     margin: 0 !important;
   }
 }
