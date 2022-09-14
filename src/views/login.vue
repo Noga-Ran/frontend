@@ -8,9 +8,9 @@
         <hr>
         <h1>Welcome to Skybnb</h1>
         <!-- <label> Username </label> -->
-        <input class="username-input-login" ref="username" v-model="cred.username" type="text" placeholder="Username" />
+        <input class="username-input" ref="username" v-model="cred.username" type="text" placeholder="Username" />
         <!-- <label> Password </label> -->
-        <input class="password-input-login" v-model="cred.password" type="password" placeholder="Password"/>
+        <input class="password-input" v-model="cred.password" type="password" placeholder="Password"/>
       </div>
       <!-- <button class="login-btn">login</button> -->
 
@@ -26,22 +26,22 @@
     </div>
     <div class="hr-or">or</div>
 
-    <!-- <router-link to="/signup" class="sec-btn"
-      >Sign up</router-link> -->
+   
 
-    <router-link to="/signup" class="sec-btn"
-      >
-      <div class="btn-container to-signup-btn">
+    <!-- <router-link to="/signup" class="sec-btn"> -->
+      <div class="btn-container login-guest-btn">
           <div class="cell" v-for="currCell in 100" :key="currCell"></div>
           <div class="content">
             <!-- v-button -->
             <button class="action-btn">
-              <span class="word-btn">Sign up</span>
+              <span class="word-btn">Log in as a guest</span>
             </button>
           </div>
         </div>
-        </router-link>
+        <!-- </router-link> -->
   </form>
+   <router-link to="/signup" class="move-to-signup"
+      >Don't have an acount yet? sign up</router-link>
 </template>
 
 <script>
