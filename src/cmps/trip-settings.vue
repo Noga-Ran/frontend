@@ -75,7 +75,6 @@
         <div class="btn-container show-order-sum-btn" :disabled="showWho" @click="showOrderSumModal = true">
           <div class="cell" v-for="currCell in 100" :key="currCell"></div>
           <div class="content">
-            <!-- v-button -->
             <button class="action-btn">
               <span class="word-btn">Reserve</span>
             </button>
