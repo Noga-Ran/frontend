@@ -1,3 +1,8 @@
+
+.filter-b-b {
+    border-bottom: 1px solid rgb(235, 235, 235) !important;
+}
+
 .filters-btn {
     cursor: pointer;
     border: 1px solid #e4e4e4;
@@ -33,6 +38,18 @@
     margin-bottom: 32px !important;
     margin-right: 24px;
     // overflow-y: auto;
+
+    h1 {
+        padding-top: 32px !important;
+        padding-bottom: 40px;
+        margin: 0;
+        border-top: 1px solid rgb(235, 235, 235) !important;
+    }
+
+    .vfm__content{
+        margin: auto 40px !important;
+        width: auto !important;
+    }
 }
 
 .explore-filters-conatiner {
@@ -110,8 +127,9 @@
 .price-inputs {
     display: flex;
     gap: 1em;
-    width: 90%;
+    width: 100%;
     margin: auto;
+    padding-bottom: 32px !important;
 
     :nth-child(2) {
         align-self: center;
@@ -124,11 +142,17 @@
 
 .filters-title {
     text-align: center;
-    text-align: center;
     height: 63px;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0px 24px !important;
+    min-height: 48px !important;
+    border-bottom: 1px solid rgb(235, 235, 235) !important;
+    color: rgb(34, 34, 34) !important;
+    font-size: 16px !important;
+    line-height: 20px !important;
+    font-weight: 800 !important;
 
 }
 
@@ -187,7 +211,7 @@
         }
     }
 
-    .chosen-propery{
+    .chosen-propery {
         border-width: 2px !important;
     }
 }

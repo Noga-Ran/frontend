@@ -57,9 +57,9 @@ export default {
         closeHeader() {
             this.isSearch = false
         },
-        setFilter(where, who) {
+        setFilter(where, who,date) {
             this.isSearch = false
-            this.$emit('filter', { where }, { who })
+            this.$emit('filter', { where }, { who },{date})
         },
         setDate(date) {
             this.$emit('date', date)
