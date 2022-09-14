@@ -22,9 +22,8 @@
           <div class="modal-filter-container">
     <div class="filter-modal">
         <div class="filters-title">Filters</div>
-        <hr>
             <h1>Price range</h1>
-        <div class="price-inputs">
+        <div class="price-inputs filter-b-b">
             <span class="input-price-container">
                 <div>min price</div>
                 <div>$ <input class="price-input" type="number" v-model.number="multyFilterBy.minPrice" min="0"></div>

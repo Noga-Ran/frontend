@@ -1,5 +1,5 @@
 <template>
-  <app-header @filter="setFilter" @date="setDate"></app-header>
+  <app-header @filter="setFilter"></app-header>
   <div class="explore-filters-conatiner">
     <p>{{ staysAmount }} stays</p>
     <filter-btn @setMultyFilter="setFilter" />
@@ -20,39 +20,31 @@ export default {
   },
   created() {
     this.city = this.$route.params.where
-    if (this.$route.query && this.$route.query.length) {
+    
+    if (this.$route.query && Object.keys(this.$route.query).length !== 0) {
       const { where, checkIn, checkOut, label, adults, children, infants, pets } = this.$route.query
       this.$store.dispatch({ type: "setFilter", filterBy: { where, checkIn, checkOut, label, adults, children, infants, pets } })
     }
   },
   methods: {
-    setFilter(filter, { who } = '') {
+    setFilter(filter, { who } = '',{date} = {start:'',end:''}) {
       var filterBy = Object.assign({}, this.$store.getters.filterBy)
-
       if (filter.label) {
         if (filter.label === 'remove') {
           filterBy.label = ''
         } else {
-          filterBy.label = filter.label
+           filterBy.label = filter.label
         }
-      }
-      else if (filter.minPrice) {
-        filterBy = Object.assign(filterBy,filter)
-      }
-      else {
-        filterBy.where = filter.where || ''
-        filterBy.adults = who.adults || 0
-        filterBy.children = who.children || 0
-        filterBy.infants = who.infants || 0
-        filterBy.pets = who.pets || 0
+      } else {
+        filterBy.where = filter?.where || ''
+        filterBy.adults = who?.adults || 0
+        filterBy.children = who?.children || 0
+        filterBy.infants = who?.infants || 0
+        filterBy.pets = who?.pets || 0
+        filterBy.checkIn = date.start
+        filterBy.checkOut = date.end
       }
       this.$store.dispatch({ type: "setFilter", filterBy })
-      this.setQuery(filterBy)
-    },
-    setDate(date) {
-      var filterBy = Object.assign({}, this.$store.getters.filterBy)
-      filterBy.checkIn = date.start
-      filterBy.checkOut = date.end
       this.setQuery(filterBy)
     },
     setQuery(filterBy) {

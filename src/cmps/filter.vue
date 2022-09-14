@@ -68,6 +68,7 @@ export default {
       isSearch: false,
       windowY: 0,
       guests: 0,
+      date:{start:'',end:''}
     }
   },
   methods: {
@@ -82,16 +83,18 @@ export default {
     emitFilter() {
       let filterWhere = this.where
       let who = this.guests
+      let date = this.date
       this.isSearch = false
       this.where = ''
       this.guests = 0
-      this.$emit('filter', filterWhere, who)
+      this.$emit('filter', filterWhere, who, date)
     },
     setFilter(filter) {
       this.where = filter
     },
     emitDate(date) {
-      this.$emit('date', date)
+      this.date = date
+      // this.$emit('date', date)
     },
     setGuest(guests) {
       this.guests = guests
@@ -102,7 +105,9 @@ export default {
       return this.$route.query.where || this.$route.params.where || 'Anywhere'
     },
   },
-  created() { },
+  created() {
+    if(this.$route.query?.checkIn )this.date = {start:this.$route.query.checkIn,end:this.$route.query.checkOut}
+  },
   components: {
     filterModal,
   },

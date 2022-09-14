@@ -1,7 +1,47 @@
+@media screen and (max-width:670px) {
+    .user-page-layout {
+        padding: 0 80px;
+    }
+    
+    .trip-container{
+        flex-direction: column;
+    }
+    
+    .trips-table-layout{
+        img{
+            margin-bottom: 1em;
+        }
+    }
+
+}
+
+@media screen and (max-width:480px) {
+    .order-days{
+        display: block;
+        font-weight: bold;
+    }
+}
+
+@media screen and (min-width:670px) {
+    .user-page-layout {
+        padding: 0 80px;
+    }
+
+    .user-trip-details {
+        margin-left: 1em;
+    }
+
+    .trips-table-layout{
+        img{
+            width: 40%;
+            max-width: 300px;
+        }
+    }
+}
+
 .user-page-layout {
     display: flex;
     flex-direction: column;
-    padding: 0 80px;
 }
 
 
@@ -47,9 +87,7 @@
 
     img {
         border-radius: 24px;
-        width: 40%;
         aspect-ratio: 20/15;
-        max-width: 300px;
     }
 
     p {
@@ -65,7 +103,6 @@
     .user-trip-details {
         display: flex;
         flex-direction: column;
-        margin-left: 1em;
         width: 100%;
         justify-content: space-around;
 
