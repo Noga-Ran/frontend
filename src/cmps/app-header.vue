@@ -95,6 +95,9 @@ export default {
         },
         showLoginModal(boolen = true) {
             this.showLogin = boolen
+            if (boolen) {
+                this.showMenu = !this.showMenu
+            }
         }
     },
     computed: {
