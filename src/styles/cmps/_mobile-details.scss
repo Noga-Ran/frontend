@@ -1,5 +1,9 @@
-.mobile-details-layout.show-amenities-btn {
-    width: 100%;
+.mobile-details-layout {
+
+    .show-amenities-btn {
+        width: 100%;
+    }
+
 }
 
 .mobile-details-nav {
@@ -73,7 +77,6 @@
 
 .mobile-stay-info {
     padding-bottom: 16px;
-    height: 15vh;
     width: 100%;
     border-bottom: 1px solid #acacacab;
 
@@ -199,7 +202,7 @@
 }
 
 .mobile-reviews {
-    height: 50vh;
+    height: 54vh;
     border-bottom: 1px solid #acacacab;
 
     h2 {

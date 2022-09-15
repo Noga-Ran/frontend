@@ -58,6 +58,8 @@
                     stroke: currentcolor;
                     stroke-width: 2;
                     overflow: visible;
+                    height: 16px;
+                    width: 16px;
                   ">
                   <g fill="none">
                     <path d="M27 18v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-9"></path>
@@ -190,8 +192,10 @@
   </section>
   <section v-if="isMobile">
     <section class="mobile-details-layout">
-      <div class="mobile-details-nav">
-        <button class="mobile-details-return" @click=""><svg class="svg-icon"
+      <div class="mobile-gallery">
+        <div class="mobile-img-container">
+          <div class="mobile-details-nav">
+        <button class="mobile-details-return" @click.prevent="redirect('')"><svg class="svg-icon"
             style="width: 1.1015625em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;"
             viewBox="0 0 1128 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -209,17 +213,20 @@
                 <path d="M6 13l9.293-9.293a1 1 0 0 1 1.414 0L26 13"></path>
               </g>
             </svg></button>
-          <button class="mobile-details-favorite" @click=""><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true" role="presentation" focusable="false"
-              style="display: block; stroke-width: 1; overflow: visible; fill: transparent; stroke: currentcolor;">
+          <button class="mobile-details-favorite" @click.stop="toggleFavorite"><svg viewBox="0 0 32 32"
+              xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"
+              style="display: block; stroke-width: 1; overflow: visible; fill: transparent; stroke: currentcolor;"
+              v-bind:style="[
+              isFav
+              ? { fill: '#FF385C', stroke: '#FF385C' }
+              : { fill: '#ffffff', stroke: 'currentcolor' },
+              ]">
               <path
                 d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z">
               </path>
             </svg></button>
         </div>
       </div>
-      <div class="mobile-gallery">
-        <div class="mobile-img-container">
           <img :src="getImgUrl(0)" alt="" />
         </div>
       </div>
@@ -392,9 +399,7 @@ export default {
     },
     scrollMeTo(refName) {
       var element = this.$refs[refName];
-      // var top = refName === 'Photos' ? element.offsetTop : element.offsetTop - 78
       var top = element.offsetTop - 78
-      // console.log('top,element.offsetTop,refName: ', top, element.offsetTop, refName)
       window.scrollTo(0, top);
     },
     getImgUrl(idx) {
@@ -458,6 +463,10 @@ export default {
       // let options = 'toolbar=1,status=0,resizable=1,width=626,height=436';
       // window.open(url,'sharer',options);
       await navigator.clipboard.writeText(window.location.href)
+    },
+    redirect(page) {
+      this.$router.push({ path: `/${page}` })
+      this.$store.dispatch({ type: 'clearFilter' })
     }
   },
   computed: {
