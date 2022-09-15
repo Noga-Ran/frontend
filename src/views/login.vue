@@ -48,7 +48,6 @@
 </template>
 
 <script>
-import appHeader from '../cmps/app-header.vue'
 import appFooter from '../cmps/app-footer.vue'
 
   export default {
@@ -77,7 +76,6 @@ import appFooter from '../cmps/app-footer.vue'
       this.$refs.username.focus();
     },
     components:{
-      appHeader,
       appFooter
     }
   };
