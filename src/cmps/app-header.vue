@@ -30,6 +30,7 @@
                         <p @click.stop="goTo('host')">Orders</p>
                         <p v-if="!user" @click.stop="goTo('login')">Login</p>
                         <p v-else @click.stop="logOut">Log Out</p>
+                        <p @click.stop="showLoginModal">Login modal </p>
                     </section>
                 </section>
             </div>
@@ -86,7 +87,10 @@ export default {
                 return this.user.imgUrl
             }
             else return 'https://res.cloudinary.com/nogacloud/image/upload/v1659275569/other/demo-profile-img.svg'
-        }
+        },
+        showLoginModal(){
+            this.$emit('showLoginModal',true)
+        },
     },
     computed:{
         user(){ return this.$store.getters.getUser}

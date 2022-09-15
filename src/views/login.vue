@@ -1,7 +1,8 @@
 <template>
-<app-header></app-header>
+<!-- <app-header></app-header> -->
 <!-- <form @submit.prevent="login" class="login-container form-page"> -->
-<form class="login-container form-page">
+  <section class="login-layout" @click="showLoginModal($event)" id="blured-bkg">
+  <form class="login-container form-page">
     <div class="login-card flex column space-between">
       <div class="login-fields flex column space-between grow-1">
         <h4>Log in</h4>
@@ -34,14 +35,16 @@
           <div class="content">
             <!-- v-button -->
             <button class="action-btn">
-              <span class="word-btn">Log in as a guest</span>
+              <span class="word-btn">Continue as a guest</span>
             </button>
           </div>
         </div>
         <!-- </router-link> -->
-  </form>
+ 
    <router-link to="/signup" class="move-to-signup"
       >Don't have an acount yet? sign up</router-link>
+       </form>
+       </section>
 </template>
 
 <script>
@@ -64,6 +67,11 @@ import appFooter from '../cmps/app-footer.vue'
         // socketService.emit("set-user-socket", this.$store.getters.getUser._id)
         this.$router.push('/')
       },
+       showLoginModal(ev){
+        if(ev.path[0].id == 'blured-bkg'){
+          this.$emit('showLoginModal',false)
+        }
+        },
     },
     mounted() {
       this.$refs.username.focus();

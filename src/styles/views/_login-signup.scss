@@ -1,6 +1,10 @@
 .signup-container,
 .login-container {
     padding: 0 80px;
+  width: 400px;
+  height: 540px;
+  background-color: white;
+  border-radius: 8px;
 
     >div {
         display: flex;
@@ -47,4 +51,17 @@ margin-top: 20px;
     }
 }
 
-
+.login-layout{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.523);
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    z-index: 400;
+    top: 0;
+    left: 0;
+    // visibility: hidden;
+   
+}

@@ -1,8 +1,9 @@
 
 <template>
     <section class="homepage-layout">
-        <app-header @filter="setFilter" />
+        <app-header @filter="setFilter" @showLoginModal="showLoginModal"/>
         <category-filter @filter="setFilter" />
+        <login v-if="showLogin" @showLoginModal="showLoginModal"/>
         <stay-list />
         <app-footer :isFixed="'true'" />
     </section>
@@ -13,13 +14,22 @@ import appHeader from '../cmps/app-header.vue'
 import stayList from '../cmps/stay-list.vue'
 import categoryFilter from '../cmps/category-filter.vue'
 import appFooter from '../cmps/app-footer.vue'
+import login from './login.vue'
 
 export default {
     components: {
         appHeader,
         stayList,
         categoryFilter,
-        appFooter
+        appFooter,
+        login
+    },
+
+    data() {
+        return {
+            showLogin: false,
+        }
+
     },
     methods: {
         setFilter(filter, { who } = '',{date} = {start:'',end:''}) {
@@ -48,6 +58,9 @@ export default {
             } else {
                 this.$router.push({query })
             }
+        },
+        showLoginModal(boolen){
+            this.showLogin=boolen
         }
     },
     created() {
