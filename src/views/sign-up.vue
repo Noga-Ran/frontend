@@ -1,6 +1,6 @@
 <template>
-  <app-header></app-header>
-  <!-- <form @submit.prevent="signup" class="signup-container form-page details-padding"> -->
+  <section class="sign-up-layout" @click="showSignUpModal($event)" id="blured-bkg-sign-Up">
+ <!-- <form @submit.prevent="signup" class="signup-container form-page details-padding"> -->
   <form class="signup-container form-page details-padding">
     <div class="signup-card flex column space-between">
       <div class="signup-fields flex column space-between grow-1">
@@ -29,11 +29,10 @@
     </div>
     <router-link to="/login" class="move-to-login">Already signed up?</router-link>
   </form>
+  </section>
 </template>
 
 <script>
-import appHeader from '../cmps/app-header.vue'
-import appFooter from '../cmps/app-footer.vue'
 
 export default {
   name: 'signup-page',
@@ -51,14 +50,16 @@ export default {
      await this.$store.dispatch({type: 'signup', cred: this.cred});
      this.$router.push('/')
     },
+       showSignUpModal(ev){
+        if(ev.path[0].id == 'blured-bkg-sign-Up'){
+          this.$emit('showSignUpModal',false)
+        }
+        },
   },
     mounted() {
     this.$refs.fullname.focus()
   },
-    components:{
-      appHeader,
-      appFooter
-    }
+   
 };
 </script>
 

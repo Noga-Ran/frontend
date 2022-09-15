@@ -2,6 +2,7 @@
 <template>
     <section class="header-layout" :class="{ 'position-unset': isDetails }">
         <login v-if="showLogin" @showLoginModal="showLoginModal" />
+        <sign-up v-if="showSignUp" @showSignUpModal="showSignUpModal" />
         <section :class="{ 'header-container-alt': isSearch, 'header-container': !isSearch }" class="details-padding">
             <div class="logo-container" :class="{ 'grid-area-logo': isSearch }" @click.prevent="redirect('')">
                 <img src="https://res.cloudinary.com/nogacloud/image/upload/v1659367634/other/favicon.png" alt="">
@@ -32,7 +33,8 @@
                         <p @click.stop="goTo('wishList')">Wish List</p>
                         <p @click.stop="goTo('user')">Trips</p>
                         <p @click.stop="goTo('host')">Orders</p>
-                        <p v-if="!user" @click.stop="showLoginModal">Login</p>
+                        <p v-if="!user" @click.stop="showLoginModal">Log in</p>
+                        <p v-if="!user" @click.stop="showSignUpModal">Sign up</p>
                         <p v-else @click.stop="logOut">Log Out</p>
                     </section>
                 </section>
@@ -46,6 +48,7 @@
 
 import filterCmp from './filter.vue'
 import login from '../views/login.vue'
+import signUp from '../views/sign-up.vue'
 
 export default {
     data() {
@@ -54,6 +57,7 @@ export default {
             showMenu: false,
             isDetails: false,
             showLogin: false,
+            showSignUp: false,
         }
     },
     created() {
@@ -98,7 +102,13 @@ export default {
             if (boolen) {
                 this.showMenu = !this.showMenu
             }
-        }
+        },
+        showSignUpModal (boolen = true) {
+            this.showSignUp = boolen
+            if (boolen) {
+                this.showMenu = !this.showMenu
+            }
+        },
     },
     computed: {
         user() { return this.$store.getters.getUser }
@@ -106,6 +116,7 @@ export default {
     components: {
         filterCmp,
         login,
+        signUp,
     }
 }
 </script>
