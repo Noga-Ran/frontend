@@ -189,19 +189,23 @@ html {
   border: 1px solid rgb(221, 221, 221);
   border-left: 0;
   border-right: 0;
+  border-top: 0;
 }
 
 .beds-layout {
+  width: calc(45vw + 38px);
+  max-width: 659px;
+  overflow: hidden;
   display: grid;
   column-gap: 16px;
   grid-auto-flow: column;
 
-  >* {
+  >*:not(.beds-arrows) {
     display: flex;
     flex-direction: row;
     width: 15vw;
     max-width: 207px;
-    height: 143px;
+    height: 140px;
     border: 1px solid rgb(221, 221, 221);
     border-radius: 15px;
 
@@ -215,11 +219,45 @@ html {
   }
 
   svg {
-    margin-bottom: 16px;
+    margin-bottom: 21px;
+  }
+
+  .beds-arrows {
+    width: calc(45vw + 72px);
+    max-width: 691px;
+    height: fit-content;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 56px;
+    margin-left: -18px;
+
+    button {
+      cursor: pointer;
+      background-color: rgb(255, 255, 255) !important;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      height: fit-content;
+      width: fit-content;
+      padding: 9px;
+      border-radius: 50%;
+
+      &:hover {
+        border-color: rgba(0, 0, 0, 0.08) !important;
+        background-color: rgb(255, 255, 255) !important;
+        color: rgb(0, 0, 0) !important;
+        box-shadow: transparent 0px 0px 0px 1px, transparent 0px 0px 0px 4px, rgb(0 0 0 / 12%) 0px 6px 16px !important;
+        transform: scale(1.04) !important;
+      }
+
+      svg {
+        margin: 0 !important;
+      }
+    }
   }
 }
 
 .beds-heading {
+  letter-spacing: -0.8px;
   margin-bottom: 24px;
   font-size: 24px;
   font-family: circular;
@@ -227,6 +265,7 @@ html {
 }
 
 .bedroom-num {
+  margin-bottom: 9px;
   font-size: 16px;
   font-family: circular-bold;
 }
@@ -245,6 +284,7 @@ html {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 0.8fr 1fr;
+  border-bottom: 1px solid rgb(221, 221, 221);
 
   img {
     margin-right: 8px;

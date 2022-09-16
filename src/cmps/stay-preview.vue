@@ -58,7 +58,6 @@
                     </svg>
                     <div class="rating-num-explore">
                         {{ this.getRating() }} ({{ currStay.numOfReviews }})
-                        <!-- {{ this.getRating() }} ({{ currStay.reviews.length }}) -->
                     </div>
                 </div>
             </div>
