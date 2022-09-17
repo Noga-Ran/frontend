@@ -9,13 +9,12 @@
     z-index: 400;
     top: 0;
     left: 0;
-    cursor: pointer;
 }
 
 .login-container {
     cursor: auto;
     animation: 0.4s ease-out 0s 1 slideInFromButtom;
-    width: 568px;
+    width: 551px;
     height: 89vh;
     background-color: white;
     border-radius: 12px;
@@ -31,6 +30,7 @@
 
 .login-title {
     margin-left: 32px;
+    cursor: default;
 }
 
 .login-main-content {
@@ -38,6 +38,7 @@
 }
 
 .login-header {
+    cursor: default;
     letter-spacing: 0.29px;
     margin-top: 8px !important;
     margin-bottom: 24px !important;
@@ -104,6 +105,7 @@
 }
 
 .login-line-text {
+    cursor: default;
     width: fit-content;
     margin: auto;
     margin-top: -9px;
@@ -130,10 +132,14 @@
     margin-top: 65px;
 }
 
+.move-to-login {
+    margin-top: 50px !important;
+}
+
 
 .exit-login-btn {
     position: relative;
-    left: -330px;
+    left: -322px;
     border-radius: 50%;
     padding: 8px;
     transition: 200ms;
