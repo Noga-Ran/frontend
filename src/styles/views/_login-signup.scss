@@ -1,57 +1,4 @@
-.signup-container,
-.login-container {
-    padding: 0 80px;
-  width: 400px;
-  height: 540px;
-  background-color: white;
-  border-radius: 8px;
-
-    >div {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-}
-
-.username-input, .password-input, .fullname-input{
-    display: block;
-    padding: 1em 12em 1em 1em;
-}
-
-.username-input,.fullname-input{
-    border-radius: 8px 8px 0 0;
-    border-bottom: 0px;
-}
-
-.password-input{
-    border-radius: 0 0 8px 8px;
-}
-
-.login-btn,.login-guest-btn,.signup-btn{
-    margin: 20px;
-    max-width: 343px;
-
-}
-
-.move-to-signup, .move-to-login{
-    color: black;
-    display: block;
-    text-align: center;
-    font-size: 1.2em;
-}
-
-.login-guest-btn{
-margin: 0 auto 50px;
-margin-top: 20px;
-}
-
-.signup-fields{
-    :nth-child(5){
-        border-radius:0%;
-    }
-}
-
-.login-layout, .sign-up-layout {
+.login-layout {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -62,6 +9,137 @@ margin-top: 20px;
     z-index: 400;
     top: 0;
     left: 0;
-    // visibility: hidden;
-   
+    cursor: pointer;
+}
+
+.login-container {
+    cursor: auto;
+    animation: 0.4s ease-out 0s 1 slideInFromButtom;
+    width: 568px;
+    height: 89vh;
+    background-color: white;
+    border-radius: 12px;
+}
+
+.login-title-cont {
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgb(235, 235, 235) !important;
+}
+
+.login-title {
+    margin-left: 32px;
+}
+
+.login-main-content {
+    padding: 24px;
+}
+
+.login-header {
+    letter-spacing: 0.29px;
+    margin-top: 8px !important;
+    margin-bottom: 24px !important;
+    font-size: 22px;
+    height: 20%;
+}
+
+.login-form-cont {
+    width: 100%;
+    height: 112px;
+    border-radius: 8px;
+    border: 1px solid rgb(27 27 27 / 34%);
+    ;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    input {
+        font-family: circular-light;
+        font-size: 16px;
+        padding-left: 12px;
+        height: 47.5%;
+        border: 0;
+        border-radius: 8px;
+    }
+}
+
+.sign-up-form-cont {
+    width: 100%;
+    height: 168px;
+    border-radius: 8px;
+    border: 1px solid rgb(27 27 27 / 34%);
+    ;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    input {
+        font-family: circular-light;
+        font-size: 16px;
+        padding-left: 12px;
+        height: 31%;
+        border: 0;
+        border-radius: 8px;
+    }
+}
+
+.form-line {
+    height: 0.5px;
+    width: 100%;
+    background-color: rgb(27 27 27 / 34%);
+    ;
+}
+
+.login-btn {
+    margin: 30px 0;
+    margin-bottom: 28px;
+}
+
+.login-or-line {
+    height: 0.5px;
+    width: 100%;
+    background-color: rgb(221, 221, 221) !important;
+}
+
+.login-line-text {
+    width: fit-content;
+    margin: auto;
+    margin-top: -9px;
+    padding: 0 12px;
+    background-color: white;
+    font-family: 'circular-light';
+    font-size: 12px;
+    color: #484848;
+}
+
+.login-guest-btn {
+    margin: 24px 0;
+    margin-top: 20px;
+}
+
+.move-to-signup,
+.move-to-login {
+    cursor: pointer;
+    color: black;
+    font-family: 'circular-light';
+    margin: auto;
+    width: fit-content;
+    text-decoration: underline;
+    margin-top: 65px;
+}
+
+
+.exit-login-btn {
+    position: relative;
+    left: -330px;
+    border-radius: 50%;
+    padding: 8px;
+    transition: 200ms;
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgb(247, 247, 247);
+    }
 }

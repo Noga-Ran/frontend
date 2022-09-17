@@ -1,8 +1,7 @@
 
 <template>
     <section class="header-layout" :class="{ 'position-unset': isDetails }">
-        <login v-if="showLogin" @showLoginModal="showLoginModal" />
-        <sign-up v-if="showSignUp" @showSignUpModal="showSignUpModal" />
+        <login v-if="showLogin" @showLoginModal="showLoginModal" :signUpPage="isSignUpPage" />
         <section :class="{ 'header-container-alt': isSearch, 'header-container': !isSearch }" class="details-padding">
             <div class="logo-container" :class="{ 'grid-area-logo': isSearch }" @click.prevent="redirect('')">
                 <img src="https://res.cloudinary.com/nogacloud/image/upload/v1659367634/other/favicon.png" alt="">
@@ -30,12 +29,12 @@
                         </section>
                     </div>
                     <section class="user-menu" v-if="showMenu">
+                        <p class="nav-bar-login" v-if="!user" @click.stop="showLoginModal(true)">Log in</p>
+                        <p v-if="!user" @click.stop="showLoginModal(true,true)">Sign up</p>
+                        <p v-else @click.stop="logOut">Log Out</p>
                         <p @click.stop="goTo('wishList')">Wish List</p>
                         <p @click.stop="goTo('user')">Trips</p>
                         <p @click.stop="goTo('host')">Orders</p>
-                        <p v-if="!user" @click.stop="showLoginModal">Log in</p>
-                        <p v-if="!user" @click.stop="showSignUpModal">Sign up</p>
-                        <p v-else @click.stop="logOut">Log Out</p>
                     </section>
                 </section>
             </div>
@@ -48,7 +47,6 @@
 
 import filterCmp from './filter.vue'
 import login from '../views/login.vue'
-import signUp from '../views/sign-up.vue'
 
 export default {
     data() {
@@ -58,6 +56,7 @@ export default {
             isDetails: false,
             showLogin: false,
             showSignUp: false,
+            isSignUpPage: false,
         }
     },
     created() {
@@ -97,15 +96,10 @@ export default {
             }
             else return 'https://res.cloudinary.com/nogacloud/image/upload/v1659275569/other/demo-profile-img.svg'
         },
-        showLoginModal(boolen = true) {
-            this.showLogin = boolen
-            if (boolen) {
-                this.showMenu = !this.showMenu
-            }
-        },
-        showSignUpModal (boolen = true) {
-            this.showSignUp = boolen
-            if (boolen) {
+        showLoginModal(boolean, isSignUp = false) {
+            this.isSignUpPage = isSignUp
+            this.showLogin = boolean
+            if (boolean) {
                 this.showMenu = !this.showMenu
             }
         },
@@ -116,7 +110,6 @@ export default {
     components: {
         filterCmp,
         login,
-        signUp,
     }
 }
 </script>
