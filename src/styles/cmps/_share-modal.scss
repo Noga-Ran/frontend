@@ -1,5 +1,5 @@
 .share-background {
-    background: rgb(34 34 34 / 34%) !important;
+    background: rgb(34 34 34 / 60%) !important;
     z-index: 2000 !important;
     position: fixed !important;
     inset: 0px !important;
@@ -15,15 +15,56 @@
     inset: 0px !important;
     display: block !important;
     background: rgb(255, 255, 255) !important;
-    width: 520px;
-    height: 569.6px;
-    overflow-y: scroll;
-    margin: auto;
+    height: 624px;
     padding: 24px !important;
     border-radius: 12px;
+    animation: 0.4s ease-out 0s 1 slideInFromButtom;
 
-    span{
-        display: flex;
+    @media screen and (max-width:743px) {
+        width: calc(100vw - 65px) !important;
+        background-color: #f6f6f6 !important;
+        margin-top: auto;
+
+        h1 {
+            font-size: 18px !important;
+        }
+
+        >span{
+            margin-top: 12px !important;
+            margin-bottom: 12px !important;
+        }
+    }
+
+    @media screen and (min-width:744px) {
+        width: 520px;
+        margin: 12px auto;
+
+        h1 {
+            font-size: 26px !important;
+        }
+
+        >span{
+            margin-top: 24px !important;
+            margin-bottom: 24px !important;
+        }
+    }
+
+    h1 {
+        line-height: 30px !important;
+        // margin-top: 40px !important;
+        margin-bottom: 24px !important;
+        font-weight: 600 !important;
+        color: rgb(34, 34, 34) !important;
+        display: block !important;
+    }
+
+    p:first-of-type {
+        color: #727272
+    }
+
+    span {
+        display: flex !important;
+        align-items: center;
     }
 
     >span img {
@@ -35,20 +76,84 @@
         object-fit: cover !important;
         margin-right: 16px !important;
     }
+
+    .close-button button {
+        background: none;
+        border: none;
+        display: block;
+        height: 16px;
+        cursor: pointer;
+    }
 }
 
 .web-container {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 50% 50%;
+    justify-content: space-between;
+
+    >section,
+    a {
+        display: flex;
+        align-items: center;
+        align-items: center;
+        outline: none !important;
+        cursor: pointer !important;
+        border: 1px solid rgb(221, 221, 221) !important;
+        border-radius: 12px !important;
+        font-size: 16px !important;
+        line-height: 20px !important;
+        font-weight: 500 !important;
+        overflow: hidden !important;
+        color: rgb(34, 34, 34) !important;
+        text-overflow: ellipsis !important;
+        background-color: #fefefe
+    }
+
+    @media screen and (max-width:743px) {
+        display: flex;
+        flex-direction: column;
+
+        img {
+            width: 24px;
+        }
+
+        >section,
+        a {
+            flex-direction: row-reverse;
+            justify-content: space-between;
+
+            span{
+                padding: 16px 0px 16px 16px !important;
+            }
+        }
+
+        section{
+            margin-bottom: 12px !important;
+        }
+
+    }
+
+    @media screen and (min-width:744px) {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        // grid-template-rows: 50% 50%;
+        grid-template-rows: none !important;
+        width: calc(100% - 30px) !important;
+        gap: 20px;
+
+        img {
+            width: 40px;
+        }
+
+        >section,a{
+            height:76px;
+        }
+    }
 
     img {
-        width: 40px;
         margin: 0 22px;
     }
 }
 
-.msg-container{
+.msg-container {
     width: calc(100% - 30px) !important;
     display: flex;
 }
@@ -64,10 +169,22 @@
     transition: opacity 0.5s ease-in;
     transform: translate(0);
     margin: auto;
+    position: absolute;
+    left: calc(50% - 48px);
 
     img {
         width: 15px;
         margin-right: 5px;
+    }
+
+    @media screen and (max-width:743px) {
+        left: calc(44vw - 48px);
+        bottom: 10px;
+    }
+
+    @media screen and (min-width:744px) {
+        left: calc(50% - 60px);
+        bottom: 30px;
     }
 }
 
@@ -98,16 +215,4 @@
 .slide-right {
     -webkit-animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-}
-
-.web-container {
-    gap: 20px;
-    grid-template-rows: none !important;
-    width: calc(100% - 30px) !important;
-
-    >section {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-    }
 }
