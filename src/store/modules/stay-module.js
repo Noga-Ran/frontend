@@ -76,7 +76,6 @@ actions: {
   }
   commit({ type: 'setFilter', filterBy })
   },
-
   clearStays({commit}){
     console.log('clearstays');
     let stays= []
