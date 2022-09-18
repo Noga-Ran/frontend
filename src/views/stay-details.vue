@@ -131,8 +131,9 @@
                 </div>
               </div>
               <div class="beds-arrows" v-if="stay.bedrooms > 2">
-                <button :class="{ opacity : !isScrolled }" @click="sideScroll('left',25,210,37)"><svg viewBox="0 0 32 32"
-                    xmlns="http://www.w3.org/2000/svg" aria-label="Previous" role="img" focusable="false"
+                <button :class="{ opacity : !isScrolled }" @click="sideScroll('left',25,210,37)"><svg
+                    viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-label="Previous" role="img"
+                    focusable="false"
                     style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 4; overflow: visible;">
                     <g fill="none">
                       <path
@@ -229,7 +230,7 @@
               <span class="rating-average"> {{ this.getRating }} </span>
             </span>
             <span>&nbsp &middot &nbsp </span>
-            <span class="mobile-stay-review-count">{{ stay.numOfReviews }} reviews </span>
+            <span class="mobile-stay-review-count" @click="scrollMeTo('Mobile-Reviews')">{{ stay.numOfReviews }} reviews </span>
           </div>
           <span class="stay-address">
             {{ stay.address.city }},
@@ -287,7 +288,7 @@
             <span>&nbsp &middot &nbsp </span>
             <span class="review-count">{{ stay.numOfReviews }} reviews </span>
           </h2>
-          <div class="review-container-mobile">
+          <div class="review-container-mobile" ref="Mobile-Reviews">
             <div class="review-deatails-container">
               <img class="profile-img" :src="stay.reviews[1].by.imgUrl" alt="" />
               <div class="review-info">
@@ -352,8 +353,9 @@ export default {
       tripSettingOn: true,
       isGalleryOn: true,
       isMobile: false,
-      showShareOptions:false,
-      isScrolled: false
+      showShareOptions: false,
+      isScrolled: false,
+      hostImg: undefined ,
     }
   },
   async created() {
@@ -446,10 +448,13 @@ export default {
       else this.isMobile = false
     },
     getRandomImg() {
-      let randomNum = Math.floor(Math.random() * (99 - 1) + 1)
-      var gender = ['men', 'women']
-      let randomGender = Math.floor(Math.random() * 2)
-      return `https://randomuser.me/api/portraits/${gender[randomGender]}/${randomNum}.jpg`
+      if (!this.hostImg) {
+        let randomNum = Math.floor(Math.random() * (99 - 1) + 1)
+        var gender = ['men', 'women']
+        let randomGender = Math.floor(Math.random() * 2)
+        this.hostImg = `https://randomuser.me/api/portraits/${gender[randomGender]}/${randomNum}.jpg`
+      }
+      return this.hostImg
     },
     async share() {
       // let url = `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`;
