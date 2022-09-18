@@ -75,6 +75,13 @@ actions: {
     pets: 0,
   }
   commit({ type: 'setFilter', filterBy })
+  },
+
+  clearStays({commit}){
+    console.log('clearstays');
+    let stays= []
+    commit ({ type: 'setStays', stays})
   }
+
 },
 }
