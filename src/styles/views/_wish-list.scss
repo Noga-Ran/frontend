@@ -1,7 +1,15 @@
 .wish-list-container {
-    padding-left: 40px !important;
-    padding-right: 40px !important;
     padding-top: 16px !important;
+
+    @media screen and (min-width:743px) {
+        padding-left: 40px !important;
+        padding-right: 40px !important;
+    }
+
+    @media screen and (max-width:743px) {
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+    }
 }
 
 .wish-container {
@@ -9,42 +17,45 @@
     padding-bottom: 24px !important;
     border-bottom: 1px solid rgb(235, 235, 235) !important;
     box-sizing: border-box;
-    display: flex;
     height: 100%;
     position: relative;
     z-index: 1;
     cursor: pointer;
 
-    .el-carousel{
+    @media screen and (min-width:743px) {
+        display: flex;
+    }
+
+    .el-carousel {
         height: 200px !important;
         width: 300px !important;
     }
 
-    .el-carousel__container{
+    .el-carousel__container {
         height: 100% !important;
     }
 
     .preview-img-container {
-    position: relative;
-    overflow: hidden;
-    margin-bottom: 12px;
-    width: 100%;
-    aspect-ratio: 20/19;
-    background-color: #DDDDDD;
-    border-radius: 12px;
-
-    img {
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 12px;
         width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+        aspect-ratio: 20/19;
+        background-color: #DDDDDD;
+        border-radius: 12px;
 
-    svg {
-        position: absolute;
-        top: 15px;
-        right: 15px;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        svg {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+        }
     }
-}
 
     section img {
         vertical-align: bottom;
@@ -191,9 +202,10 @@
     margin-left: 24px !important;
     padding-right: 24px !important;
     margin-top: 32px !important;
-     *{
+
+    * {
         font-family: circular-light !important;
-     }
+    }
 
     h1 {
         margin: 0;
@@ -215,25 +227,13 @@
     a {
         cursor: pointer !important;
         display: inline-block !important;
-        margin: 0px !important;
-        position: relative !important;
-        text-align: center !important;
         text-decoration: none !important;
-        width: auto !important;
-        touch-action: manipulation !important;
-        font-family: circular-light !important;
-        font-size: 16px !important;
         line-height: 20px !important;
         font-weight: 600 !important;
         border-radius: 8px !important;
-        outline: none !important;
         padding: 14px 24px !important;
-        transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s !important;
-        -webkit-tap-highlight-color: transparent !important;
-        border: none !important;
         background: #222222 !important;
         color: white !important;
-        contain: paint !important;
         margin-top: 28px !important;
     }
 }
