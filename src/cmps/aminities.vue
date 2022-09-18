@@ -29,6 +29,14 @@
           </div>
           <div class="modal-amenities-container">
             <div class="modal__title">
+              <div class="exit-amnt-modal" @click="showAmenitiesModal = false">
+                <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
+                  focusable="false"
+                  style="display: block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 3; overflow: visible;">
+                  <path d="m6 6 20 20"></path>
+                  <path d="m26 6-20 20"></path>
+                </svg>
+              </div>
               <h2 class="aminities-title">What this place offers</h2>
               <section class="amenities-list">
                 <div v-for="amenitie in stayAmenities" :key="amenitie">
@@ -85,18 +93,18 @@ export default {
 
       let imgUrl = `https://res.cloudinary.com/nogacloud/image/upload/aminities/${formatedAmenitie}.svg`
       let isExists = this.imageExists(imgUrl);
-      if(isExists) return new URL(imgUrl, import.meta.url).href
+      if (isExists) return new URL(imgUrl, import.meta.url).href
       imgUrl = `https://res.cloudinary.com/nogacloud/image/upload/aminities/defualt.svg`
       return new URL(imgUrl, import.meta.url).href
     },
-    imageExists(image_url){
-    var http = new XMLHttpRequest();
-    http.open('HEAD', image_url, false);
-    http.send();
-    return http.status != 404;
-  }
+    imageExists(image_url) {
+      var http = new XMLHttpRequest();
+      http.open('HEAD', image_url, false);
+      http.send();
+      return http.status != 404;
+    }
   },
   computed: {},
-  unmounted() {},
+  unmounted() { },
 }
 </script>

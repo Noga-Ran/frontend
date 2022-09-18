@@ -20,11 +20,44 @@
   }
 }
 
+.amenities-layout {
+  .modal__title {
+    padding: 0 !important;
+    padding-top: 24px !important;
+    padding-left: 24px !important;
+    height: calc(100% + 24px) !important;
+  }
+
+  .aminities-title {
+    padding-bottom: 19px !important;
+  }
+}
+
+.exit-amnt-modal {
+  height: 40px;
+  margin-left: -8px;
+
+  svg {
+    margin-top: -6px;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 50%;
+
+    &:hover {
+      background-color: rgb(247, 247, 247);
+    }
+  }
+}
+
 .amenities-modal {
   display: contents;
 
   .modal-container {
     height: 100%;
+  }
+
+  .modal_content {
+    animation: 0.4s ease-out 0s 1 slideInFromButtom !important;
   }
 
   .modal-amenities-container {
@@ -176,3 +209,28 @@
 //   height: 100vh !important;
 //   width: 100vw !important;
 // }
+
+// סימנייהc
+.modal-amenities-container {
+  height: inherit !important;
+}
+
+.stay-amenities .modal-container {
+  padding: 0 !important;
+}
+
+.mobile-details-stay-info-cont {
+  .amenities-modal {
+    .vfm__content {
+      height: 100vh;
+      width: 100vw;
+      border-radius: 0 !important;
+    }
+
+
+    .modal-container {
+      height: 100vh;
+      padding: 0 !important;
+    }
+  }
+}
