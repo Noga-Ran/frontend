@@ -3,7 +3,7 @@
     <div class="login-container">
       <div class="login-title-cont">
         <div class="login-title">Log in or sign up</div>
-        <div class="exit-login-btn" @click="closeModal">
+        <div class="exit-login-btn" @click.prevent="closeModal">
           <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
             focusable="false"
             style="display: block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 3; overflow: visible;">
@@ -40,7 +40,7 @@
         <div class="login-or-line"></div>
         <div class="login-line-text">or
         </div>
-        <div class="btn-container login-guest-btn">
+        <div class="btn-container login-guest-btn" @click.prevent="guestLogin">
           <div class="cell" v-for="currCell in 100" :key="currCell"></div>
           <div class="content">
             <button class="action-btn">
@@ -92,6 +92,7 @@ export default {
         await this.$store.dispatch({ type: 'login', cred: this.cred });
       }
       this.$router.push('/')
+      this.closeModal()
     },
     showModal(ev) {
       if (ev.path[0].id == 'blured-bkg') {
@@ -100,6 +101,13 @@ export default {
     },
     closeModal() {
       this.$emit('showLoginModal', false)
+    },
+    async guestLogin(){
+      this.cred.username = 'Guest'
+      this.cred.password = 'Guest'
+      await this.$store.dispatch({ type: 'login', cred: this.cred })
+      this.$router.push('/')
+      this.closeModal()
     }
   },
 };
