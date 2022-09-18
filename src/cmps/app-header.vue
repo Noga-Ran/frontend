@@ -31,6 +31,7 @@
                     <section class="user-menu" v-if="showMenu">
                         <p class="nav-bar-login" v-if="!user" @click.stop="showLoginModal(true)">Log in</p>
                         <p v-if="!user" @click.stop="showLoginModal(true,true)">Sign up</p>
+                        <div  v-if="!user" class="nav-breaking-line"></div>
                         <p @click.stop="goTo('wishList')">Wish List</p>
                         <p @click.stop="goTo('user')">Trips</p>
                         <p @click.stop="goTo('host')">Orders</p>
