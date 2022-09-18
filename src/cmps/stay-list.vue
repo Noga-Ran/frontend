@@ -40,6 +40,9 @@ export default {
             this.wishListStays = this.wishListStays.wishlist
         }
     },
+    unmounted(){
+        this.$store.dispatch({type: "clearStays"})
+    }
 
 }
 </script>
