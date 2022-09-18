@@ -1,4 +1,3 @@
-
 .category-filters-layout {
   background-color: white;
   margin-top: 20px;
@@ -9,7 +8,7 @@
 }
 
 .category-filters-container {
-  margin: 20px 80px; 
+  margin: 20px 80px;
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: min-content;
@@ -28,6 +27,7 @@
 }
 
 .filter-img-layout {
+  height: 81px !important;
   padding-top: 3px;
   display: flex;
   justify-self: center;
@@ -87,6 +87,7 @@
 }
 
 .filter-img-txt {
+  white-space: nowrap;
   letter-spacing: 0.13px;
   font-size: 12px;
   display: flex;
@@ -101,4 +102,93 @@
   width: 100%;
   height: 83px;
   box-shadow: rgb(0 0 0 / 16%) 0 0 6px;
+}
+
+.carousel__prev--in-active,
+.carousel__next--in-active {
+  display: none;
+}
+
+.carousel__prev,
+.carousel__next {
+  background-color: white;
+  color: black;
+  border: 0.5px solid rgb(0 0 0 / 0.3);
+  height: 28px;
+  width: 28px;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    margin: auto;
+  }
+
+  &:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    ;
+    height: 29px;
+    width: 29px;
+  }
+}
+
+.carousel__next {
+  right: -22px;
+
+  &::before {
+    content: '';
+    display: block;
+    top: -22px;
+    bottom: 0;
+    pointer-events: none;
+    position: absolute;
+    width: 25px;
+    z-index: -1;
+    background-image: linear-gradient(to left, white, rgb(255 255 255 / 0));
+    right: 130%;
+    height: 270%;
+  }
+}
+
+.carousel__prev {
+  left: 15px !important;
+
+  &::before {
+    content: '';
+    display: block;
+    top: -22px;
+    bottom: 0;
+    pointer-events: none;
+    position: absolute;
+    width: 25px;
+    z-index: -1;
+    background-image: linear-gradient(to right, white, rgb(255 255 255 / 0));
+    right: -105%;
+    height: 270%;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    pointer-events: none;
+    background-color: white;
+    height: 270%;
+    width: 35px;
+    position: absolute;
+    left: -3px;
+  }
+}
+
+.carousel__item {
+  padding: 20px;
+}
+
+.carousel__slide {
+  width: unset !important;
+}
+
+.carousel__track {
+  gap: 32px;
+}
+.carousel{
+  width: 79.5vw;
 }

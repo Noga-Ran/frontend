@@ -14,6 +14,7 @@
     }
 
 }
+
 @media screen and (max-width:1128px) {
 
     .stay-details-layout {
@@ -58,9 +59,23 @@
 }
 
 @media screen and (max-width:745px) {
-    .footer-container{
+    .login-container {
+        height: 100vh;
+        width: 100vw;
+    }
+
+    .login-main-content {
+        padding: 24px 45px;
+    }
+
+    .exit-login-btn {
+        left: -55vw;
+    }
+
+    .footer-container {
         display: none;
     }
+
     .demo-list {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -82,7 +97,9 @@
             }
         }
     }
-    .demo-list-cont,.category-filters-container{
+
+    .demo-list-cont,
+    .category-filters-container {
         margin: 0 25px;
         padding: 0;
     }

@@ -2,24 +2,35 @@
   <div :class="{ shadow: isActive }"></div>
   <section class="category-filters-layout">
     <section class="category-filters-container">
-      <section class="category-filter-container" v-for="(currLabel, idx) in labels" :key="idx">
-        <section @click="selectLabel($event)" class="filter-img-layout"
-          :class="{ 'selected-filter': queryLabel === currLabel }">
-          <div class="filter-img-container">
-            <img :src='getImgUrl(currLabel)' />
-            <div class="filter-img-txt">
-              {{ currLabel }}
+      <Carousel :items-to-show="12" :itemsToScroll="4">
+        <!-- <section class="category-filter-container" v-for="(currLabel, idx) in labels" :key="idx"> -->
+        <Slide class="category-filter-container" v-for="(currLabel, idx) in labels" :key="idx">
+          <section @click="selectLabel($event)" class="filter-img-layout"
+            :class="{ 'selected-filter': queryLabel === currLabel }">
+            <div class="filter-img-container">
+              <img :src='getImgUrl(currLabel)' />
+              <div class="filter-img-txt">
+                {{ currLabel }}
+              </div>
             </div>
-          </div>
-        </section>
-      </section>
+          </section>
+        </Slide>
+        <!-- </section> -->
+        <template #addons>
+          <Navigation />
+        </template>
+      </Carousel>
     </section>
   </section>
 </template>
 
 <script>
 
+import { Carousel, Navigation, Slide } from 'vue3-carousel';
+import 'vue3-carousel/dist/carousel.css';
+
 export default {
+
   data() {
     return {
       isActive: true,
@@ -28,7 +39,11 @@ export default {
       label: '',
     }
   },
-  components: {},
+  components: {
+    Carousel,
+    Slide,
+    Navigation,
+  },
   emits: ['filter'],
   methods: {
     selectLabel(ev = false, idx = false) {
@@ -72,3 +87,4 @@ export default {
   }
 }
 </script>
+

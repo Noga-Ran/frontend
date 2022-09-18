@@ -19,6 +19,11 @@
   }
 }
 
+.heart-svg:active {
+  transform: scale(0.92);
+  transition: 0.2s;
+}
+
 .el-carousel__indicator {
   padding: 0;
   margin: 0;
