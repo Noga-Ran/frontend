@@ -1,0 +1,113 @@
+.share-background {
+    background: rgb(34 34 34 / 34%) !important;
+    z-index: 2000 !important;
+    position: fixed !important;
+    inset: 0px !important;
+    overflow-y: auto !important;
+    animation-duration: 400ms !important;
+    animation-iteration-count: 1 !important;
+    animation-fill-mode: both !important;
+}
+
+.share-modal {
+    z-index: 2000 !important;
+    position: fixed !important;
+    inset: 0px !important;
+    display: block !important;
+    background: rgb(255, 255, 255) !important;
+    width: 520px;
+    height: 569.6px;
+    overflow-y: scroll;
+    margin: auto;
+    padding: 24px !important;
+    border-radius: 12px;
+
+    span{
+        display: flex;
+    }
+
+    >span img {
+        max-width: 100% !important;
+        width: 64px !important;
+        height: 64px !important;
+        border-radius: 8px !important;
+        display: inline-block !important;
+        object-fit: cover !important;
+        margin-right: 16px !important;
+    }
+}
+
+.web-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+
+    img {
+        width: 40px;
+        margin: 0 22px;
+    }
+}
+
+.msg-container{
+    width: calc(100% - 30px) !important;
+    display: flex;
+}
+
+.link-msg {
+    z-index: 999999;
+    // position: fixed !important;
+    color: green;
+    background: rgb(255, 255, 255) !important;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 0 0 1px #0000000a, 0 8px 16px #00000026;
+    transition: opacity 0.5s ease-in;
+    transform: translate(0);
+    margin: auto;
+
+    img {
+        width: 15px;
+        margin-right: 5px;
+    }
+}
+
+@-webkit-keyframes slide-right {
+    0% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+
+    100% {
+        -webkit-transform: translateX(100px);
+        transform: translateX(100px);
+    }
+}
+
+@keyframes slide-right {
+    0% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+
+    100% {
+        -webkit-transform: translateX(100px);
+        transform: translateX(100px);
+    }
+}
+
+.slide-right {
+    -webkit-animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.web-container {
+    gap: 20px;
+    grid-template-rows: none !important;
+    width: calc(100% - 30px) !important;
+
+    >section {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+}

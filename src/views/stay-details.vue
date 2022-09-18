@@ -50,7 +50,7 @@
               {{ stay.address.city }},
               {{ stay.address.country }}
             </span>
-            <span class="share-save-actions" @click.prevent="share()">
+            <span class="share-save-actions" @click.prevent="showShareOptions=true">
               <span class="share-stay">
                 <svg class="save-svg" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
                   role="presentation" focusable="false" style="
@@ -90,6 +90,7 @@
                 <span style="outline: 0;"> Save</span>
               </span>
             </span>
+
           </section>
         </section>
 
@@ -332,6 +333,10 @@
     </section>
 
   </section>
+
+  <div v-if="showShareOptions">
+    <share-modal :stay="stay" @close="showShareOptions=false"></share-modal>
+  </div>
 </template>
 
 <script>
@@ -341,6 +346,7 @@ import aminities from '../cmps/aminities.vue'
 import reviews from '../cmps/reviews.vue'
 import appFooter from '../cmps/app-footer.vue'
 import stayMap from '../cmps/stay-map.vue'
+import shareModal from '../cmps/share-modal.vue'
 
 export default {
   name: 'stay-details',
@@ -351,6 +357,7 @@ export default {
     reviews,
     appFooter,
     stayMap,
+    shareModal
   },
   data() {
     return {
@@ -360,7 +367,8 @@ export default {
       id: null,
       tripSettingOn: true,
       isGalleryOn: true,
-      isMobile: false
+      isMobile: false,
+      showShareOptions:false
     }
   },
   async created() {
