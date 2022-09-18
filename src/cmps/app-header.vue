@@ -1,6 +1,7 @@
 
 <template>
     <section class="header-layout" :class="{ 'position-unset': isDetails }">
+        <login v-if="showLogin" @showLoginModal="showLoginModal" :signUpPage="isSignUpPage" />
         <section :class="{ 'header-container-alt': isSearch, 'header-container': !isSearch }" class="details-padding">
             <div class="logo-container" :class="{ 'grid-area-logo': isSearch }" @click.prevent="redirect('')">
                 <img src="https://res.cloudinary.com/nogacloud/image/upload/v1659367634/other/favicon.png" alt="">
@@ -13,23 +14,27 @@
                     Become a Host
                 </div>
                 <div>
-                    <img class="globe-img" src="https://res.cloudinary.com/nogacloud/image/upload/v1659275571/other/globe.svg" alt="">
+                    <img class="globe-img"
+                        src="https://res.cloudinary.com/nogacloud/image/upload/v1659275571/other/globe.svg" alt="">
                 </div>
                 <section @click.prevent="showMenu = !showMenu">
                     <div class="header-user-options">
                         <section>
-                            <img class="navburger-svg" src="https://res.cloudinary.com/nogacloud/image/upload/v1659275569/other/navburger.svg" alt="">
+                            <img class="navburger-svg"
+                                src="https://res.cloudinary.com/nogacloud/image/upload/v1659275569/other/navburger.svg"
+                                alt="">
                         </section>
                         <section class="header-profile-img">
                             <img :src="getImg()" alt="">
                         </section>
                     </div>
                     <section class="user-menu" v-if="showMenu">
+                        <p class="nav-bar-login" v-if="!user" @click.stop="showLoginModal(true)">Log in</p>
+                        <p v-if="!user" @click.stop="showLoginModal(true,true)">Sign up</p>
                         <p @click.stop="goTo('wishList')">Wish List</p>
                         <p @click.stop="goTo('user')">Trips</p>
                         <p @click.stop="goTo('host')">Orders</p>
-                        <p v-if="!user" @click.stop="goTo('login')">Login</p>
-                        <p v-else @click.stop="logOut">Log Out</p>
+                        <p v-if="user" @click.stop="logOut">Log Out</p>
                     </section>
                 </section>
             </div>
@@ -41,6 +46,7 @@
 <script>
 
 import filterCmp from './filter.vue'
+import login from '../views/login.vue'
 
 export default {
     data() {
@@ -48,6 +54,9 @@ export default {
             isSearch: false,
             showMenu: false,
             isDetails: false,
+            showLogin: false,
+            showSignUp: false,
+            isSignUpPage: false,
         }
     },
     created() {
@@ -57,16 +66,16 @@ export default {
         closeHeader() {
             this.isSearch = false
         },
-        setFilter(where, who,date) {
+        setFilter(where, who, date) {
             this.isSearch = false
-            this.$emit('filter', { where }, { who },{date})
+            this.$emit('filter', { where }, { who }, { date })
         },
         setDate(date) {
             this.$emit('date', date)
         },
         redirect(page) {
-            this.$router.push({path:`/${page}`})
-            this.$store.dispatch({type:'clearFilter'})
+            this.$router.push({ path: `/${page}` })
+            this.$store.dispatch({ type: 'clearFilter' })
         },
         setSearch(isSearching) {
             this.isSearch = isSearching
@@ -77,22 +86,30 @@ export default {
         wishList() {
             return this.$store.getters.wishList
         },
-        logOut(){
-            this.$store.dispatch({type:'logout'})
+        logOut() {
+            this.$store.dispatch({ type: 'logout' })
             this.user = false
         },
-        getImg(){
-            if(this.user && this.user?.imgUrl) {
+        getImg() {
+            if (this.user && this.user?.imgUrl) {
                 return this.user.imgUrl
             }
             else return 'https://res.cloudinary.com/nogacloud/image/upload/v1659275569/other/demo-profile-img.svg'
-        }
+        },
+        showLoginModal(boolean, isSignUp = false) {
+            this.isSignUpPage = isSignUp
+            this.showLogin = boolean
+            if (boolean) {
+                this.showMenu = !this.showMenu
+            }
+        },
     },
-    computed:{
-        user(){ return this.$store.getters.getUser}
+    computed: {
+        user() { return this.$store.getters.getUser }
     },
     components: {
-        filterCmp
+        filterCmp,
+        login,
     }
 }
 </script>

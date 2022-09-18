@@ -18,7 +18,7 @@
             <span class="rating-average in-oreder"> {{ this.getRating() }} </span>
           </span>
           <span class="trips-dot">&nbsp &middot &nbsp </span>
-          <span class="review-count in-order">{{ stay.numOfReviews }} reviews
+          <span @click="scrollMeTo('Reviews')" class="review-count in-order">{{ stay.numOfReviews }} reviews
           </span>
         </section>
       </div>
@@ -117,7 +117,7 @@
         <div class="order-sum-container">
           <div class="bold">Reservation Details</div>
           <div><span class="bold">Trip Dates: <br> </span> {{ getDate(checkIn).slice(0, 6) + '22' }} - {{
-              getDate(checkOut).slice(0, 6) + '22'
+          getDate(checkOut).slice(0, 6) + '22'
           }}</div>
           <div><span class="bold">Guests: <br></span> {{ this.query.adults }} adults, {{ this.query.children }} children
           </div>
@@ -210,7 +210,9 @@ export default {
       this.stayDayAmount = time_difference / (1000 * 60 * 60 * 24)
       return this.stayDayAmount.toFixed(0)
     },
-
+    scrollMeTo(refName) {
+      this.$emit('scrollMeTo', refName)
+    },
     getPrice(cleaningFee = 0) {
       var price = +(this.stay.price * this.stayDayAmount + cleaningFee).toFixed(0)
       return price.toLocaleString()
@@ -244,7 +246,7 @@ export default {
         status: "pending"
       }
       this.$store.dispatch({ type: 'addTrip', trip: tripDetails })
-       this.$router.push({ path: `/user` })
+      this.$router.push({ path: `/user` })
     },
     setActive(elElement) {
       var elActiveArea = document.querySelector('.searchbar-selected-filter')

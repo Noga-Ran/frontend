@@ -1,7 +1,7 @@
 
 <template>
     <section class="homepage-layout">
-        <app-header @filter="setFilter" />
+        <app-header @filter="setFilter" @showLoginModal="showLoginModal"/>
         <category-filter @filter="setFilter" />
         <stay-list />
         <app-footer :isFixed="'true'" />
@@ -19,8 +19,9 @@ export default {
         appHeader,
         stayList,
         categoryFilter,
-        appFooter
+        appFooter,
     },
+
     methods: {
         setFilter(filter, { who } = '',{date} = {start:'',end:''}) {
             var filterBy = Object.assign({}, this.$store.getters.filterBy)

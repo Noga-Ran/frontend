@@ -38,7 +38,6 @@
 }
 
 .logo-container {
-    cursor: pointer;
     display: flex;
     justify-content: start;
     align-items: center;
@@ -47,6 +46,10 @@
     font-size: 1.5em;
     height: 80px;
     letter-spacing: -2px;
+
+    >* {
+        cursor: pointer;
+    }
 
     img {
         height: 32px;
@@ -71,7 +74,9 @@
     cursor: pointer;
     height: 46px;
     width: 352.21px;
-    padding: 0 50px;
+    margin: 0 50px;
+    // padding: 0 50px;
+    // סימנייה
 }
 
 .header-filter-container {
@@ -345,6 +350,7 @@
     .search-region {
         padding-right: 12px !important;
         padding-bottom: 23px !important;
+
         &>p {
             padding: 0 !important;
             margin: 12px 0px 31px 0px !important;
@@ -352,10 +358,11 @@
     }
 
     .imgs-container {
-        .modal-img{
+        .modal-img {
             width: 122px !important;
             height: 122px !important;
         }
+
         column-gap: 9px;
         display: grid;
         -webkit-flex-wrap: wrap;
@@ -385,4 +392,8 @@
         border-style: solid !important;
         border-radius: 14px;
     }
+}
+
+.nav-bar-login {
+    font-weight: bold;
 }

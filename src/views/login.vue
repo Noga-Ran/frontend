@@ -1,78 +1,106 @@
 <template>
-<app-header></app-header>
-<!-- <form @submit.prevent="login" class="login-container form-page"> -->
-<form class="login-container form-page">
-    <div class="login-card flex column space-between">
-      <div class="login-fields flex column space-between grow-1">
-        <h4>Log in</h4>
-        <hr>
-        <h1>Welcome to Skybnb</h1>
-        <!-- <label> Username </label> -->
-        <input class="username-input" ref="username" v-model="cred.username" type="text" placeholder="Username" />
-        <!-- <label> Password </label> -->
-        <input class="password-input" v-model="cred.password" type="password" placeholder="Password"/>
+  <section class="login-layout" @click="showModal($event)" id="blured-bkg">
+    <div class="login-container">
+      <div class="login-title-cont">
+        <div class="login-title">Log in or sign up</div>
+        <div class="exit-login-btn" @click="closeModal">
+          <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
+            focusable="false"
+            style="display: block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 3; overflow: visible;">
+            <path d="m6 6 20 20"></path>
+            <path d="m26 6-20 20"></path>
+          </svg>
+        </div>
       </div>
-      <!-- <button class="login-btn">login</button> -->
-
-<div class="btn-container login-btn" @click="login">
-          <div class="cell" v-for="currCell in 100" :key="currCell"></div>
+      <section class="login-main-content">
+        <div class="login-header">
+          Welcome to Skybnb
+        </div>
+        <div v-if="!isSignUp" class="login-form-cont">
+          <input class="login-username" placeholder="Username" v-model="cred.username">
+          <div class="form-line"></div>
+          <input class="login-password" placeholder="Password" v-model="cred.password" type="password">
+        </div>
+        <div v-else class="sign-up-form-cont">
+          <input class="fullname-input" ref="fullname" v-model="signUpCred.fullname" type="text"
+            placeholder="Full name" />
+          <div class="form-line"></div>
+          <input class="username-input" v-model="signUpCred.username" type="text" placeholder="Username" />
+          <div class="form-line"></div>
+          <input class="password-input" v-model="signUpCred.password" type="password" placeholder="Password" />
+        </div>
+        <div class="btn-container login-btn" @click="loginOrSignUp">
+          <div class="cell" v-for="currCell in 100" :key="currCell+'k'"></div>
           <div class="content">
-            <!-- v-button -->
             <button class="action-btn">
-              <span class="word-btn">Log in</span>
+              <span class="word-btn">{{isSignUp ? 'Sign up' : 'Log in'}}</span>
             </button>
           </div>
         </div>
+        <div class="login-or-line"></div>
+        <div class="login-line-text">or
+        </div>
+        <div class="btn-container login-guest-btn">
+          <div class="cell" v-for="currCell in 100" :key="currCell"></div>
+          <div class="content">
+            <button class="action-btn">
+              <span class="word-btn">Continue as a guest</span>
+            </button>
+          </div>
+        </div>
+        <div @click="isSignUp = !isSignUp" :class="[isSignUp ? 'move-to-login' : 'move-to-signup']">
+          {{isSignUp ? "Already signed up?" : "Don't have an acount yet? sign up"}}</div>
+      </section>
     </div>
-    <div class="hr-or">or</div>
-
-   
-
-    <!-- <router-link to="/signup" class="sec-btn"> -->
-      <div class="btn-container login-guest-btn">
-          <div class="cell" v-for="currCell in 100" :key="currCell"></div>
-          <div class="content">
-            <!-- v-button -->
-            <button class="action-btn">
-              <span class="word-btn">Log in as a guest</span>
-            </button>
-          </div>
-        </div>
-        <!-- </router-link> -->
-  </form>
-   <router-link to="/signup" class="move-to-signup"
-      >Don't have an acount yet? sign up</router-link>
+  </section>
 </template>
 
 <script>
-import appHeader from '../cmps/app-header.vue'
-import appFooter from '../cmps/app-footer.vue'
 
-  export default {
-    name: 'login-page',
-    data() {
-      return {
-        cred: {
-          username: '',
-          password: '',
-        },
-      };
-    },
-    methods: {
-      async login() {
-        await this.$store.dispatch({type: 'login', cred: this.cred});
-        // socketService.emit("set-user-socket", this.$store.getters.getUser._id)
-        this.$router.push('/')
+export default {
+  name: 'login-page',
+  data() {
+    return {
+      cred: {
+        username: '',
+        password: '',
       },
+      signUpCred: {
+        fullname: '',
+        username: '',
+        password: '',
+      },
+      isSignUp: false,
+    };
+  },
+  props: {
+    signUpPage: {
+      type: Boolean,
     },
-    mounted() {
-      this.$refs.username.focus();
-    },
-    components:{
-      appHeader,
-      appFooter
+  },
+  created() {
+    if (this.signUpPage) {
+      this.isSignUp = this.signUpPage
     }
-  };
+  },
+  methods: {
+    async loginOrSignUp() {
+      if (this.isSignUp) {
+        await this.$store.dispatch({ type: 'signup', cred: this.signUpCred });
+      }
+      else {
+        await this.$store.dispatch({ type: 'login', cred: this.cred });
+      }
+      this.$router.push('/')
+    },
+    showModal(ev) {
+      if (ev.path[0].id == 'blured-bkg') {
+        this.closeModal()
+      }
+    },
+    closeModal() {
+      this.$emit('showLoginModal', false)
+    }
+  },
+};
 </script>
-
-<style></style>
