@@ -2,24 +2,24 @@
   <div :class="{ shadow: isActive }"></div>
   <section class="category-filters-layout">
     <section class="category-filters-container">
-   <Carousel :items-to-show="12" :itemsToScroll="4">
-    <!-- <section class="category-filter-container" v-for="(currLabel, idx) in labels" :key="idx"> -->
-    <Slide class="category-filter-container" v-for="(currLabel, idx) in labels" :key="idx">
-      <section @click="selectLabel($event)" class="filter-img-layout"
-      :class="{ 'selected-filter': queryLabel === currLabel }">
-      <div class="filter-img-container">
-        <img :src='getImgUrl(currLabel)' />
-        <div class="filter-img-txt">
-          {{ currLabel }}
-        </div>
-      </div>
-    </section>
-  </Slide>
-  <!-- </section> -->
-  <template #addons>
-    <Navigation />
-  </template>
-</Carousel>
+      <Carousel :items-to-show="12" :itemsToScroll="4">
+        <!-- <section class="category-filter-container" v-for="(currLabel, idx) in labels" :key="idx"> -->
+        <Slide class="category-filter-container" v-for="(currLabel, idx) in labels" :key="idx">
+          <section @click="selectLabel($event)" class="filter-img-layout"
+            :class="{ 'selected-filter': queryLabel === currLabel }">
+            <div class="filter-img-container">
+              <img :src='getImgUrl(currLabel)' />
+              <div class="filter-img-txt">
+                {{ currLabel }}
+              </div>
+            </div>
+          </section>
+        </Slide>
+        <!-- </section> -->
+        <template #addons>
+          <Navigation />
+        </template>
+      </Carousel>
     </section>
   </section>
 </template>
@@ -29,7 +29,7 @@
 import { Carousel, Navigation, Slide } from 'vue3-carousel';
 import 'vue3-carousel/dist/carousel.css';
 
-export default  {
+export default {
 
   data() {
     return {
@@ -88,20 +88,3 @@ export default  {
 }
 </script>
 
-
-<style>
-.carousel__prev--in-active,
-.carousel__next--in-active {
-  display: none;
-}
-.carousel__prev,
-.carousel__next {
-  background-color: white;
-  color: black;
-  border: 1px solid grey;
-}
-
-.carousel__item {
-  padding: 20px;
-}
-</style>
