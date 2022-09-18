@@ -109,10 +109,10 @@
             </div>
             <img class="host-img-profile" :src="getRandomImg()" alt="" />
           </div>
-          <section class="stay-beds" v-if="stay.beds && stay.bedrooms && stay.beds >= stay.bedrooms">
+          <section class="stay-beds"
+            v-if="stay.beds && stay.bedrooms && stay.beds >= stay.bedrooms && stay.beds % stay.bedrooms < 3 && bedsMoreThanBedrooms > -1">
             <div class="beds-heading">Where you'll sleep</div>
             <div class="beds-layout" id="beds-layout">
-              <!-- סימנייה -->
               <div class="bed-container" v-for="idx in stay.bedrooms">
                 <div class="bed">
                   <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
@@ -127,10 +127,11 @@
                     </path>
                   </svg>
                   <div class="bedroom-num">Bedroom {{idx}}</div>
-                  <div class="bedroom-type"> 2 {{idx % 2 ? 'king' : 'queen'}} size beds </div>
+                  <div class="bedroom-type"> {{bedsMoreThanBedrooms >= idx ? 2 : 1}} {{idx % 2 ? 'king' : 'queen'}} size
+                    beds </div>
                 </div>
               </div>
-              <div class="beds-arrows" v-if="stay.bedrooms > 2">
+              <div class="beds-arrows" v-if="stay.bedrooms > 3">
                 <button :class="{ opacity : !isScrolled }" @click="sideScroll('left',25,210,37)"><svg
                     viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-label="Previous" role="img"
                     focusable="false"
@@ -178,40 +179,40 @@
   <section v-if="isMobile">
     <section class="mobile-details-layout">
       <div class="mobile-gallery">
-        <div class="mobile-img-container">
-          <div class="mobile-details-nav">
-            <button class="mobile-details-return" @click.prevent="redirect('')"><svg class="svg-icon"
-                style="width: 1.1015625em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;"
-                viewBox="0 0 1128 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <div class="mobile-details-nav">
+          <button class="mobile-details-return" @click.prevent="redirect('')"><svg class="svg-icon"
+              style="width: 1.1015625em; height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;"
+              viewBox="0 0 1128 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M1097.855149 473.209109h-929.064612L568.332002 76.916503a44.938006 44.938006 0 1 0-63.543869-63.55752L0 518.147115l493.403474 492.993954a43.90465 43.90465 0 0 0 62.110549-62.069598L168.544825 563.071471h929.310324a29.94957 29.94957 0 0 0 30.031475-30.031475v-29.881317a29.93592 29.93592 0 0 0-30.031475-29.94957z"
+                fill="" />
+            </svg>
+          </button>
+          <div class="mobile-details-reactions">
+            <button class="mobile-details-share" @click=""><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true" role="presentation" focusable="false"
+                style="fill: none;  stroke: currentcolor; stroke-width: 1; overflow: visible;">
+                <g fill="none">
+                  <path d="M27 18v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-9"></path>
+                  <path d="M16 3v23V3z"></path>
+                  <path d="M6 13l9.293-9.293a1 1 0 0 1 1.414 0L26 13"></path>
+                </g>
+              </svg></button>
+            <button class="mobile-details-favorite" @click.stop="toggleFavorite"><svg viewBox="0 0 32 32"
+                xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"
+                style="display: block; stroke-width: 1; overflow: visible; fill: transparent; stroke: currentcolor;"
+                v-bind:style="[
+                isFav
+                ? { fill: '#FF385C', stroke: '#FF385C' }
+                : { fill: '#ffffff', stroke: 'currentcolor' },
+                ]">
                 <path
-                  d="M1097.855149 473.209109h-929.064612L568.332002 76.916503a44.938006 44.938006 0 1 0-63.543869-63.55752L0 518.147115l493.403474 492.993954a43.90465 43.90465 0 0 0 62.110549-62.069598L168.544825 563.071471h929.310324a29.94957 29.94957 0 0 0 30.031475-30.031475v-29.881317a29.93592 29.93592 0 0 0-30.031475-29.94957z"
-                  fill="" />
-              </svg>
-            </button>
-            <div class="mobile-details-reactions">
-              <button class="mobile-details-share" @click=""><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true" role="presentation" focusable="false"
-                  style="fill: none;  stroke: currentcolor; stroke-width: 1; overflow: visible;">
-                  <g fill="none">
-                    <path d="M27 18v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-9"></path>
-                    <path d="M16 3v23V3z"></path>
-                    <path d="M6 13l9.293-9.293a1 1 0 0 1 1.414 0L26 13"></path>
-                  </g>
-                </svg></button>
-              <button class="mobile-details-favorite" @click.stop="toggleFavorite"><svg viewBox="0 0 32 32"
-                  xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"
-                  style="display: block; stroke-width: 1; overflow: visible; fill: transparent; stroke: currentcolor;"
-                  v-bind:style="[
-                  isFav
-                  ? { fill: '#FF385C', stroke: '#FF385C' }
-                  : { fill: '#ffffff', stroke: 'currentcolor' },
-                  ]">
-                  <path
-                    d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z">
-                  </path>
-                </svg></button>
-            </div>
+                  d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z">
+                </path>
+              </svg></button>
           </div>
+        </div>
+        <div class="mobile-img-container">
           <img :src="getImgUrl(0)" alt="" />
         </div>
       </div>
@@ -230,7 +231,8 @@
               <span class="rating-average"> {{ this.getRating }} </span>
             </span>
             <span>&nbsp &middot &nbsp </span>
-            <span class="mobile-stay-review-count" @click="scrollMeTo('Mobile-Reviews')">{{ stay.numOfReviews }} reviews </span>
+            <span class="mobile-stay-review-count" @click="scrollMeTo('Mobile-Reviews')">{{ stay.numOfReviews }} reviews
+            </span>
           </div>
           <span class="stay-address">
             {{ stay.address.city }},
@@ -248,11 +250,11 @@
           </div>
         </div>
         <aminities :stayAmenities="stay.amenities"></aminities>
-        <section class="mobile-stay-beds" v-if="stay.beds && stay.bedrooms && stay.beds >= stay.bedrooms">
+        <section class="mobile-stay-beds"
+          v-if="stay.beds && stay.bedrooms && stay.beds >= stay.bedrooms && stay.beds % stay.bedrooms < 3 && bedsMoreThanBedrooms > -1">
           <div class="mobile-beds-heading">Where you'll sleep</div>
           <div class="mobile-beds-layout">
-            <!-- סימנייה -->
-            <div class="mobile-bed-container" v-for="(bed, idx) in stay.bedrooms">
+            <div class="mobile-bed-container" v-for="idx in stay.bedrooms">
               <div class="mobile-bed">
                 <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
                   focusable="false" style="
@@ -265,8 +267,9 @@
                     d="M28 4a2 2 0 0 1 1.995 1.85L30 6v7.839l1.846 5.537a3 3 0 0 1 .115.468l.03.24.009.24V30h-2v-2H2v2H0v-9.675a3 3 0 0 1 .087-.717l.067-.232L2 13.836V6a2 2 0 0 1 1.697-1.977l.154-.018L4 4zm2 18H2v4h28zm-1.388-6H3.387l-1.333 4h27.891zM28 6H4v8h2v-4a2 2 0 0 1 1.85-1.995L8 8h16a2 2 0 0 1 1.995 1.85L26 10v4h2zm-13 4H8v4h7zm9 0h-7v4h7z">
                   </path>
                 </svg>
-                <div class="bedroom-num">Bedroom {{ idx + 1 }}</div>
-                <div class="bedroom-type"> 2 king size beds </div>
+                <div class="bedroom-num">Bedroom {{ idx }}</div>
+                <div class="bedroom-type"> {{bedsMoreThanBedrooms >= idx ? 2 : 1}} {{idx % 2 ? 'king' : 'queen'}} size
+                  beds </div>
               </div>
             </div>
           </div>
@@ -288,22 +291,24 @@
             <span>&nbsp &middot &nbsp </span>
             <span class="review-count">{{ stay.numOfReviews }} reviews </span>
           </h2>
-          <div class="review-container-mobile" ref="Mobile-Reviews">
-            <div class="review-deatails-container">
-              <img class="profile-img" :src="stay.reviews[1].by.imgUrl" alt="" />
-              <div class="review-info">
-                <span class="review-name">{{ stay.reviews[0].by.fullname }}</span>
-                <span class="review-time">{{ formateTime(stay.reviews[0].at) }}</span>
+          <div class="mobile-reviews-layout">
+            <div class="review-container-mobile" ref="Mobile-Reviews"
+              v-for="(review,idx) in stay.reviews.length <= 8 ? stay.reviews.length : 8">
+              <div class="review-deatails-container">
+                <img class="profile-img" :src="stay.reviews[idx].by.imgUrl" alt="" />
+                <div class="review-info">
+                  <span class="review-name">{{ stay.reviews[idx].by.fullname }}</span>
+                  <span class="review-time">{{ formateTime(stay.reviews[idx].at) }}</span>
+                </div>
+              </div>
+              <div class="reviews-txt-container">
+                <div>{{ formatedReviewTxt(stay.reviews[idx].txt) }}</div>
               </div>
             </div>
-            <div class="reviews-txt-container">
-              <div>{{ formatedReviewTxt(stay.reviews[0].txt) }}</div>
-            </div>
           </div>
-          <!-- v-button -->
-          <button class="show-reviews-btn" @click="showReviewsModal = true">
+          <!-- <button class="show-reviews-btn" @click="showReviewsModal = true">
             Show all {{ stay.numOfReviews }} reviews
-          </button>
+          </button> -->
         </div>
       </section>
       <div class="mobile-reservation-bar">
@@ -355,7 +360,8 @@ export default {
       isMobile: false,
       showShareOptions: false,
       isScrolled: false,
-      hostImg: undefined ,
+      hostImg: undefined,
+      bedsMoreThanBedrooms: undefined,
     }
   },
   async created() {
@@ -373,6 +379,7 @@ export default {
     this.detailsPageTopObserver.observe(this.$refs.detailsPageTop);
   },
   mounted() {
+    this.bedsMoreThanBedrooms = this.stay.beds - this.stay.bedrooms
   },
   methods: {
     async getStayById(stayId) {
