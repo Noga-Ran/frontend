@@ -35,11 +35,6 @@ export default {
     }
   },
   actions: {
-    // async loadWishList({ commit, state }) {
-    //   var user = await userService.addWish(stayId,state.loggedinUser)
-    //   console.log(user.wishlist);
-    //     return user.wishlist
-    //   },
       async addWishStay({commit,state}, { stayId }) {
         var user = await userService.addWish(stayId,state.loggedinUser)
         commit({ type: 'setWishList', user })
@@ -66,8 +61,16 @@ export default {
           console.log(err);
         }       
       },
-      async logout({ commit }) {
+      async logout({ commit,state }) {
         try {
+          if(state.loggedinUser._id==='6326c6c8d90b804724d30e4d'){
+            let user = JSON.parse(JSON.stringify(state.loggedinUser))
+            user.msgs = []
+            user.wishlist = []
+            user.stays = []
+            user.trips = []
+            await userService.save(user)
+          }
           await userService.logout();
           commit({ type: 'setUser', user: null });
         } catch (err) {
