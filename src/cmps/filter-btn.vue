@@ -40,9 +40,6 @@
             
             <input type="checkbox" class="private-room" name="privateRoom" v-model="multyFilterBy.privateRoom" @click="multyFilterBy.privateRoom=!multyFilterBy.privateRoom">
             <label for="privateRoom"> Private room   <div class="grey">Your own room in a home or a hotel, plus some shared common spaces</div></label><br>
-          
-           <input type="checkbox" class="shared-room" name="sharedRoom" v-model="multyFilterBy.sharedRoom" @click="multyFilterBy.sharedRoom=!multyFilterBy.sharedRoom">
-            <label for="sharedRoom"> Shared room  <div class="grey">A sleeping space and common areas that may be shared with others</div></label><br>
           <h1>Rooms and beds</h1>
           <div>Bedrooms</div>
          <section class="bedroom-btns">

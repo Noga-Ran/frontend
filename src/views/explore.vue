@@ -2,7 +2,7 @@
   <app-header @filter="setFilter"></app-header>
   <div class="explore-filters-conatiner">
     <p>{{ staysAmount }} stays</p>
-    <filter-btn @setMultyFilter="setFilter" />
+    <filter-btn @setMultyFilter="setMultiFilter" />
   </div>
   <stay-list></stay-list>
 </template>
@@ -58,6 +58,10 @@ export default {
         this.$router.push({ path: `/`, query })
       }
     },
+    setMultiFilter(multiFilter){
+      let filterBy = Object.assign(JSON.parse(JSON.stringify(this.$store.getters.filterBy)),multiFilter)
+      this.$store.dispatch({type:"setFilter",filterBy})
+    }
   },
   components: {
     appHeader,
