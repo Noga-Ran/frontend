@@ -62,10 +62,11 @@
         <p>As you search, tap the heart icon to save your favorite places to stay or things to do to a wishlist.</p>
         <router-link to="/">start exploring</router-link>
     </div>
-
+    <app-footer></app-footer>
 </template>
 <script>
 import appHeader from '../cmps/app-header.vue'
+import appFooter from '../cmps/app-footer.vue'
 import { userService } from '../services/user-service'
 
 export default {
@@ -111,6 +112,7 @@ export default {
     },
     components: {
         appHeader,
+        appFooter
     },
     computed: {
         user() {
