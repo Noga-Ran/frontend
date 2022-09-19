@@ -6,13 +6,19 @@
 
 }
 
+.mobile-img-container {
+    margin-top: -7.5vh;
+}
+
 .mobile-details-nav {
+    padding-bottom: 1.5vh;
+    height: fit-content !important;
     top: 2vh;
     display: flex;
-    width: calc(100% - 50px);
+    width: calc(100% - 50px) !important;
     margin: 0 25px;
     justify-content: space-between;
-    position: fixed;
+    position: sticky;
 
     .mobile-details-reactions {
         display: flex;
@@ -217,12 +223,14 @@
     }
 
     .review-container-mobile {
-        margin-top: 20px;
-        height: 50%;
-        width: 70%;
         border: 1px solid #acacacab;
         border-radius: 18px;
+        min-width: calc(70vw - 48px);
         padding: 10px;
+
+        &:not(:last-of-type) {
+            margin-right: 24px;
+        }
     }
 
     .show-reviews-btn {

@@ -75,8 +75,6 @@
     height: 46px;
     width: 352.21px;
     margin: 0 50px;
-    // padding: 0 50px;
-    // סימנייה
 }
 
 .header-filter-container {
@@ -253,20 +251,28 @@
     }
 }
 
+.nav-breaking-line {
+    width: 98%;
+    margin: 8px 0;
+    height: 0.5px !important;
+    background-color: rgb(172 172 172 / 43%);
+}
+
 .user-menu {
+    font-size: 15px;
     font-family: circular-light;
-    box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
+    box-shadow: 0 2px 16px rgb(0 0 0 / 12%);
     top: 70px;
     right: 80px;
     border-radius: 10px;
     width: 242px;
-    padding: 10px 0;
+    padding: 8px 0;
     background-color: white;
     position: fixed;
     cursor: pointer;
 
     p {
-        padding: 10px 20px;
+        padding: 10px 16px;
         margin: 0;
         height: 25px;
         display: flex;
