@@ -78,7 +78,27 @@
     .footer-container {
         margin-top: 12px;
         flex-direction: column;
-        padding: 14px 80px 13px 24px;
+        padding: 14px 24px 13px 24px;
+    }
+}
+
+@media screen and (max-width:1124px) and (min-width:746px) {
+    .footer-container {
+        padding: 14px 40px 13px 40px !important;
+    }
+}
+
+@media screen and (max-width:785px) and (min-width:746px) {
+    .footer-container>div:nth-of-type(3) {
+        white-space: nowrap;
+    }
+
+    .footer-container>div:first-of-type {
+        display: block;
+    }
+
+    .footer-container>div {
+        height: auto !important;
     }
 }
 
@@ -91,5 +111,71 @@
         position: fixed;
         align-items: center;
         padding: 14px 80px 13px 80px;
+    }
+}
+
+
+.mobile-footer-container {
+    position: fixed;
+    align-items: center;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid #EBEBEB;
+    background: #ffffff;
+    position: fixed !important;
+    height: 64px !important;
+    left: 0px !important;
+    right: 0px !important;
+    z-index: 9999;
+
+    section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+        margin: 0 auto !important;
+        max-width: 560px !important;
+    }
+
+    a,span {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 2px !important;
+        max-width: 20% !important;
+        cursor: pointer !important;
+        width: 74.075px;
+        text-decoration: none;
+    }
+
+    .active{
+        svg{
+            stroke:rgb(255, 56, 92) !important;
+            stroke-width: 4px;
+        }
+        
+        p{
+            color: #ff385c !important;
+        }
+    }
+    svg {
+        margin-bottom: 2px !important;
+        stroke: #b0b0b0
+    }
+
+
+    p{
+        font-size: 10px !important;
+        line-height: 12px !important;
+        overflow: clip !important;
+        text-overflow: ellipsis !important;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2 !important;
+        -webkit-box-orient: vertical !important;
+        font-weight: 600 !important;
+        overflow-wrap: break-word !important;
+        color: #717171;
+        margin: 0;
+        text-decoration: none;
     }
 }

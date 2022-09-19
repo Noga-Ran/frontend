@@ -5,16 +5,19 @@
             <trips-table :orders="orders"/>
         </section>
     </section>
+    <app-footer></app-footer>
 </template>
 
 <script>
 import appHeader from '../cmps/app-header.vue'
+import appFooter from '../cmps/app-footer.vue'
 import tripsTable from '../cmps/trips-table.vue'
 
 export default {
     components: {
         appHeader,
         tripsTable,
+        appFooter
     },
     data() {
         return {
