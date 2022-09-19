@@ -8,12 +8,17 @@
 }
 
 .category-filters-container {
+  justify-content: space-between;
   margin: 20px 80px;
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: min-content;
   gap: 32px;
   overflow: hidden;
+
+  .filters-btn {
+    margin-top: 14px;
+  }
 }
 
 .category-filter-container {
@@ -116,6 +121,7 @@
   border: 0.5px solid rgb(0 0 0 / 0.3);
   height: 28px;
   width: 28px;
+  top: 40px;
 
   svg {
     width: 20px;
@@ -151,8 +157,21 @@
 
 .carousel__prev {
   left: 15px !important;
+  border-color: #1e1818;
 
   &::before {
+    content: "";
+    display: block;
+    pointer-events: none;
+    background-color: rgb(255 255 255 / 55%);
+    height: 270%;
+    width: 35px;
+    position: absolute;
+    left: -3px;
+    z-index: -9999;
+  }
+
+  &::after {
     content: '';
     display: block;
     top: -22px;
@@ -164,17 +183,6 @@
     background-image: linear-gradient(to right, white, rgb(255 255 255 / 0));
     right: -105%;
     height: 270%;
-  }
-
-  &::after {
-    content: "";
-    display: block;
-    pointer-events: none;
-    background-color: white;
-    height: 270%;
-    width: 35px;
-    position: absolute;
-    left: -3px;
   }
 }
 
@@ -189,6 +197,7 @@
 .carousel__track {
   gap: 32px;
 }
-.carousel{
-  width: 79.5vw;
+
+.carousel {
+  width: 78vw;
 }
