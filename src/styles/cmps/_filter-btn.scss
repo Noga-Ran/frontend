@@ -1,6 +1,9 @@
-
 .filter-b-b {
     border-bottom: 1px solid rgb(235, 235, 235) !important;
+}
+
+.price-range-title {
+    margin-top: 32px;
 }
 
 .filters-btn {
@@ -46,7 +49,7 @@
         border-top: 1px solid rgb(235, 235, 235) !important;
     }
 
-    .vfm__content{
+    .vfm__content {
         margin: auto 40px !important;
         width: auto !important;
     }
@@ -126,19 +129,19 @@
         font-size: 14px;
         width: 93%;
         font-weight: 100;
-        }
     }
+}
 
 
 .price-inputs {
     display: flex;
-    gap: 1em;
     width: 100%;
     margin: auto;
     padding-bottom: 32px !important;
 
-    :nth-child(2) {
+    &>*:nth-child(2) {
         align-self: center;
+        margin: 8px;
     }
 }
 
@@ -163,8 +166,7 @@
 }
 
 input.entire-place,
-input.private-room
-{
+input.private-room {
     width: 24px;
     height: 24px;
 
@@ -172,15 +174,23 @@ input.private-room
 
 .bedroom-btns {
     display: flex;
-    gap: 1em;
+    gap: 10px;
     margin-top: 1em;
     margin-bottom: 1.8em;
 
     >* {
-        padding: 15px 30px;
+        font-style: 14px;
+        font-family: circular-light;
+        padding: 9.7px 24.5px;
         border-radius: 25px;
         background-color: #fff;
         cursor: pointer;
+        border: 1px solid rgb(221, 221, 221) !important;
+        transition: 200ms;
+
+        &:hover {
+            border-color: black !important;
+        }
     }
 
     .chosen-amenity {
@@ -190,56 +200,144 @@ input.private-room
 }
 
 .amenities-filter {
-    display: flex;
-    flex-direction: column;
-    gap: 1em
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
+    margin-bottom: 32px;
+    color: rgb(34, 34, 34) !important;
+    font-family: circular-light;
+
+    div {
+        display: flex;
+        align-items: center;
+    }
+
+    label {
+        margin: 0 !important;
+    }
+
+    input {
+        border-color: rgb(176, 176, 176) !important;
+        margin-right: 16px;
+        height: 24px;
+        width: 24px;
+
+        &:hover {
+            border-color: black;
+            cursor: pointer;
+        }
+    }
 }
 
 .property-btns {
+    width: 540px;
     display: flex;
-    gap: 1em;
+    margin-bottom: 32px;
 
     >* {
+        font-size: 17px;
+        font-family: circular;
+        padding: 16px;
+        width: 161.8px;
+        height: 120px;
         background-color: white;
         display: flex;
         flex-direction: column;
-        gap: 1em;
-        padding: 20px 35px;
-        border-radius: 8px;
-        border: 0.5px #717171 solid;
-        align-items: center;
+        justify-content: space-between;
+        border-radius: 16px;
+        border: 1px solid rgba(176, 176, 176, 0.5) !important;
+        margin-right: 16px;
+        transition: 150ms;
 
+
+        img {
+            height: 32px;
+        }
+
+        &:active {
+            border-color: #1a202c00 !important;
+            color: rgb(0, 0, 0) !important;
+            transform: scale(0.925) !important;
+        }
 
         &:hover {
-            border: 1px black solid;
+            border-color: rgb(0, 0, 0) !important;
             cursor: pointer;
         }
     }
 
     .chosen-propery {
+        background-color: rgb(247 247 247) !important;
         border-width: 2px !important;
+        border-color: black !important;
     }
 }
+
+.type-of-place-filter {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 32px;
+
+    input {
+        min-width: 24px;
+        margin-right: 14px;
+    }
+
+    &>div {
+        font-family: circular-light;
+        display: flex;
+        flex-direction: row;
+    }
+
+    label {
+        margin: 0;
+        font-size: 17px;
+        
+        div{
+            margin-top: 2px;
+            font-size: 15px;
+        }
+    }
+}
+
 
 .show-filtered-btn {
     background-color: black;
     color: white;
-    padding: 15px 30px;
-    border-radius: 25px;
+    padding: 14px 24px;
+    border-radius: 8px;
     font-weight: 700;
     cursor: pointer;
 }
 
+.filter-main-content {
+    padding: 0 24px;
+    height: calc(633px - 64px - 81px);
+    overflow: auto;
+}
+
+.main-filter-modal {
+
+    .modal-container {
+        overflow: unset !important;
+        padding: 0 !important;
+    }
+}
+
 .clear-multy-filter-btn {
+    cursor: pointer;
     border: unset;
     background-color: white;
     text-decoration: underline;
 }
 
-.amenities-filter{
-    input{
-        height: 24px;
-        width: 24px;
+.filter-modal-acrtion-btns {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid rgb(235, 235, 235) !important;
+    padding: 16px 24px;
+
+    >* {
+        font-size: 16px;
     }
 }
-
