@@ -80,6 +80,9 @@ actions: {
     console.log('clearstays');
     let stays= []
     commit ({ type: 'setStays', stays})
+  },
+  async saveStay({ commit }, { stay }){
+    await stayService.save(stay)
   }
 
 },

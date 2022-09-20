@@ -7,8 +7,7 @@
                 <el-carousel trigger="click" :autoplay="false">
                     <el-carousel-item v-for="item in 5" :key="item">
                         <svg @click.stop="removeStay(stay._id)" class="mobile-fav" name="favBtn" viewBox="0 0 32 32"
-                            xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
-                            focusable="false"
+                            xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"
                             style="display: block; height: 24px; width: 24px; stroke: white; stroke-width: 2; overflow: visible; fill: rgb(255, 56, 92);">
                             <path
                                 d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z">
@@ -25,8 +24,7 @@
                         <p>{{ stay.name }}</p>
                     </div>
                     <svg @click.stop="removeStay(stay._id)" name="favBtn" class="desktop-fav" viewBox="0 0 32 32"
-                        xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
-                        focusable="false"
+                        xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"
                         style="display: block; height: 24px; width: 24px; stroke: white; stroke-width: 2; overflow: visible; fill: rgb(255, 56, 92);">
                         <path
                             d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z">
@@ -131,11 +129,7 @@ export default {
             this.$store.dispatch({ type: "removeWishStay", stayId })
         },
         showDetails(stayId) {
-            if (this.$route.query && this.$route.query?.adults) {
-                window.open(`/#/stay/${stayId}?where=${this.$route.query.where || ''}&checkIn=${this.$route.query.checkIn || ''}&checkOut=${this.$route.query.checkOut || ''}&label=${this.$route.query.label || ''}&adults=${this.$route.query.adults}&children=${this.$route.query.children}&infants=${this.$route.query.infants}&pets=${this.$route.query.pets}`, '_blank')
-            } else {
-                window.open(`/#/stay/${stayId}`, '_blank')
-            }
+            window.open(`/#/stay/${stayId}`, '_blank')
         },
         checkMulti(stayParam, param) {
             if (stayParam === 1) return stayParam + ' ' + param
