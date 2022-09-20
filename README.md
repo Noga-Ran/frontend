@@ -83,11 +83,11 @@ How to install the app locally
 
 ### Prerequisites
 
-download <a href="https://nodejs.org/en/download/">nodejs<a/> (if you don't have it on your computer)<br>
+Download <a href="https://nodejs.org/en/download/">nodejs<a/> (if you don't have it on your computer)<br>
 run command npm install -g @vue/cli (if you don't have vuejs on your computer)
 
 ### Installation
-the app will run only if you download both frontend and backend<br><br>
+The app will work only if you download both frontend and backend<br><br>
 Project frontend: https://github.com/Noga-Ran/frontend<br>
 Project Backend: https://github.com/Noga-Ran/backend<br><br>
 see that you do the following steps to both of the repositories<br>
