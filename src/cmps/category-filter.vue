@@ -2,8 +2,7 @@
   <div :class="{ shadow: isActive }"></div>
   <section class="category-filters-layout">
     <section class="category-filters-container">
-      <Carousel :items-to-show="12" :itemsToScroll="4">
-        <!-- <section class="category-filter-container" v-for="(currLabel, idx) in labels" :key="idx"> -->
+      <Carousel :items-to-show="12" :itemsToScroll="3">
         <Slide class="category-filter-container" v-for="(currLabel, idx) in labels" :key="idx">
           <section @click="selectLabel($event)" class="filter-img-layout"
             :class="{ 'selected-filter': queryLabel === currLabel }">
@@ -15,11 +14,11 @@
             </div>
           </section>
         </Slide>
-        <!-- </section> -->
         <template #addons>
           <Navigation />
         </template>
       </Carousel>
+      <filter-btn></filter-btn>
     </section>
   </section>
 </template>
@@ -28,6 +27,7 @@
 
 import { Carousel, Navigation, Slide } from 'vue3-carousel';
 import 'vue3-carousel/dist/carousel.css';
+import filterBtn from './filter-btn.vue'
 
 export default {
 
@@ -43,6 +43,7 @@ export default {
     Carousel,
     Slide,
     Navigation,
+    filterBtn,
   },
   emits: ['filter'],
   methods: {
