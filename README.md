@@ -52,7 +52,7 @@ This project is a fullstack vue appliction, inspired by 'airbnb'.
 
 The app allows users to log in (or sign up), and look for their next vaction.
 
-From filtering loactions to their liking and add places to their wishlists to ordering a trip.
+User can filter loactions to its liking, add places to its wishlists and order a trip.
 
 <p align="right">(<a href="#title">back to top</a>)</p>
 
