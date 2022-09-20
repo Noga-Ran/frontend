@@ -34,9 +34,9 @@
 // }
 
 .filter-modal {
-    margin-left: 24px;
+    // margin-left: 24px;
     margin-bottom: 32px !important;
-    margin-right: 24px;
+    // margin-right: 24px;
     // overflow-y: auto;
 
     h1 {
@@ -162,14 +162,13 @@
 
 }
 
-// input.entire-place,
-// input.private-room,
-// input.shared-room
-// {
-//     width: 30px;
-//     height: 30px;
+input.entire-place,
+input.private-room
+{
+    width: 24px;
+    height: 24px;
 
-// }
+}
 
 .bedroom-btns {
     display: flex;
@@ -235,5 +234,12 @@
     border: unset;
     background-color: white;
     text-decoration: underline;
+}
+
+.amenities-filter{
+    input{
+        height: 24px;
+        width: 24px;
+    }
 }
 
