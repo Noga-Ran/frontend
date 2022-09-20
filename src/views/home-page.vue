@@ -4,7 +4,7 @@
         <app-header @filter="setFilter" @showLoginModal="showLoginModal"/>
         <category-filter @filter="setFilter" />
         <stay-list />
-        <app-footer :isFixed="'true'" />
+        <app-footer :isFixed="false" />
     </section>
 </template>
 

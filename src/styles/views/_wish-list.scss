@@ -7,14 +7,13 @@
     }
 
     @media screen and (max-width:743px) {
+        width: calc(100% - 48px);
         padding-left: 24px !important;
         padding-right: 24px !important;
     }
 }
 
 .wish-container {
-    padding-top: 24px !important;
-    padding-bottom: 24px !important;
     border-bottom: 1px solid rgb(235, 235, 235) !important;
     box-sizing: border-box;
     height: 100%;
@@ -22,13 +21,120 @@
     z-index: 1;
     cursor: pointer;
 
-    @media screen and (min-width:743px) {
+    @media screen and (min-width:745px) {
         display: flex;
+        padding-top: 24px !important;
+        padding-bottom: 24px !important;
+
+        .mobile-fav {
+            display: none !important;
+        }
+
+        img {
+            object-fit: cover;
+            height: 200px;
+            width: 300px;
+        }
+
+        .el-carousel {
+            height: 200px !important;
+            width: 300px !important;
+        }
+
+        .wish-details-container {
+            display: flex;
+        }
+
+        .wish-details-container-mobile {
+            display: none;
+        }
+
+        .rating-num p {
+            font-weight: 400;
+        }
+        
+        .wish-name{
+
+            p:first-of-type{
+                font-size: 14px;
+                color: #717171;
+            }
+
+            p:nth-of-type(2){
+                font-weight: 700;
+                font-size: 18px;
+            }
+        }
     }
 
-    .el-carousel {
-        height: 200px !important;
-        width: 300px !important;
+    @media screen and (max-width:744px) {
+        padding-top: 16px !important;
+        padding-bottom: 16px !important;
+
+        .mobile-fav {
+            position: absolute;
+            top: 15px !important;
+            right: 15px !important;
+        }
+
+        .desktop-fav {
+            display: none !important;
+        }
+
+        img {
+            height: 100%;
+            width: 100%;
+        }
+
+        >section:first-of-type {
+            width: 100% !important;
+            height: calc(58vw - 48px) !important;
+            margin-bottom: 10px;
+        }
+
+        .el-carousel {
+            width: 100%;
+            height: 100%;
+        }
+
+        .wish-details-container {
+            display: none;
+        }
+
+        .wish-details-container-mobile {
+
+            .wish-rating {
+                margin-bottom: 6px;
+            }
+
+            .rating-num p,
+            span {
+                font-size: 14px;
+                font-family: 'circular-light';
+            }
+
+            .wish-name {
+                margin-bottom: 4px;
+
+                p:first-of-type{
+                    margin-bottom: 2px;
+                }
+
+                p {
+                    font-size: 16px;
+                    color: rgb(34 34 34);
+                    font-family: "circular-light";
+                    font-weight: normal;
+                }
+            }
+        }
+
+        .wish-price-mobile{
+            p{
+                margin: 0;
+            }
+        }
+
     }
 
     .el-carousel__container {
@@ -47,7 +153,6 @@
         img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
         }
 
         svg {
@@ -59,8 +164,6 @@
 
     section img {
         vertical-align: bottom;
-        height: 200px;
-        width: 300px;
         min-height: 1px;
         border-radius: 12px;
         background-position: 50% 50% !important;
@@ -69,7 +172,6 @@
 
     .wish-details-container {
         margin-left: 16px;
-        display: flex;
         flex-direction: column;
         flex-grow: 1;
         height: 200px;
@@ -98,7 +200,6 @@
                 margin-bottom: 4px;
                 animation-duration: 0.3s;
                 animation-name: fade-in;
-                font-size: 14px;
                 line-height: 18px;
                 align-items: center;
                 width: 100%;
@@ -107,14 +208,11 @@
                 display: -webkit-box;
                 -webkit-box-orient: vertical;
                 -webkit-line-clamp: 1;
-                color: #717171;
             }
 
             &:nth-of-type(2) {
                 font-family: circular-light;
-                font-weight: 700;
                 word-break: break-all;
-                font-size: 18px;
                 line-height: 24px;
                 text-overflow: ellipsis;
                 color: #222222;
@@ -144,6 +242,10 @@
 
     .wish-price-rating {
         margin-top: -10px;
+    }
+
+    .wish-price-rating,
+    .wish-rating {
         display: flex;
         align-items: flex-end;
         flex-grow: 1;
@@ -167,7 +269,6 @@
     .rating-num {
         p {
             margin: 0;
-            font-weight: 400;
             color: #222222;
         }
 

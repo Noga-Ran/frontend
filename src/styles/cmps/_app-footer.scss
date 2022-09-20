@@ -6,6 +6,7 @@
     z-index: 11;
     bottom: 0;
     background-color: white;
+    
 
     p,
     span {
@@ -103,9 +104,6 @@
 }
 
 @media screen and (min-width:746px) {
-    .fixed-footer {
-        position: fixed;
-    }
 
     .footer-container {
         position: fixed;
@@ -181,4 +179,12 @@
         margin: 0;
         text-decoration: none;
     }
+}
+
+.fixed-footer {
+    position: fixed;
+}
+
+.clear{
+    margin-top: 10px;
 }

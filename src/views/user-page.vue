@@ -5,7 +5,7 @@
             <trips-table :orders="orders"/>
         </section>
     </section>
-    <app-footer></app-footer>
+    <app-footer :isFixed="true"></app-footer>
 </template>
 
 <script>
