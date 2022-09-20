@@ -1,5 +1,15 @@
 <template>
   <section class="trip-settings-container">
+    <section class="mobile-sum-modal-header">
+      <div class="sum-modal-close" @click="closeTripModal"><svg viewBox="0 0 12 12" role="presentation"
+          aria-hidden="true" focusable="false"
+          style="height: 16px; width: 16px; display: block; fill: rgb(34, 34, 34);">
+          <path
+            d="m11.5 10.5c.3.3.3.8 0 1.1s-.8.3-1.1 0l-4.4-4.5-4.5 4.5c-.3.3-.8.3-1.1 0s-.3-.8 0-1.1l4.5-4.5-4.4-4.5c-.3-.3-.3-.8 0-1.1s.8-.3 1.1 0l4.4 4.5 4.5-4.5c.3-.3.8-.3 1.1 0s .3.8 0 1.1l-4.5 4.5z"
+            fill-rule="evenodd"></path>
+        </svg></div>
+      <h1 class="sum-modal-heading">Your trip</h1>
+    </section>
     <div>
       <div class="txt-and-review-container">
         <section class="txt">
@@ -148,6 +158,47 @@
       </section>
     </vue-final-modal>
   </div>
+  <div class="mobile-order-sum-modal">
+    <vue-final-modal v-model="showOrderSumModal" classes="modal-container" content-class="modal-content">
+      <section class="modal-container mobile-confirm">
+        <div class="order-confirmation-header">
+          Order Confirmation
+        </div>
+        <div class="order-de">
+          <img class="order-img" :src="getImgUrl(0)" alt="" />
+          <div class="mobile-sum-details">
+            <div>{{ stay.name }}</div>
+            <div>{{ stay.address.city }}, {{ stay.address.country }}</div>
+          </div>
+        </div>
+        <div class="order-sum-container">
+          <div class="bold">Reservation Details</div>
+          <div><span class="bold">Trip Dates: <br> </span> {{ getDate(checkIn).slice(0, 6) + '22' }} - {{
+          getDate(checkOut).slice(0, 6) + '22'
+          }}</div>
+          <div class="seperate-line"></div>
+          <div class="bold">Price Details</div>
+          <div class="trip-calculation">${{ stay.price }} X {{ getStayLen() }} nights <span>${{ getPrice() }}</span></div>
+          <div>Service fee <span> ${{ stay.cleaningFee }}</span>
+          </div>
+          <div class="seperate-line"></div>
+          <div><span class="bold">Total:
+            </span> ${{ getPrice(stay.cleaningFee) }}</div>
+        </div>
+        <div class="order-sum-btns">
+          <button @click="showOrderSumModal = false">Back</button>
+          <div class="btn-container" @click="saveTrip">
+            <div class="cell" v-for="currCell in 100" :key="currCell + 'second'"></div>
+            <div class="content">
+              <button class="action-btn">
+                <span class="word-btn">Confirm</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </vue-final-modal>
+  </div>
 </template>
 <script>
 // import { ElNotification } from 'element-plus'
@@ -212,6 +263,9 @@ export default {
     },
     scrollMeTo(refName) {
       this.$emit('scrollMeTo', refName)
+    },
+    closeTripModal() {
+      this.$emit('closeTripModal')
     },
     getPrice(cleaningFee = 0) {
       var price = +(this.stay.price * this.stayDayAmount + cleaningFee).toFixed(0)

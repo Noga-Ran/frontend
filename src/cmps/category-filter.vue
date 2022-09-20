@@ -2,7 +2,7 @@
   <div :class="{ shadow: isActive }"></div>
   <section class="category-filters-layout">
     <section class="category-filters-container">
-      <Carousel :items-to-show="12" :itemsToScroll="3">
+      <Carousel :items-to-show="12" :itemsToScroll="2">
         <Slide class="category-filter-container" v-for="(currLabel, idx) in labels" :key="idx">
           <section @click="selectLabel($event)" class="filter-img-layout"
             :class="{ 'selected-filter': queryLabel === currLabel }">
