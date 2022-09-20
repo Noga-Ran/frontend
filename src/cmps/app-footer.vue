@@ -1,5 +1,5 @@
 <template>
-  <div class="clear" v-if="isShowing" :style="{display}"></div>
+  <div class="clear" v-if="isShowing" :style="{display,marginTop}"></div>
   <section class="footer-container" :class="{ 'fixed-footer': isFixed}" :style="{display}" v-if="showFooter()">
     <div>
       <span>© 2022 Skybnb, Inc.</span>
@@ -112,20 +112,21 @@ export default {
       hasScroll:false,
       display: 'flex',
       isShowing: false,
+      marginTop: '10px'
     }
   },
   created() {
     window.addEventListener('scroll', this.handleScroll);
     window.addEventListener('resize', this.handleScroll);
     this.isScrollUp = true
-    if(window.location.hash === '#/user' || window.location.hash ==='#/wishlist') this.display = 'none'
+    if(this.isFixed) this.marginTop = '60px'
+    if(window.location.hash === '#/user' || window.location.hash ==='#/wishList' || window.location.hash ==='#/wishlist') this.display = 'none'
   },
   methods: {
     handleScroll(event) {
       if(this.oldScroll > window.scrollY) this.isScrollUp = true
       else this.isScrollUp = false
       this.oldScroll = window.scrollY;
-     console.log();
     }, 
     changeWidth(event){
       this.width = window.window.innerWidth 
