@@ -344,6 +344,11 @@ label {
 }
 
 .mobile-reviews {
+
+  .reviews-container .reviews-list{
+    overflow-x: auto;
+  }
+
   .reviews-modal {
 
     .vfm__container{
