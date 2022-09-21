@@ -13,7 +13,7 @@
                 <div class="become-a-host" @click="goTo('host')">
                     Become a Host
                 </div>
-                <div>
+                <div class="header-i18-btn">
                     <img class="globe-img"
                         src="https://res.cloudinary.com/nogacloud/image/upload/v1659275571/other/globe.svg" alt="">
                 </div>
