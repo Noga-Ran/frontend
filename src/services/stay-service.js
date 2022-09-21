@@ -12,6 +12,7 @@ export const stayService = {
     saveFilterBy,
     getFilterBy,
     getStayById,
+    save,
     // remove,
     // save,
     // getEmptyToy,
@@ -23,6 +24,15 @@ async function query(filterBy = {}) {
     // var filteredStays =  await storageService.query(KEY)
     return await httpService.get(ENDPOINT,filterBy)
     // return filtering(filteredStays, filterBy)
+}
+
+async function save(stay){
+    var stay = JSON.parse(JSON.stringify(stay))
+  if (stay._id) {
+    return await httpService.put(`${ENDPOINT}/${stay._id}`, stay);
+  } else {
+    return await httpService.post(ENDPOINT, stay);
+  } 
 }
 
 async function getStayById(stayId){

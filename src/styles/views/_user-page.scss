@@ -1,6 +1,6 @@
-@media screen and (max-width:670px) {
+@media screen and (max-width:770px) {
     .user-page-layout {
-        padding: 0 80px;
+        padding: 0 24px;
     }
     
     .trip-container{
@@ -15,6 +15,18 @@
 
 }
 
+@media screen and (min-width:1124px){
+    .user-page-layout {
+        padding: 0 80px;
+    }
+}
+
+@media screen and (min-width:745px) and (max-width:1223px){
+    .user-page-layout {
+        padding: 0 40px;
+    }
+}
+
 @media screen and (max-width:480px) {
     .order-days{
         display: block;
@@ -23,20 +35,16 @@
 }
 
 @media screen and (min-width:670px) {
-    .user-page-layout {
-        padding: 0 80px;
-    }
 
     .user-trip-details {
         margin-left: 1em;
     }
 
-    .trips-table-layout{
-        img{
-            width: 40%;
-            max-width: 300px;
-        }
-    }
+    // .trips-table-layout{
+    //     img{
+    //         width: 50%;
+    //     }
+    // }
 }
 
 .user-page-layout {
@@ -128,6 +136,7 @@
             margin-top: auto;
             display: flex;
             justify-content: end;
+            padding-right: 20px;
         }
     }
 

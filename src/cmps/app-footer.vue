@@ -1,5 +1,5 @@
 <template>
-  <div class="clear" v-if="isShowing" :style="{display}"></div>
+  <div class="clear" v-if="isShowing" :style="{display,marginTop}"></div>
   <section class="footer-container" :class="{ 'fixed-footer': isFixed}" :style="{display}" v-if="showFooter()">
     <div>
       <span>© 2022 Skybnb, Inc.</span>
@@ -100,7 +100,7 @@
 <script>
 export default {
   props:{
-    isFixed:String,
+    isFixed:Boolean,
   },
   data() {
     return {
@@ -108,27 +108,28 @@ export default {
       lastScrollTop:0,
       oldScroll:0,
       isScrollUp:true,
-      width: window.window.innerWidth,
-      hasScroll:false,
+      width: window.innerWidth,
       display: 'flex',
       isShowing: false,
+      marginTop: '10px'
     }
   },
   created() {
     window.addEventListener('scroll', this.handleScroll);
     window.addEventListener('resize', this.handleScroll);
     this.isScrollUp = true
-    if(window.location.hash === '#/user' || window.location.hash ==='#/wishlist') this.display = 'none'
+    if(this.isFixed) this.marginTop = '60px'
+    if(window.location.hash === '#/user' || window.location.hash ==='#/wishList' || window.location.hash ==='#/wishlist') this.display = 'none'
   },
   methods: {
     handleScroll(event) {
       if(this.oldScroll > window.scrollY) this.isScrollUp = true
       else this.isScrollUp = false
       this.oldScroll = window.scrollY;
-     console.log();
     }, 
     changeWidth(event){
-      this.width = window.window.innerWidth 
+      this.width = window.innerWidth
+      this.isScrollUp = true 
     },
     showFooter(){
       if(this.width>=745) {
@@ -147,7 +148,6 @@ export default {
   unmounted() {
     window.removeEventListener('scroll', this.handleScroll);
     window.removeEventListener('resize', this.changeWidth);
-    console.log('unmounted');
   },
 }
 </script>

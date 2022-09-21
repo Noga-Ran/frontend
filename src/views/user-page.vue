@@ -28,8 +28,8 @@ export default {
     },
     methods: {
         async loadPage() {
-            await this.$store.dispatch({ type: 'loadOrders' })
-            this.orders = await this.$store.getters.getOrders
+            await this.$store.dispatch({ type: 'loadTrips' })
+            this.orders = await this.$store.getters.trips
             this.user = await this.$store.getters.getUser
             if (this.user) {
               this.orders = this.orders.filter(order => order.buyer._id === this.user._id )

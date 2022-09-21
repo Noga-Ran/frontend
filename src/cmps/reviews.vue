@@ -88,7 +88,7 @@
       </vue-final-modal>
       <!-- v-button -->
       <button class="show-reviews-btn" @click="showReviewsModal = true">
-        Show all 180 reviews
+        Show all {{stay.numOfReviews}} reviews
       </button>
     </div>
   </section>
