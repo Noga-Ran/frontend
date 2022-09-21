@@ -67,7 +67,6 @@
                     <path d="M6 13l9.293-9.293a1 1 0 0 1 1.414 0L26 13"></path>
                   </g>
                 </svg>
-
                 <span>Share</span>
               </span>
               <span class="save-stay">
@@ -77,8 +76,7 @@
                     height: 16px;
                     width: 16px;
                     stroke-width: 2; 
-                    overflow: visible;
-                  "
+                    overflow: visible;"
                   v-bind:style="[isFav ? { fill: '#FF385C', stroke: '#FF385C' } : { fill: '#ffffff', stroke: 'currentcolor' }]">
                   <path
                     d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z">
@@ -189,8 +187,8 @@
             </svg>
           </button>
           <div class="mobile-details-reactions">
-            <button class="mobile-details-share" @click=""><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
-                aria-hidden="true" role="presentation" focusable="false"
+            <button class="mobile-details-share" @click.prevent="showShareOptions=true"><svg viewBox="0 0 32 32"
+                xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"
                 style="fill: none;  stroke: currentcolor; stroke-width: 1; overflow: visible;">
                 <g fill="none">
                   <path d="M27 18v9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-9"></path>
@@ -306,9 +304,6 @@
               </div>
             </div>
           </div>
-          <!-- <button class="show-reviews-btn" @click="showReviewsModal = true">
-            Show all {{ stay.numOfReviews }} reviews
-          </button> -->
         </div>
       </section>
       <div class="mobile-reservation-bar">
@@ -317,10 +312,13 @@
             <div class="mobile-res-price">$ {{ stay.price }} <span>&nbsp;night</span></div>
             <div class="mobile-res-date">Dec 3-8</div>
           </div>
-          <div class="mobile-reserve-btn" @click="alert('reservation modal')">Reserve</div>
+          <div class="mobile-reserve-btn" @click="isTripModal = true">Reserve</div>
         </div>
       </div>
     </section>
+    <div class="mobile-trip" v-if="isTripModal">
+      <trip-settings :currStay="stay" @scrollMeTo="scrollMeTo" @closeTripModal="closeTripModal" />
+    </div>
 
   </section>
 
@@ -362,6 +360,7 @@ export default {
       isScrolled: false,
       hostImg: undefined,
       bedsMoreThanBedrooms: undefined,
+      isTripModal: false,
     }
   },
   async created() {
@@ -462,6 +461,9 @@ export default {
         this.hostImg = `https://randomuser.me/api/portraits/${gender[randomGender]}/${randomNum}.jpg`
       }
       return this.hostImg
+    },
+    closeTripModal(){
+      this.isTripModal = false
     },
     async share() {
       // let url = `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`;
