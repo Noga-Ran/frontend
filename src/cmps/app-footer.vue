@@ -148,7 +148,6 @@ export default {
   unmounted() {
     window.removeEventListener('scroll', this.handleScroll);
     window.removeEventListener('resize', this.changeWidth);
-    console.log('unmounted');
   },
 }
 </script>
