@@ -100,7 +100,7 @@
 <script>
 export default {
   props:{
-    isFixed:String,
+    isFixed:Boolean,
   },
   data() {
     return {
@@ -108,8 +108,7 @@ export default {
       lastScrollTop:0,
       oldScroll:0,
       isScrollUp:true,
-      width: window.window.innerWidth,
-      hasScroll:false,
+      width: window.innerWidth,
       display: 'flex',
       isShowing: false,
       marginTop: '10px'
@@ -129,7 +128,8 @@ export default {
       this.oldScroll = window.scrollY;
     }, 
     changeWidth(event){
-      this.width = window.window.innerWidth 
+      this.width = window.innerWidth
+      this.isScrollUp = true 
     },
     showFooter(){
       if(this.width>=745) {
