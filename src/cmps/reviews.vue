@@ -39,13 +39,19 @@
         </div>
       </li>
     </ul>
-
+    <button class="show-reviews-btn" @click="showReviewsModal = true">
+        Show all {{stay.numOfReviews}} reviews
+      </button>
+    </section>
     <div class="reviews-modal">
       <vue-final-modal v-model="showReviewsModal" classes="modal-container" content-class="modal-content">
         <section class="modal-container">
-          <button class="modal__close" @click="showReviewsModal = false">
-            X
-          </button>
+          <section class="close-reviews-modal">
+            <button @click.prevent="showReviewsModal = false">
+              <svg v-if="width" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 4; overflow: visible;"><g fill="none"><path d="m20 28-11.29289322-11.2928932c-.39052429-.3905243-.39052429-1.0236893 0-1.4142136l11.29289322-11.2928932"></path></g></svg>
+              <svg v-else viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 3; overflow: visible;"><path d="m6 6 20 20"></path><path d="m26 6-20 20"></path></svg>
+            </button>
+          </section>
           <div class="modal__title">
             <div>
               <h2 class="reviews-title">
@@ -87,11 +93,7 @@
         </section>
       </vue-final-modal>
       <!-- v-button -->
-      <button class="show-reviews-btn" @click="showReviewsModal = true">
-        Show all {{stay.numOfReviews}} reviews
-      </button>
     </div>
-  </section>
 </template>
 
 <script>
@@ -175,6 +177,10 @@ export default {
     },
   },
   computed: {
+    width(){
+      if(window.innerWidth<760) return true
+      else return false
+    }
   },
   unmounted() { },
 }

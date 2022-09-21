@@ -213,34 +213,33 @@
     }
 }
 
-.mobile-reviews {
-    height: 54vh;
-    border-bottom: 1px solid #acacacab;
+// .mobile-reviews {
+//     height: 54vh;
+//     border-bottom: 1px solid #acacacab;
 
-    h2 {
-        margin-top: 20px;
-        margin-bottom: 35px;
-    }
+//     h2 {
+//         margin-top: 20px;
+//         margin-bottom: 35px;
+//     }
 
-    .review-container-mobile {
-        border: 1px solid #acacacab;
-        border-radius: 18px;
-        min-width: calc(70vw - 48px);
-        padding: 10px;
+//     .review-container-mobile {
+//         border: 1px solid #acacacab;
+//         border-radius: 18px;
+//         min-width: calc(70vw - 48px);
+//         padding: 10px;
 
-        &:not(:last-of-type) {
-            margin-right: 24px;
-        }
-    }
+//         &:not(:last-of-type) {
+//             margin-right: 24px;
+//         }
+//     }
 
-    .show-reviews-btn {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 40px;
-        border-width: 0.5px;
-    }
-}
+//     .show-reviews-btn {
+//         display: flex;
+//         justify-content: center;
+//         align-items: center;
+//         border-width: 0.5px;
+//     }
+// }
 
 .mobile-reservation-bar {
     display: flex;

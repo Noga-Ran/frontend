@@ -1,12 +1,96 @@
+@media screen and (max-width:758px) {
+
+  .reviews-container {
+    padding-bottom: 110px;
+
+
+    ::-webkit-scrollbar {
+      width: 0px;
+      background: transparent;
+    }
+
+    .reviews-list {
+      display: flex;
+      overflow-x: auto;
+      margin-bottom: 24px;
+
+
+      li {
+        margin-bottom: 10px;
+        border: 1px solid #DDDDDD;
+        border-radius: 12px;
+        padding: 16px;
+        width: 295px !important;
+        height: 202px;
+
+        .reviews-txt-container {
+          width: 295px;
+          font-family: 'circular-light';
+        }
+      }
+
+    }
+
+    .show-reviews-btn {
+      display: block !important;
+      width: 100%;
+    }
+
+    .stay-reviews-scores {
+      display: none;
+    }
+  }
+
+}
+
+@media screen and (min-width:758px) and (max-width:1124px) {
+  .reviews-list {
+    grid-template-columns: 1fr !important;
+
+    li {
+      width: auto !important;
+      min-height: 140px;
+    }
+
+    li:last-of-type {
+      margin-bottom: 40px;
+    }
+  }
+
+  .show-reviews-btn {
+    margin-top: 8px;
+  }
+}
+
+
+@media screen and (min-width:758px) {
+  .reviews-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 53px;
+
+    li {
+      width: 30vw;
+      padding: 0 8px;
+      padding-left: 0;
+    }
+  }
+}
+
 .reviews-container {
   margin-top: 70px;
 
-  & > *:first-child {
+  &>*:first-child {
     margin: 0;
     margin-bottom: 27px;
     padding-top: 48px;
     border-top: 1px solid rgb(221, 221, 221);
   }
+
+  .reviews-title {
+    margin-top: 0;
+  }
+
 }
 
 .profile-img {
@@ -26,6 +110,7 @@
   font-weight: 600;
   font-size: 16px;
 }
+
 .reviews-modal {
   .modal-container {
     height: 70vh;
@@ -34,11 +119,21 @@
     width: 67vw;
     margin: auto;
     display: flex;
+    flex-direction: column;
     padding: 20px;
     background-color: white;
     border-radius: 12px;
     position: fixed;
     inset: 0;
+  }
+
+  .modal__title {
+    padding-top: 0 !important;
+  }
+
+  ::-webkit-scrollbar {
+    // color: #2d3748;
+    width: 1px;
   }
 }
 
@@ -95,7 +190,7 @@
     display: flex;
     flex-direction: column;
 
-    & > * {
+    &>* {
       height: fit-content;
     }
   }
@@ -108,19 +203,10 @@
 .reviews-list {
   margin: 0;
   margin-top: 24px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 30px;
   // להחליף ל10 כשמסדרים עם הריד מור
   column-gap: 15px;
   padding-left: 0;
-  margin-bottom: 53px;
-
-  li {
-    padding: 0 8px;
-    padding-left: 0;
-    width: 30vw;
-  }
 }
 
 progress {
@@ -139,14 +225,14 @@ label {
   grid-template-rows: 1fr 1fr 1fr;
   column-gap: 15px;
 
-  & > * {
+  &>* {
     width: 30vw;
     padding-left: 0;
     display: flex;
     margin-bottom: 13px;
   }
 
-  & > * > *:nth-child(2) {
+  &>*>*:nth-child(2) {
     display: flex;
     margin-left: auto;
     gap: 10px;
@@ -176,7 +262,7 @@ label {
   grid-auto-flow: column;
   column-gap: 31px;
 
-  .review-scores-container > * {
+  .review-scores-container>* {
     max-width: 327px;
   }
 
@@ -207,9 +293,11 @@ label {
   display: flex;
   align-items: center;
 }
+
 .el-progress__text {
   display: none;
 }
+
 .el-progress--line {
   width: 122px;
 
@@ -221,10 +309,52 @@ label {
     height: 4px !important;
   }
 }
-.mobile-reviews-layout{
+
+.mobile-reviews-layout {
   height: 50%;
   margin-top: 20px;
   display: flex;
   overflow: auto;
   width: 100%;
+}
+
+.mobile-reviews {
+  .reviews-modal {
+    .modal-container {
+      padding: 0 !important;
+      height: 100%;
+      width: 100%;
+      border-radius: 0 !important;
+    }
+
+    .modal__title {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .review-scores-container>div {
+      width: auto !important;
+    }
+
+    .reviews-list li {
+      margin-bottom: 32px;
+    }
+
+    .reviews-list li div:last-of-type {
+      font-family: 'circular-light';
+    }
+  }
+
+  .close-reviews-modal {
+    padding: 16px 0 16px 24px;
+  }
+}
+
+.close-reviews-modal {
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
 }
