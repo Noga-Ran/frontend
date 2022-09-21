@@ -172,7 +172,7 @@
     <div ref="Location" class="details-map-cont">
       <stayMap :stayLocation="stay.address" :isMobile="isMobile"></stayMap>
     </div>
-    <app-footer :isFixed="'false'" />
+    <app-footer :isFixed="false" />
   </section>
   <section v-if="isMobile">
     <section class="mobile-details-layout">
@@ -276,7 +276,10 @@
           <stayMap :stayLocation="stay.address" :isMobile="isMobile"></stayMap>
         </div>
         <div class="mobile-reviews">
-          <h2 class="reviews-title">
+          <section ref="Reviews" class="stay-reviews">
+            <reviews :stay="stay"></reviews>
+          </section>
+          <!-- <h2 class="reviews-title">
             <span>
               <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
                 focusable="false" style="height: 14px; width: 14px; fill: currentcolor">
@@ -304,6 +307,7 @@
               </div>
             </div>
           </div>
+          <button></button> -->
         </div>
       </section>
       <div class="mobile-reservation-bar">
