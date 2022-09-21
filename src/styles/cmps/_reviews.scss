@@ -107,6 +107,16 @@
   .close-reviews-modal{
     padding: 27px 0 27px 16px;
   }
+
+  .modal-container{
+    .modal__title{
+      height: calc(100% - 24px);
+    }
+
+    .reviews-list{
+      height: calc(100% - 48px);
+    }
+  }
 }
 
 .reviews-container {
