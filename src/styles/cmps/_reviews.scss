@@ -1,3 +1,11 @@
+@media screen and (min-width:1124px) {
+  .modal-container{
+    ul{
+      overflow-y: auto;
+    }
+  }
+}
+
 @media screen and (max-width:758px) {
 
   .reviews-container {
@@ -11,7 +19,6 @@
 
     .reviews-list {
       display: flex;
-      overflow-x: auto;
       margin-bottom: 24px;
 
 
@@ -60,6 +67,27 @@
   .show-reviews-btn {
     margin-top: 8px;
   }
+
+  .modal-container{
+    .modal__title{
+      display: flex;
+      flex-direction: column;
+      overflow-x: auto;
+    }
+
+    .review-scores-container{
+      grid-template-rows: 1fr 1fr 1fr !important;
+      grid-template-columns: 1fr 1fr !important;
+    }
+
+    li{
+      width: 100% !important;
+    }
+
+    li:last-of-type {
+      margin-bottom: 0 !important;
+    }
+  }
 }
 
 
@@ -74,6 +102,10 @@
       padding: 0 8px;
       padding-left: 0;
     }
+  }
+  
+  .close-reviews-modal{
+    padding: 27px 0 27px 16px;
   }
 }
 
@@ -115,7 +147,7 @@
   .modal-container {
     height: 70vh;
     max-height: fit-content;
-    overflow-y: auto;
+    // overflow-y: auto;
     width: 67vw;
     margin: auto;
     display: flex;
@@ -165,12 +197,6 @@
   background-color: #ffffff3b;
 }
 
-// .reviewsModal {
-//   inset: 2em;
-//   justify-content: center;
-//   border-radius: 12px;
-//   background-color: white;
-// }
 .review-name {
   font-weight: 600;
 }
@@ -204,7 +230,6 @@
   margin: 0;
   margin-top: 24px;
   gap: 30px;
-  // להחליף ל10 כשמסדרים עם הריד מור
   column-gap: 15px;
   padding-left: 0;
 }
@@ -257,7 +282,7 @@ label {
 }
 
 .modal__title {
-  overflow-y: auto;
+  // overflow-y: auto;
   display: grid;
   grid-auto-flow: column;
   column-gap: 31px;
@@ -273,7 +298,7 @@ label {
 
   .reviews-list {
     margin-left: auto;
-    margin-right: 20px;
+    // margin-right: 20px;
     grid-auto-flow: row;
     grid-template-columns: 1fr;
   }
@@ -314,12 +339,17 @@ label {
   height: 50%;
   margin-top: 20px;
   display: flex;
-  overflow: auto;
+  // overflow: auto;
   width: 100%;
 }
 
 .mobile-reviews {
   .reviews-modal {
+
+    .vfm__container{
+      animation: 0.4s ease-out 0s 1 normal none running slideInFromButtom;
+    }
+
     .modal-container {
       padding: 0 !important;
       height: 100%;
@@ -330,10 +360,12 @@ label {
     .modal__title {
       display: flex;
       flex-direction: column;
+      overflow-x: auto;
     }
 
     .review-scores-container>div {
-      width: auto !important;
+      width: 100% !important;
+      max-width: 100% !important;
     }
 
     .reviews-list li {
@@ -358,3 +390,4 @@ label {
     padding: 0;
   }
 }
+
