@@ -8,7 +8,6 @@
                 <input @click="showModal = true, showWho = false" v-model="where" @input="emit" type="text" name="query"
                     placeholder="Search destinations" aria-describedby="bigsearch-query-location-description"
                     aria-autocomplete="none" autocomplete="off" autocorrect="off">
-
                 <div class="modal-vue">
                     <div class="modal" v-if="showModal">
                         <button class="close" @click="showModal = false">x</button>
@@ -18,16 +17,16 @@
                                 <div class="imgs-container">
                                     <div v-for="(label, idx) in countryLabels" :key="label" @click="setWhere(label)">
                                         <img v-if="label != 'Im flexiable'" :src="getImgUrl(label)" alt="" />
-                                        <img v-else src="https://res.cloudinary.com/nogacloud/image/upload/v1659290575/countries/world.jpg" alt="" />
+                                        <img v-else
+                                            src="https://res.cloudinary.com/nogacloud/image/upload/v1659290575/countries/world.jpg"
+                                            alt="" />
                                         <p>{{ label }}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
-
             </div>
             <div class="check-in-out-container">
                 <span class="filter-seperator"></span>
@@ -138,7 +137,7 @@ export default {
         },
         getImgUrl(country) {
             // const { imgUrls } = this.stay
-            country = country.replace(' ','_')
+            country = country.replace(' ', '_')
             return new URL('https://res.cloudinary.com/nogacloud/image/upload/v1659292790/countries/' + country, import.meta.url).href
         },
         setWhere(country) {

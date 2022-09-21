@@ -1,7 +1,7 @@
 
 <template>
-    <section class="demo-list-cont">
-        <section class="demo-list">
+    <section class="homepage-stay-list-cont">
+        <section class="homepage-stay-list">
             <stay-preview :key="currStay" v-for="(currStay,idx) in stays" :currStay="currStay" :wishList="wishListStays" :dates="date"></stay-preview>
         </section>
     </section>
