@@ -367,6 +367,13 @@ html {
   }
 }
 
+.header-reservation-layout {
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  width: 100%;
+}
+
 .alt-head-reserve-info {
   display: grid !important;
   grid-template-columns: 1fr;

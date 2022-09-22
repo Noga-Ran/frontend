@@ -185,10 +185,3 @@ export default {
   unmounted() { },
 }
 </script>
-
-<!-- <style scoped>
-.demo-progress .el-progress--line {
-  margin-bottom: 15px;
-  width: 350px;
-}
-</style> -->

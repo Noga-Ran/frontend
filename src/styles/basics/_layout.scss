@@ -1,3 +1,12 @@
+@media screen and (min-width:1301px) {
+    .stay-details-layout .details-padding {
+        padding: 0 !important;
+        max-width: 1120px;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+}
+
 @media screen and (min-width:1603px) {
 
     .homepage-stay-list-cont,
@@ -267,5 +276,16 @@
 
     .short-list-heading {
         width: 97.4% !important;
+    }
+}
+
+@media screen and (min-width:750px) {
+    .order-sum-modal {
+        .modal-container{
+            padding-right: 50px !important;
+        }
+        // .vfm--fixed{
+        //     background-color: rgba(0, 0, 0, 0.5);
+        // }
     }
 }

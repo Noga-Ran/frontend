@@ -112,6 +112,7 @@
 
     li {
       width: 30vw;
+      max-width: 457px;
       padding: 0 8px;
       padding-left: 0;
     }
@@ -154,6 +155,8 @@
 }
 
 .show-reviews-btn {
+  margin-top: 28px;
+  cursor: pointer;
   background-color: white;
   padding: 13px 23px;
   border: 1px solid black;
@@ -276,6 +279,7 @@ label {
 
   &>* {
     width: 30vw;
+    max-width: 457px;
     padding-left: 0;
     display: flex;
     margin-bottom: 13px;
@@ -331,10 +335,6 @@ label {
     display: flex;
     margin-bottom: 9px;
   }
-}
-
-.show-reviews-btn {
-  cursor: pointer;
 }
 
 .demo-progress {

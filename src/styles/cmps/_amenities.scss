@@ -81,7 +81,8 @@
   }
 
   .vfm__content {
-    height: 633px;
+    // height: 633px;
+    height: 88.7vh;
     max-height: fit-content;
     width: 780px;
     margin: auto;
@@ -91,6 +92,12 @@
     position: fixed;
     inset: 0;
     flex-direction: column;
+  }
+}
+
+.info-left {
+  .aminities-title {
+    max-height: 40px;
   }
 }
 

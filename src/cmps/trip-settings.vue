@@ -82,7 +82,7 @@
           </div>
         </div>
 
-        <div class="btn-container show-order-sum-btn" :disabled="showWho" @click="showOrderSumModal = true">
+        <div class="btn-container show-order-sum-btn" :disabled="showWho" @click="showModals">
           <div class="cell" v-for="currCell in 100" :key="currCell"></div>
           <div class="content">
             <button class="action-btn">
@@ -159,7 +159,7 @@
     </vue-final-modal>
   </div>
   <div class="mobile-order-sum-modal">
-    <vue-final-modal v-model="showOrderSumModal" classes="modal-container" content-class="modal-content">
+    <vue-final-modal v-model="showMobileOrderSumModal" classes="modal-container" content-class="modal-content">
       <section class="modal-container mobile-confirm">
         <div class="order-confirmation-header">
           Order Confirmation
@@ -178,7 +178,8 @@
           }}</div>
           <div class="seperate-line"></div>
           <div class="bold">Price Details</div>
-          <div class="trip-calculation">${{ stay.price }} X {{ getStayLen() }} nights <span>${{ getPrice() }}</span></div>
+          <div class="trip-calculation">${{ stay.price }} X {{ getStayLen() }} nights <span>${{ getPrice() }}</span>
+          </div>
           <div>Service fee <span> ${{ stay.cleaningFee }}</span>
           </div>
           <div class="seperate-line"></div>
@@ -186,7 +187,7 @@
             </span> ${{ getPrice(stay.cleaningFee) }}</div>
         </div>
         <div class="order-sum-btns">
-          <button @click="showOrderSumModal = false">Back</button>
+          <button @click="showMobileOrderSumModal = false">Back</button>
           <div class="btn-container" @click="saveTrip">
             <div class="cell" v-for="currCell in 100" :key="currCell + 'second'"></div>
             <div class="content">
@@ -228,6 +229,8 @@ export default {
       guests: 1,
       loggedInUser: null,
       showOrderSumModal: false,
+      showMobileOrderSumModal: false,
+
     }
   },
   created() {
@@ -330,6 +333,15 @@ export default {
       else if (guests.sum === 1) this.guestsAmount = guests.sum + ' guest'
       else this.guestsAmount = guests.sum + ' guests'
       this.guests = guests.sum
+    },
+    showModals() {
+      const screenWidth = window.innerWidth;
+      if (screenWidth > 756) {
+        this.showOrderSumModal = true
+      }
+      else {
+        this.showMobileOrderSumModal = true
+      }
     },
     getRating() {
       const { accuracy,
