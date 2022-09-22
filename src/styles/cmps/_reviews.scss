@@ -1,9 +1,23 @@
 @media screen and (min-width:1124px) {
-  .modal-container{
-    ul{
+  
+  .reviews-list li{
+    min-height: 168px;
+  }
+
+  .modal-container {
+    ul {
       overflow-y: auto;
     }
+
+    li:last-of-type{
+      margin-bottom: 40px;
+    }
+
+    li{
+      min-height: initial !important;
+    }
   }
+
 }
 
 @media screen and (max-width:758px) {
@@ -67,19 +81,19 @@
     margin-top: 8px;
   }
 
-  .modal-container{
-    .modal__title{
+  .modal-container {
+    .modal__title {
       display: flex;
       flex-direction: column;
       overflow-x: auto;
     }
 
-    .review-scores-container{
+    .review-scores-container {
       grid-template-rows: 1fr 1fr 1fr !important;
       grid-template-columns: 1fr 1fr !important;
     }
 
-    li{
+    li {
       width: 100% !important;
     }
 
@@ -102,17 +116,17 @@
       padding-left: 0;
     }
   }
-  
-  .close-reviews-modal{
+
+  .close-reviews-modal {
     padding: 27px 0 27px 16px;
   }
 
-  .modal-container{
-    .modal__title{
+  .modal-container {
+    .modal__title {
       height: calc(100% - 24px);
     }
 
-    .reviews-list{
+    .reviews-list {
       height: calc(100% - 37px);
     }
   }
@@ -163,7 +177,7 @@
     position: fixed;
     inset: 0;
   }
-  
+
   .reviews-title {
     margin-top: 0;
   }
@@ -355,13 +369,13 @@ label {
 
 .mobile-reviews {
 
-  .reviews-container .reviews-list{
+  .reviews-container .reviews-list {
     overflow-x: auto;
   }
 
   .reviews-modal {
 
-    .vfm__container{
+    .vfm__container {
       animation: 0.4s ease-out 0s 1 normal none running slideInFromButtom;
     }
 
@@ -405,4 +419,3 @@ label {
     padding: 0;
   }
 }
-

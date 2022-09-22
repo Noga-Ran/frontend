@@ -1,6 +1,8 @@
 <template>
   <div class="clear" v-if="isShowing" :style="{display,marginTop}"></div>
-  <section class="footer-container" :class="{ 'fixed-footer': isFixed}" :style="{display}" v-if="showFooter()">
+  <login v-if="showLogin" @showLoginModal="showLoginModal" :signUpPage="isSignUpPage" />
+  <section class="footer-container" :class="{ 'fixed-footer': isFixed && !isScrollUp}"
+    :style="[display!=='none' ? hasScroll ? {display:'flex'} : width<745 ? {display:'none'} : {position: 'fixed',bottom:0} : {display}]">
     <div>
       <span>© 2022 Skybnb, Inc.</span>
       <span class="sep-footer">·</span>
@@ -39,8 +41,8 @@
       </span>
     </div>
   </section>
-  <footer class="mobile-footer-container" v-if="isScrollUp && width<745">
-    <section>
+  <footer class="mobile-footer-container" :class="[isScrollUp && width<745 ? '' : 'undisplay-footer']">
+    <section :style="[user ? {'justify-content': 'space-between'} : {'justify-content':'center'}]">
       <router-link to="/">
         <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
           focusable="false"
@@ -63,7 +65,7 @@
         </svg>
         <p>WishList</p>
       </router-link>
-      <router-link to="/user">
+      <router-link  v-if="user" to="/user">
         <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
           focusable="false"
           style="display: block; height: 24px; width: 24px; fill: #b0b0b0; stroke-width: 0px !important;">
@@ -73,7 +75,7 @@
         </svg>
         <p>Trips</p>
       </router-link>
-      <span :style="{cursor:'not-allowed !important'}">
+      <span v-if="user" :style="{cursor:'not-allowed !important'}">
         <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
           focusable="false"
           style="display: block; height: 24px; width: 24px; fill: #b0b0b0; stroke-width: 0px !important;">
@@ -83,21 +85,25 @@
         </svg>
         <p>Inbox</p>
       </span>
-      <span :style="{cursor:'not-allowed !important'}">
-        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
+      <span @click.prevent="!user ? showLoginModal(true) : logOut()">
+        <img v-if=getImg() :src=getImg() alt="">
+        <svg v-else viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
           focusable="false"
           style="display: block; height: 24px; width: 24px; fill: #b0b0b0; stroke-width: 0px !important;">
           <path
             d="m16 1c8.2842712 0 15 6.71572875 15 15 0 8.2842712-6.7157288 15-15 15-8.28427125 0-15-6.7157288-15-15 0-8.28427125 6.71572875-15 15-15zm0 8c-2.7614237 0-5 2.2385763-5 5 0 2.0143973 1.2022141 3.7998876 2.9996346 4.5835001l.0003231 2.0984999-.1499943.0278452c-2.8326474.5613112-5.31897338 2.2230336-6.93575953 4.5872979 2.34343054 2.291067 5.54974273 3.7028569 9.08579613 3.7028569 3.5355506 0 6.7414538-1.4113884 9.0850203-3.701476-1.6141801-2.3628535-4.0978119-4.0247647-6.929184-4.5867938l-.1558786-.0287302.001228-2.0991413c1.7288399-.7547474 2.9066959-2.4357565 2.9936498-4.355479l.0051645-.2283797c0-2.7614237-2.2385763-5-5-5zm0-6c-7.17970175 0-13 5.82029825-13 13 0 2.9045768.95257276 5.5866683 2.56235849 7.7509147 1.42074739-1.9134907 3.33951478-3.4002416 5.53860831-4.2955956l.3480332-.1363191-.0229565-.0189706c-1.43704227-1.2411241-2.34462949-3.045583-2.42083359-5.0285539l-.00520991-.2714755c0-3.8659932 3.1340068-7 7-7s7 3.1340068 7 7c0 1.9941317-.8415062 3.8279876-2.224566 5.1193683l-.225434.2006317.0447787.0163138c2.3268368.8792152 4.3570558 2.4138611 5.8430586 4.4127726 1.6098837-2.1632453 2.5621627-4.8449575 2.5621627-7.7490864 0-7.17970175-5.8202983-13-13-13z">
           </path>
         </svg>
-        <p>Profile</p>
+        <p v-if="!user">Login</p>
+        <p v-else>Log out</p>
       </span>
     </section>
   </footer>
 </template>
 
 <script>
+import login from '../views/login.vue'
+
 export default {
   props:{
     isFixed:Boolean,
@@ -111,25 +117,32 @@ export default {
       width: window.innerWidth,
       display: 'flex',
       isShowing: false,
-      marginTop: '10px'
+      marginTop: '25px',
+      hasScroll:false,
+      showLogin: false,
+      showSignUp: false,
+      isSignUpPage: false,
     }
   },
   created() {
     window.addEventListener('scroll', this.handleScroll);
-    window.addEventListener('resize', this.handleScroll);
-    this.isScrollUp = true
+    window.addEventListener('resize', this.changeWidth);
     if(this.isFixed) this.marginTop = '60px'
     if(window.location.hash === '#/user' || window.location.hash ==='#/wishList' || window.location.hash ==='#/wishlist') this.display = 'none'
+    this.isScrollUp = true
   },
   methods: {
     handleScroll(event) {
       if(this.oldScroll > window.scrollY) this.isScrollUp = true
       else this.isScrollUp = false
       this.oldScroll = window.scrollY;
+      this.hasScroll = true
     }, 
     changeWidth(event){
+      event.preventDefault()
       this.width = window.innerWidth
-      this.isScrollUp = true 
+      this.isScrollUp = true
+      this.checkIfHasScroll()
     },
     showFooter(){
       if(this.width>=745) {
@@ -142,9 +155,32 @@ export default {
       }
       this.isShowing=false
       return false
-    }
+    },
+    checkIfHasScroll(){
+      if(document.body.offsetHeight<=window.innerHeight) this.hasScroll =  false
+      else this.hasScroll = true
+    },
+    showLoginModal(boolean, isSignUp = false) {
+            this.isSignUpPage = isSignUp
+            this.showLogin = boolean
+    },
+    logOut() {
+      this.$store.dispatch({ type: 'logout' })
+      this.user = false
+    },
+    getImg() {
+      if (this.user && this.user?.imgUrl) {
+        return this.user.imgUrl
+      }
+      else return false
+    },
   },
-  computed: {},
+  computed:{
+    user() { return this.$store.getters.getUser }
+  },
+  components:{
+    login
+  },
   unmounted() {
     window.removeEventListener('scroll', this.handleScroll);
     window.removeEventListener('resize', this.changeWidth);

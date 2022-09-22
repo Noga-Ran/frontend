@@ -6,7 +6,6 @@
     z-index: 11;
     bottom: 0;
     background-color: white;
-    
 
     p,
     span {
@@ -83,7 +82,7 @@
     }
 }
 
-@media screen and (max-width:1124px) and (min-width:746px) {
+@media screen and (max-width:1124px) and (min-width:745.1px) {
     .footer-container {
         padding: 14px 40px 13px 40px !important;
     }
@@ -129,7 +128,6 @@
     section {
         display: flex;
         align-items: center;
-        justify-content: space-between;
         height: 100%;
         margin: 0 auto !important;
         max-width: 560px !important;
@@ -164,6 +162,14 @@
         stroke: #b0b0b0
     }
 
+    img {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        margin-bottom: 5px !important;
+        margin-top: 3px
+    }
+
 
     p {
         font-size: 10px !important;
@@ -188,3 +194,7 @@
 // .clear{
 //     margin-top: 60px;
 // }
+
+.undisplay-footer {
+    display: none;
+}
