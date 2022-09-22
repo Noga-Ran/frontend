@@ -155,6 +155,8 @@
 }
 
 .show-reviews-btn {
+  margin-top: 28px;
+  cursor: pointer;
   background-color: white;
   padding: 13px 23px;
   border: 1px solid black;
@@ -333,10 +335,6 @@ label {
     display: flex;
     margin-bottom: 9px;
   }
-}
-
-.show-reviews-btn {
-  cursor: pointer;
 }
 
 .demo-progress {
