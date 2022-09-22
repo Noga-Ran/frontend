@@ -129,10 +129,6 @@
     border-top: 1px solid rgb(221, 221, 221);
   }
 
-  .reviews-title {
-    margin-top: 0;
-  }
-
 }
 
 .profile-img {
@@ -167,6 +163,10 @@
     border-radius: 12px;
     position: fixed;
     inset: 0;
+  }
+  
+  .reviews-title {
+    margin-top: 0;
   }
 
   .modal__title {
