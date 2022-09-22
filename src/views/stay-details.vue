@@ -1,32 +1,34 @@
 <template>
   <section class="stay-details-layout" v-if="!isMobile">
     <app-header />
-    <section class="alt-header details-padding" v-if="!isGalleryOn">
-      <div class="alt-head-nav">
-        <a @click="scrollMeTo('Photos')" class="alt-head-photos">Photos</a>
-        <a @click="scrollMeTo('Amenities')" class="alt-head-amenities">Amenities</a>
-        <a @click="scrollMeTo('Reviews')" class="alt-head-reviews">Reviews</a>
-        <a @click="scrollMeTo('Location')" class="alt-head-location">Location</a>
-      </div>
-      <div class="header-reservation-cont" v-if="!tripSettingOn">
-        <div class="alt-head-reserve-info">
-          <div>${{ stay.price }} <span>&nbsp;night</span></div>
-          <div>
-            <span>
-              <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
-                focusable="false" style="height: 14px; width: 14px; fill: currentcolor">
-                <path
-                  d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z"
-                  fill-rule="evenodd"></path>
-              </svg>
-              <span class="rating-average"> {{ getRating }} </span>
-            </span>
-            <span>&nbsp &middot &nbsp </span>
-            <span @click="scrollMeTo('Reviews')" class="review-count header-reviews">{{ stay.numOfReviews }} reviews
-            </span>
-          </div>
+    <section class="alt-header " v-if="!isGalleryOn">
+      <div class="header-reservation-layout details-padding">
+        <div class="alt-head-nav">
+          <a @click="scrollMeTo('Photos')" class="alt-head-photos">Photos</a>
+          <a @click="scrollMeTo('Amenities')" class="alt-head-amenities">Amenities</a>
+          <a @click="scrollMeTo('Reviews')" class="alt-head-reviews">Reviews</a>
+          <a @click="scrollMeTo('Location')" class="alt-head-location">Location</a>
         </div>
-        <div class="header-reserve-btn" @click="scrollMeTo('orderSec')">Reserve</div>
+        <div class="header-reservation-cont" v-if="!tripSettingOn">
+          <div class="alt-head-reserve-info">
+            <div>${{ stay.price }} <span>&nbsp;night</span></div>
+            <div>
+              <span>
+                <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
+                  focusable="false" style="height: 14px; width: 14px; fill: currentcolor">
+                  <path
+                    d="M15.094 1.579l-4.124 8.885-9.86 1.27a1 1 0 0 0-.542 1.736l7.293 6.565-1.965 9.852a1 1 0 0 0 1.483 1.061L16 25.951l8.625 4.997a1 1 0 0 0 1.482-1.06l-1.965-9.853 7.293-6.565a1 1 0 0 0-.541-1.735l-9.86-1.271-4.127-8.885a1 1 0 0 0-1.814 0z"
+                    fill-rule="evenodd"></path>
+                </svg>
+                <span class="rating-average"> {{ getRating }} </span>
+              </span>
+              <span>&nbsp &middot &nbsp </span>
+              <span @click="scrollMeTo('Reviews')" class="review-count header-reviews">{{ stay.numOfReviews }} reviews
+              </span>
+            </div>
+          </div>
+          <div class="header-reserve-btn" @click="scrollMeTo('orderSec')">Reserve</div>
+        </div>
       </div>
     </section>
     <section class="stay-details-container">
@@ -466,7 +468,7 @@ export default {
       }
       return this.hostImg
     },
-    closeTripModal(){
+    closeTripModal() {
       this.isTripModal = false
     },
     async share() {
