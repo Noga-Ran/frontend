@@ -83,6 +83,7 @@ export default {
     },
     methods: {
         closeHeader() {
+            console.log('close');
             this.isSearch = false
         },
         setFilter(where, who, date) {
@@ -121,7 +122,7 @@ export default {
             if (boolean) {
                 this.showMenu = !this.showMenu
             }
-        },
+        }
     },
     computed: {
         user() { return this.$store.getters.getUser }

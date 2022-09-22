@@ -1,3 +1,25 @@
+@media screen and (min-width:1124px) {
+
+    .header-container,.header-container-alt{
+        margin: 0 80px;
+    }
+    
+    .header-container-alt{
+        width: calc(100% - 160px);
+    }
+
+}
+
+@media screen and (max-width:1124px){
+    .header-container,.header-container-alt{
+        margin: 0 40px;
+    }
+
+    .header-container-alt{
+        width: calc(100% - 80px);
+    }
+}
+
 .header-layout {
     background-color: white;
     position: sticky;
@@ -9,7 +31,6 @@
 }
 
 .header-container {
-    margin: 0 80px;
     height: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -17,7 +38,6 @@
 }
 
 .header-container-alt {
-    margin: 0 80px;
     height: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);

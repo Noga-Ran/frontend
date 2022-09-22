@@ -1,6 +1,6 @@
 <template>
     <form class="form-modal-container ">
-        <div class="overlay" @click="closeFilters"></div>
+        <div class="overlay" @click.prevent="closeFilters"></div>
         <div class="modal-filter-choices-layout">
             <div class="filter-modal-where-container searchbar-selected-filter"
                 @click="setActive($event.currentTarget)">
@@ -160,12 +160,17 @@ export default {
             else if (guests.sum === 1) this.guestsAmount = guests.sum + ' guest'
             else this.guestsAmount = guests.sum + ' guests'
             this.$emit('guest', guests)
-        }
+        },
+        checkMobile(event){
+            event.preventDefault()
+            if(window.innerWidth<=745) this.closeFilters()
+        },
     },
     components: {
         guestsFilter,
     },
     created() {
+        window.addEventListener('resize', this.checkMobile)
         if (this.$route.query) {
             this.where = this.$route.query.where
             this.$emit('filter', this.where)
@@ -177,5 +182,8 @@ export default {
             else if (this.guestsAmount > 1) this.guestsAmount += ' guests'
         }
     },
+    unmounted() {
+    window.removeEventListener('resize', this.checkMobile);
+  }
 }
 </script>
