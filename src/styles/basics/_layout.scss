@@ -47,7 +47,7 @@
     }
 }
 
-@media screen and (max-width:850px) {
+@media screen and (max-width:920px) {
 
     .become-a-host {
         display: none !important;
@@ -55,6 +55,13 @@
 
     .header-filter-layout {
         padding: 0;
+    }
+}
+
+@media screen and (max-width:760px) {
+
+    .header-i18-btn {
+        display: none !important;
     }
 }
 
@@ -178,15 +185,18 @@
             width: 50%;
         }
     }
-.property-btns{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    width: unset;
-    &>*{
-        margin: 0 !important;
+
+    .property-btns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        width: unset;
+
+        &>* {
+            margin: 0 !important;
+        }
     }
-}
+
     .filters-btn {
         margin-right: 10px;
         border: 1px solid #dddddd;
