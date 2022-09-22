@@ -56,7 +56,6 @@
 
     li {
       width: auto !important;
-      min-height: 140px;
     }
 
     li:last-of-type {
@@ -114,7 +113,7 @@
     }
 
     .reviews-list{
-      height: calc(100% - 48px);
+      height: calc(100% - 37px);
     }
   }
 }
@@ -171,6 +170,7 @@
 
   .modal__title {
     padding-top: 0 !important;
+    padding-bottom: 0 !important;
   }
 
   ::-webkit-scrollbar {
@@ -239,7 +239,7 @@
 .reviews-list {
   margin: 0;
   margin-top: 24px;
-  gap: 30px;
+  gap: 40px;
   column-gap: 15px;
   padding-left: 0;
 }
