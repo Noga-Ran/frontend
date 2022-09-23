@@ -49,13 +49,14 @@
                         opacity=".8"></path>
                 </svg>
             </div>
-            <div class="mobile-search-txt-container">
+            <div class="mobile-search-txt-container" @click.prevent="isSearchMobile = true">
                 <div class="mobile-search-header">Where to?</div>
                 <div class="mobile-search-data">Anywhere <span>·</span> Any week <span>·</span> Add guests</div>
             </div>
             <div class="mobile-search-filter-btn">
-                <filter-btn></filter-btn>
+                <filter-btn @setMultyFilter="setMultiFilter"></filter-btn>
             </div>
+            <mobile-filter @close="isSearchMobile = false" v-if="isSearchMobile"></mobile-filter>
         </section>
     </section>
 </template>
@@ -66,6 +67,8 @@
 import filterCmp from './filter.vue'
 import login from '../views/login.vue'
 import filterBtn from './filter-btn.vue'
+import filterModal from './filter-modal.vue'
+import mobileFilter from './filter-modal-cmps/mobile-filter.vue'
 
 export default {
     data() {
@@ -76,6 +79,7 @@ export default {
             showLogin: false,
             showSignUp: false,
             isSignUpPage: false,
+            isSearchMobile: false,
         }
     },
     created() {
@@ -122,6 +126,10 @@ export default {
             if (boolean) {
                 this.showMenu = !this.showMenu
             }
+        },
+        setMultiFilter(multiFilter){
+            let filterBy = Object.assign(JSON.parse(JSON.stringify(this.$store.getters.filterBy)),multiFilter)
+            this.$store.dispatch({type:"setFilter",filterBy})
         }
     },
     computed: {
@@ -131,6 +139,7 @@ export default {
         filterCmp,
         login,
         filterBtn,
+        mobileFilter
     }
 }
 </script>
