@@ -1,0 +1,178 @@
+.mobile-filter-container {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    background-color: #F7F7F7;
+    height: 100vh;
+    width: 100vw;
+    animation: 0.4s ease-out 0s 1 slideInFromButtom;
+
+    .close-filter {
+        padding-bottom: 8px;
+        margin: 0 20px;
+        margin-top: 22px;
+
+        button {
+            display: inline-flex;
+            border-radius: 50%;
+            border: 1px solid rgb(176, 176, 176);
+            outline: none;
+            margin: 0px;
+            padding: 0px;
+            color: rgb(34, 34, 34);
+            background-color: rgba(255, 255, 255, 0.9);
+            cursor: pointer;
+            height: 32px;
+            width: 32px;
+
+
+            svg {
+                margin: auto;
+            }
+        }
+
+        button:hover {
+            border-color: rgba(0, 0, 0, 0.08);
+            background-color: rgb(255, 255, 255);
+            color: rgb(0, 0, 0);
+            box-shadow: transparent 0px 0px 0px 1px, transparent 0px 0px 0px 4px, rgb(0 0 0 / 12%) 0px 6px 16px;
+            transform: scale(1.04);
+        }
+    }
+
+    .where-filter,
+    .when-filter,
+    .who-filter {
+        margin: 0 12px 12px 12px;
+
+        button,
+        >.alt-div {
+            padding: 24px 20px;
+            border-radius: 16px;
+            border: none;
+            margin: 0;
+            background: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            outline: none;
+            box-shadow: 0 1px 2px rgb(0 0 0 / 5%), 0 4px 6px rgb(0 0 0 / 3%);
+        }
+
+        button {
+            height: 56px;
+            width: 100%;
+
+            span {
+                font-family: 'circular-light';
+                font-size: 15px;
+                line-height: 18px;
+                font-weight: 600;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+
+            span:first-of-type {
+                color: #717171;
+            }
+
+            span:last-of-type {
+                color: #222222;
+            }
+        }
+
+        .alt-div {
+            flex-direction: column;
+            align-items: flex-start;
+            h2 {
+                font-size: 22px;
+                line-height: 26px;
+                margin: 0;
+                font-weight: 400;
+                // font-weight: 800;
+            }
+        }
+    }
+
+    .where-filter {
+        margin-top: 15px;
+    }
+
+    .filter-submit {
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+        padding: 12px 24px;
+        background: rgba(255, 255, 255, 0.5);
+        display: flex;
+        justify-content: space-between;
+        bottom: 0;
+        position: absolute;
+        width: calc(100% - 48px);
+
+        button {
+            cursor: pointer;
+            display: inline-block;
+            margin: 0px -10px;
+            position: relative;
+            text-align: center;
+            width: auto;
+            touch-action: manipulation;
+            font-family: 'circular-light';
+            font-size: 16px;
+            line-height: 20px;
+            font-weight: 600;
+            border-radius: 8px;
+            outline: none;
+            padding: 10px;
+            transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
+            -webkit-tap-highlight-color: transparent;
+            border: none;
+            background: transparent;
+            color: #222222;
+            contain: paint;
+        }
+
+        >button {
+            text-decoration: underline;
+        }
+
+        .btn-container {
+            height: 46px !important;
+            width: 125.75px !important;
+        }
+
+        .word-btn {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    .when-filter{
+
+        .dp__menu{
+            box-shadow: none !important;
+        }
+
+        .dp__flex_display{
+            padding-right: 12px;
+            padding-left: 0 !important;
+            display: block !important;
+        }
+
+        .dp__flex_display > *:last-child{
+            margin: 0 !important;
+        }
+        
+        .dp__calendar_header{
+            border-bottom: 1px solid rgb(221, 221, 221) !important;
+        }
+    }
+
+    .who-filter{
+        .guests-modal{
+            position: inherit !important;
+        }
+    }
+}

@@ -18,7 +18,7 @@
           <Navigation />
         </template>
       </Carousel>
-      <filter-btn></filter-btn>
+      <filter-btn @setMultyFilter="setMultiFilter"></filter-btn>
     </section>
   </section>
 </template>
@@ -79,6 +79,9 @@ export default {
       category = category.replace(/\s/g, "-")
       return new URL('https://res.cloudinary.com/nogacloud/image/upload/v1659275431/filter-imgs/' + category.toLowerCase() + '.png', import.meta.url).href
     },
+    setMultiFilter(multiFilter){
+      this.$emit('multiFilter',multiFilter)
+    }
   },
   computed: {
     queryLabel() {

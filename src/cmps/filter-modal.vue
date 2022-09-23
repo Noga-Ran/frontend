@@ -1,5 +1,5 @@
 <template>
-    <form class="form-modal-container ">
+    <form class="form-modal-container">
         <div class="overlay" @click.prevent="closeFilters"></div>
         <div class="modal-filter-choices-layout">
             <div class="filter-modal-where-container searchbar-selected-filter"
