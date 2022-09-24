@@ -168,7 +168,9 @@
     .mobile-header {
         height: 56px;
         display: flex;
+        border: 0.5px solid rgba(0, 0, 0, 0.08);
         box-shadow: 0 3px 10px rgb(0 0 0 / 10%);
+        cursor: pointer;
         border-radius: 1000px;
         align-items: center;
     }
@@ -281,9 +283,10 @@
 
 @media screen and (min-width:750px) {
     .order-sum-modal {
-        .modal-container{
+        .modal-container {
             padding-right: 50px !important;
         }
+
         // .vfm--fixed{
         //     background-color: rgba(0, 0, 0, 0.5);
         // }

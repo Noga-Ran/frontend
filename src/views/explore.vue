@@ -5,12 +5,16 @@
     <filter-btn @setMultyFilter="setMultiFilter" />
   </div>
   <stay-list></stay-list>
+  <app-footer :isFixed="false" />
+
 </template>
 
 <script>
 import appHeader from '../cmps/app-header.vue'
 import stayList from '../cmps/stay-list.vue'
 import filterBtn from '../cmps/filter-btn.vue'
+import appFooter from '../cmps/app-footer.vue'
+
 export default {
   data() {
     return {
@@ -66,7 +70,8 @@ export default {
   components: {
     appHeader,
     stayList,
-    filterBtn
+    filterBtn,
+    appFooter
   },
   computed: {
     staysAmount() { return this.$store.getters.amountOfStays }
