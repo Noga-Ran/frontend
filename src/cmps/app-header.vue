@@ -56,7 +56,7 @@
             <div class="mobile-search-filter-btn">
                 <filter-btn @setMultyFilter="setMultiFilter"></filter-btn>
             </div>
-            <mobile-filter @close="isSearchMobile = false" v-if="isSearchMobile"></mobile-filter>
+            <mobile-filter @close="isSearchMobile = false" @filter="setFilter" v-if="isSearchMobile"></mobile-filter>
         </section>
     </section>
 </template>
@@ -92,6 +92,8 @@ export default {
         },
         setFilter(where, who, date) {
             this.isSearch = false
+            this.isSearchMobile = false
+            console.log(where, who, date);
             this.$emit('filter', { where }, { who }, { date })
         },
         setDate(date) {
