@@ -1,6 +1,6 @@
 
 <template>
-    <section class="homepage-stay-list-cont">
+    <section class="homepage-stay-list-cont" :style="isExplore ? {'margin-top': '0px !important'} : ''">
         <section class="homepage-stay-list">
             <stay-preview :key="currStay" v-for="(currStay,idx) in stays" :currStay="currStay" :wishList="wishListStays" :dates="date"></stay-preview>
         </section>
@@ -12,7 +12,8 @@ export default {
     data() {
         return {
             wishListStays: [],
-            dates: {start:this.$store.getters.filterBy.checkIn,end:this.$store.getters.filterBy.checkOut}
+            dates: {start:this.$store.getters.filterBy.checkIn,end:this.$store.getters.filterBy.checkOut},
+            isExplore: window.location.hash.includes('#/explore')
         }
     },
     components: {
