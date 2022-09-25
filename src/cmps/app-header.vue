@@ -139,7 +139,7 @@ export default {
         filterCmp,
         login,
         filterBtn,
-        mobileFilter
+        mobileFilter,
     }
 }
 </script>
