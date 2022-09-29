@@ -1,9 +1,37 @@
+@media screen and (min-width:1124px){
+    .explore-filters-conatiner{
+        margin: 20px 80px;
+    }
+}
+
+@media screen and (max-width:745px) {
+    .explore-filters-conatiner{
+        margin: 96px 24px 0 24px;
+        justify-content: center !important;
+
+        .filters-btn{
+            display: none;
+        }
+
+        p{
+            margin: 0;
+            font-size: 16px;
+            line-height: 20px;
+        }
+    }
+}
+
+@media screen and (max-width:1124px) and (min-width:745.1px) {
+    .explore-filters-conatiner{
+        margin: 20px 40px;
+    }
+}
+
 .explore-filters-conatiner {
     display: flex;
     align-content: stretch;
     justify-content: space-between;
     align-items: center;
-    margin: 20px 80px;
 }
 
 .explore-preview-data {

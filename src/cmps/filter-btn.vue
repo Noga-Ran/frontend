@@ -1,5 +1,5 @@
 <template>
-  <button type="button" class="filters-btn" @click="showFilterModal = true">
+  <button type="button" class="filters-btn" @click.prevent="toggleFilterModal(true)">
     <span class="filter-btn-container">
       <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation"
         focusable="false" style="display: block; height: 16px; width: 16px; fill: currentcolor;">
@@ -9,10 +9,10 @@
       </svg>
       <span class="t1psh3xd dir dir-ltr">Filters</span></span></button>
   <div class="amenities-modal main-filter-modal">
-    <vue-final-modal v-model="showFilterModal" class="modal-container" content-class="modal_content">
+    <vue-final-modal @closed="toggleFilterModal(false)" v-model="showFilterModal" class="modal-container" content-class="modal_content">
       <section class="modal-container">
         <div class="close-modal">
-          <button class="modal__close" @click="showFilterModal = false"><svg viewBox="0 0 32 32"
+          <button class="modal__close" @click.prevent="toggleFilterModal(false)"><svg viewBox="0 0 32 32"
               xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"
               style="display: block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 3; overflow: visible;">
               <path d="m6 6 20 20"></path>
@@ -182,8 +182,13 @@ export default {
         freeParking: false,
       }
     },
+    toggleFilterModal(option){
+      this.showFilterModal = option
+      if(option){
+        document.getElementsByClassName('header-layout')[0].style.position = 'static';
+      }else document.getElementsByClassName('header-layout')[0].style.position = 'sticky';
+      console.log(document.getElementsByClassName('header-layout')[0].style.position);
+    }
   },
-  computed: {},
-  created() { },
 }
 </script>

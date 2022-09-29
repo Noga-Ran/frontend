@@ -262,10 +262,10 @@
 
 .guests-modal {
     line-height: 20px;
-    top: 148.25px;
-    right: 328px;
+    top: 137px;
+    right: 0;
     width: 350px;
-    position: fixed;
+    position: absolute;
     background-color: #FFFFFF;
     z-index: 999;
     transition: all 0.3s;
