@@ -17,7 +17,7 @@
         color: #222222;
     }
 
-    section>div {
+    >section>div {
         display: flex;
         align-items: center;
         height: 19px;
@@ -65,6 +65,12 @@
             }
         }
     }
+
+    >section {
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
 }
 
 .stay-details-layout {
@@ -84,6 +90,10 @@
 @media screen and (max-width:1124px) and (min-width:745.1px) {
     .footer-container {
         padding: 14px 40px 13px 40px !important;
+    }
+
+    .footer-container section>div:nth-of-type(2) {
+        height: 1px;
     }
 }
 
