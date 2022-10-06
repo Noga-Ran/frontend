@@ -2,8 +2,8 @@
   <div :class="{ shadow: isActive }"></div>
   <section class="category-filters-layout">
     <section class="category-filters-container">
-      <Carousel :items-to-show="12" :itemsToScroll="2">
-        <Slide class="category-filter-container" v-for="(currLabel, idx) in labels" :key="idx">
+      <Carousel :itemsToScroll="2" :mouseDrag="true" :touchDrag="true" :items-to-show="10" :wrap-around="true" :transition="500">
+        <Slide class="category-filter-container" v-for="currLabel in labels" :key="currLabel">
           <section @click="selectLabel($event)" class="filter-img-layout"
             :class="{ 'selected-filter': queryLabel === currLabel }">
             <div class="filter-img-container">
