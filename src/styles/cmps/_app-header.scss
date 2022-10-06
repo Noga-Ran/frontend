@@ -1,3 +1,9 @@
+@media screen and (min-width: 1920px){
+    .user-menu{
+        right: auto !important;
+    }
+}
+
 
 @media screen and (min-width:1124px) {
 
@@ -9,6 +15,10 @@
         width: calc(100% - 160px);
     }
 
+    .user-menu{
+        right: 80px;
+    }
+
 }
 
 @media screen and (max-width:1124px){
@@ -18,6 +28,10 @@
 
     .header-container-alt{
         width: calc(100% - 80px);
+    }
+
+    .user-menu{
+        right: 40px;
     }
 }
 
@@ -288,12 +302,11 @@
     font-family: circular-light;
     box-shadow: 0 2px 16px rgb(0 0 0 / 12%);
     top: 70px;
-    right: 80px;
     border-radius: 10px;
     width: 242px;
     padding: 8px 0;
     background-color: white;
-    position: fixed;
+    position: absolute;
     cursor: pointer;
 
     p {

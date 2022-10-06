@@ -23,14 +23,16 @@
 }
 
 
-@media screen and (min-width:1124px) {
+@media screen and (min-width:1124px) and (max-width:1603px) {
 
     .wish-list-container,.alt-wish-conatiner{
         padding-left: 80px !important;
         padding-right: 80px !important;
         width: calc(100% - 160px);
     }
+}
 
+@media screen and (min-width:1124px) {
     .alt-wish-conatiner{
         margin-top: 36px !important;
     }
@@ -39,7 +41,7 @@
 .wish-list-container {
     padding-top: 16px !important;
 
-    @media screen and (min-width:743px) {
+    @media screen and (min-width:743px) and (max-width:1124px){
         padding-left: 40px !important;
         padding-right: 40px !important;
     }

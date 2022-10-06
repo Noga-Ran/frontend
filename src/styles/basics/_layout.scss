@@ -1,5 +1,5 @@
 @media screen and (min-width:1301px) {
-    .stay-details-layout .details-padding {
+    .stay-details-layout .details-padding, .stay-details-layout .footer-container >section {
         padding: 0 !important;
         max-width: 1120px;
         margin-left: auto !important;
@@ -14,7 +14,21 @@
     .category-filters-container {
         max-width: 1600px;
         margin: 0 auto;
+        padding: 0 80px;
     }
+
+    .wish-list-container,
+    .user-page-layout,.alt-wish-conatiner {
+        max-width: 1600px;
+        margin-right: auto;
+        margin-left: auto;
+        padding: 0 80px;
+    }
+
+    .user-menu{
+        right: 0px;
+    }
+
 }
 
 @media screen and (max-width:1603px) {
