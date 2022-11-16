@@ -1,3 +1,40 @@
+@media screen and (min-width: 1920px){
+    .user-menu{
+        right: auto !important;
+    }
+}
+
+
+@media screen and (min-width:1124px) {
+
+    .header-container,.header-container-alt{
+        margin: 0 80px;
+    }
+    
+    .header-container-alt{
+        width: calc(100% - 160px);
+    }
+
+    .user-menu{
+        right: 80px;
+    }
+
+}
+
+@media screen and (max-width:1124px){
+    .header-container,.header-container-alt{
+        margin: 0 40px;
+    }
+
+    .header-container-alt{
+        width: calc(100% - 80px);
+    }
+
+    .user-menu{
+        right: 40px;
+    }
+}
+
 .header-layout {
     background-color: white;
     position: sticky;
@@ -9,7 +46,6 @@
 }
 
 .header-container {
-    margin: 0 80px;
     height: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -17,7 +53,6 @@
 }
 
 .header-container-alt {
-    margin: 0 80px;
     height: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -267,12 +302,11 @@
     font-family: circular-light;
     box-shadow: 0 2px 16px rgb(0 0 0 / 12%);
     top: 70px;
-    right: 80px;
     border-radius: 10px;
     width: 242px;
     padding: 8px 0;
     background-color: white;
-    position: fixed;
+    position: absolute;
     cursor: pointer;
 
     p {
@@ -352,10 +386,10 @@
 
 .header-layout {
 
-    .modal-vue,
-    .modal {
-        left: 360px;
-    }
+    // .modal-vue,
+    // .modal {
+    //     left: 360px;
+    // }
 
     .search-region {
         padding-right: 12px !important;

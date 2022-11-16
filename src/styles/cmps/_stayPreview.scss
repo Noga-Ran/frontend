@@ -1,6 +1,15 @@
 .preview-container {
     height: fit-content;
     cursor: pointer;
+
+    .explore-location-rating {
+        span {
+            width: 60%;
+            overflow: hidden;
+            // white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    }
 }
 
 
@@ -45,7 +54,7 @@
         font-family: circular-light;
     }
 
-    .preview-available-dates{
+    .preview-available-dates {
         text-transform: capitalize;
     }
 }

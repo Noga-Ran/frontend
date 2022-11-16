@@ -49,13 +49,15 @@
                         opacity=".8"></path>
                 </svg>
             </div>
-            <div class="mobile-search-txt-container">
-                <div class="mobile-search-header">Where to?</div>
-                <div class="mobile-search-data">Anywhere <span>·</span> Any week <span>·</span> Add guests</div>
+            <div class="mobile-search-txt-container" @click.prevent="isSearchMobile = true">
+                <div class="mobile-search-header">{{location || 'Where to?'}}</div>
+                <div class="mobile-search-data" v-if="!location">Anywhere <span>·</span> {{dates || 'Any week'}} <span>·</span> {{guests || 'Add guests'}}</div>
+                <div class="mobile-search-data" v-else>{{dates || 'Any week'}} <span>·</span> {{guests || 'Add guests'}}</div>
             </div>
             <div class="mobile-search-filter-btn">
-                <filter-btn></filter-btn>
+                <filter-btn @setMultyFilter="setMultiFilter"></filter-btn>
             </div>
+            <mobile-filter @close="isSearchMobile = false" @filter="setFilter" v-if="isSearchMobile"></mobile-filter>
         </section>
     </section>
 </template>
@@ -66,6 +68,7 @@
 import filterCmp from './filter.vue'
 import login from '../views/login.vue'
 import filterBtn from './filter-btn.vue'
+import mobileFilter from './filter-modal-cmps/mobile-filter.vue'
 
 export default {
     data() {
@@ -76,6 +79,7 @@ export default {
             showLogin: false,
             showSignUp: false,
             isSignUpPage: false,
+            isSearchMobile: false,
         }
     },
     created() {
@@ -83,10 +87,13 @@ export default {
     },
     methods: {
         closeHeader() {
+            console.log('close');
             this.isSearch = false
         },
         setFilter(where, who, date) {
             this.isSearch = false
+            this.isSearchMobile = false
+            console.log(where, who, date);
             this.$emit('filter', { where }, { who }, { date })
         },
         setDate(date) {
@@ -122,14 +129,46 @@ export default {
                 this.showMenu = !this.showMenu
             }
         },
+        setMultiFilter(multiFilter){
+            let filterBy = Object.assign(JSON.parse(JSON.stringify(this.$store.getters.filterBy)),multiFilter)
+            this.$store.dispatch({type:"setFilter",filterBy})
+        }
     },
     computed: {
-        user() { return this.$store.getters.getUser }
+        user() { return this.$store.getters.getUser },
+        location() { return this.$route.query.where || this.$route.params.where || false},
+        guests(){
+            if(+this.$route.query.adults>0 || this.$route.params.adults>0){
+                let sum =  +this.$route.query.adults + +this.$route.query.infants + +this.$route.query.children + +this.$route.query.pets
+                if(sum>1) return `${sum} guests`
+                else if(sum===1) `1 guest`
+                else false
+            }
+            return false
+        },
+        dates(){
+            if(this.$route.query.checkIn && this.$route.query.checkOut){
+                let start = this.$route.query.checkIn.split('/')
+                let formatDateStart = new Date(start[0], start[1], start[2])
+                let startMon = formatDateStart.toLocaleString('default', { month: 'short' })
+                let startDay = formatDateStart.getDate()
+
+                let end = this.$route.query.checkOut.split('/')
+                let formatDateEnd = new Date(end[0], end[1], end[2])
+                let endMon = formatDateEnd.toLocaleString('default', { month: 'short' })
+                let endDay = formatDateEnd.getDate()
+
+                if(startMon===endMon) return `${startMon} ${startDay} – ${endDay}`
+                return `${startMon} ${startDay} – ${endMon} ${endDay}`
+            }
+            return false
+        }
     },
     components: {
         filterCmp,
         login,
         filterBtn,
+        mobileFilter,
     }
 }
 </script>

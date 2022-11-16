@@ -1,7 +1,47 @@
+@media screen and (max-width:745px) {
+    .wish-list-container,.alt-wish-conatiner{
+        padding-left: 24px !important;
+        padding-right: 24px !important;
+        width: calc(100% - 48px);
+    }
+
+    .alt-wish-conatiner{
+        margin-top: 104px !important;
+    }
+}
+
+@media screen and (max-width:1124px) and (min-width:745.1px) {
+    .wish-list-container,.alt-wish-conatiner{
+        padding-left: 40px !important;
+        padding-right: 40px !important;
+        width: calc(100% - 80px);
+    }
+
+    .alt-wish-conatiner{
+        margin-top: 36px !important;
+    }
+}
+
+
+@media screen and (min-width:1124px) and (max-width:1603px) {
+
+    .wish-list-container,.alt-wish-conatiner{
+        padding-left: 80px !important;
+        padding-right: 80px !important;
+        width: calc(100% - 160px);
+    }
+}
+
+@media screen and (min-width:1124px) {
+    .alt-wish-conatiner{
+        margin-top: 36px !important;
+    }
+}
+
 .wish-list-container {
     padding-top: 16px !important;
 
-    @media screen and (min-width:743px) {
+    @media screen and (min-width:743px) and (max-width:1124px){
         padding-left: 40px !important;
         padding-right: 40px !important;
     }
@@ -300,9 +340,8 @@
 }
 
 .alt-wish-conatiner {
-    margin-left: 24px !important;
-    padding-right: 24px !important;
-    margin-top: 32px !important;
+    // margin-left: 24px !important;
+    // padding-right: 24px !important;
 
     * {
         font-family: circular-light !important;

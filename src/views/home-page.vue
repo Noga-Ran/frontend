@@ -1,8 +1,8 @@
 
 <template>
     <section class="homepage-layout">
-        <app-header @filter="setFilter" @showLoginModal="showLoginModal"/>
-        <category-filter @filter="setFilter" />
+        <app-header @filter="setFilter" @showLoginModal="showLoginModal" />
+        <category-filter @filter="setFilter" @multiFilter="setMultiFilter" />
         <stay-list />
         <app-footer :isFixed="false" />
     </section>
@@ -49,6 +49,10 @@ export default {
             } else {
                 this.$router.push({query })
             }
+        },
+        setMultiFilter(multiFilter){
+            let filterBy = Object.assign(JSON.parse(JSON.stringify(this.$store.getters.filterBy)),multiFilter)
+            this.$store.dispatch({type:"setFilter",filterBy})
         }
     },
     created() {

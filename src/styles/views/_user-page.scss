@@ -15,13 +15,13 @@
 
 }
 
-@media screen and (min-width:1124px){
+@media screen and (min-width:1124px) and (max-width:1603px){
     .user-page-layout {
         padding: 0 80px;
     }
 }
 
-@media screen and (min-width:745px) and (max-width:1223px){
+@media screen and (min-width:745px) and (max-width:1123px){
     .user-page-layout {
         padding: 0 40px;
     }

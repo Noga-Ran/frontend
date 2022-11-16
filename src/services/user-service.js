@@ -55,9 +55,14 @@ async function login(cred) {
     }
 }
 async function signup(cred) {
-    const user = await httpService.post(ENDPOINT + '/signup', cred)
-    userService.login(user._id)
-    return saveLocalUser(user)
+    try{
+        const user = await httpService.post(ENDPOINT + '/signup', cred)
+        userService.login(user._id)
+        return saveLocalUser(user)
+    }catch(err){
+        throw err
+        // return err
+    }
 }
 async function logout() {
     sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)

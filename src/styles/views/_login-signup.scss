@@ -149,3 +149,21 @@
         background-color: rgb(247, 247, 247);
     }
 }
+
+@media screen and (max-width: 743px) {
+    .login-layout {
+        .link-msg {
+            left: calc(37vw - 48px);
+            bottom: 50px;
+        }
+    }
+}
+
+@media screen and (min-width: 744px) {
+    .login-layout {
+        .link-msg {
+            left: calc(46% - 60px);
+            bottom: 50px;
+        }
+    }
+}

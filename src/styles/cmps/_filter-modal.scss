@@ -1,6 +1,67 @@
+@media screen and (max-width:950px) {
+    .search-container {
+        p {
+            display: none;
+        }
+
+        button {
+            width: 48px;
+            padding-left: 16px;
+        }
+    }
+}
+
+@media screen and (min-width:950px) {
+    .search-container {
+
+        button {
+            width: 111.65px;
+            padding-left: 13px;
+        }
+    }
+
+    .filter-modal-container {
+        grid-column: 2;
+    }
+}
+
+.filter-modal-container {
+    grid-column: -1/1;
+    margin: 0 auto;
+    max-width: 850px;
+}
+
+.modal-filter-choices-layout {
+    width: 100% !important;
+}
+
+.filter-modal-where-container {
+    width: 35% !important;
+}
+
+.check-in-out-container {
+    width: 30% !important;
+}
+
+.check-in-container,
+.check-out-container {
+    padding: 0 24px;
+    width: calc(50% - 48px) !important;
+
+    .dp__input {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 98%;
+    }
+}
+
+.filter-who-and-search{
+    width: 35% !important;
+}
+
+
 .filter-modal-container {
     grid-row: 1/3;
-    grid-column: 2;
 }
 
 .form-modal-container {
@@ -186,12 +247,10 @@
         cursor: pointer;
         display: flex;
         align-items: center;
-        padding-left: 13px;
         border: none;
         background-color: #ff385c;
         color: white;
         border-radius: 24px;
-        width: 111.65PX;
         height: 48px;
     }
 
@@ -203,10 +262,10 @@
 
 .guests-modal {
     line-height: 20px;
-    top: 148.25px;
-    right: 328px;
+    top: 137px;
+    right: 0;
     width: 350px;
-    position: fixed;
+    position: absolute;
     background-color: #FFFFFF;
     z-index: 999;
     transition: all 0.3s;
@@ -320,10 +379,12 @@
         }
     }
 }
-.choose-guests-num-cont{
-display: flex;
-align-items: center;
+
+.choose-guests-num-cont {
+    display: flex;
+    align-items: center;
 }
+
 .recents-header {
     font-size: 16px;
     font-family: circular-bold;
@@ -343,7 +404,8 @@ align-items: center;
 .modal img {
     border: 1px solid rgb(221, 221, 221);
     transition: 250ms;
-    &:hover{
+
+    &:hover {
         border-color: #222222;
     }
 }

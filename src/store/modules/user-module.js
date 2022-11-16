@@ -57,8 +57,10 @@ export default {
         try {
           const user = await userService.signup(cred);
           commit({ type: 'setUser', user });
+          return false
         } catch (err) {
           console.log(err);
+          return true
         }       
       },
       async logout({ commit,state }) {

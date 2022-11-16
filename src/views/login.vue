@@ -29,7 +29,7 @@
           <div class="form-line"></div>
           <input class="password-input" v-model="signUpCred.password" type="password" placeholder="Password" />
         </div>
-        <div class="btn-container login-btn" @click="loginOrSignUp">
+        <div class="btn-container login-btn" @click.prevent="loginOrSignUp" :style="[isDisable ? {cursor:'not-allowed'} : '']">
           <div class="cell" v-for="currCell in 100" :key="currCell+'k'"></div>
           <div class="content">
             <button class="action-btn">
@@ -52,6 +52,11 @@
           {{isSignUp ? "Already signed up?" : "Don't have an acount yet? sign up"}}</div>
       </section>
     </div>
+    <div class="link-msg" v-bind:style="{opacity,color:'#cc3333',display:'flex'}">
+      <img src="https://res.cloudinary.com/nogacloud/image/upload/v1664204204/other/White_X_in_red_background.svg"
+        alt="" srcset="">
+      Username already taken
+    </div>
   </section>
 </template>
 
@@ -71,7 +76,9 @@ export default {
         password: '',
       },
       isSignUp: false,
-    };
+      isUserExist: false,
+      opacity:0
+    }
   },
   props: {
     signUpPage: {
@@ -85,14 +92,25 @@ export default {
   },
   methods: {
     async loginOrSignUp() {
+      if(this.isDisable) return
+      var res = false
       if (this.isSignUp) {
-        await this.$store.dispatch({ type: 'signup', cred: this.signUpCred });
+        res = await this.$store.dispatch({ type: 'signup', cred: this.signUpCred })
+        this.isUserExist = res
+        if(res) this.opacity = 1
+        setTimeout(()=>{
+          this.isUserExist = false
+          this.opacity = 0
+        },3000)
       }
       else {
         await this.$store.dispatch({ type: 'login', cred: this.cred });
       }
-      this.$router.push('/')
-      this.closeModal()
+
+      if(!res){
+        this.$router.push('/')
+        this.closeModal()
+      }
     },
     showModal(ev) {
       if (ev.path[0].id == 'blured-bkg') {
@@ -110,5 +128,16 @@ export default {
       this.closeModal()
     }
   },
+  computed:{
+    isDisable(){
+      if(this.isSignUp){
+        if(this.signUpCred.fullname=== ''|| this.signUpCred.username === '' || this.signUpCred.password === '') return true
+        else return false
+      }else{
+        if(this.cred.username === '' || this.cred.password === '') return true
+        else return false
+      }
+    }
+  }
 };
 </script>
