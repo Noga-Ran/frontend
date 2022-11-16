@@ -110,8 +110,9 @@
             <img class="host-img-profile" :src="getRandomImg()" alt="" />
           </div>
           <section class="stay-beds"
-            v-if="stay.beds && stay.bedrooms && stay.beds >= stay.bedrooms && stay.beds % stay.bedrooms < 3 && bedsMoreThanBedrooms > -1">
-            <div class="beds-heading">Where you'll sleep</div>
+          v-if="true">
+          <!-- v-if="stay.beds && stay.bedrooms && stay.beds >= stay.bedrooms && stay.beds % stay.bedrooms < 3 && bedsMoreThanBedrooms > -1"> -->
+          <div class="beds-heading">Where you'll sleep</div>
             <div class="beds-layout" id="beds-layout">
               <div class="bed-container" v-for="idx in stay.bedrooms">
                 <div class="bed">
