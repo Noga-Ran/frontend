@@ -1,5 +1,4 @@
-// const API_KEY= 'AIzaSyC4Dsp8YZjUX5Al03lrGN5TsPNvFBOvWvc'
-const API_KEY= 'AIzaSyBJxoQYZY1_qma_GgYwlLLqR9xUUoho9pI'
+const API_KEY= 'AIzaSyBWiNxSU18TiDwsRfYt3MV5KYuIXvceHos'
 
 import { createApp } from 'vue'
 import store from './store'
