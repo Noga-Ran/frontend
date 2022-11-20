@@ -1,8 +1,16 @@
 @keyframes slideInFromButtom {
-    0% {
-      transform: translateY(+70%);
-    }
-    100% {
-      transform: translateY(0);
-    }
+  0% {
+    transform: translateY(+70%);
   }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes filterBarAnimation {
+  0% {
+    transform: translateY(-60%) scaleX(70%);
+    margin-top: 0px !important;
+  }
+}

@@ -124,6 +124,9 @@
         align-items: center;
     }
 
+    .modal-filter-choices-layout{
+        animation: 0.2s ease-out 0s 1 filterBarAnimation !important;
+    }
 
     .filter-seperator {
         border-right: #dddddd 1px solid;
