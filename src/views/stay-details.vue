@@ -52,7 +52,7 @@
               {{ stay.address.city }},
               {{ stay.address.country }}
             </span>
-            <span class="share-save-actions" @click.prevent="showShareOptions=true">
+            <span class="share-save-actions" @click.prevent="showShareOptions = true">
               <span class="share-stay">
                 <svg class="save-svg" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
                   role="presentation" focusable="false" style="
@@ -109,8 +109,8 @@
             </div>
             <img class="host-img-profile" :src="getRandomImg()" alt="" />
           </div>
-          <section class="stay-beds"
-            v-if="stay.beds && stay.bedrooms && stay.beds >= stay.bedrooms && stay.beds % stay.bedrooms < 3 && bedsMoreThanBedrooms > -1">
+          <section class="stay-beds" v-if="true">
+            <!-- v-if="stay.beds && stay.bedrooms && stay.beds >= stay.bedrooms && stay.beds % stay.bedrooms < 3 && bedsMoreThanBedrooms > -1"> -->
             <div class="beds-heading">Where you'll sleep</div>
             <div class="beds-layout" id="beds-layout">
               <div class="bed-container" v-for="idx in stay.bedrooms">
@@ -126,13 +126,13 @@
                       d="M28 4a2 2 0 0 1 1.995 1.85L30 6v7.839l1.846 5.537a3 3 0 0 1 .115.468l.03.24.009.24V30h-2v-2H2v2H0v-9.675a3 3 0 0 1 .087-.717l.067-.232L2 13.836V6a2 2 0 0 1 1.697-1.977l.154-.018L4 4zm2 18H2v4h28zm-1.388-6H3.387l-1.333 4h27.891zM28 6H4v8h2v-4a2 2 0 0 1 1.85-1.995L8 8h16a2 2 0 0 1 1.995 1.85L26 10v4h2zm-13 4H8v4h7zm9 0h-7v4h7z">
                     </path>
                   </svg>
-                  <div class="bedroom-num">Bedroom {{idx}}</div>
-                  <div class="bedroom-type"> {{bedsMoreThanBedrooms >= idx ? 2 : 1}} {{idx % 2 ? 'king' : 'queen'}} size
+                  <div class="bedroom-num">Bedroom {{ idx }}</div>
+                  <div class="bedroom-type"> {{ bedsMoreThanBedrooms >= idx ? 2 : 1 }} {{ idx % 2 ? 'king' : 'queen' }} size
                     beds </div>
                 </div>
               </div>
               <div class="beds-arrows" v-if="stay.bedrooms > 3">
-                <button :class="{ opacity : !isScrolled }" @click="sideScroll('left',25,210,37)"><svg
+                <button :class="{ opacity: !isScrolled }" @click="sideScroll('left', 25, 210, 37)"><svg
                     viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-label="Previous" role="img"
                     focusable="false"
                     style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 4; overflow: visible;">
@@ -142,7 +142,7 @@
                       </path>
                     </g>
                   </svg></button>
-                <button @click="sideScroll('right',25,210,37)"><svg viewBox="0 0 32 32"
+                <button @click="sideScroll('right', 25, 210, 37)"><svg viewBox="0 0 32 32"
                     xmlns="http://www.w3.org/2000/svg" aria-label="Next" role="img" focusable="false"
                     style="display: block; fill: none; height: 12px; width: 12px; stroke: currentcolor; stroke-width: 4; overflow: visible;">
                     <g fill="none">
@@ -189,7 +189,7 @@
             </svg>
           </button>
           <div class="mobile-details-reactions">
-            <button class="mobile-details-share" @click.prevent="showShareOptions=true"><svg viewBox="0 0 32 32"
+            <button class="mobile-details-share" @click.prevent="showShareOptions = true"><svg viewBox="0 0 32 32"
                 xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"
                 style="fill: none;  stroke: currentcolor; stroke-width: 1; overflow: visible;">
                 <g fill="none">
@@ -202,9 +202,9 @@
                 xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"
                 style="display: block; stroke-width: 1; overflow: visible; fill: transparent; stroke: currentcolor;"
                 v-bind:style="[
-                isFav
-                ? { fill: '#FF385C', stroke: '#FF385C' }
-                : { fill: '#ffffff', stroke: 'currentcolor' },
+                  isFav
+                    ? { fill: '#FF385C', stroke: '#FF385C' }
+                    : { fill: '#ffffff', stroke: 'currentcolor' },
                 ]">
                 <path
                   d="m16 28c7-4.733 14-10 14-17 0-1.792-.683-3.583-2.05-4.95-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05l-2.051 2.051-2.05-2.051c-1.367-1.366-3.158-2.05-4.95-2.05-1.791 0-3.583.684-4.949 2.05-1.367 1.367-2.051 3.158-2.051 4.95 0 7 7 12.267 14 17z">
@@ -268,7 +268,7 @@
                   </path>
                 </svg>
                 <div class="bedroom-num">Bedroom {{ idx }}</div>
-                <div class="bedroom-type"> {{bedsMoreThanBedrooms >= idx ? 2 : 1}} {{idx % 2 ? 'king' : 'queen'}} size
+                <div class="bedroom-type"> {{ bedsMoreThanBedrooms >= idx ? 2 : 1 }} {{ idx % 2 ? 'king' : 'queen' }} size
                   beds </div>
               </div>
             </div>
@@ -329,7 +329,7 @@
   </section>
 
   <div v-if="showShareOptions">
-    <share-modal :stay="stay" @close="showShareOptions=false"></share-modal>
+    <share-modal :stay="stay" @close="showShareOptions = false"></share-modal>
   </div>
 </template>
 

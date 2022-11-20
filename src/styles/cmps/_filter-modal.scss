@@ -31,6 +31,21 @@
     max-width: 850px;
 }
 
+.header-container-alt {
+    .filter-modal-container {
+        width: 850px !important;
+    }
+
+    .check-in-container p:not(:first-of-type),
+    .check-out-container p:not(:first-of-type) {
+        font-size: 14px !important;
+        padding-left: 2px;
+        align-items: center;
+        height: 24px !important;
+        display: flex;
+    }
+}
+
 .modal-filter-choices-layout {
     width: 100% !important;
 }
@@ -55,7 +70,7 @@
     }
 }
 
-.filter-who-and-search{
+.filter-who-and-search {
     width: 35% !important;
 }
 

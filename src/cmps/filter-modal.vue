@@ -38,7 +38,7 @@
                         hideInputIcon :autoPosition="false" :enableTimePicker="false" v-model="startDate" range
                         multiCalendars placeholder="Add dates" :minDate="new Date()" textInput autoApply
                         closeOnScroll />
-                    <p v-if="show" @click.self="clearDates">{{ startDate }}</p>
+                    <p v-if="show" @click.self="clearDates">{{ startDate.slice(0,-4) }}</p>
                 </div>
                 <span class="filter-seperator"></span>
                 <div class="check-out-container" @click="showModal = false; setActive($event.currentTarget)">
@@ -47,7 +47,7 @@
                         hideInputIcon :autoPosition="false" :enableTimePicker="false" v-model="endDate" range
                         multiCalendars placeholder="Add dates" :minDate="new Date()" textInput autoApply
                         closeOnScroll />
-                    <p v-if="show" @click.self="clearDates">{{ endDate }}</p>
+                    <p v-if="show" @click.self="clearDates">{{ endDate.slice(0,-4) }}</p>
                 </div>
             </div>
             <span class="filter-seperator"></span>
