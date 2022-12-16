@@ -1,5 +1,4 @@
 
-import stays from '../jsons/stay.json';
 import {httpService} from './http.service.js';
 import { storageService } from './async-storage-service'
 const KEY = 'stays'
